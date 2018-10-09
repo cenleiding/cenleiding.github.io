@@ -1,5 +1,5 @@
 ---
-title: KNN
+title: KNN(K-Nearest Neighbor)&K-近邻学习
 date: 2018-10-07 14:20:55
 tags: 机器学习
 categories: 机器学习
@@ -8,7 +8,7 @@ description: KNN算法学习笔记
 image: /KNN/KNN_1.png
 ---
 
-# KNN(K-Nearest Neighbor)&K-近邻学习
+>  本文只对KNN进行一些概念介绍。 
 
 **监督学习**：需要已经标注好的训练集。
 
@@ -30,7 +30,9 @@ image: /KNN/KNN_1.png
 
 海明距离：Hamming distance             用于字符串型数据
 
-*参数选择*：一般情况下，在分类时较大的K值能够减小噪声的影响，但会使类别之间的界限变得模糊。一个较好的K值能通过各种启发式技术来获取。
+**参数选择 **：一般情况下，在分类时较大的K值能够减小噪声的影响，但会使类别之间的界限变得模糊。一个较好的K值能通过各种启发式技术来获取。
+
+[**代码实现 **](https://github.com/cenleiding/learning-Machine-Learning/tree/master/KNN)
 
 
 
