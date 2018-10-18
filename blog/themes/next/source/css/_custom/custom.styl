@@ -13,14 +13,231 @@ code {
 .highlight, code, pre {
     border: 1px solid #d6d6d6;
 }
-// 主页文章添加阴影效果
- .post {
-   margin-top: 60px;
-   margin-bottom: 60px;
-   padding: 25px;
-   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-   -moz-box-shadow: 0 0 5px rgba(202, 255, 255, 1);
-  }
+
+// 页面顶部行高
+.header {
+    line-height: 1.5;
+}
+// 页面底部页脚
+.footer {
+    line-height: 1.5;
+    background-color: rgba(255, 255, 255, 0.75);
+    color: #333;
+    border-top-width: 3px;
+    border-top-style: solid;
+    border-top-color: rgb(161, 102, 171);
+    box-shadow: 0px -10px 10px 0px rgba(0, 0, 0, 0.15);
+}
+// 文章
+.post {
+    margin-bottom: 50px;
+    padding: 45px 36px 36px 36px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 255, 255);
+}
+  // 文章标题字体
+.posts-expand .post-title {
+    font-size: 26px;
+    font-weight: 700;
+}
+// 文章标题动态效果
+.posts-expand .post-title-link::before {
+    background-image: linear-gradient(90deg, #a166ab 0%, #ef4e7b 25%, #f37055 50%, #ef4e7b 75%, #a166ab 100%);
+}
+// 文章元数据（meta）留白更改
+.posts-expand .post-meta {
+    margin: 10px 0px 20px 0px;
+}
+// 文章的描述description
+.posts-expand .post-meta .post-description {
+    font-style: italic;
+    font-size: 14px;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    color: #666;
+}
+
+// 时间轴样式
+.posts-collapse {
+    margin: 50px 0px;
+}
+@media (max-width: 1023px) {
+    .posts-collapse {
+        margin: 50px 20px;
+    }
+}
+// 时间轴左边线条
+.posts-collapse::after {
+    margin-left: -2px;
+    background-image: linear-gradient(180deg,#f79533 0,#f37055 15%,#ef4e7b 30%,#a166ab 44%,#5073b8 58%,#1098ad 72%,#07b39b 86%,#6dba82 100%);
+}
+// 时间轴左边线条圆点颜色
+.posts-collapse .collection-title::before {
+    background-color: rgb(255, 255, 255);
+}
+// 时间轴文章标题左边圆点颜色
+.posts-collapse .post-header:hover::before {
+    background-color: rgb(161, 102, 171);
+}
+// 时间轴年份
+.posts-collapse .collection-title h1, .posts-collapse .collection-title h2 {
+    color: rgb(255, 255, 255);
+}
+// 时间轴文章标题
+.posts-collapse .post-title a {
+    color: rgb(80, 115, 184);
+}
+.posts-collapse .post-title a:hover {
+    color: rgb(161, 102, 171);
+}
+// 时间轴文章标题底部虚线
+.posts-collapse .post-header:hover {
+    border-bottom-color: rgb(161, 102, 171);
+}
+
+
+////// archives页面
+.page-archive .posts-collapse .collection-title {
+    margin-bottom: 0px;
+    margin-top:0px;
+    padding: 0px 0px 0px 0px;
+}
+.page-archive .posts-collapse .post {
+    margin-bottom: 0px;
+    margin-top:0px;
+    padding: 6px 36px 6px 36px;
+    box-shadow: 0px 0px 0px 0px;
+}
+.page-archive .posts-collapse .post .post-title{
+    margin-bottom: 0px;
+    margin-top:0px;
+    padding: 0px 0px 0px 0px;
+}
+// archives页面顶部文字
+.page-archive .archive-page-counter {
+    color: rgba(255, 255, 255,0);
+}
+// archives页面时间轴左边线条第一个圆点颜色
+.page-archive .posts-collapse .archive-move-on {
+    top: 10px;
+    opacity: 1;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+//12生肖
+.chinese-zodiac {
+    float: right;
+}
+@font-face {
+  font-family: 'chinese-zodiac';
+  font-display: swap;
+  src: url('/fonts/chinese-zodiac.eot');
+  src: url('/fonts/chinese-zodiac.eot') format('embedded-opentype'),
+       url('/fonts/chinese-zodiac.woff2') format('woff2'),
+       url('/fonts/chinese-zodiac.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+.symbolic-animals {
+  display: inline-block;
+  font: normal normal normal 14px/1 chinese-zodiac;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-dragon:before { content: '\e806'; }
+.icon-tiger:before { content: '\e809'; }
+.icon-pig:before { content: '\e810'; }
+.icon-horse:before { content: '\e813'; }
+.icon-rat:before { content: '\e816'; }
+.icon-goat:before { content: '\e818'; }
+.icon-snake:before { content: '\e820'; }
+.icon-ox:before { content: '\e822'; }
+.icon-dog:before { content: '\e825'; }
+.icon-rabbit:before { content: '\e826'; }
+.icon-monkey:before { content: '\e829'; }
+.icon-rooster:before { content: '\e82f'; }
+
+
+  // 分类页面
+.post-block.page {
+    margin-top: 40px;
+}
+.category-all-page {
+    margin: -80px 50px 40px 50px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 255, 255);
+    padding: 86px 36px 36px 36px;
+}
+@media (max-width: 767px) {
+    .category-all-page {
+        margin: -73px 15px 50px 15px;
+    }
+    .category-all-page .category-all-title {
+        margin-top: -5px;
+    }
+}
+
+
+// 标签云页面
+.tag-cloud {
+    margin: -80px 50px 40px 50px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 255, 255);
+    padding: 86px 36px 36px 36px;
+}
+.tag-cloud-title {
+    margin-bottom: 15px;
+}
+@media (max-width: 767px) {
+    .tag-cloud {
+        margin: -73px 15px 50px 15px;
+        padding: 86px 5px 36px 5px;
+    }
+}
+
+// 自定义的TopX页面样式
+#top {
+    display: block;
+    text-align: center;
+    margin: -100px 50px 40px 50px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 255, 255);
+    padding: 106px 36px 10px 36px;
+}
+@media (max-width: 767px) {
+    #top {
+        margin: -93px 15px 50px 15px;
+        padding: 96px 10px 0px 10px;
+    }
+}
+// 自定义ABOUT页面的样式
+.about-page {
+    margin: -80px 0px 60px 0px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 255, 255);
+    padding: 106px 36px 36px 36px;
+}
+@media (max-width: 767px) {
+    .about-page {
+        margin: -73px 0px 50px 0px;
+        padding: 96px 15px 20px 15px;
+    }
+}
+h2.about-title {
+    border-left: none !important;
+    margin-left: 0px !important;
+    padding-left: 0px !important;
+    text-align: center;
+    background-image: linear-gradient(90deg, #a166ab 0%, #a166ab 40%, #ef4e7b 45%, #f37055 50%, #ef4e7b 55%, #a166ab 60%, #a166ab 100%);
+    background-size: cover;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    user-select: none;
+}
+
 
   // 自定义的侧栏时间样式
 #days {
@@ -46,4 +263,18 @@ img.img-topic {
   padding: 0;
   float: left;
   clear: left;
+}
+
+@media screen and (min-width:1200px) {
+    body {
+    background-image:url(/images/background.jpg);
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-position:50% 50%; 
+    background-size:cover;
+    }
+
+    #footer a {
+        color:#eee;
+    }
 }
