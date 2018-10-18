@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="CLD的博客">
 <meta property="og:description" content="对于机器学习的一些概念的小笔记">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-09T12:56:03.861Z">
+<meta property="og:updated_time" content="2018-10-10T13:13:13.782Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习概念随笔">
 <meta name="twitter:description" content="对于机器学习的一些概念的小笔记">
@@ -113,7 +113,7 @@
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":true,"async":true,"transition":{"post_block":"perspectiveLeftIn","post_header":"fadeIn","post_body":"fadeIn","coll_header":"perspectiveLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -414,7 +414,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  795
+                  970
                 </span>
               
 
@@ -430,7 +430,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  6
                 </span>
               
             </div>
@@ -472,6 +472,12 @@
 <p>&#x6839;&#x636E;&#x662F;&#x5426;&#x6709;&#x6807;&#x8BB0;&#x4FE1;&#x606F;&#xFF0C;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x6709;&#x6807;&#x8BB0;&#x7684;<strong>&#x76D1;&#x7763;&#x5B66;&#x4E60;&#xFF08;supervised learning&#xFF09;</strong>&#x548C;&#x65E0;&#x6807;&#x8BB0;&#x7684;<strong>&#x65E0;&#x76D1;&#x7763;&#x5B66;&#x4E60;&#xFF08;unsupervised learning&#xFF09;</strong>&#x3002;&#x76D1;&#x7763;&#x5B66;&#x4E60;&#x6709;&#x5206;&#x7C7B;&#x3001;&#x56DE;&#x5F52;&#x3002;&#x975E;&#x76D1;&#x7763;&#x5B66;&#x4E60;&#x6709;<strong>&#x805A;&#x7C7B;&#xFF08;clustering&#xFF09;</strong>&#x3002;</p>
 <p>&#x6839;&#x636E;&#x9884;&#x6D4B;&#x503C;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x79BB;&#x6563;&#x503C;&#x7684;<strong>&#x5206;&#x7C7B;&#xFF08;classification&#xFF09;</strong>&#x4EFB;&#x52A1;&#x548C;&#x8FDE;&#x7EED;&#x503C;&#x7684;<strong>&#x56DE;&#x5F52;&#xFF08;regression&#xFF09;</strong>&#x4EFB;&#x52A1;</p>
 <p>&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x53C8;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;<strong>&#x4E8C;&#x5206;&#x7C7B;&#xFF08;binary classification&#xFF09;</strong> &#x548C; <strong>&#x591A;&#x5206;&#x7C7B;&#xFF08;multi-class classification&#xFF09;</strong></p>
+<hr>
+<h3 id="epoch-batch-step-iteration"><a href="#epoch-batch-step-iteration" class="headerlink" title="epoch batch step iteration"></a>epoch batch step iteration</h3><p><strong>epoch</strong>&#xFF1A; &#x8868;&#x793A;&#x8FC7;&#x4E86;&#x4E00;&#x904D;&#x8BAD;&#x7EC3;&#x96C6;&#x3002;</p>
+<p><strong>batch</strong>&#xFF1A; batch-size &#x6BCF;&#x6B21;&#x8FED;&#x4EE3;&#x6240;&#x7528;&#x7684;&#x6837;&#x672C;&#x6570;&#x3002;</p>
+<p><strong>step&#xFF0C;iteration</strong>&#xFF1A; &#x8FED;&#x4EE3;&#x7684;&#x6B21;&#x6570;&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#x73B0;&#x5728;&#x6709;1000&#x4E2A;&#x6837;&#x672C;&#x3002;&#x6211;&#x51B3;&#x5B9A;&#x8981;&#x5BF9;&#x6574;&#x4E2A;&#x6837;&#x672C;&#x8BAD;&#x7EC3;10&#x6B21;&#xFF08;epoch=10&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x6BCF;&#x6B21;&#x5206;&#x4E3A;10&#x6B21;&#x5C0F;&#x7684;&#x8BAD;&#x7EC3;&#xFF08;step=10&#xFF0C;&#x56E0;&#x4E3A;&#x5F53;&#x6570;&#x636E;&#x91CF;&#x5F88;&#x5927;&#x65F6;&#x65E0;&#x6CD5;&#x4E00;&#x4E0B;&#x5B50;&#x8BAD;&#x7EC3;&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x6BCF;&#x6B21;&#x5C0F;&#x8BAD;&#x7EC3;&#x8981;&#x5904;&#x7406;10&#x4E2A;&#x6837;&#x672C;&#xFF08;batch-size&#xFF09;&#x3002;</p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x4E00;&#x4E2A;epoch&#x5E76;&#x4E0D;&#x610F;&#x5473;&#x7740;&#x8981;&#x5B8C;&#x5168;&#x904D;&#x5386;&#x5B8C;&#x6240;&#x6709;&#x7684;&#x6837;&#x672C;&#xFF0C;&#x5F53;&#x6837;&#x672C;&#x5341;&#x5206;&#x5927;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x53EA;&#x5BF9;&#x4E00;&#x90E8;&#x5206;&#x6837;&#x672C;&#x8FDB;&#x884C;&#x91C7;&#x6837;&#x3002;</p>
 <hr>
 <h2 id="&#x62D3;&#x5C55;&#x672F;&#x8BED;"><a href="#&#x62D3;&#x5C55;&#x672F;&#x8BED;" class="headerlink" title="&#x62D3;&#x5C55;&#x672F;&#x8BED;"></a>&#x62D3;&#x5C55;&#x672F;&#x8BED;</h2><p><strong>&#x5965;&#x5361;&#x59C6;&#x5243;&#x5200;&#xFF08;Occam&#x2019;s razor&#xFF09;</strong> &#xFF1A; &#x82E5;&#x6709;&#x591A;&#x4E2A;&#x5047;&#x8BBE;&#x548C;&#x89C2;&#x5BDF;&#x4E00;&#x81F4;&#xFF0C;&#x5219;&#x9009;&#x62E9;&#x6700;&#x7B80;&#x5355;&#x7684;&#x90A3;&#x4E2A;&#x3002;</p>
 <p><strong>&#x6CA1;&#x6709;&#x514D;&#x8D39;&#x7684;&#x5348;&#x9910; NFL&#xFF08;No Free Lunch Theorem&#xFF09;&#x5B9A;&#x7406;</strong> &#xFF1A;&#x5728;&#x6240;&#x6709;&#x95EE;&#x9898;&#x51FA;&#x73B0;&#x7684;&#x673A;&#x4F1A;&#x76F8;&#x540C;&#x3001;&#x6216;&#x6240;&#x6709;&#x95EE;&#x9898;&#x540C;&#x7B49;&#x91CD;&#x8981;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C; &#x6240;&#x6709;&#x7684;&#x7B97;&#x6CD5;&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x671F;&#x671B;&#x6027;&#x80FD;&#x90FD;&#x662F;&#x76F8;&#x540C;&#x7684; &#xFF01;&#xFF01; &#x56E0;&#x6B64;&#x8131;&#x79BB;&#x5177;&#x4F53;&#x95EE;&#x9898;&#x7A7A;&#x8C08;&#x4EC0;&#x4E48;&#x7B97;&#x6CD5;&#x66F4;&#x597D;&#x6BEB;&#x65E0;&#x610F;&#x4E49;&#xFF0C;&#x7B97;&#x6CD5;&#x4F18;&#x52A3;&#x5FC5;&#x987B;&#x9488;&#x5BF9;&#x5177;&#x4F53;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
@@ -654,7 +660,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -676,7 +682,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -730,7 +736,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本术语"><span class="nav-number">1.</span> <span class="nav-text">基本术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拓展术语"><span class="nav-number">2.</span> <span class="nav-text">拓展术语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本术语"><span class="nav-number">1.</span> <span class="nav-text">基本术语</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#epoch-batch-step-iteration"><span class="nav-number">1.1.</span> <span class="nav-text">epoch batch step iteration</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拓展术语"><span class="nav-number">2.</span> <span class="nav-text">拓展术语</span></a></li></ol></div>
             
 
           </div>
@@ -765,7 +771,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">9.7k</span>
+    <span title="Site words total count">15.3k</span>
   
 </div>
 
@@ -796,7 +802,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共9.7k字</span>
+  <span class="post-count">博客全站共15.3k字</span>
 </div>
         
 
