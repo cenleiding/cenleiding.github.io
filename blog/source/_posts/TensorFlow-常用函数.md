@@ -344,6 +344,7 @@ save_path = saver.save(sess, "my-test-model")
 #只恢复变量，模型已经提前手动撸完，而且要保证变量一致
 saver = tf.train.Saver()
 saver.restore(sess, "my-test-model")
+saver。restore(sess,tf.train.latest_checkpoint('/'))#自动获取目录下最近的模型
 
 #恢复模型和数据
 new_saver = tf.train.import_meta_graph('my_test_model-1000.meta')
