@@ -8,7 +8,7 @@ description: word2vec词嵌入
 image: word2vec/word2vec_3.png
 ---
 
-​word2vec整体思路可以说是很简单的（当然可能是因为我学的比较浅 😢）
+​word2vec整体思路可以说是很简单的（当然可能是因为我学的比较浅 😢），但十分的有趣，直观。
 
 详细的可以看 TensorFlow 官网给出的教程，可以自己具体实现一下[教程](http://www.tensorfly.cn/tfdoc/tutorials/word2vec.html)
 
