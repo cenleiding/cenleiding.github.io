@@ -42,7 +42,7 @@ image: LSTM是什么/LSTM_01.PNG
 
 
 
-###0.状态保存层
+### 0.状态保存层
 
 ![img](LSTM是什么/LSTM_04.png)
 
@@ -52,7 +52,7 @@ image: LSTM是什么/LSTM_01.PNG
 
 
 
-###1.遗忘门层 forget gate layer
+### 1.遗忘门层 forget gate layer
 
 ![img](LSTM是什么/LSTM_05.png)
 
@@ -80,7 +80,7 @@ image: LSTM是什么/LSTM_01.PNG
 
 
 
-###3.状态修改层
+### 3.状态修改层
 
 ![img](LSTM是什么/LSTM_07.png)
 

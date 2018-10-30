@@ -610,3 +610,58 @@ for _ in range(100):
 
 ```
 
+
+
+## RNN-LSTM 
+
+LSTM的简单[介绍](https://cenleiding.github.io/LSTM%E6%98%AF%E4%BB%80%E4%B9%88.html)
+
+| cell                                     |                                          |
+| ---------------------------------------- | ---------------------------------------- |
+| **Class  tf.nn.rnn_cell.LSTMCell(<br />num_units,<br />use_peepholes=False,<br />cell_clip=None,    <br />initializer=None,<br />forget_bias=1.0,<br />state_is_tuple=True,<br />activation=None,<br />name=None,    <br />dtype=None,<br /> ……)** | **num_units: int，隐藏状态的大小，一般也是输出大小**<br />use_peepholes：是否使用门镜连接<br />cell_clip： float。状态矩阵对输出的影响<br />initializer：初始化方式<br />forget_bias=1.0：遗忘gate的偏见值<br />state_is_tuple=True,状态以2元元组形式接收，返回<br />activation：默认tanh，可以用Keras中的激活函数替代<br /> …… |
+| **Class tf.nn.rnn_cell.GRUCell（<br /> num_units, <br /> activation=None,  <br /> reuse=None,     <br /> kernel_initializer=None,   <br /> bias_initializer=None,   <br /> name=None,  <br /> dtype=None,   <br /> kwargs） ** | **num_units: int，隐藏状态的大小，一般也是输出大小**<br />activation：默认tanh，可以用Keras中的激活函数替代<br /> |
+| Class DeviceWrapper（<br />cell,  <br />device） | **cell**: 一个RNNCell的实例.<br />**device**:指定设备 |
+| Class DropoutWrapper（<br />cell, <br />input_keep_prob=1.0,<br />output_keep_prob=1.0,<br />state_keep_prob=1.0,<br /> ……） | **cell**: 一个RNNCell的实例.<br />input_keep_prob=1.0 ：输入保留<br />**output_keep_prob** =1.0：输出保留<br />state_keep_prob=1.0：状态保留<br /> …… |
+| Class MultiRNNCell（<br />cells,    <br />state_is_tuple=True） | **cells**: RNNCells的列表，用于实现多层RNN<br /> state_is_tuple：状态是否表现为元组 |
+| **rnn**                                  |                                          |
+| **tf.nn.dynamic_rnn(   <br />   cell,    <br />   inputs,  <br />   sequence_length=None,  <br />   initial_state=None,  <br />   dtype=None, <br />    parallel_iterations=None, <br />    swap_memory=False, <br />    time_major=False, <br />    scope=None ) <br /> return: (outputs, state) ** | 根据指定RNNCell生成循环神经网络<br />**cell**: 一个RNNCell的实例<br />**inputs**: 当time_majar=False时,<br />               形状为[batch_size, max_time, ...] <br />**sequence_length**: [batch_size]形状的向量，<br />     表示序列的真实长度,超出长度部分会复制状态和零输出<br />     因此这个参数主要为了性能而不是准确度。<br />      …… <br />initial_state:初始化状态，默认为0<br />**outputs:** 当 time_major == False <br />                形状为[batch_size, max_time, cell.output_size]<br />**state:** 最终的状态，一般为[batch_size, cell.state_size] |
+| **tf.nn.bidirectional_dynamic_rnn(   <br />  cell_fw,<br />  cell_bw,  <br />  inputs,  <br />  sequence_length=None, <br />  initial_state_fw=None,  <br />  initial_state_bw=None, <br />  dtype=None, <br />  parallel_iterations=None,  <br />  swap_memory=False,   <br />  time_major=False,    <br />  scope=None )<br /> return：（outputs, output_states）** | 创建一个双向的循环神经网络<br /> **cell_fw**：一个前向的RNNCell实例<br /> **cell_bw**：一个后向的RNNCell实例<br /> **inputs**：当 time_major == False (default)<br />                  形状为 [batch_size, max_time, ...]<br /> **sequence_length**：[batch_size]形状的向量，<br />表示序列的真实长度，若不提供则认为都为max_time<br />initial_state_fw:前向RNN状态初始化，默认为0<br />initial_state_bw:后向RNN状态初始化，默认为0<br /> ……<br />**outputs**：一个元组 (output_fw, output_bw)<br />                   当 time_major == False <br />  形状为 [batch_size, max_time, cell_fw.output_size]<br />  和 [batch_size, max_time, cell_bw.output_size] <br />**output_states**：(output_state_fw, output_state_bw)<br />正向和反向的最终状态输出。 |
+
+```python
+#创建RNNCell实例，一般只用设置num_units即可
+lstm_cell = tf.nn.rnn_cell.LSTMCell(num_units=hidden_size)
+gru_cell = tf.nn.rnn_cell.GRUCell(num_units=hidden_size)
+
+#可以添加dropout，一般只用设置output_keep_prob
+lstm_cell = tf.nn.rnn_cell.DropoutWrapper(cell=lstm_cell,output_keep_prob=keep_prob)
+
+#可以自动生成多层RNN
+mlstm_cell = tf.nn.rnn_cell.MultiRNNCell([lstm_cell] * layer_num)
+
+#可以通过自带函数获得状态的0初始化矩阵
+initial_state = lstm_cell.zero_state(batch_size, dtype=tf.float32)
+
+#运行网络
+outputs, state = tf.nn.dynamic_rnn(lstm_cell,inputs=X,
+                                   initial_state=init_state)
+outputs, state = tf.nn.dynamic_rnn(cell=multi_rnn_cell,
+                                   inputs=data,
+                                   dtype=tf.float32)
+#双向网络
+lstm_cell_fw = tf.nn.rnn_cell.LSTMCell(num_units=hidden_size)
+lstm_cell_bw = tf.nn.rnn_cell.LSTMCell(num_units=hidden_size)
+(output_fw, output_bw),(output_state_fw, output_state_bw) = tf.nn.bidirectional_dynamic_rnn(
+                cell_fw=lstm_cell_fw,
+                cell_bw=lstm_cell_bw,
+                inputs=self.word_embeddings,
+                sequence_length=self.sequence_lengths,
+                dtype=tf.float32)
+output = tf.concat([output_fw, output_bw], axis=-1)
+
+#####几个注意点：
+#1.每一层的RNNCell个数是不定的，会根据输入长度max_time动态变化
+#2.要对输入进行提前处理，保证每个batch中各个输入长度相同max_time，不足补0
+#3.sequence_length表示了每条输入的真正长度，提不提供不会影响最后的结果，因为初始化时是补0的，但提供了可以提高性能。
+#4.rnn函数默认对状态矩阵进行0初始化，所以不需要调用.zero_state函数去手动初始化。
+```
+

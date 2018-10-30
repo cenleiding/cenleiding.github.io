@@ -155,3 +155,131 @@ image: 神经网络ANN/ANN_1.jpg
 
 这里要注意一下，传递误差δ只是代表节点输出值的偏导，而我们的目标是路径权重w的偏导，中间还需要过度一下。
 
+
+
+## 激活函数的作用
+
+> 首先，感谢一下[Daniel Godoy](https://towardsdatascience.com/@dvgodoy?source=post_header_lockup)大佬的独特的可视化解释，以及[机器之家](https://www.jqr.com/article/000161)的翻译（╮(╯▽╰)╭还是中文看的舒服）
+
+激活函数是神经网络中必不可少的部分，每个神经节点都会调用激活函数，那么激活函数的作用是什么呢？
+
+**引入非线性！**  当然，这是大家都知道的事，但它具体是怎么影响神经网络的呢？效果又是怎么样的呢？借助Godoy的可视化训练，可以让我们更为直接的感受激活函数的作用。
+
+
+
+### sigmoid
+
+最传统的激活函数。尽管今时今日，它的使用场景主要限制在**分类任务的输出层**。 
+
+![img](/神经网络ANN/ANN_17.png)
+
+![img](/神经网络ANN/ANN_18.png)
+
+如上图所示，sigmoid激活函数将输入值“压入”**区间(0, 1)**（和概率值的区间一致，这正是它在输出层中用于分类任务的原因）。由于sigmoid的区间在(0, 1)，**激活值以0.5为中心**，而不是以零为中心（正态分布输入通常以零为中心）。其**梯度**（gradient）峰值为0.25（当z = 0时），而当|z|达到5时，它的值已经很接近零了。
+
+
+<iframe width="700" height="393" src="https://www.youtube.com/embed/4RoTHKKRXgE" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+可以从视频中看出sigmoid激活函数成功分开了两条曲线，不过损失下降得比较缓慢，训练时间有显著部分停留在高原（plateaus）上。
+
+
+
+### tanh
+
+**双曲正切函数**tanh激活函数从sigmoid演进而来，和其前辈不同，其输出值的均值为零。
+
+![img](/神经网络ANN/ANN_19.png)
+
+![img](/神经网络ANN/ANN_20.png)
+
+如上图所示，tanh激活函数“挤压”输入至**区间(-1, 1)** 。因此，**中心为零**，（某种程度上）激活值已经是下一层的正态分布输入了。至于梯度，它有一个大得多的峰值1.0（同样位于z = 0处），但它下降得更快，当|z|的值到达3时就已经接近零了。这是所谓**梯度消失（vanishing gradients）**问题背后的原因，这导致网络的训练进展变慢。
+
+<iframe width="700" height="393" src="https://www.youtube.com/embed/PFNp8_V_Apg" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+tanh激活函数以更快的速度达到了所有情形正确分类的点，而损失函数同样下降得更快（损失函数下降的时候），但它同样在高原上花了很多时间。
+
+
+
+### ReLu
+
+修正线性单元（Rectified Linear Units），简称**ReLU**，是寻常使用的激活函数**。**ReLU处理了两个前辈常见的**梯度消失**问题，同时也是计算梯度**最快**的激活函数。
+
+![img](/神经网络ANN/ANN_21.png)
+
+![img](/神经网络ANN/ANN_22.png)
+
+如上图所示，**ReLU**是一头完全不同的野兽：它并不“挤压”值至某一区间——它只是**保留正值**，并将所有**负值转化为零**。
+
+使用**ReLU**的积极方面是它的**梯度**要么是1（正值），要么是0（负值）——**再也没有梯度消失了！**这一模式使网络**更快收敛**。
+
+另一方面，这一表现导致所谓的**“死亡神经元”**问题，也就是输入持续为负的神经元激活值总是为零。
+
+<iframe width="700" height="393" src="https://www.youtube.com/embed/Ji_05nOFLE0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+**损失**从开始就保持**稳定下降**，直到**接近零**后才**进入平原**，花了**大约75%**的**tanh**训练时间就达成所有情形**正确分类!!**
+
+
+
+### ↑上三种激活函数比较
+
+![img](/神经网络ANN/ANN_23.png)
+
+![img](/神经网络ANN/ANN_24.png)
+
+嗯。难怪ReLU激活函数现在这么常用。。。
+
+
+
+### ELU
+
+**指数线性单元ELU**融合了sigmoid和ReLU，具有左侧软饱性。其正式定义为：
+
+![img](/神经网络ANN/ANN_28.jpg)
+
+右侧线性部分使得ELU能够缓解梯度消失，而左侧软饱和能够让ELU对输入变化或噪声更鲁棒。ELU的输出均值接近于零，所以**收敛速度更快**。实验中，ELU的收敛性质的确优于ReLU和PReLU。
+
+
+
+### LReLu
+
+**Leaky ReLU** 是给所有负值**赋予一个非零斜率(固定)**。Leaky ReLU激活函数是在声学模型（2013）中首次提出的。以数学的方式我们可以表示为：
+
+![img](/神经网络ANN/ANN_26.jpg)
+
+
+
+### PReLU
+
+**参数化修正线性单元PReLU**是ReLU和LReLU的**改进版本** ，具有非饱和性：
+
+![img](/神经网络ANN/ANN_25.jpg)
+
+与LReLU相比，PReLU中的负半轴**斜率a可学习而非固定**。原文献建议初始化a为0.25。与ReLU相比，PReLU收敛速度更快。因为PReLU的输出更接近0均值，使得SGD更接近natural gradient。证明过程参见[原文](https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/He_Delving_Deep_into_ICCV_2015_paper.pdf?spm=5176.100239.blogcont55892.28.pm8zm1&file=He_Delving_Deep_into_ICCV_2015_paper.pdf)
+
+
+
+### RReLU
+
+**随机纠正线性单元RReLu**数学形式与PReLU类似，但RReLU是一种非确定性激活函数，其**参数是随机的** 。这种随机性类似于一种噪声，能够在一定程度上起到正则效果。
+
+![img](/神经网络ANN/ANN_27.jpg)
+
+
+
+### Maxout
+
+Maxout是ReLU的推广，其发生饱和是一个零测集事件（measure zero event）。正式定义为：
+
+![img](/神经网络ANN/ANN_29.jpg)
+
+Maxout网络能够近似任意连续函数，且当w2,b2,…,wn,bn为0时，退化为ReLU。 其实，Maxout的思想在视觉领域存在已久。例如，在HOG特征里有这么一个过程：计算三个通道的梯度强度，然后在每一个像素位置上，仅取三个通道中梯度强度最大的数值，最终形成一个通道。这其实就是Maxout的一种特例。
+
+Maxout能够缓解梯度消失，同时又规避了ReLU神经元死亡的缺点，但增加了参数和计算量。
+
+
+
+### ↑以上Relu亲戚的比较
+
+![img](/神经网络ANN/ANN_30.jpg)
+
+其实ReLu的亲戚还有很多，左边什么形状都看得到~但**最常用的还是ReLU和ELU**。
