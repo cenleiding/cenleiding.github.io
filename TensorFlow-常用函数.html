@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="CLD的博客">
 <meta property="og:description" content="对TensorFlow中常用函数的整理">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-30T07:22:11.292Z">
+<meta property="og:updated_time" content="2018-11-21T06:43:58.904Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TensorFlow 常用函数整理">
 <meta name="twitter:description" content="对TensorFlow中常用函数的整理">
@@ -414,7 +414,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  6.3k
+                  6.8k
                 </span>
               
 
@@ -430,7 +430,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  39
+                  42
                 </span>
               
             </div>
@@ -899,7 +899,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="&#x4FDD;&#x5B58;&#x548C;&#x6062;&#x590D;"><a href="#&#x4FDD;&#x5B58;&#x548C;&#x6062;&#x590D;" class="headerlink" title="&#x4FDD;&#x5B58;&#x548C;&#x6062;&#x590D;"></a>&#x4FDD;&#x5B58;&#x548C;&#x6062;&#x590D;</h2><p>&#x63A8;&#x8350;&#x53EF;&#x4EE5;&#x770B;&#x8FD9;&#x7BC7;<a href="https://cv-tricks.com/tensorflow-tutorial/save-restore-tensorflow-models-quick-complete-tutorial/" target="_blank" rel="noopener">&#x6587;&#x7AE0;</a></p>
+<h2 id="&#x4FDD;&#x5B58;&#x548C;&#x6062;&#x590D;"><a href="#&#x4FDD;&#x5B58;&#x548C;&#x6062;&#x590D;" class="headerlink" title="&#x4FDD;&#x5B58;&#x548C;&#x6062;&#x590D;"></a>&#x4FDD;&#x5B58;&#x548C;&#x6062;&#x590D;</h2><h3 id="train-Saver"><a href="#train-Saver" class="headerlink" title="train.Saver"></a>train.Saver</h3><p>&#x63A8;&#x8350;&#x53EF;&#x4EE5;&#x770B;&#x8FD9;&#x7BC7;<a href="https://cv-tricks.com/tensorflow-tutorial/save-restore-tensorflow-models-quick-complete-tutorial/" target="_blank" rel="noopener">&#x6587;&#x7AE0;</a></p>
 <table>
 <thead>
 <tr>
@@ -926,6 +926,86 @@
 </tbody>
 </table>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">######################################  &#x5B58;&#x50A8;&#x7684;&#x6587;&#x4EF6;  #############################################</span></span><br><span class="line"><span class="comment"># v&lt;0.11</span></span><br><span class="line"><span class="comment"># checkpoint   my_test_model.meta   my_test_model.ckpt</span></span><br><span class="line"><span class="comment"># v&gt;=0.11</span></span><br><span class="line"><span class="comment"># checkpoint   my_test_model.meta   my_test_model.data-00000-of-00001    my_test_model.index   </span></span><br><span class="line"></span><br><span class="line"><span class="comment">########################################  &#x4FDD;&#x5B58;  ##############################################  </span></span><br><span class="line">saver = tf.train.Saver()</span><br><span class="line"><span class="comment">#saver = tf.train.Saver([w1, w2])</span></span><br><span class="line"><span class="comment">#saver = tf.train.Saver({&apos;w1&apos;: w1, &apos;w2&apos;: w2})</span></span><br><span class="line"><span class="comment">#saver = tf.train.Saver(max_to_keep=4, keep_checkpoint_every_n_hours=2)</span></span><br><span class="line"></span><br><span class="line">save_path = saver.save(sess, <span class="string">&quot;my-test-model&quot;</span>)</span><br><span class="line"><span class="comment">#saver.save(sess, &apos;my_test_model&apos;,global_step=1000)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#########################################  &#x6062;&#x590D;  ###############################################</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x53EA;&#x6062;&#x590D;&#x53D8;&#x91CF;&#xFF0C;&#x6A21;&#x578B;&#x5DF2;&#x7ECF;&#x63D0;&#x524D;&#x624B;&#x52A8;&#x64B8;&#x5B8C;&#xFF0C;&#x800C;&#x4E14;&#x8981;&#x4FDD;&#x8BC1;&#x53D8;&#x91CF;&#x4E00;&#x81F4;</span></span><br><span class="line">saver = tf.train.Saver()</span><br><span class="line">saver.restore(sess, <span class="string">&quot;my-test-model&quot;</span>)</span><br><span class="line">saver&#x3002;restore(sess,tf.train.latest_checkpoint(<span class="string">&apos;/&apos;</span>))<span class="comment">#&#x81EA;&#x52A8;&#x83B7;&#x53D6;&#x76EE;&#x5F55;&#x4E0B;&#x6700;&#x8FD1;&#x7684;&#x6A21;&#x578B;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x6062;&#x590D;&#x6A21;&#x578B;&#x548C;&#x6570;&#x636E;</span></span><br><span class="line">new_saver = tf.train.import_meta_graph(<span class="string">&apos;my_test_model-1000.meta&apos;</span>)</span><br><span class="line">new_saver.restore(sess, tf.train.latest_checkpoint(<span class="string">&apos;./&apos;</span>)) <span class="comment">#&#x76EE;&#x5F55;&#x5373;&#x53EF;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x4F7F;&#x7528;&#x6062;&#x590D;&#x5F97;&#x5230;&#x7684;&#x6A21;&#x578B;</span></span><br><span class="line">graph = tf.get_default_graph()</span><br><span class="line"><span class="comment"># access and create placeholders variables and create feed-dict to feed new data</span></span><br><span class="line">w1 = graph.get_tensor_by_name(<span class="string">&quot;w1:0&quot;</span>)</span><br><span class="line">w2 = graph.get_tensor_by_name(<span class="string">&quot;w2:0&quot;</span>)</span><br><span class="line">feed_dict ={w1:<span class="number">13.0</span>,w2:<span class="number">17.0</span>}</span><br><span class="line"><span class="comment"># access the op that you want to run. </span></span><br><span class="line">op_to_restore = graph.get_tensor_by_name(<span class="string">&quot;op_to_restore:0&quot;</span>)</span><br><span class="line"><span class="comment"># Add more to the current graph</span></span><br><span class="line">add_on_op = tf.multiply(op_to_restore,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> sess.run(add_on_op,feed_dict)</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="saved-model"><a href="#saved-model" class="headerlink" title="saved_model"></a>saved_model</h3><p>&#x4E3B;&#x8981;&#x7528;&#x4E8E;TensorFlow/serving&#x3002;&#x5B9E;&#x73B0;&#x5F00;&#x53D1;&#x548C;&#x4F7F;&#x7528;&#x7684;&#x89E3;&#x8026;&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th>tf.saved_model.builder.SavedModelBuilder</th>
+<th>&#x5EFA;&#x7ACB;&#x534F;&#x8BAE;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x80FD;&#x591F;&#x4FDD;&#x5B58;&#x591A;&#x4E2A;&#x539F;&#x56FE;&#xFF0C;&#x540C;&#x65F6;&#x5171;&#x4EAB;&#x53D8;&#x91CF;&#x548C;&#x8D44;&#x6E90;&#x3002;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><strong> init </strong>(export_dir)</strong></td>
+<td><strong>export_dir&#xFF1A;&#x4FDD;&#x5B58;&#x8DEF;&#x5F84;</strong></td>
+</tr>
+<tr>
+<td><strong>add_meta_graph_and_variables( <br>sess,   <br>tags,    <br>signature_def_map=None,  <br>main_op=None<br> &#x2026;&#x2026;   )</strong></td>
+<td>&#x5F53;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x56FE;&#x4FDD;&#x5B58;&#x65F6;&#xFF0C;<strong>&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x4E00;&#x6B21;&#xFF01;</strong><br>sess:&#x5F53;&#x524D;&#x4F1A;&#x8BDD;<br>tags:&#x7528;&#x4E8E;&#x6807;&#x8BC6;&#x5143;&#x56FE;&#x7684;set<br>signature_def_map: signature&#x5217;&#x8868;<br>main_op&#xFF1A;&#x52A0;&#x8F7D;&#x540E;&#x81EA;&#x52A8;&#x8FD0;&#x884C;&#x7684;&#x64CD;&#x4F5C;</td>
+</tr>
+<tr>
+<td>add_meta_graph(<br>tags, <br>signature_def_map=None, <br>main_op=None, <br>&#x2026;&#x2026; )</td>
+<td>&#x4E0E;&#x4E0A;&#x4E00;&#x4E2A;&#x7C7B;&#x4F3C;&#xFF0C;&#x7528;&#x4E8E;&#x52A0;&#x8F7D;&#x5176;&#x4ED6;&#x5143;&#x56FE;&#x3002;</td>
+</tr>
+<tr>
+<td><strong>save(as_text=False) </strong></td>
+<td>&#x4FDD;&#x5B58;</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>tf.saved_model.signature_def_utils</th>
+<th>&#x6784;&#x9020;&#x7B7E;&#x540D;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>tf.saved_model.signature_def_utils.build_signature_def(<br>inputs=None,<br>outputs=None,<br>method_name=None )</strong></td>
+<td>imputs:&#x5B57;&#x7B26;&#x4E32;&#x4E0E;&#x8F93;&#x5165;&#x5F20;&#x91CF;&#x7684;&#x6620;&#x5C04;<br>outputs&#xFF1A;&#x5B57;&#x7B26;&#x4E32;&#x4E0E;&#x8F93;&#x51FA;&#x5F20;&#x91CF;&#x7684;&#x6620;&#x5C04;<br> method_name&#xFF1A;&#x65B9;&#x6CD5;&#x540D;</td>
+</tr>
+<tr>
+<td>&#x2026;&#x2026;</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>tf.saved_model.utils</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>tf.saved_model.utils.build_tensor_info(tensor)</strong></td>
+<td>&#x5EFA;&#x7ACB;&#x5F20;&#x91CF;&#x539F;&#x578B;&#xFF0C;tensor:&#x5F20;&#x91CF;&#x540D;</td>
+</tr>
+<tr>
+<td>tf.saved_model.get_tensor_from_tensor_info(<br>tensor_info,<br>graph=None,<br>import_scope=None )</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>constants</th>
+<th>&#x4E00;&#x4E9B;&#x5E38;&#x91CF;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tf.saved_model.signature_constants<br><code>CLASSIFY_INPUTS</code><br><code>CLASSIFY_METHOD_NAME</code><br><code>CLASSIFY_OUTPUT_CLASSES</code><br><code>CLASSIFY_OUTPUT_SCORES</code><br><code>DEFAULT_SERVING_SIGNATURE_DEF_KEY</code><br><code>PREDICT_INPUTS</code><br><code>PREDICT_METHOD_NAME</code><br><code>PREDICT_OUTPUTS</code><br><code>REGRESS_INPUTS</code><br><code>REGRESS_METHOD_NAME</code><br><code>REGRESS_OUTPUTS</code></td>
+<td>&#x5BF9;signature&#x547D;&#x540D;</td>
+</tr>
+<tr>
+<td>tf.saved_model.tag_constants<br><code>GPU</code><br><code>SERVING</code><br><code>TPU</code><br><code>TRAINING</code></td>
+<td>&#x5BF9;tag&#x547D;&#x540D;</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#####################################   &#x4FDD;&#x5B58;  ##################################################</span></span><br><span class="line"><span class="comment">## &#x6784;&#x9020;&#x5668;</span></span><br><span class="line">builder = tf.saved_model.Builder(export_dir)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session(graph=tf.Graph()) <span class="keyword">as</span> sess:</span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">#### Build the signature_def_map&#x3002; </span></span><br><span class="line">  <span class="comment">## &#x547D;&#x540D;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;tf.saved_model.signature_constants&#x3002;&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x53D6;&#x3002;</span></span><br><span class="line">  <span class="comment">## &#x8F93;&#x5165; SignatureDef</span></span><br><span class="line">  inputs = {tf.saved_model.signature_constants.PREDICT_INPUTS: 			                                              tf.saved_model.utils.build_tensor_info(x), </span><br><span class="line">            <span class="string">&apos;keep_prob&apos;</span>: tf.saved_model.utils.build_tensor_info(keep_prob)}</span><br><span class="line">  <span class="comment">## &#x8F93;&#x51FA; SignatureDef</span></span><br><span class="line">  outputs = {<span class="string">&apos;output&apos;</span> : tf.saved_model.utils.build_tensor_info(y)}</span><br><span class="line">  <span class="comment">## &#x5BF9;signature &#x8FDB;&#x884C;&#x5C01;&#x88C5;</span></span><br><span class="line">  signature = tf.saved_model.signature_def_utils.build_signature_def(</span><br><span class="line">    inputs=inputs, </span><br><span class="line">    outputs=outputs,</span><br><span class="line">    method_name=<span class="string">&apos;test_sig_name&apos;</span>)</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="comment">#### &#x5EFA;&#x7ACB;&#x7F13;&#x5B58;&#x533A;</span></span><br><span class="line">  builder.add_meta_graph_and_variables(sess,</span><br><span class="line">                                  [tf.saved_model.tag_constants.SERVING],</span><br><span class="line">                                  signature_def_map={tf.saved_model.signature_constants.DEFAULT_SERVING_SIGNATURE_DEF_KEY:signature})</span><br><span class="line"><span class="comment">## &#x4FDD;&#x5B58;</span></span><br><span class="line">builder.save()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">####################################### load #############################################</span></span><br><span class="line">signature_key = tf.saved_model.signature_constants.DEFAULT_SERVING_SIGNATURE_DEF_KEY</span><br><span class="line">input_key = tf.saved_model.signature_constants.PREDICT_INPUTS</span><br><span class="line">output_key = <span class="string">&apos;output&apos;</span></span><br><span class="line"></span><br><span class="line">meta_graph_def = tf.saved_model.loader.load(sess, </span><br><span class="line">                                            [tf.saved_model.tag_constants.SERVING],</span><br><span class="line">                                            saved_model_dir)</span><br><span class="line"><span class="comment"># &#x4ECE;meta_graph_def&#x4E2D;&#x53D6;&#x51FA;SignatureDef&#x5BF9;&#x8C61;</span></span><br><span class="line">signature = meta_graph_def.signature_def</span><br><span class="line"><span class="comment"># &#x4ECE;signature&#x4E2D;&#x627E;&#x51FA;&#x5177;&#x4F53;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x7684;tensor name </span></span><br><span class="line">x_tensor_name = signature[signature_key].inputs[input_key].name</span><br><span class="line">y_tensor_name = signature[signature_key].outputs[output_key].name</span><br><span class="line"><span class="comment"># &#x83B7;&#x53D6;tensor &#x5E76;inference</span></span><br><span class="line">x = sess.graph.get_tensor_by_name(x_tensor_name)</span><br><span class="line">y = sess.graph.get_tensor_by_name(y_tensor_name)</span><br><span class="line"><span class="comment"># _x &#x5B9E;&#x9645;&#x8F93;&#x5165;&#x5F85;inference&#x7684;data</span></span><br><span class="line">sess.run(y, feed_dict={x:_x})</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="&#x56FE;&#x7684;&#x6784;&#x5EFA;"><a href="#&#x56FE;&#x7684;&#x6784;&#x5EFA;" class="headerlink" title="&#x56FE;&#x7684;&#x6784;&#x5EFA;"></a>&#x56FE;&#x7684;&#x6784;&#x5EFA;</h2><p>A TensorFlow computation, represented as a dataflow graph.</p>
 <p>A <code>Graph</code> contains a set of <code>tf.Operation</code> objects, which represent units of computation; and <code>tf.Tensor</code> objects, which represent the units of data that flow between operations.</p>
 <h3 id="tf-Graph"><a href="#tf-Graph" class="headerlink" title="tf.Graph"></a><a href="https://www.tensorflow.org/api_docs/python/tf/Graph?hl=zh-cn" target="_blank" rel="noopener">tf.Graph</a></h3><table>
@@ -1511,7 +1591,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#运算操作"><span class="nav-number">1.</span> <span class="nav-text">运算操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#张量操作"><span class="nav-number">2.</span> <span class="nav-text">张量操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型转换"><span class="nav-number">2.1.</span> <span class="nav-text">数据类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#形状操作"><span class="nav-number">2.2.</span> <span class="nav-text">形状操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切片与合并"><span class="nav-number">2.3.</span> <span class="nav-text">切片与合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引提取"><span class="nav-number">2.4.</span> <span class="nav-text">索引提取</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络-nn模块"><span class="nav-number">3.</span> <span class="nav-text">神经网络 .nn模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#符号嵌入-Embeddings"><span class="nav-number">3.1.</span> <span class="nav-text">符号嵌入 Embeddings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环神经网络-RNN"><span class="nav-number">3.2.</span> <span class="nav-text">循环神经网络 RNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#候选采样-Candidate-Sampling"><span class="nav-number">3.3.</span> <span class="nav-text">候选采样 Candidate Sampling</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保存和恢复"><span class="nav-number">4.</span> <span class="nav-text">保存和恢复</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图的构建"><span class="nav-number">5.</span> <span class="nav-text">图的构建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-Graph"><span class="nav-number">5.1.</span> <span class="nav-text">tf.Graph</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-Operation"><span class="nav-number">5.2.</span> <span class="nav-text">tf.Operation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-Tensor"><span class="nav-number">5.3.</span> <span class="nav-text">tf.Tensor</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图的运行"><span class="nav-number">6.</span> <span class="nav-text">图的运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图的优化训练"><span class="nav-number">7.</span> <span class="nav-text">图的优化训练</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RNN-LSTM"><span class="nav-number">8.</span> <span class="nav-text">RNN-LSTM</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#运算操作"><span class="nav-number">1.</span> <span class="nav-text">运算操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#张量操作"><span class="nav-number">2.</span> <span class="nav-text">张量操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型转换"><span class="nav-number">2.1.</span> <span class="nav-text">数据类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#形状操作"><span class="nav-number">2.2.</span> <span class="nav-text">形状操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切片与合并"><span class="nav-number">2.3.</span> <span class="nav-text">切片与合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引提取"><span class="nav-number">2.4.</span> <span class="nav-text">索引提取</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络-nn模块"><span class="nav-number">3.</span> <span class="nav-text">神经网络 .nn模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#符号嵌入-Embeddings"><span class="nav-number">3.1.</span> <span class="nav-text">符号嵌入 Embeddings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环神经网络-RNN"><span class="nav-number">3.2.</span> <span class="nav-text">循环神经网络 RNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#候选采样-Candidate-Sampling"><span class="nav-number">3.3.</span> <span class="nav-text">候选采样 Candidate Sampling</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保存和恢复"><span class="nav-number">4.</span> <span class="nav-text">保存和恢复</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#train-Saver"><span class="nav-number">4.1.</span> <span class="nav-text">train.Saver</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#saved-model"><span class="nav-number">4.2.</span> <span class="nav-text">saved_model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图的构建"><span class="nav-number">5.</span> <span class="nav-text">图的构建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-Graph"><span class="nav-number">5.1.</span> <span class="nav-text">tf.Graph</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-Operation"><span class="nav-number">5.2.</span> <span class="nav-text">tf.Operation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-Tensor"><span class="nav-number">5.3.</span> <span class="nav-text">tf.Tensor</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图的运行"><span class="nav-number">6.</span> <span class="nav-text">图的运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图的优化训练"><span class="nav-number">7.</span> <span class="nav-text">图的优化训练</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RNN-LSTM"><span class="nav-number">8.</span> <span class="nav-text">RNN-LSTM</span></a></li></ol></div>
             
 
           </div>
@@ -1546,7 +1626,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">33.3k</span>
+    <span title="Site words total count">33.7k</span>
   
 </div>
 
