@@ -314,6 +314,8 @@ idx ==> [0, 0, 1, 2, 2, 2, 3, 4, 4]
 
 ## 保存和恢复
 
+### train.Saver
+
 推荐可以看这篇[文章](https://cv-tricks.com/tensorflow-tutorial/save-restore-tensorflow-models-quick-complete-tutorial/)
 
 | Class  =>  tf.train.Saver                |                                          |
@@ -365,6 +367,83 @@ print sess.run(add_on_op,feed_dict)
 ```
 
 
+
+### saved_model
+
+主要用于TensorFlow/serving。实现开发和使用的解耦。
+
+| tf.saved_model.builder.SavedModelBuilder | 建立协议缓冲区，能够保存多个原图，同时共享变量和资源。              |
+| ---------------------------------------- | ---------------------------------------- |
+| **__ init __(export_dir)**               | **export_dir：保存路径**                      |
+| **add_meta_graph_and_variables( <br />sess,   <br />tags,    <br />signature_def_map=None,  <br />main_op=None<br /> ……   )** | 当第一个元图保存时，**必须使用一次！**<br />sess:当前会话<br />tags:用于标识元图的set<br />signature_def_map: signature列表<br />main_op：加载后自动运行的操作 |
+| add_meta_graph(<br />tags, <br />signature_def_map=None, <br />main_op=None, <br />…… ) | 与上一个类似，用于加载其他元图。                         |
+| **save(as_text=False) **                 | 保存                                       |
+
+| tf.saved_model.signature_def_utils       | 构造签名                                     |
+| ---------------------------------------- | ---------------------------------------- |
+| **tf.saved_model.signature_def_utils.build_signature_def(<br />inputs=None,<br />outputs=None,<br />method_name=None )** | imputs:字符串与输入张量的映射<br />outputs：字符串与输出张量的映射<br /> method_name：方法名 |
+| ……                                       |                                          |
+
+| tf.saved_model.utils                     |                   |
+| ---------------------------------------- | ----------------- |
+| **tf.saved_model.utils.build_tensor_info(tensor)** | 建立张量原型，tensor:张量名 |
+| tf.saved_model.get_tensor_from_tensor_info(<br />tensor_info,<br />graph=None,<br />import_scope=None ) |                   |
+
+| constants                                | 一些常量         |
+| ---------------------------------------- | ------------ |
+| tf.saved_model.signature_constants<br />`CLASSIFY_INPUTS`<br />`CLASSIFY_METHOD_NAME`<br />`CLASSIFY_OUTPUT_CLASSES`<br />`CLASSIFY_OUTPUT_SCORES`<br />`DEFAULT_SERVING_SIGNATURE_DEF_KEY`<br />`PREDICT_INPUTS`<br />`PREDICT_METHOD_NAME`<br />`PREDICT_OUTPUTS`<br />`REGRESS_INPUTS`<br />`REGRESS_METHOD_NAME`<br />`REGRESS_OUTPUTS` | 对signature命名 |
+| tf.saved_model.tag_constants<br />`GPU`<br />`SERVING`<br />`TPU`<br />`TRAINING` | 对tag命名       |
+
+
+
+```python
+#####################################   保存  ##################################################
+## 构造器
+builder = tf.saved_model.Builder(export_dir)
+
+with tf.Session(graph=tf.Graph()) as sess:
+  ...
+  #### Build the signature_def_map。 
+  ## 命名可以使用tf.saved_model.signature_constants。也可以自己取。
+  ## 输入 SignatureDef
+  inputs = {tf.saved_model.signature_constants.PREDICT_INPUTS: 			                                              tf.saved_model.utils.build_tensor_info(x), 
+            'keep_prob': tf.saved_model.utils.build_tensor_info(keep_prob)}
+  ## 输出 SignatureDef
+  outputs = {'output' : tf.saved_model.utils.build_tensor_info(y)}
+  ## 对signature 进行封装
+  signature = tf.saved_model.signature_def_utils.build_signature_def(
+    inputs=inputs, 
+    outputs=outputs,
+    method_name='test_sig_name')
+  
+  
+  #### 建立缓存区
+  builder.add_meta_graph_and_variables(sess,
+                                  [tf.saved_model.tag_constants.SERVING],
+                                  signature_def_map={tf.saved_model.signature_constants.DEFAULT_SERVING_SIGNATURE_DEF_KEY:signature})
+## 保存
+builder.save()
+
+
+####################################### load #############################################
+signature_key = tf.saved_model.signature_constants.DEFAULT_SERVING_SIGNATURE_DEF_KEY
+input_key = tf.saved_model.signature_constants.PREDICT_INPUTS
+output_key = 'output'
+
+meta_graph_def = tf.saved_model.loader.load(sess, 
+                                            [tf.saved_model.tag_constants.SERVING],
+                                            saved_model_dir)
+# 从meta_graph_def中取出SignatureDef对象
+signature = meta_graph_def.signature_def
+# 从signature中找出具体输入输出的tensor name 
+x_tensor_name = signature[signature_key].inputs[input_key].name
+y_tensor_name = signature[signature_key].outputs[output_key].name
+# 获取tensor 并inference
+x = sess.graph.get_tensor_by_name(x_tensor_name)
+y = sess.graph.get_tensor_by_name(y_tensor_name)
+# _x 实际输入待inference的data
+sess.run(y, feed_dict={x:_x})
+```
 
 
 
