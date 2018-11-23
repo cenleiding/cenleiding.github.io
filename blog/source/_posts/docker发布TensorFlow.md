@@ -125,6 +125,7 @@ POST http://host:port/v1/models/${MODEL_NAME}[/versions/${MODEL_VERSION}]:predic
 {
   // (Optional) Serving signature to use.
   // If unspecifed default serving signature is used.
+  //add_meta_graph_and_variables(signature_def_map={name:signature}中的name)
   "signature_name": <string>,
 
   // Input Tensors in row ("instances") or columnar ("inputs") format.
