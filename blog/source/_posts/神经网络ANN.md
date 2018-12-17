@@ -366,8 +366,14 @@ Glorot和Bengio设计的一种初始化方案，该方案试图保持前面列�
 
 fan_in，fan_out指的是当前权重输入层和输出层的节点数。**一般每一层的节点数都是一样的，及fan_in=fan_out**
 
-``` 
+``` python
 W = tf.Variable(np.random.randn(node_in, node_out)) * np.sqrt(1/node_in)
+## tensorflow API
+if type == 'xavier_uniform':
+	initial = tf.contrib.layers.xavier_initializer(uniform=True, dtype=tf.float32)
+elif type == 'xavier_normal':
+	initial = tf.contrib.layers.xavier_initializer(uniform=False, dtype=tf.float32)
+W = tf.Variable(initializer=initial,shape=shape)
 ```
 
 
@@ -384,6 +390,18 @@ W = tf.Variable(np.random.randn(node_in, node_out)) * np.sqrt(1/node_in)
 
 ```python
 W = tf.Variable(np.random.randn(node_in,node_out)) * np.sqrt(2/node_in)
+## tensorflow API
+if type == 'he_normal':
+	initial = tf.contrib.layers.variance_scaling_initializer(uniform=False, 
+                                                             factor=2.0, 
+                                                             mode='FAN_IN', 
+                                                             dtype=tf.float32)
+elif type == 'he_uniform':
+	initial = tf.contrib.layers.variance_scaling_initializer(uniform=True, 
+                                                             factor=2.0, 
+                                                             mode='FAN_IN', 
+                                                             dtype=tf.float32)
+W = tf.Variable(initializer=initial,shape=shape)
 ```
 
 
