@@ -8,7 +8,7 @@ description: SVM，支持向量机学习笔记
 image: SVM/1.png
 ---
 
-​	**支持向量机(Support Vector Machine,SVM)**，作为一个优秀的分类算法，不管用不用学习一下是必须的。不过说实话，SVM的原理很简单，但证明却很难。如果只是想用一下SVM，调用一下已实现的库，调调参数还是很容易的。所以作为一个数学渣，**这里不会涉及详细的推导，只是尽可能简单的去理一遍整个推导过程（当然重要的公式是少不了的）。**如果要学习一下详细的推导过程可以看一下[刘建平大佬的博客](https://www.cnblogs.com/pinard/p/6097604.html)。
+​	**支持向量机(Support Vector Machine,SVM)**，作为一个优秀的分类算法，不管用不用学习一下是必须的。不过说实话，SVM的原理很简单，但证明却很难。如果只是想用一下SVM，调用一下已实现的库（scikit-learn），调调参数还是很容易的。所以作为一个数学渣，**这里不会涉及详细的推导，只是尽可能简单的去理一遍整个推导过程（当然重要的公式是少不了的）。**如果要学习一下详细的推导过程可以看一下[刘建平大佬的博客](https://www.cnblogs.com/pinard/p/6097604.html)。
 
 
 
@@ -18,7 +18,7 @@ image: SVM/1.png
 
 > 那么问题是，以什么标准去找这个超平面？
 
-​	现在给你一堆数据，让你去寻找一条分割线去分割两类数据。这个时候往往会有很多种分法（如下图所示），但是很明显我们需要一条泛化能力强的分割线，来适应后续增加的数据。那么，很自然的，我们会把这个分割线尽可能的远离两类数据，尽量使的分割线处于中间（我离你们远一点总不会错吧~）。         ![](SVM/2.png)![](SVM/3.png)
+​	现在给你一堆数据，让你去寻找一个超平面去分割两类数据。这个时候往往会有很多种分法（如下图所示），但是很明显我们需要一条泛化能力强的分割线，来适应后续增加的数据。那么，很自然的，我们会把这个分割线尽可能的远离两类数据，尽量使的分割线处于中间（我离你们远一点总不会错吧~）。         ![](SVM/2.png)![](SVM/3.png)
 
 ​	SVM就是这么干的，SVM从**几何的角度**出发，力求寻找一个**离两个类一样远的超平面，并且离的还要尽可能的远**！ 而每个类中离超平面最近的点叫做**支持向量（Support Vector）** 。好吧，支持向量机的名字就是这么来的，大概就是通过这些“支持向量”得到了这个分类器（机）吧~
 
@@ -56,7 +56,7 @@ image: SVM/1.png
 
 ​	这个就是SVM的**基本型！**
 
-**注：**在推导过程中，进行了一个巧妙的假设，**最近的点（支持向量）到超平面的距离为1**，这个假设使得最大间隔的数学表示变的很简单，但也增加了一个不等式约束。另外注意y只有+1和-1取值。
+**注：**在推导过程中，进行了一个巧妙的假设，**最近的点（支持向量）到超平面的距离为1**，这个假设使得最大间隔的数学表示变的很简单，但也增加了一个不等式约束。另外注意y取值为+1和-1，也是为了计算方便。
 
 
 
@@ -64,7 +64,7 @@ image: SVM/1.png
 
 我们现在的目标很清晰就是求出满足基本型的w和b
 
-$min_{\omega,b}\frac{1}{2}||\omega||^2\quad s.t.\ y_i(\omega^Tx+b)\ge1,i=1,2...,m$
+★★  $min_{\omega,b}\frac{1}{2}||\omega||^2\quad s.t.\ y_i(\omega^Tx+b)\ge1,i=1,2...,m$
 
 虽然这是个凸二次规划问题，有现成的包可以求解，但这里有一个更加高效的方法....
 
@@ -102,22 +102,22 @@ $min_{\omega,b}\frac{1}{2}||\omega||^2\quad s.t.\ y_i(\omega^Tx+b)\ge1,i=1,2...,
 
 ​	带入原式得到只关于α的极大值问题：
 
-​		$max_\alpha\ \sum_{i=1}^m\alpha_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j\quad s.t.\ \sum_{i=1}^m\alpha_iy_i=0,\alpha_i\ge0$
+​	★★	$max_\alpha\ \sum_{i=1}^m\alpha_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j\quad s.t.\ \sum_{i=1}^m\alpha_iy_i=0,\alpha_i\ge0$
 
 ​	通过**SMO(Sequential Minimal Optimization)**算法获得α值，即可获得**最终模型**：
 
-​		$f(x)=\omega^Tx+b=\sum_{i=1}^m\alpha_iy_ix_i^Tx+b$
+​	★★  $f(x)=\omega^Tx+b=\sum_{i=1}^m\alpha_iy_ix_i^Tx+b$
 
 > SMO算法
 
-​	SMO算法是一种启发式的方法，其关键在于获得了$0=\sum_{i=1}^m\alpha_iy_i$这个等式。
+​	SMO（序列最小优化）算法是一种启发式的方法，其关键在于利用了$0=\sum_{i=1}^m\alpha_iy_i$这个等式。
 ​	SMO算法每次只优化两个变量，将其他的变量都视为常数，这样就从多变量的优化问题变成了两变量的优化问题。再加上等式的存在，使得这两个变量可以互相表示，这样一来问题近一步简化为了**单变量二次规划问题。**这样一来就能很容易的优化α值。
 
 ​	那么怎么选取每次优化的两个α值？
 ​	已证明[Osuna et al., 1997]，只需选取的α中有一个不满足KKT条件，目标函数就会在迭代后增大。
 ​	所以我们选取α的策略是：
 ​		① 先选取一个违背KKT条件程度最大的变量。
-​		② 选取的第二个变量与第一个变量对应样本之间的间隔最大。这样有助于加快优化。
+​		② 选取的第二个变量与第一个变量对应样本之间的间隔最大（最大化步长）。这样有助于加快优化。
 
 > b值求解
 
@@ -127,11 +127,11 @@ $min_{\omega,b}\frac{1}{2}||\omega||^2\quad s.t.\ y_i(\omega^Tx+b)\ge1,i=1,2...,
 
 ​	为了结果更鲁棒，b使用所有支持向量的平均值：
 
-​		$b=\frac{1}{|S|}\sum_{s\in S}(1/y_s-\sum_{i\in S}\alpha_iy_ix_i^Tx_s)$
+​		★ $b=\frac{1}{|S|}\sum_{s\in S}(1/y_s-\sum_{i\in S}\alpha_iy_ix_i^Tx_s)$
 
 
 
-**总结：** 我们通过一系列的优化手段，最终获得了一个**最终模型：**
+**总结：** 我们通过一系列的优化手段，最终获得了一个**只与α有关的单变量模型：**
 
 ​		$f(x)=\omega^Tx+b=\sum_{i=1}^m\alpha_iy_ix_i^Tx+b$
 
@@ -153,7 +153,7 @@ $min_{\omega,b}\frac{1}{2}||\omega||^2\quad s.t.\ y_i(\omega^Tx+b)\ge1,i=1,2...,
 
 ​	$max_\alpha\ \sum_{i=1}^m\alpha_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_j\phi (x_i)^T\phi (x_j)\quad s.t.\ \sum_{i=1}^m\alpha_iy_i=0,\alpha_i\ge0$
 
-​	如果直接求解因为要计算$\phi (x_i)^T\phi (x_j)$，这是样本映射到特征空间之后的内积，可能维度很高甚至无穷维，通常无法直接运算。
+​	如果直接求解因为要计算$\phi (x_i)^T\phi (x_j)$，这是样本映射到特征空间之后的内积，而特征空间可能维度很高甚至无穷维，通常无法直接运算。
 
 > 设想有这样一个函数：
 
@@ -162,6 +162,8 @@ $min_{\omega,b}\frac{1}{2}||\omega||^2\quad s.t.\ y_i(\omega^Tx+b)\ge1,i=1,2...,
 ​	也就是说**在特征空间的内积等于它们在原始样本空间中通过函数k(.,.)计算的结果。** 
 
 ​	这个函数K就是**核函数(kernel function)！**
+
+​	这种将内积替换为核函数的方式称为**核技巧（kernel trick）**
 
 ​	有定理证明：只要一个对称函数所对应的核矩阵半正定，它就能作为核函数使用。
 
@@ -175,11 +177,12 @@ $min_{\omega,b}\frac{1}{2}||\omega||^2\quad s.t.\ y_i(\omega^Tx+b)\ge1,i=1,2...,
 | 拉普拉斯核    | $k(x_i,x_j)=exp(-\frac{||x_i-x_j||}{\sigma})$ | σ>0            |
 | Sigmoid核 | $k(x_i,x_j)=tanh(\beta x_i^Tx_j+\theta)$ | 双曲正切函数，β>0,θ<0 |
 
-**注意：核函数的选择是SVM中最大的变数。**
+**注意：核函数的选择是SVM中最大的变数，因为你并不知道具体会怎么映射。**
+​	   **高斯核可以映射到一个无穷维的空间，所以理论上可以分类各种数据。**
 
 > 带核函数的最终模型
 
-​	$f(x)=\omega^Tx+b=\sum_{i=1}^m\alpha_iy_ik(x,x_i)+b$
+​	★★  $f(x)=\omega^Tx+b=\sum_{i=1}^m\alpha_iy_ik(x,x_i)+b$
 
 ​	对比之前的最终模型发现：$k(x,x_i)=x_i^Tx$ ,嗯可以认为原来的模型用了线性核~
 
@@ -203,7 +206,7 @@ $min_{\omega,b}\frac{1}{2}||\omega||^2\quad s.t.\ y_i(\omega^Tx+b)\ge1,i=1,2...,
 
 ​	其中ι为**替代损失（surrogate loss）**，常见的替代损失函数有：
 
-​		● **hinge 损失（合页损失）：** $\ell(z)=max(0,1-z)$
+​		★ **hinge 损失（合页损失）：** $\ell(z)=max(0,1-z)$
 
 ​		● 指数损失（exponential loss）：$\ell(z)=exp(-z)$
 
@@ -218,8 +221,9 @@ $min_{\omega,b}\frac{1}{2}||\omega||^2\quad s.t.\ y_i(\omega^Tx+b)\ge1,i=1,2...,
 ​		$min_{\omega,b,\xi_i}\ \frac{1}{2}||\omega||^2+C\sum_{i=1}^m\xi_i\quad s.t.\ y_i(\omega^Tx_i+b)\ge1-\xi_i\quad \xi_i\ge0,i=1,2...m$
 
 ​	**每个样本都有一个对应的松弛变量，用来表征样本不满足约束的程度，是样本到超平面距离的一个度量。**
+
 ​	可以看到原来的约束是：$y_i(\omega^Tx_i+b)\ge1$ ，即点必须都在间隔之外。
-​	现在变成了$y_i(\omega^Tx_i+b)\ge1-\xi_i$ , 可以看成允许到间隔内了。以hinge为例，$z+max(0,1-z)\ge$1 ，z无约束。也就是说**hinge允许样本在任何地方，只是对间隔内的样本进行了惩罚！！这个时候边界上和内的点都是支持向量（当然分错的更是，因为这些点拥有非0的α值）！！**
+​	现在变成了$y_i(\omega^Tx_i+b)\ge1-\xi_i$ , 可以看成允许到间隔内了。以hinge为例，$z+max(0,1-z)\ge$1 ，z无约束。也就是说**hinge允许样本在任何地方，只是对间隔内的样本进行了惩罚！！这个时候边界上和内的点都是支持向量（当然分错的更是，因为这些点拥有非0的ξ，α值。一般支持向量会在超平面附近聚集成团）！！**
 
 ​	               ![](SVM/10.png)
 
@@ -250,29 +254,84 @@ $min_{\omega,b}\frac{1}{2}||\omega||^2\quad s.t.\ y_i(\omega^Tx+b)\ge1,i=1,2...,
 
 
 
+## SVM调参
+
+​	SVM由libsvm进行了实现，而scikit-learn底层调用了libsvm，那么当然是用功能更全的scikit-learn来进行SVM训练啦。
+
+> 整体流程
+
+1.  对数据做归一化（simple scaling），因为SVM是通过距离来估计的，是否归一化会有较大影响。
+2.  看是否为多分类，并选择decision_function_shape = 'ovo' or 'ovr'
+3.  看数据是否strongly unbalance，并选择class_weight = ‘balanced’ or ‘自定义比例’
+4.  看是否最后需要得到概率值，并选择probability = True or Flase
+5.  根据情况选择 without kernel 还是 RBF kernel
+6.  通过 cross-validation 和 grid-search 得到最优的 C 和 gamma 
+
+
+> 参数意义
+
+​	一般做SVM都是用RBF kernel，所以如何获得一个好的 C 和 gamma成为了关键。
+
+​	**C（默认为1）**： 惩罚系数，权重，即对误差的宽容度。C 越高，说明越不能容忍出现误差,容易**过拟合**。C 越小，容易**欠拟合** 。
+
+​	**gamma$\frac{1}{2\sigma^2}$（默认为1/特征数）**： 决定了高斯核的宽度，**决定了单个样例有多少影响力**。gamma越大则函数越陡，意味着这个样例能够影响越多的周围样例，也就意味着样例之间的关系更为的紧密，而训练时过度的关注样例之间的关系往往会造成**过拟合**， 反之gamma越小，样例之间的关系越弱，往往会造成**欠拟合** 。
+
+​	**支持向量**： 支持向量越多，意味着模型对训练数据越信任，模型也越复杂，容易发生**过拟合**，反之同理。为什么我要在这里提到支持向量？因为很多人喜欢从C、gamma去推断支持向量的变化再去推断模型学习的情况，**但我个人认为这样并不好**，虽然从结果看是这么一回事，但我觉得去推支持向量是个不明智的选择，支持向量更像是模型训练时的选择，通过支持向量再来理解反而自己难为自己，还不如直接去推断（当然可能是因为我的理解能力不够~）。 
+
+​	从实验的结果来看，**C越大，gamma越大，支持向量就越多，容易发生过拟合。**
+   				 	   **C越小，gamma越小，支持向量就越少，容易发生欠拟合。**
+
+> 具体调参
+
+ 	通过 cross-validation 和 grid-search 得到最优的 C 和 gamma 。
+​	 在scikit-learn中通过[`sklearn.model_selection.GridSearchCV`](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV) 实现。
+
+```python
+from sklearn.grid_search import GridSearchCV    
+from sklearn.svm import SVC   
+from sklearn.preprocessing import StandardScaler
+	# 对数据进行归一化
+	train_x = StandardScaler.fit_transform(train_x)
+    # probability:允许后续概率形式输出
+    model = SVC(kernel='rbf', probability=True)    
+    param_grid = {'C': [1e-3, 1e-2, 1e-1, 1, 10, 100, 1000], 'gamma': [0.001, 0.0001]} 
+    # cv=n折交叉验证，更多参数见文档
+    grid_search = GridSearchCV(model, param_grid, cv = 5)    
+    grid_search.fit(train_x, train_y)    
+    best_parameters = grid_search.best_estimator_.get_params()  
+    model = SVC(kernel='rbf', C=best_parameters['C'], gamma=best_parameters['gamma'], probability=True)    
+    model.fit(train_x, train_y)    
+```
+
+
+
+
+
+
 ## SVM VS LR 
 
 ​	在上面我们已经发现，两者的损失函数十分像，当SVM采用对率损失函数时就根本没有差别了。
 
 > 相同点
-
- 	1. 都是二分类算法
- 	2. 都是监督学习
- 	3. 都是判别式
+1. 都是二分类算法
+2. 都是监督学习
+3. 都是判别式
 
 > 不同点 [参考了Drakos](https://towardsdatascience.com/support-vector-machine-vs-logistic-regression-94cc2975433f)
 
- 1.  一般svm使用hinge损失函数，这样一来，SVM一般会比LR稍微好一点。
+1.  一般svm使用hinge损失函数，这样一来，SVM一般会比LR稍微好一点。
 
-	2. svm通过最大化间隔来寻找超平面，而LR通过分类概率来寻找超平面。这使得svm的结果尽可能的远离两个类，而LR的结果没有这个性质。
+2.  svm通过最大化间隔来寻找超平面，而LR通过分类概率来寻找超平面。这使得svm的结果尽可能的远离两个类，而LR的结果没有这个性质。
 
-    ![](SVM/7.png)
+​                             ![](SVM/7.png)
 
-	3. svm对于异常值没有LR敏感，因为逻辑回归的损失函数更敏感。
+3. svm对于异常值没有LR敏感，因为逻辑回归的损失函数更敏感。
 
 ![](SVM/8.png)
 
 4. svm的输出是0或1，而LR的输出是一个概率。这使得在某些时候LR的解释性更强。当然也有后续的办法使得svm输出概率。
+5. Linear SVM依赖数据表达的距离测度，所以需要对数据先做normalization；LR不受其影响。
+6. LR受所有数据点的影响，SVM则只受支持向量的影响。如果数据不同类别strongly unbalance，LR相比SVM更受影响，一般都需要先对数据做balancing。
 
 
 
