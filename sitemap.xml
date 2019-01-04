@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://cenleiding.github.io/SVM.html</loc>
+    <loc>https://cenleiding.github.io/Ensemble.html</loc>
     
-    <lastmod>2018-12-20T12:02:48.752Z</lastmod>
+    <lastmod>2019-01-04T11:59:39.889Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://cenleiding.github.io/KNN.html</loc>
+    
+    <lastmod>2018-12-21T07:11:20.530Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://cenleiding.github.io/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B.html</loc>
     
-    <lastmod>2018-12-14T10:47:18.818Z</lastmod>
+    <lastmod>2018-12-21T04:00:10.492Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://cenleiding.github.io/SVM.html</loc>
+    
+    <lastmod>2018-12-20T12:02:48.752Z</lastmod>
     
   </url>
   
@@ -100,13 +114,6 @@
   </url>
   
   <url>
-    <loc>https://cenleiding.github.io/KNN.html</loc>
-    
-    <lastmod>2018-10-09T11:48:22.431Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://cenleiding.github.io/tags/index.html</loc>
     
     <lastmod>2018-10-09T00:42:52.278Z</lastmod>
@@ -114,14 +121,14 @@
   </url>
   
   <url>
-    <loc>https://cenleiding.github.io/categories/index.html</loc>
+    <loc>https://cenleiding.github.io/archives/index.html</loc>
     
     <lastmod>2018-10-09T00:42:52.277Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://cenleiding.github.io/archives/index.html</loc>
+    <loc>https://cenleiding.github.io/categories/index.html</loc>
     
     <lastmod>2018-10-09T00:42:52.277Z</lastmod>
     

@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<meta name="baidu-site-verification" content="LNzbleQUWC" />
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ensemble 集成" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="CLD的博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="对集成学习的基础学习">
+<meta name="keywords" content="ensemble 集成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ensemble">
+<meta property="og:url" content="https://cenleiding.github.io/Ensemble.html">
+<meta property="og:site_name" content="CLD的博客">
+<meta property="og:description" content="对集成学习的基础学习">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cenleiding.github.io/Ensemble/0.png">
+<meta property="og:image" content="https://cenleiding.github.io/Ensemble/1.png">
+<meta property="og:image" content="https://cenleiding.github.io/Ensemble/2.jpg">
+<meta property="og:image" content="https://cenleiding.github.io/Ensemble/3.png">
+<meta property="og:image" content="https://cenleiding.github.io/Ensemble/8.png">
+<meta property="og:image" content="https://cenleiding.github.io/Ensemble/9.png">
+<meta property="og:image" content="https://cenleiding.github.io/Ensemble/10.png">
+<meta property="og:image" content="https://cenleiding.github.io/Ensemble/11.png">
+<meta property="og:image" content="https://cenleiding.github.io/Ensemble/12.png">
+<meta property="og:image" content="https://cenleiding.github.io/Ensemble/13.png">
+<meta property="og:image" content="https://cenleiding.github.io/Ensemble/16.png">
+<meta property="og:image" content="https://cenleiding.github.io/Ensemble/14.png">
+<meta property="og:image" content="https://cenleiding.github.io/Ensemble/15.png">
+<meta property="og:updated_time" content="2019-01-04T11:59:39.889Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ensemble">
+<meta name="twitter:description" content="对集成学习的基础学习">
+<meta name="twitter:image" content="https://cenleiding.github.io/Ensemble/0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"perspectiveLeftIn","post_header":"fadeIn","post_body":"fadeIn","coll_header":"perspectiveLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://cenleiding.github.io/Ensemble.html"/>
+
+
+
+
+
+  <title>Ensemble | CLD的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://your-url" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CLD的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">好好学习，天天向上</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-top">
+          <a href="/top/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-signal"></i> <br />
+            
+            排行
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://cenleiding.github.io/Ensemble.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CLD">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CLD的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Ensemble</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-02T14:20:55+08:00">
+                2019-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/Ensemble.html" class="leancloud_visitors" data-flag-title="Ensemble">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  29
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  对集成学习的基础学习
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>&#x672C;&#x6587;&#x4E3B;&#x8981;&#x53C2;&#x8003;&#x81EA;<a href="https://www.analyticsvidhya.com/blog/author/aishwaryasingh/" target="_blank" rel="noopener">AISHWARYA SINGH&#x7684;&#x535A;&#x5BA2;</a> &#x548C;&#x897F;&#x74DC;&#x4E66;&#x3002;<br>&#x672C;&#x6587;&#x53EA;&#x662F;&#x7B80;&#x5355;&#x7684;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;&#x96C6;&#x6210;&#x5B66;&#x4E60;&#x7684;&#x539F;&#x7406;&#x548C;Python&#x5B9E;&#x73B0;&#xFF0C;&#x5BF9;&#x4E8E;&#x5176;&#x6570;&#x5B66;&#x8BC1;&#x660E;&#x4E0D;&#x505A;&#x4E86;&#x89E3;&#x3002;</p>
+</blockquote>
+<h2 id="1-&#x4EC0;&#x4E48;&#x662F;&#x96C6;&#x6210;&#x5B66;&#x4E60;"><a href="#1-&#x4EC0;&#x4E48;&#x662F;&#x96C6;&#x6210;&#x5B66;&#x4E60;" class="headerlink" title="1. &#x4EC0;&#x4E48;&#x662F;&#x96C6;&#x6210;&#x5B66;&#x4E60;"></a>1. &#x4EC0;&#x4E48;&#x662F;&#x96C6;&#x6210;&#x5B66;&#x4E60;</h2><p>&#x200B;    <strong>&#x96C6;&#x6210;&#x5B66;&#x4E60;&#xFF08;ensemble learning&#xFF09;</strong>&#x901A;&#x8FC7;&#x6784;&#x5EFA;&#x5E76;&#x7ED3;&#x5408;&#x591A;&#x4E2A;&#x5B66;&#x4E60;&#x5668;&#x6765;&#x5B8C;&#x6210;&#x5B66;&#x4E60;&#x4EFB;&#x52A1;&#xFF0C;&#x6709;&#x65F6;&#x4E5F;&#x88AB;&#x79F0;&#x4E3A;&#x591A;&#x5206;&#x7C7B;&#x7CFB;&#x7EDF;&#xFF08;multi-classifier system&#xFF09;&#x3001;&#x57FA;&#x4E8E;&#x59D4;&#x5458;&#x4F1A;&#x7684;&#x5B66;&#x4E60;&#xFF08;committee-based learning&#xFF09;&#x7B49;&#x3002;   </p>
+<p><img src="/Ensemble/0.png" alt=""></p>
+<p>&#x200B;    <strong>&#x96C6;&#x6210;&#x65B9;&#x6CD5;&#xFF08;ensemble method&#xFF09;&#x4E5F;&#x88AB;&#x79F0;&#x4E3A;&#x5143;&#x7B97;&#x6CD5;&#xFF08;meta-algorithm&#xFF09;</strong>&#xFF0C; &#x5176;&#x601D;&#x60F3;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x5C31;&#x662F;&#x5C06;&#x591A;&#x4E2A;&#x5F31;&#x5B66;&#x4E60;&#x5668;&#x7ED3;&#x5408;&#x8D77;&#x6765;&#xFF0C;&#x4E92;&#x76F8;&#x5F25;&#x8865;&#x5404;&#x81EA;&#x7684;&#x7F3A;&#x70B9;&#x3002;<br>&#x200B;    &#x90A3;&#x4E48;&#x96C6;&#x6210;&#x5B66;&#x4E60;&#x6709;&#x4E24;&#x4E2A;&#x4E3B;&#x8981;&#x95EE;&#x9898;&#x9700;&#x8981;&#x89E3;&#x51B3;&#xFF1A;&#x4E00;&#x662F;<strong>&#x5982;&#x4F55;&#x83B7;&#x5F97;&#x591A;&#x4E2A;&#x4E2A;&#x4F53;&#x5B66;&#x4E60;&#x5668;&#xFF0C;</strong> &#x4E8C;&#x662F;<strong>&#x5982;&#x4F55;&#x9009;&#x62E9;&#x4E00;&#x79CD;&#x7ED3;&#x5408;&#x7B56;&#x7565;&#x3002;</strong></p>
+<blockquote>
+<p>&#x96C6;&#x6210;&#x5B66;&#x4E60;&#x4E3A;&#x4EC0;&#x4E48;&#x80FD;&#x63D0;&#x9AD8;&#x6A21;&#x578B;&#x51C6;&#x786E;&#x7387;&#xFF1F;</p>
+</blockquote>
+<p>&#x5B66;&#x4E60;&#x5668;&#x7684;&#x7ED3;&#x5408;&#x53EF;&#x80FD;&#x4F1A;&#x4ECE;&#x4E09;&#x4E2A;&#x65B9;&#x9762;&#x5E26;&#x6765;&#x597D;&#x5904;[Dietterich,2000]&#xFF1A;<br>&#x200B;    &#x25CF; <strong>&#x4ECE;&#x7EDF;&#x8BA1;&#x65B9;&#x9762;&#x6765;&#x770B;</strong> &#xFF0C;&#x7531;&#x4E8E;&#x5B66;&#x4E60;&#x4EFB;&#x52A1;&#x7684;&#x5047;&#x8BBE;&#x7A7A;&#x95F4;&#x5F80;&#x5F80;&#x5F88;&#x5927;&#xFF0C;&#x53EF;&#x80FD;&#x6709;&#x591A;&#x4E2A;&#x5047;&#x8BBE;&#x5728;&#x8BAD;&#x7EC3;&#x96C6;&#x4E0A;&#x8FBE;&#x5230;&#x540C;&#x7B49;&#x6027;&#x80FD;&#xFF0C;&#x6B64;&#x65F6;&#x82E5;&#x4F7F;&#x7528;&#x5355;&#x5B66;&#x4E60;&#x5668;&#x53EF;&#x80FD;&#x56E0;&#x8BEF;&#x9009;&#x800C;&#x5BFC;&#x81F4;&#x6CDB;&#x5316;&#x6027;&#x80FD;&#x4E0D;&#x4F73;&#xFF0C;&#x7ED3;&#x5408;&#x591A;&#x4E2A;&#x5B66;&#x4E60;&#x5668;&#x5219;&#x4F1A;&#x51CF;&#x5C11;&#x8FD9;&#x4E00;&#x98CE;&#x9669;&#xFF1B;<br>&#x200B;    &#x25CF; <strong>&#x4ECE;&#x8BA1;&#x7B97;&#x65B9;&#x9762;&#x6765;&#x770B;</strong>&#xFF0C;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x5F80;&#x5F80;&#x4F1A;&#x9677;&#x5165;&#x5C40;&#x90E8;&#x6781;&#x5C0F;&#xFF0C;&#x6709;&#x7684;&#x5C40;&#x90E8;&#x6781;&#x5C0F;&#x70B9;&#x6240;&#x5BF9;&#x5E94;&#x7684;&#x6CDB;&#x5316;&#x6027;&#x80FD;&#x53EF;&#x80FD;&#x5F88;&#x7CDF;&#x7CD5;&#xFF0C;&#x800C;&#x901A;&#x8FC7;&#x591A;&#x6B21;&#x8FD0;&#x7B97;&#x4E4B;&#x540E;&#x8FDB;&#x884C;&#x7ED3;&#x5408;&#xFF0C;&#x53EF;&#x964D;&#x4F4E;&#x9677;&#x5165;&#x7CDF;&#x7CD5;&#x5C40;&#x90E8;&#x6781;&#x5C0F;&#x70B9;&#x7684;&#x98CE;&#x9669;&#xFF1B;<br>&#x200B;    &#x25CF; <strong>&#x4ECE;&#x8868;&#x793A;&#x7684;&#x65B9;&#x9762;&#x6765;&#x770B;</strong>&#xFF0C;&#x67D0;&#x4E9B;&#x5B66;&#x4E60;&#x4EFB;&#x52A1;&#x7684;&#x771F;&#x5B9E;&#x5047;&#x8BBE;&#x53EF;&#x80FD;&#x4E0D;&#x5728;&#x5F53;&#x524D;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x6240;&#x8003;&#x8651;&#x7684;&#x5047;&#x8BBE;&#x7A7A;&#x95F4;&#x4E2D;&#xFF0C;&#x6B64;&#x65F6;&#x82E5;&#x4F7F;&#x7528;&#x5355;&#x5B66;&#x4E60;&#x5668;&#x5219;&#x80AF;&#x5B9A;&#x65E0;&#x6548;&#xFF0C;&#x800C;&#x901A;&#x8FC7;&#x7ED3;&#x5408;&#x591A;&#x4E2A;&#x5B66;&#x4E60;&#x5668;&#xFF0C;&#x7531;&#x4E8E;&#x76F8;&#x5E94;&#x7684;&#x5047;&#x8BBE;&#x7A7A;&#x95F4;&#x6709;&#x6240;&#x6269;&#x5927;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x5B66;&#x5F97;&#x66F4;&#x597D;&#x7684;&#x8FD1;&#x4F3C;&#x3002;</p>
+<p>&#x200B;                            <img src="/Ensemble/1.png" alt="">                                                        </p>
+<h2 id="2-&#x7ED3;&#x5408;&#x7B56;&#x7565;"><a href="#2-&#x7ED3;&#x5408;&#x7B56;&#x7565;" class="headerlink" title="2. &#x7ED3;&#x5408;&#x7B56;&#x7565;"></a>2. &#x7ED3;&#x5408;&#x7B56;&#x7565;</h2><p>&#x200B;    &#x7ED3;&#x5408;&#x7B56;&#x7565;&#x65E8;&#x5728;&#x5C06;&#x591A;&#x4E2A;&#x4E2A;&#x4F53;&#x5B66;&#x4E60;&#x5668;&#x7684;&#x7ED3;&#x679C;&#x7ED3;&#x5408;&#x6210;&#x4E00;&#x4E2A;&#x53EF;&#x7528;&#x7684;&#x6700;&#x7EC8;&#x7ED3;&#x679C;&#x3002;</p>
+<h3 id="2-1-&#x5E73;&#x5747;&#x6CD5;"><a href="#2-1-&#x5E73;&#x5747;&#x6CD5;" class="headerlink" title="2.1 &#x5E73;&#x5747;&#x6CD5;"></a>2.1 &#x5E73;&#x5747;&#x6CD5;</h3><p>&#x200B;    &#x5BF9;&#x4E8E;&#x6570;&#x503C;&#x7C7B;&#x7684;<strong>&#x56DE;&#x5F52;&#x9884;&#x6D4B;&#x95EE;&#x9898;</strong>&#xFF0C;&#x901A;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x7ED3;&#x5408;&#x7B56;&#x7565;&#x662F;&#x5E73;&#x5747;&#x6CD5;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5BF9;&#x4E8E;&#x82E5;&#x5E72;&#x4E2A;&#x5F31;&#x5B66;&#x4E60;&#x5668;&#x7684;&#x8F93;&#x51FA;&#x8FDB;&#x884C;&#x5E73;&#x5747;&#x5F97;&#x5230;&#x6700;&#x7EC8;&#x7684;&#x9884;&#x6D4B;&#x8F93;&#x51FA;&#x3002;</p>
+<p>&#x200B;    &#x25CF; &#x7B97;&#x672F;&#x5E73;&#x5747;</p>
+<p>&#x200B;    &#x25CF; &#x52A0;&#x6743;&#x5E73;&#x5747;</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">model1 = tree.DecisionTreeClassifier()</span><br><span class="line">model2 = KNeighborsClassifier()</span><br><span class="line">model3= LogisticRegression()</span><br><span class="line"></span><br><span class="line">model1.fit(x_train,y_train)</span><br><span class="line">model2.fit(x_train,y_train)</span><br><span class="line">model3.fit(x_train,y_train)</span><br><span class="line"></span><br><span class="line">pred1=model1.predict_proba(x_test)</span><br><span class="line">pred2=model2.predict_proba(x_test)</span><br><span class="line">pred3=model3.predict_proba(x_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x7B97;&#x672F;&#x5E73;&#x5747; </span></span><br><span class="line">finalpred=(pred1+pred2+pred3)/<span class="number">3</span></span><br><span class="line"><span class="comment"># &#x52A0;&#x6743;&#x5E73;&#x5747;</span></span><br><span class="line">finalpred=(pred1*<span class="number">0.3</span>+pred2*<span class="number">0.3</span>+pred3*<span class="number">0.4</span>)</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="2-2-&#x6295;&#x7968;&#x6CD5;"><a href="#2-2-&#x6295;&#x7968;&#x6CD5;" class="headerlink" title="2.2 &#x6295;&#x7968;&#x6CD5;"></a>2.2 &#x6295;&#x7968;&#x6CD5;</h3><p>&#x200B;    &#x5BF9;&#x4E8E;<strong>&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x7684;&#x9884;&#x6D4B;</strong>&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x6295;&#x7968;&#x6CD5;&#x3002;</p>
+<p>&#x200B;    &#x25CF; &#x76F8;&#x5BF9;&#x591A;&#x6570;&#x6295;&#x7968;&#x6CD5;&#xFF1A;&#x5C11;&#x6570;&#x670D;&#x4ECE;&#x591A;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x6B62;&#x4E00;&#x4E2A;&#x7C7B;&#x522B;&#x83B7;&#x5F97;&#x6700;&#x9AD8;&#x7968;&#xFF0C;&#x5219;&#x968F;&#x673A;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x505A;&#x6700;&#x7EC8;&#x7C7B;&#x522B;&#x3002;</p>
+<p>&#x200B;    &#x25CF; &#x7EDD;&#x5BF9;&#x591A;&#x6570;&#x6295;&#x7968;&#x6CD5;&#xFF1A;&#x4E0D;&#x5149;&#x8981;&#x6C42;&#x83B7;&#x5F97;&#x6700;&#x9AD8;&#x7968;&#xFF0C;&#x8FD8;&#x8981;&#x6C42;&#x7968;&#x8FC7;&#x534A;&#x6570;&#x3002;&#x5426;&#x5219;&#x4F1A;&#x62D2;&#x7EDD;&#x9884;&#x6D4B;&#x3002;</p>
+<p>&#x200B;    &#x25CF; &#x52A0;&#x6743;&#x6295;&#x7968;&#x6CD5;&#xFF1A;&#x4E3A;&#x6BCF;&#x4E2A;&#x5B66;&#x4E60;&#x5668;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x6743;&#x91CD;&#x503C;&#xFF0C;&#x8FDB;&#x884C;&#x52A0;&#x6743;&#x6295;&#x7968;&#x3002;</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8C03;&#x7528;sklearn&#x5B9E;&#x73B0;&#x7684;VotingClassifier</span></span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> VotingClassifier</span><br><span class="line">model1 = LogisticRegression(random_state=<span class="number">1</span>)</span><br><span class="line">model2 = tree.DecisionTreeClassifier(random_state=<span class="number">1</span>)</span><br><span class="line">model = VotingClassifier(estimators=[(<span class="string">&apos;lr&apos;</span>, model1), (<span class="string">&apos;dt&apos;</span>, model2)], voting=<span class="string">&apos;hard&apos;</span>)</span><br><span class="line">model.fit(x_train,y_train)</span><br><span class="line">model.score(x_test,y_test)</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="2-3-&#x5B66;&#x4E60;&#x6CD5;"><a href="#2-3-&#x5B66;&#x4E60;&#x6CD5;" class="headerlink" title="2.3 &#x5B66;&#x4E60;&#x6CD5;"></a>2.3 &#x5B66;&#x4E60;&#x6CD5;</h3><p>&#x200B;    &#x5BF9;&#x5F31;&#x5B66;&#x4E60;&#x5668;&#x7684;&#x7ED3;&#x679C;&#x505A;&#x5E73;&#x5747;&#x6216;&#x8005;&#x6295;&#x7968;&#xFF0C;&#x76F8;&#x5BF9;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x80FD;&#x5B66;&#x4E60;&#x8BEF;&#x5DEE;&#x8F83;&#x5927;&#xFF0C;&#x4E8E;&#x662F;&#x5C31;&#x6709;&#x4E86;&#x5B66;&#x4E60;&#x6CD5;&#x3002;&#x5BF9;&#x4E8E;&#x5B66;&#x4E60;&#x6CD5;&#xFF0C;&#x4EE3;&#x8868;&#x65B9;&#x6CD5;&#x662F;stacking&#xFF0C;&#x5F53;&#x4F7F;&#x7528;stacking&#x7684;&#x7ED3;&#x5408;&#x7B56;&#x7565;&#x65F6;&#xFF0C; &#x5148;&#x4ECE;&#x521D;&#x59CB;&#x6570;&#x636E;&#x96C6;&#x8BAD;&#x7EC3;&#x51FA;&#x521D;&#x7EA7;&#x5B66;&#x4E60;&#x5668;&#xFF0C;&#x7136;&#x540E;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x6570;&#x636E;&#x96C6;&#x7528;&#x4E8E;&#x8BAD;&#x7EC3;&#x6B21;&#x7EA7;&#x5B66;&#x4E60;&#x5668;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x65B0;&#x6570;&#x636E;&#x96C6;&#x4E2D;&#xFF0C;&#x521D;&#x7EA7;&#x5B66;&#x4E60;&#x5668;&#x7684;&#x8F93;&#x51FA;&#x88AB;&#x5F53;&#x505A;&#x6837;&#x4F8B;&#x8F93;&#x5165;&#x7279;&#x5F81;&#xFF0C;&#x800C;&#x521D;&#x59CB;&#x6837;&#x672C;&#x7684;&#x6807;&#x8BB0;&#x4ECD;&#x88AB;&#x5F53;&#x505A;&#x6837;&#x4F8B;&#x6807;&#x8BB0;&#x3002;<br>&#x200B;    &#x5B9E;&#x9645;&#x4E0A;Stacking&#x4E0D;&#x4EC5;&#x53EF;&#x4EE5;&#x770B;&#x505A;&#x662F;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x7684;&#x96C6;&#x5408;&#x7B56;&#x7565;&#xFF0C;&#x5176;&#x672C;&#x8EAB;&#x5C31;&#x662F;&#x4E00;&#x79CD;&#x8457;&#x540D;&#x7684;&#x96C6;&#x6210;&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x3002;&#x5C06;&#x5728;&#x4E0B;&#x9762;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x8BE6;&#x7EC6;&#x7684;&#x8BB2;&#x89E3;&#x3002;</p>
+<h2 id="3-&#x9AD8;&#x7EA7;&#x96C6;&#x6210;&#x6280;&#x672F;"><a href="#3-&#x9AD8;&#x7EA7;&#x96C6;&#x6210;&#x6280;&#x672F;" class="headerlink" title="3. &#x9AD8;&#x7EA7;&#x96C6;&#x6210;&#x6280;&#x672F;"></a>3. &#x9AD8;&#x7EA7;&#x96C6;&#x6210;&#x6280;&#x672F;</h2><p>&#x200B;    &#x6700;&#x4E3A;&#x5E38;&#x89C1;&#x7684;&#x96C6;&#x6210;&#x6280;&#x672F;&#x6709;&#x4EE5;&#x4E0B;4&#x79CD;&#xFF1A;</p>
+<p>&#x200B;    &#x25CF; Stacking<br>&#x200B;    &#x25CF; Blending<br>&#x200B;    &#x25CF; Bagging<br>&#x200B;    &#x25CF; Boosting</p>
+<p>&#x200B;    &#x5176;&#x4E2D;&#x6700;&#x4E3A;&#x5E38;&#x7528;&#x7684;&#x5C31;&#x662F;<strong>Bagging</strong>&#x548C;<strong>Boosting</strong> &#x3002;</p>
+<h3 id="3-1-&#x2605;Stacking"><a href="#3-1-&#x2605;Stacking" class="headerlink" title="3.1 &#x2605;Stacking"></a>3.1 &#x2605;Stacking</h3><p>&#x200B;    Stacking&#x65B9;&#x6CD5;&#x662F;&#x6307;&#x8BAD;&#x7EC3;&#x4E00;&#x4E2A;&#x6A21;&#x578B;&#x7528;&#x4E8E;&#x7EC4;&#x5408;&#x5176;&#x4ED6;&#x5404;&#x4E2A;&#x6A21;&#x578B;&#x3002;&#x9996;&#x5148;&#x6211;&#x4EEC;&#x5148;&#x8BAD;&#x7EC3;&#x591A;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x6A21;&#x578B;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x4E4B;&#x524D;&#x8BAD;&#x7EC3;&#x7684;&#x5404;&#x4E2A;&#x6A21;&#x578B;&#x7684;&#x8F93;&#x51FA;&#x4F5C;&#x4E3A;&#x8F93;&#x5165;&#x6765;&#x8BAD;&#x7EC3;&#x4E00;&#x4E2A;&#x6A21;&#x578B;&#xFF0C;&#x4EE5;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x6700;&#x7EC8;&#x7684;&#x8F93;&#x51FA;&#x3002;</p>
+<p><img src="/Ensemble/2.jpg" alt=""></p>
+<p><img src="/Ensemble/3.png" alt=""></p>
+<p>&#x8BA9;&#x6211;&#x4EEC;&#x4E00;&#x6B65;&#x6B65;&#x7684;&#x8FC7;&#x4E00;&#x904D;Stacking&#xFF1A;</p>
+<ol>
+<li><p>&#x9996;&#x5148;&#x5C06;&#x8BAD;&#x7EC3;&#x96C6;&#x5206;&#x4E3A;5&#x4EFD;&#xFF0C;&#x51C6;&#x5907;5-&#x6298;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x3002;</p>
+</li>
+<li><p>&#x5728;&#x8BAD;&#x7EC3;&#x96C6;&#x4E0A;&#xFF0C;&#x57FA;&#x7840;&#x6A21;&#x578B;(&#x5982;&#x51B3;&#x7B56;&#x6811;)&#x901A;&#x8FC7;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x8FDB;&#x884C;&#x8BAD;&#x7EC3;&#xFF0C;&#x6BCF;&#x6B21;&#x8BAD;&#x7EC3;&#x83B7;&#x5F97;&#x4E00;&#x6298;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x7684;&#x9884;&#x6D4B;&#x503C;&#xFF0C;&#x548C;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#x7684;&#x9884;&#x6D4B;&#x503C;&#x3002;</p>
+</li>
+<li><p>&#x8FD9;&#x6837;&#x7ECF;&#x8FC7;5&#x6B21;&#x8BAD;&#x7EC3;&#x4E4B;&#x540E;&#xFF0C;&#x80FD;&#x591F;&#x83B7;&#x5F97;&#x6574;&#x4E2A;&#x8BAD;&#x7EC3;&#x96C6;&#x7684;&#x9884;&#x6D4B;&#x503C;&#xFF0C;&#x5C06;&#x6BCF;&#x6B21;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#x7684;&#x9884;&#x6D4B;&#x503C;&#x8FDB;&#x884C;&#x5E73;&#x5747;&#x5C31;&#x80FD;&#x5F97;&#x5230;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#x7684;&#x9884;&#x6D4B;&#x503C;&#x3002;</p>
+</li>
+<li><p>&#x540C;&#x6837;&#x7684;&#xFF0C;&#x7528;&#x5176;&#x4ED6;&#x57FA;&#x7840;&#x6A21;&#x578B;&#xFF08;&#x5982;KNN&#xFF09;&#x8FDB;&#x884C;&#x8BAD;&#x7EC3;&#xFF0C;&#x4E5F;&#x80FD;&#x83B7;&#x5F97;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x548C;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#x7684;&#x9884;&#x6D4B;&#x503C;&#x3002;</p>
+</li>
+<li><p>&#x6700;&#x540E;&#x5C06;&#x8FD9;&#x4E9B;&#x9884;&#x6D4B;&#x503C;&#x4F5C;&#x4E3A;&#x65B0;&#x7684;&#x7279;&#x5F81;&#x6765;&#x8BAD;&#x7EC3;&#x7B2C;&#x4E8C;&#x5C42;&#x6A21;&#x578B;&#xFF08;&#x4E00;&#x822C;&#x4E3A;&#x903B;&#x8F91;&#x56DE;&#x5F52;&#xFF09;&#x3002;</p>
+<p>&#x200B;</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>&#x91CD;&#x70B9;&#xFF1A;</strong> </p>
+<ol>
+<li>&#x521D;&#x7EA7;&#x5B66;&#x4E60;&#x5668;&#x4E3A;<strong>&#x5E76;&#x884C;</strong>&#x5173;&#x7CFB;&#x3002;</li>
+<li>Stacking&#x7684;&#x7740;<strong>&#x91CD;&#x70B9;&#x5728;&#x4E8E;&#x600E;&#x4E48;&#x7ED3;&#x5408;&#x591A;&#x4E2A;&#x521D;&#x7EA7;&#x5B66;&#x4E60;&#x5668;</strong>&#xFF0C;&#x5373;<strong>&#x7ED3;&#x5408;&#x7B56;&#x7565;&#x3002;</strong></li>
+<li><strong>&#x8FDB;&#x884C;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x662F;&#x4E3A;&#x4E86;&#x51CF;&#x5C11;&#x8FC7;&#x62DF;&#x5408;&#x98CE;&#x9669;&#x3002;</strong> &#x82E5;&#x76F4;&#x63A5;&#x7528;&#x521D;&#x59CB;&#x5B66;&#x4E60;&#x5668;&#x7684;&#x8BAD;&#x7EC3;&#x96C6;&#x6765;&#x4EA7;&#x751F;&#x6B21;&#x7EA7;&#x8BAD;&#x7EC3;&#x96C6;&#xFF0C;&#x8FC7;&#x62DF;&#x5408;&#x98CE;&#x9669;&#x4F1A;&#x6BD4;&#x8F83;&#x5927;&#x3002;</li>
+<li>Stacking&#x53EF;&#x4EE5;<strong>&#x540C;&#x65F6;&#x51CF;&#x5C0F;&#x65B9;&#x5DEE;&#x548C;&#x504F;&#x5DEE;&#x3002;</strong></li>
+<li>&#x5728;Stacking&#x4E2D;&#xFF0C;&#x521D;&#x7EA7;&#x5B66;&#x4E60;&#x5668;<strong>&#x4E00;&#x822C;&#x4E3A;&#x5F02;&#x8D28;&#x5B66;&#x4E60;&#x5668;&#x3002;</strong></li>
+<li>&#x6B21;&#x7EA7;&#x5B66;&#x4E60;&#x5668;&#x4E00;&#x822C;</li>
+</ol>
+</blockquote>
+<p><strong>&#x7B80;&#x5355;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#xFF1A;</strong></p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">###&#x3000;sklearn &amp; numpy &amp; pandas</span></span><br><span class="line"><span class="comment">## &#x901A;&#x8FC7;n-&#x6298;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#x6CD5;&#x8BAD;&#x7EC3;&#x6A21;&#x578B;&#xFF0C;&#x5E76;&#x5F97;&#x5230;&#x8BAD;&#x7EC3;&#x96C6;&#x548C;&#x6D4B;&#x8BD5;&#x96C6;&#x7684;&#x9884;&#x6D4B;&#x503C;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Stacking</span><span class="params">(model,train,y,test,n_fold)</span>:</span></span><br><span class="line">   folds=StratifiedKFold(n_splits=n_fold,random_state=<span class="number">1</span>)</span><br><span class="line">   test_pred=np.empty((test.shape[<span class="number">0</span>],<span class="number">1</span>),float)</span><br><span class="line">   train_pred=np.empty((<span class="number">0</span>,<span class="number">1</span>),float)</span><br><span class="line">   <span class="keyword">for</span> train_indices,val_indices <span class="keyword">in</span> folds.split(train,y.values):</span><br><span class="line">      x_train,x_val=train.iloc[train_indices],train.iloc[val_indices]</span><br><span class="line">      y_train,y_val=y.iloc[train_indices],y.iloc[val_indices]</span><br><span class="line"></span><br><span class="line">      model.fit(X=x_train,y=y_train)</span><br><span class="line">      train_pred=np.append(train_pred,model.predict(x_val))</span><br><span class="line">      test_pred=np.append(test_pred,model.predict(test))</span><br><span class="line">    <span class="keyword">return</span> test_pred.reshape(<span class="number">-1</span>,<span class="number">1</span>),train_pred</span><br><span class="line"></span><br><span class="line"><span class="comment">## &#x8BAD;&#x7EC3;&#x4E00;&#x4E2A;decision tree</span></span><br><span class="line">model1 = tree.DecisionTreeClassifier(random_state=<span class="number">1</span>)</span><br><span class="line">test_pred1 ,train_pred1=Stacking(model=model1,n_fold=<span class="number">10</span>, train=x_train,test=x_test,y=y_train)</span><br><span class="line">train_pred1=pd.DataFrame(train_pred1)</span><br><span class="line">test_pred1=pd.DataFrame(test_pred1)</span><br><span class="line"><span class="comment">## &#x8BAD;&#x7EC3;&#x4E00;&#x4E2A;KNN</span></span><br><span class="line">model2 = KNeighborsClassifier()</span><br><span class="line">test_pred2 ,train_pred2=Stacking(model=model2,n_fold=<span class="number">10</span>,train=x_train,test=x_test,y=y_train)</span><br><span class="line">train_pred2=pd.DataFrame(train_pred2)</span><br><span class="line">test_pred2=pd.DataFrame(test_pred2)</span><br><span class="line"><span class="comment">## &#x5C06;&#x4E4B;&#x524D;&#x7684;&#x9884;&#x6D4B;&#x503C;&#x4F5C;&#x4E3A;&#x65B0;&#x7684;&#x7279;&#x5F81;&#x8BAD;&#x7EC3;&#x903B;&#x8F91;&#x56DE;&#x5F52;</span></span><br><span class="line">df = pd.concat([train_pred1, train_pred2], axis=<span class="number">1</span>)</span><br><span class="line">df_test = pd.concat([test_pred1, test_pred2], axis=<span class="number">1</span>)</span><br><span class="line">model = LogisticRegression(random_state=<span class="number">1</span>)</span><br><span class="line">model.fit(df,y_train)</span><br><span class="line">model.score(df_test, y_test)</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="3-2-Blending"><a href="#3-2-Blending" class="headerlink" title="3.2 Blending"></a>3.2 Blending</h3><p>&#x200B;    Blending&#x548C;Stacking&#x57FA;&#x672C;&#x4E00;&#x81F4;&#xFF0C;&#x533A;&#x522B;&#x5728;&#x4E8E;Blending&#x5728;&#x8BAD;&#x7EC3;&#x96C6;&#x4E2D;&#x7279;&#x5730;&#x5206;&#x51FA;&#x4E86;&#x9A8C;&#x8BC1;&#x96C6;&#x6765;&#x8BAD;&#x7EC3;&#x65B0;&#x6A21;&#x578B;&#xFF0C;&#x800C;Stacking&#x5219;&#x662F;&#x7528;&#x6574;&#x4E2A;&#x8BAD;&#x7EC3;&#x96C6;&#x6765;&#x8BAD;&#x7EC3;&#x65B0;&#x6A21;&#x578B;&#x3002;</p>
+<p>&#x8BA9;&#x6211;&#x4EEC;&#x4E00;&#x6B65;&#x6B65;&#x7684;&#x5B9E;&#x73B0;&#x4E00;&#x4E0B;Blending&#xFF1A;</p>
+<ol>
+<li><p>&#x5C06;train set &#x5206;&#x4E3A; training set &#x548C;  validation(HoldOut) set&#x3002;</p>
+<p><img src="/Ensemble/8.png" alt=""></p>
+</li>
+<li><p>&#x5728; Training set &#x4E0A;&#x8BAD;&#x7EC3;&#x57FA;&#x7840;&#x6A21;&#x578B;&#x7EC4;&#x3002;</p>
+</li>
+<li><p>&#x57FA;&#x7840;&#x6A21;&#x578B;&#x5BF9;Validation set &#x548C; Test set &#x8FDB;&#x884C;&#x9884;&#x6D4B;&#x3002;</p>
+<p><img src="/Ensemble/9.png" alt=""></p>
+<p>&#x200B;</p>
+</li>
+<li><p>&#x5C06;&#x9884;&#x6D4B;&#x503C;&#x4F5C;&#x4E3A;&#x65B0;&#x7684;&#x7279;&#x5F81;&#xFF0C;&#x8BAD;&#x7EC3;&#x65B0;&#x7684;&#x6A21;&#x578B;&#xFF08;&#x5982;&#x903B;&#x8F91;&#x56DE;&#x5F52;&#xFF09;&#x3002;</p>
+</li>
+</ol>
+<blockquote>
+<p>Blending &#x76F8;&#x6BD4;&#x4E8E;Stacking&#x66F4;&#x52A0;&#x7B80;&#x5355;&#xFF0C;&#x56E0;&#x4E3A;&#x4E0D;&#x7528;&#x505A;K-&#x6298;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;&#xFF0C;&#x800C;&#x662F;&#x76F4;&#x63A5;&#x7559;&#x51FA;&#x4E00;&#x90E8;&#x5206;&#x6570;&#x636E;&#xFF08;&#x7559;&#x51FA;&#x6CD5;&#xFF09;&#x7528;&#x4F5C;&#x7B2C;&#x4E8C;&#x9636;&#x6BB5;&#x6A21;&#x578B;&#x7684;&#x7279;&#x5F81;&#x3002;&#x4F46;&#x662F;&#x7531;&#x4E8E;&#x4F7F;&#x7528;&#x7684;&#x6570;&#x636E;&#x8F83;&#x5C11;<strong>&#x8FC7;&#x62DF;&#x5408;&#x7684;&#x98CE;&#x9669;&#x8F83;&#x5927;</strong>&#x3002;<strong>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;Stacking&#x4F18;&#x4E8E;Blending&#x3002;Blending&#x53EF;&#x4EE5;&#x770B;&#x505A;&#x662F;Stacking&#x7684;&#x4E00;&#x4E2A;&#x7B80;&#x5316;&#x6A21;&#x5F0F;&#x3002;</strong> </p>
+</blockquote>
+<p><strong>&#x7B80;&#x5355;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#xFF1A;</strong></p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### sklearn &amp; numpy &amp; pandas</span></span><br><span class="line"><span class="comment"># &#x8BAD;&#x7EC3;&#x51B3;&#x7B56;&#x6811;&#xFF0C;&#x5E76;&#x9884;&#x6D4B;validation set &#x548C; test set</span></span><br><span class="line">model1 = tree.DecisionTreeClassifier()</span><br><span class="line">model1.fit(x_train, y_train)</span><br><span class="line">val_pred1=model1.predict(x_val)</span><br><span class="line">test_pred1=model1.predict(x_test)</span><br><span class="line">val_pred1=pd.DataFrame(val_pred1)</span><br><span class="line">test_pred1=pd.DataFrame(test_pred1)</span><br><span class="line"><span class="comment"># &#x8BAD;&#x7EC3;KNN&#xFF0C;&#x5E76;&#x9884;&#x6D4B;validation set &#x548C; test set</span></span><br><span class="line">model2 = KNeighborsClassifier()</span><br><span class="line">model2.fit(x_train,y_train)</span><br><span class="line">val_pred2=model2.predict(x_val)</span><br><span class="line">test_pred2=model2.predict(x_test)</span><br><span class="line">val_pred2=pd.DataFrame(val_pred2)</span><br><span class="line">test_pred2=pd.DataFrame(test_pred2)</span><br><span class="line"><span class="comment"># &#x5C06;&#x9884;&#x6D4B;&#x503C;&#x4F5C;&#x4E3A;&#x7279;&#x5F81;&#x8BAD;&#x7EC3;&#x903B;&#x8F91;&#x56DE;&#x5F52;</span></span><br><span class="line">df_val=pd.concat([x_val, val_pred1,val_pred2],axis=<span class="number">1</span>)</span><br><span class="line">df_test=pd.concat([x_test, test_pred1,test_pred2],axis=<span class="number">1</span>)</span><br><span class="line">model = LogisticRegression()</span><br><span class="line">model.fit(df_val,y_val)</span><br><span class="line">model.score(df_test,y_test)</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="3-3-&#x2605;Bagging"><a href="#3-3-&#x2605;Bagging" class="headerlink" title="3.3 &#x2605;Bagging"></a>3.3 &#x2605;Bagging</h3><p>&#x200B;    <strong>Bagging(or Bootstrap Aggregating)</strong> &#x662F;&#x5E76;&#x884C;&#x5F0F;&#x96C6;&#x6210;&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x6700;&#x8457;&#x540D;&#x7684;&#x4EE3;&#x8868;&#x3002;&#x5176;&#x4E3B;&#x8981;&#x601D;&#x60F3;&#x662F;&#xFF1A;<strong>&#x901A;&#x8FC7;&#x81EA;&#x52A9;&#x91C7;&#x6837;&#x6CD5;(bootstrap sampling) </strong>&#x83B7;&#x5F97;&#x4E00;&#x7EC4;&#x4E92;&#x4E0D;&#x76F8;&#x540C;&#x7684;&#x91C7;&#x6837;&#x96C6;&#xFF0C;&#x8FD9;&#x4E9B;&#x91C7;&#x6837;&#x96C6;&#x4E0E;&#x539F;&#x59CB;&#x8BAD;&#x7EC3;&#x96C6;&#x5927;&#x5C0F;&#x76F8;&#x540C;&#x4E14;&#x539F;&#x59CB;&#x8BAD;&#x7EC3;&#x96C6;&#x4E2D;&#x7EA6;&#x6709;63.2%&#x7684;&#x6837;&#x672C;&#x51FA;&#x73B0;&#x5728;&#x91C7;&#x6837;&#x96C6;&#x4E2D;&#x3002;&#x8FD9;&#x6837;&#x4E00;&#x6765;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8FD9;&#x4E9B;&#x91C7;&#x6837;&#x96C6;&#x8BAD;&#x7EC3;&#x51FA;&#x4E00;&#x7EC4;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#xFF0C;&#x6700;&#x540E;&#x5C06;&#x8FD9;&#x4E9B;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#x8FDB;&#x884C;&#x7ED3;&#x5408;&#x3002;</p>
+<p><img src="/Ensemble/10.png" alt=""></p>
+<blockquote>
+<p><strong>&#x91CD;&#x70B9;&#xFF1A;</strong></p>
+<ol>
+<li>&#x5B66;&#x4E60;&#x5668;&#x4E3A;<strong>&#x5E76;&#x884C;&#x5173;&#x7CFB;</strong>&#x3002;</li>
+<li>Bagging&#x7684;&#x7740;&#x91CD;&#x70B9;&#x5728;&#x4E8E;<strong>&#x5982;&#x4F55;&#x751F;&#x6210;&#x5B58;&#x5728;&#x5DEE;&#x5F02;&#x7684;&#x5B66;&#x4E60;&#x5668;</strong>&#x3002; &#x5176;&#x901A;&#x8FC7;&#x5BF9;&#x6570;&#x636E;&#x96C6;&#x7684;&#x62BD;&#x6837;&#x4EA7;&#x751F;&#x4E0D;&#x540C;&#x7684;&#x968F;&#x673A;&#x5B50;&#x96C6;&#xFF0C;&#x4ECE;&#x800C;&#x8BAD;&#x7EC3;&#x51FA;&#x4E0D;&#x540C;&#x7684;&#x5B58;&#x5728;&#x5DEE;&#x5F02;&#x7684;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#x3002;<br>&#x25CF; &#x5BF9;&#x6837;&#x672C;&#x8FDB;&#x884C;&#x968F;&#x673A;&#x91C7;&#x6837;&#xFF0C;&#x79F0;&#x4E3A;Pasting&#x3002;<br>&#x25CF; &#x5BF9;&#x6837;&#x672C;&#x8FDB;&#x884C;&#x6709;&#x653E;&#x56DE;&#x7684;&#x968F;&#x673A;&#x91C7;&#x6837;&#xFF0C;&#x79F0;&#x4E3A;Bagging&#x3002;<br>&#x25CF; &#x5BF9;&#x7279;&#x5F81;&#x8FDB;&#x884C;&#x968F;&#x673A;&#x91C7;&#x6837;&#xFF0C;&#x79F0;&#x4E3A;Random Subspaces&#x3002;<br>&#x25CF; &#x5BF9;&#x7279;&#x5F81;&#x548C;&#x6837;&#x672C;&#x90FD;&#x8FDB;&#x884C;&#x968F;&#x673A;&#x91C7;&#x6837;&#xFF0C;&#x79F0;&#x4E3A;Random Patches&#x3002;</li>
+<li>&#x4ECE;&#x504F;&#x5DEE;-&#x65B9;&#x5DEE;&#x5206;&#x89E3;&#x89D2;&#x5EA6;&#x770B;&#xFF0C;Bagging&#x4E3B;&#x8981;<strong>&#x964D;&#x4F4E;&#x65B9;&#x5DEE;&#xFF0C;&#x51CF;&#x5C11;&#x8FC7;&#x62DF;&#x5408;</strong>&#x3002;&#x56E0;&#x6B64;&#x5B83;&#x5728;<strong>&#x4E0D;&#x51CF;&#x679D;&#x51B3;&#x7B56;&#x6811;&#x3001;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x7B49;&#x6613;&#x53D7;&#x6837;&#x672C;&#x6270;&#x52A8;&#x7684;&#x5B66;&#x4E60;&#x5668;&#x4E0A;&#x6548;&#x7528;&#x660E;&#x663E;&#x3002;</strong></li>
+<li>Bagging&#x7684;&#x5B66;&#x4E60;&#x5668;<strong>&#x4E00;&#x822C;&#x4E3A;&#x540C;&#x8D28;&#x5B66;&#x4E60;&#x5668;&#x3002;</strong></li>
+<li>&#x5728;&#x6700;&#x540E;&#x5BF9;&#x9884;&#x6D4B;&#x8FDB;&#x884C;&#x7ED3;&#x5408;&#x65F6;&#xFF0C;&#x901A;&#x5E38;&#x4F7F;&#x7528;&#x7B80;&#x5355;&#x6295;&#x7968;&#x6CD5;&#xFF08;&#x5206;&#x7C7B;&#x4EFB;&#x52A1;&#xFF09;&#x6216;&#x7B80;&#x5355;&#x5E73;&#x5747;&#x6CD5;&#xFF08;&#x56DE;&#x5F52;&#x4EFB;&#x52A1;&#xFF09;&#x3002;</li>
+</ol>
+</blockquote>
+<p><strong>&#x5B9E;&#x73B0;&#xFF1A;</strong></p>
+<h4 id="3-3-1-meta-estimator"><a href="#3-3-1-meta-estimator" class="headerlink" title="3.3.1 meta-estimator"></a>3.3.1 meta-estimator</h4><p>&#x200B;    <a href="https://scikit-learn.org/stable/modules/ensemble.html#bagging-meta-estimator" target="_blank" rel="noopener">sklearn</a> &#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x4E86;&#x5B9E;&#x73B0;&#xFF0C;&#x5176;&#x4F1A;&#x901A;&#x8FC7;Bootstrapping&#x751F;&#x6210;&#x968F;&#x673A;&#x5B50;&#x96C6;&#xFF0C;&#x7136;&#x540E;&#x7528;&#x8FD9;&#x4E9B;&#x968F;&#x673A;&#x5B50;&#x96C6;&#x8BAD;&#x7EC3;&#x6307;&#x5B9A;&#x7684;&#x57FA;&#x7840;&#x6A21;&#x578B;&#xFF0C;&#x7136;&#x540E;&#x5BF9;&#x8FD9;&#x4E9B;&#x57FA;&#x7840;&#x6A21;&#x578B;&#x7684;&#x9884;&#x6D4B;&#x8FDB;&#x884C;&#x7ED3;&#x5408;&#x3002;</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##&#x3000;&#x5177;&#x4F53;&#x53C2;&#x6570;&#x89C1;&#x5B98;&#x7F51;</span></span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> BaggingClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line">bagging = BaggingClassifier(KNeighborsClassifier(),</span><br><span class="line">                            max_samples=<span class="number">0.5</span>, max_features=<span class="number">0.5</span>)</span><br><span class="line">bagging.fit(x_train, y_train)</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="3-3-2-Random-Forest"><a href="#3-3-2-Random-Forest" class="headerlink" title="3.3.2 Random Forest"></a>3.3.2 Random Forest</h4><p>&#x200B;    &#x968F;&#x673A;&#x68EE;&#x6797;&#x662F;Bagging&#x7684;&#x4E00;&#x79CD;&#x62D3;&#x5C55;&#xFF0C;&#x5176;&#x5BF9;<strong>&#x6837;&#x672C;&#x548C;&#x7279;&#x5F81;&#x90FD;&#x8FDB;&#x884C;&#x4E86;&#x968F;&#x673A;&#x91C7;&#x6837;&#x3002;</strong> &#x56E0;&#x4E3A;&#x5176;&#x4F7F;&#x7528;&#x7684;&#x57FA;&#x7840;&#x5B66;&#x4E60;&#x5668;&#x4E3A;&#x51B3;&#x7B56;&#x6811;&#x6240;&#x4EE5;&#x79F0;&#x4E3A;Random Forest&#x3002;</p>
+<p>&#x200B;    &#x5728;&#x968F;&#x673A;&#x68EE;&#x6797;&#x4E2D;&#xFF0C;&#x867D;&#x7136;<strong>&#x6BCF;&#x4E00;&#x68F5;&#x6811;&#x7684;&#x504F;&#x5DEE;&#x53D8;&#x5927;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x5E73;&#x5747;&#x4E4B;&#x540E;&#x6574;&#x4F53;&#x7684;&#x65B9;&#x5DEE;&#x53D8;&#x5C0F;&#x4E86;</strong>&#xFF0C;&#x56E0;&#x4E3A;&#x51B3;&#x7B56;&#x6811;&#x672C;&#x8EAB;&#x5C31;&#x662F;&#x4E00;&#x79CD;&#x6781;&#x6613;&#x8FC7;&#x62DF;&#x5408;&#x7684;&#x6A21;&#x578B;&#xFF0C;&#x6240;&#x4EE5;&#x6574;&#x4F53;&#x6765;&#x8BF4;&#x80FD;&#x591F;&#x83B7;&#x5F97;&#x4E00;&#x4E2A;&#x6548;&#x76CA;&#x66F4;&#x4F73;&#x7684;&#x6A21;&#x578B;&#x3002;</p>
+<p>&#x200B;    &#x5728;<a href="https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees" target="_blank" rel="noopener">sklearn</a>&#x4E2D;&#x8FD8;&#x5B9E;&#x73B0;&#x4E86;&#x4E00;&#x79CD;&#x79F0;&#x4E3A;Extremely Randomized Trees&#xFF08;ExtRa Trees&#xFF09;&#x7684;&#x6A21;&#x578B;&#xFF0C;&#x5176;&#x66F4;&#x4E3A;&#x8FC7;&#x5206;&#xFF0C;&#x5176;&#x5728;&#x51B3;&#x7B56;&#x6811;&#x5206;&#x679D;&#x65F6;&#x5E76;&#x4E0D;&#x6CBF;&#x7740;&#x7EAF;&#x5EA6;&#x6700;&#x5927;&#x7684;&#x65B9;&#x5411;&#x5206;&#xFF0C;&#x800C;&#x662F;<strong>&#x968F;&#x673A;&#x7684;&#x5206;&#x88C2;&#x503C;&#x3002;</strong> &#x8FD9;&#x6837;&#x4E00;&#x6765;&#xFF0C;<strong>&#x504F;&#x5DEE;&#x8FDB;&#x4E00;&#x6B65;&#x589E;&#x5927;&#xFF0C;&#x65B9;&#x5DEE;&#x8FDB;&#x4E00;&#x6B65;&#x53D8;&#x5C0F;&#x3002;</strong></p>
+<p><strong>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#xFF1A;</strong></p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##  &#x5176;&#x4E2D;&#x6700;&#x4E3A;&#x91CD;&#x8981;&#x7684;&#x53C2;&#x6570;&#x4E3A; n_estimators &#x548C; max_features</span></span><br><span class="line"><span class="comment"># n_estimators &#x4E3A;&#x51B3;&#x7B56;&#x6811;&#x7684;&#x4E2A;&#x6570;&#xFF0C;&#x5F53;&#x7136;&#x8D8A;&#x5927;&#x8D8A;&#x597D;&#xFF0C;&#x4F46;&#x662F;&#x4F1A;&#x82B1;&#x66F4;&#x591A;&#x7684;&#x65F6;&#x95F4;&#x8BAD;&#x7EC3;</span></span><br><span class="line"><span class="comment"># max_features &#x4E3A;&#x4F7F;&#x7528;&#x7684;&#x7279;&#x5F81;&#x6570;&#xFF0C;&#x8D8A;&#x5C0F;&#x5219;&#x65B9;&#x5DEE;&#x8D8A;&#x5C0F;&#x4F46;&#x504F;&#x5DEE;&#x589E;&#x5927;&#x3002;&#x4E00;&#x822C;&#x6309;&#x7ECF;&#x9A8C;&#xFF0C;&#x5BF9;&#x4E8E;&#x56DE;&#x5F52;&#x95EE;&#x9898;</span></span><br><span class="line"><span class="comment"># max_features=n_features,&#x5BF9;&#x4E8E;&#x5206;&#x7C7B;&#x95EE;&#x9898; max_features=sqrt(n_features)</span></span><br><span class="line"><span class="comment"># &#x53E6;&#x5916;&#xFF0C;&#x8F83;&#x597D;&#x7684;&#x7ED3;&#x679C;&#x4E00;&#x822C;&#x4F7F;&#x7528; max_depth=None &#x548C; min_samples_split=2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_blobs</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> ExtraTreesClassifier</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X, y = make_blobs(n_samples=<span class="number">10000</span>, n_features=<span class="number">10</span>, centers=<span class="number">100</span>,</span><br><span class="line"><span class="meta">... </span>    random_state=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>clf = DecisionTreeClassifier(max_depth=<span class="keyword">None</span>, min_samples_split=<span class="number">2</span>,</span><br><span class="line"><span class="meta">... </span>    random_state=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scores = cross_val_score(clf, X, y, cv=<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scores.mean()                               </span><br><span class="line"><span class="number">0.98</span>...</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>clf = RandomForestClassifier(n_estimators=<span class="number">10</span>, max_depth=<span class="keyword">None</span>,</span><br><span class="line"><span class="meta">... </span>    min_samples_split=<span class="number">2</span>, random_state=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scores = cross_val_score(clf, X, y, cv=<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scores.mean()                               </span><br><span class="line"><span class="number">0.999</span>...</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>clf = ExtraTreesClassifier(n_estimators=<span class="number">10</span>, max_depth=<span class="keyword">None</span>,</span><br><span class="line"><span class="meta">... </span>    min_samples_split=<span class="number">2</span>, random_state=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scores = cross_val_score(clf, X, y, cv=<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scores.mean() &gt; <span class="number">0.999</span></span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## &#x53E6;&#x5916;&#xFF0C;&#x968F;&#x673A;&#x68EE;&#x6797;&#x8FD8;&#x80FD;&#x83B7;&#x5F97;&#x7279;&#x5F81;&#x7684;&#x91CD;&#x8981;&#x7A0B;&#x5EA6; model.feature_importances_</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model= RandomForestClassifier(random_state=<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.fit(x_train, y_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i, j <span class="keyword">in</span> sorted(zip(x_train.columns, model.feature_importances_)):</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>   print(i, j)</span><br><span class="line">ApplicantIncome <span class="number">0.180924483743</span></span><br><span class="line">CoapplicantIncome <span class="number">0.135979758733</span></span><br><span class="line">Credit_History <span class="number">0.186436670523</span></span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">Property_Area_Urban <span class="number">0.0167025290557</span></span><br><span class="line">Self_Employed_No <span class="number">0.0165385567137</span></span><br><span class="line">Self_Employed_Yes <span class="number">0.0134763695267</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="3-4-&#x2605;Boosting"><a href="#3-4-&#x2605;Boosting" class="headerlink" title="3.4 &#x2605;Boosting"></a>3.4 &#x2605;Boosting</h3><p>&#x200B;    &#x548C;&#x524D;&#x9762;&#x51E0;&#x79CD;&#x96C6;&#x6210;&#x65B9;&#x6CD5;&#x4E0D;&#x540C;&#xFF0C;Boosting&#x662F;<strong>&#x4E32;&#x884C;&#x7684;&#x3002;</strong> Boosting&#x662F;&#x4E00;&#x65CF;&#x53EF;&#x5C06;&#x5F31;&#x5B66;&#x4E60;&#x5668;&#x63D0;&#x5347;&#x4E3A;&#x5F3A;&#x5B66;&#x4E60;&#x5668;&#x7684;&#x7B97;&#x6CD5;&#x3002;&#x8FD9;&#x65CF;&#x7B97;&#x6CD5;&#x7684;&#x5DE5;&#x4F5C;&#x673A;&#x5236;&#x7C7B;&#x4F3C;&#xFF1A;&#x5148;&#x4ECE;&#x521D;&#x59CB;&#x8BAD;&#x7EC3;&#x96C6;&#x8BAD;&#x7EC3;&#x51FA;&#x4E00;&#x4E2A;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#xFF0C;&#x518D;&#x6839;&#x636E;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#x7684;&#x8868;&#x73B0;&#x5BF9;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x8FDB;&#x884C;&#x8C03;&#x6574;&#xFF0C;&#x4F7F;&#x5F97;&#x5148;&#x524D;&#x57FA;&#x5B66;&#x4E60;&#x5668;<strong>&#x505A;&#x9519;&#x7684;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x5728;&#x540E;&#x7EED;&#x53D7;&#x5230;&#x66F4;&#x591A;&#x5173;&#x6CE8;</strong>&#xFF0C;&#x7136;&#x540E;&#x57FA;&#x4E8E;&#x8C03;&#x6574;&#x540E;&#x7684;&#x6837;&#x672C;&#x6765;&#x8BAD;&#x7EC3;&#x4E0B;&#x4E00;&#x4E2A;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#xFF0C;&#x6700;&#x7EC8;&#x5C06;&#x8FD9;&#x4E9B;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#x8FDB;&#x884C;<strong>&#x52A0;&#x6743;&#x7ED3;&#x5408;</strong>&#x3002;</p>
+<p>&#x200B;    &#x8BA9;&#x6211;&#x4EEC;&#x4E00;&#x6B65;&#x6B65;&#x7684;&#x6765;&#x8FC7;&#x4E00;&#x904D;&#x6D41;&#x7A0B;&#xFF1A;</p>
+<ol>
+<li><p>&#x9996;&#x5148;&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#xFF0C;&#x53EA;&#x80FD;&#x7EBF;&#x6027;&#x5206;&#x5272;&#xFF0C;&#x6CDB;&#x5316;&#x80FD;&#x529B;&#x5341;&#x5206;&#x5F31;&#x3002;</p>
+</li>
+<li><p>&#x5BF9;&#x6240;&#x6709;&#x7684;&#x6837;&#x672C;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x6837;&#x7684;&#x6743;&#x91CD;&#x3002;</p>
+</li>
+<li><p>&#x8BAD;&#x7EC3;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#x5E76;&#x8FDB;&#x884C;&#x9884;&#x6D4B;&#x3002;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6548;&#x679C;&#x5F88;&#x4E0D;&#x597D;&#x3002;</p>
+<p><img src="/Ensemble/11.png" alt=""></p>
+</li>
+<li><p>&#x5BF9;&#x5206;&#x9519;&#x7684;3&#x4E2A;&#x84DD;&#x8272;&#x70B9;&#x52A0;&#x5927;&#x6743;&#x91CD;&#xFF0C;&#x5176;&#x4ED6;&#x70B9;&#x51CF;&#x5C0F;&#x6743;&#x91CD;&#x3002;</p>
+</li>
+<li><p>&#x518D;&#x6B21;&#x8BAD;&#x7EC3;&#x9884;&#x6D4B;&#x3002;&#x6839;&#x636E;&#x7ED3;&#x679C;&#x4FEE;&#x6539;&#x6743;&#x91CD;&#x3002;&#x4E0D;&#x65AD;&#x91CD;&#x590D;&#x3002;</p>
+<p><img src="/Ensemble/12.png" alt=""></p>
+</li>
+<li><p>&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x6700;&#x7EC8;&#x80FD;&#x591F;&#x5F88;&#x597D;&#x7684;&#x62DF;&#x5408;&#x6570;&#x636E;&#xFF01;</p>
+</li>
+</ol>
+<p>&#x7B97;&#x6CD5;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF1A;</p>
+<p>&#x200B;    $&#x6A21;&#x578B;&#x7684;&#x6743;&#x91CD;:\alpha_t=\frac{1}{2}ln(\frac{1-\epsilon_t}{\epsilon_t}),&#x5176;&#x4E2D;\epsilon_t&#x4E3A;&#x5F53;&#x524D;&#x8BEF;&#x5DEE;$</p>
+<p>&#x200B;    $&#x6837;&#x672C;&#x6743;&#x91CD;&#x5206;&#x5E03;&#xFF1A;D_{t+1}=\frac{D_t(i)}{Z_t}*\left{\begin{array}{lr}e^{-\alpha_t},&#x5206;&#x7C7B;&#x6B63;&#x786E; \e^{\alpha_t}, &#x5206;&#x7C7B;&#x9519;&#x8BEF; \end{array}\right.$</p>
+<blockquote>
+<p><strong>&#x91CD;&#x70B9;&#xFF1A;</strong></p>
+<ol>
+<li>&#x5B66;&#x4E60;&#x5668;&#x4E3A;&#x4E32;&#x884C;&#x5173;&#x7CFB;&#x3002;</li>
+<li>Boosting&#x7684;&#x7740;&#x91CD;&#x70B9;&#x5728;&#x4E8E;<strong>&#x5982;&#x4F55;&#x4E00;&#x6B65;&#x6B65;&#x7684;&#x4FEE;&#x6B63;&#x9519;&#x8BEF;&#xFF0C;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x6BCF;&#x4E00;&#x6B65;&#x8BAD;&#x7EC3;&#x90FD;&#x53EA;&#x5B66;&#x4E60;&#x6570;&#x636E;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x7279;&#x5F81;&#xFF0C;&#x6700;&#x540E;&#x8FDB;&#x884C;&#x7ED3;&#x5408;&#x3002;</strong></li>
+<li>&#x4ECE;&#x504F;&#x5DEE;-&#x65B9;&#x5DEE;&#x5206;&#x89E3;&#x7684;&#x89D2;&#x5EA6;&#x770B;&#xFF0C;Boosting&#x4E3B;&#x8981;&#x5173;&#x6CE8;<strong>&#x964D;&#x4F4E;&#x504F;&#x5DEE;</strong>&#xFF0C;&#x56E0;&#x6B64;&#x80FD;&#x57FA;&#x4E8E;&#x6CDB;&#x5316;&#x6027;&#x80FD;&#x76F8;&#x5F53;&#x5F31;&#x7684;&#x5B66;&#x4E60;&#x5668;&#x6784;&#x5EFA;&#x51FA;&#x5F88;&#x5F3A;&#x7684;&#x96C6;&#x6210;&#xFF0C;&#x56E0;&#x6B64;<strong>&#x5E38;&#x7528;&#x51B3;&#x7B56;&#x6811;&#x6869;&#x6700;&#x4E3A;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#x3002;</strong></li>
+<li>Boosting<strong>&#x4E00;&#x822C;&#x4E3A;&#x540C;&#x8D28;&#x5B66;&#x4E60;&#x5668;&#x3002;</strong></li>
+<li>&#x5728;&#x6700;&#x540E;&#x5BF9;&#x9884;&#x6D4B;&#x8FDB;&#x884C;&#x7ED3;&#x5408;&#x65F6;&#xFF0C;&#x4F7F;&#x7528;<strong>&#x52A0;&#x6743;&#x6295;&#x7968;&#x6CD5;</strong>&#x3002;</li>
+</ol>
+</blockquote>
+<p><strong>&#x5B9E;&#x73B0;&#xFF1A;</strong></p>
+<h4 id="3-4-1-AdaBoost"><a href="#3-4-1-AdaBoost" class="headerlink" title="3.4.1 AdaBoost"></a>3.4.1 AdaBoost</h4><p>&#x200B;    <strong>Adaptive boosting</strong> or <strong>AdaBoost</strong> &#x662F;&#x4E00;&#x79CD;&#x6700;&#x7B80;&#x5355;&#x7684;Boosting&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;&#x3002;&#x5176;&#x5C31;&#x662F;&#x5C06;&#x4E0A;&#x9762;&#x8BB2;&#x5230;&#x7684;Boosting&#x6D41;&#x7A0B;&#x8FDB;&#x884C;&#x4E86;&#x5B9E;&#x73B0;&#x3002;</p>
+<p><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier" target="_blank" rel="noopener">sklearn</a></p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## n_estimators:&#x8BBE;&#x7F6E;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#x7684;&#x4E2A;&#x6570;</span></span><br><span class="line"><span class="comment">## base_estimator&#xFF1A;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x4E0D;&#x540C;&#x7684;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x51B3;&#x7B56;&#x6811;&#x6869;&#x3002;	</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> AdaBoostClassifier</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>iris = load_iris()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>clf = AdaBoostClassifier(n_estimators=<span class="number">100</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scores = cross_val_score(clf, iris.data, iris.target, cv=<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scores.mean()                             </span><br><span class="line"><span class="number">0.9</span>...</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="3-4-2-Gradient-Boosting"><a href="#3-4-2-Gradient-Boosting" class="headerlink" title="3.4.2 Gradient Boosting"></a>3.4.2 Gradient Boosting</h4><p>&#x200B;    <strong>Gradient Boosting ,&#x522B;&#x79F0;&#xFF08;Gradient Tree Boosting,GBM,GBRT,GBDT,MART&#xFF09;</strong>&#xFF0C; &#x662F;&#x4E00;&#x79CD;&#x5F3A;&#x5927;&#x800C;&#x7075;&#x6D3B;&#x7684;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x5206;&#x7C7B;&#xFF0C;&#x56DE;&#x5F52;&#xFF0C;&#x6392;&#x5E8F;&#x7B49;&#x95EE;&#x9898;&#x3002;&#x4E0E;&#x666E;&#x901A;&#x7684;Boosting&#x4E0D;&#x540C;&#xFF0C;GBM&#x4F7F;&#x7528;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x6CD5;&#x6765;&#x4FEE;&#x6B63;&#x4E4B;&#x524D;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;<strong>&#x53EF;&#x4EE5;&#x5C06;AdaBoost&#x770B;&#x505A;&#x4E00;&#x79CD;&#x7279;&#x5B9A;&#x635F;&#x5931;&#x51FD;&#x6570;&#x7684;GBM&#x3002;</strong></p>
+<p>&#x200B;    &#x8BA9;&#x6211;&#x4EEC;&#x5148;&#x4EE5;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x7684;&#x56DE;&#x5F52;&#x95EE;&#x9898;&#x4E3A;&#x4F8B;&#xFF1A;</p>
+<ol>
+<li>&#x6BD4;&#x5982;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6709;&#x4EE5;&#x4E0B;&#x8FD9;&#x5F20;&#x8868;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x76EE;&#x6807;&#x662F;&#x9884;&#x6D4B;&#x5E74;&#x9F84;&#x3002;</li>
+</ol>
+<p><img src="/Ensemble/13.png" alt=""></p>
+<ol start="2">
+<li><p>&#x6211;&#x4EEC;&#x8FDB;&#x884C;&#x4E86;&#x7B2C;&#x4E00;&#x6CE2;&#x7684;&#x9884;&#x6D4B;(Prediction1)&#xFF0C;&#x53D1;&#x73B0;&#x9884;&#x6D4B;&#x503C;&#x4E0E;&#x771F;&#x5B9E;&#x503C;&#x4E4B;&#x95F4;&#x5B58;&#x5728;&#x5DEE;&#x503C;&#x3002;</p>
+<p><img src="/Ensemble/16.png" alt=""></p>
+</li>
+<li><p>&#x6211;&#x4EEC;&#x7684;&#x76EE;&#x6807;&#x53D8;&#x4E3A;&#x8BAD;&#x7EC3;&#x4E00;&#x4E2A;&#x6A21;&#x578B;(Prediction2)&#x53BB;&#x6D88;&#x9664;&#x8FD9;&#x79CD;&#x6B8B;&#x5DEE;&#x3002;</p>
+<p><img src="/Ensemble/14.png" alt=""></p>
+</li>
+<li><p>&#x8FD9;&#x6837;&#x4E00;&#x6765;&#x53C8;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x65B0;&#x7684;&#x6B8B;&#x5DEE;&#xFF0C;&#x7EE7;&#x7EED;&#x8BAD;&#x7EC3;&#x65B0;&#x7684;&#x6A21;&#x578B;&#x3002;</p>
+<p><img src="/Ensemble/15.png" alt=""></p>
+</li>
+</ol>
+<p>&#x25CF; &#x5728;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x4E0D;&#x65AD;&#x7684;&#x51CF;&#x5C11;&#x6B8B;&#x5DEE;&#x6765;&#x62DF;&#x5408;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x548C;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x53C8;&#x6709;&#x4EC0;&#x4E48;&#x5173;&#x7CFB;&#x5462;&#xFF1F;</p>
+<p>&#x200B;    &#x5B9E;&#x9645;&#x4E0A;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4F7F;&#x7528;&#x4E86;<strong>&#x5E73;&#x65B9;&#x635F;&#x5931;&#x51FD;&#x6570;</strong>&#x505A;&#x4E3A;&#x635F;&#x5931;&#x51FD;&#x6570;&#xFF1A;</p>
+<p>&#x200B;        $L(y,F(x))=\frac{(y-F(x))^2}{2}$ </p>
+<p>&#x200B;    &#x6839;&#x636E;<strong>&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x7684;&#x601D;&#x60F3;</strong>&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6700;&#x5C0F;&#x5316;&#x635F;&#x5931;&#x51FD;&#x6570;&#xFF1A;</p>
+<p>&#x200B;        $&#x5373;&#x6700;&#x5C0F;&#x5316;&#xFF1A;y-F(x)$</p>
+<p>&#x200B;    &#x8FD9;&#x5C31;&#x53D8;&#x4E3A;&#x51CF;&#x5C11;&#x6B8B;&#x5DEE;&#x6765;&#x62DF;&#x5408;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x25CF; &#x90A3;&#x4E48;&#x600E;&#x4E48;&#x63A8;&#x5BFC;&#x5230;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#xFF1F;</p>
+<p>&#x200B;    &#x5BF9;&#x4E8E;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BA1;&#x7B97;&#x5404;&#x4E2A;&#x7C7B;&#x522B;&#x7684;&#x6982;&#x7387;&#xFF0C;&#x7136;&#x540E;&#x5C3D;&#x53EF;&#x80FD;&#x4F7F;&#x5BF9;&#x5E94;&#x7C7B;&#x522B;&#x6982;&#x7387;&#x6700;&#x5927;&#x3002;    </p>
+<p>&#x200B;    &#x5728;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x5F15;&#x5165;<strong>KL-&#x6563;&#x5EA6;</strong>&#xFF1A; </p>
+<p>&#x200B;        $D_{KL}(p||q)=\sum_ip_ilog\frac{p_i}{q_i}$</p>
+<p>&#x200B;    &#x5176;&#x8868;&#x793A;&#x4E24;&#x4E2A;&#x6982;&#x7387;&#x7684;&#x4E0D;&#x76F8;&#x4F3C;&#x7A0B;&#x5EA6;&#x3002;p&#x4E3A;&#x771F;&#x5B9E;&#x5206;&#x5E03;&#xFF0C;q&#x4E3A;&#x9884;&#x6D4B;&#x5206;&#x5E03;&#x3002;</p>
+<p>&#x200B;    &#x6211;&#x4EEC;&#x7684;&#x76EE;&#x6807;&#x662F;&#x4F7F;&#x4E24;&#x4E2A;&#x6982;&#x7387;&#x4E0D;&#x76F8;&#x4F3C;&#x7A0B;&#x5EA6;&#x6700;&#x5C0F;&#xFF0C;&#x8FD9;&#x6837;&#x4E00;&#x6765;<strong>KL&#x6563;&#x5EA6;&#x4E5F;&#x5C31;&#x662F;&#x8FD9;&#x91CC;&#x7684;&#x635F;&#x5931;&#x51FD;&#x6570;</strong>&#xFF01;</p>
+<blockquote>
+<p>&#x5F88;&#x660E;&#x663E;&#xFF0C;GBM&#x7684;&#x4F18;&#x52BF;&#x5728;&#x4E8E;&#x5176;&#x901A;&#x8FC7;<strong>&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x7B97;&#x6CD5;</strong>&#x5F15;&#x5165;&#x4E86;<strong>&#x635F;&#x5931;&#x51FD;&#x6570; </strong>&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x9009;&#x62E9;&#x4E0D;&#x540C;&#x7684;&#x635F;&#x5931;&#x51FD;&#x6570;&#x6765;&#x884D;&#x751F;&#x51FA;&#x4E0D;&#x540C;&#x6548;&#x679C;&#x7684;Boosting&#x7B97;&#x6CD5;&#x3002;</p>
+<p>&#x6BD4;&#x5982;Friedman&#x63D0;&#x51FA;&#x53EF;&#x4EE5;&#x5C06;AdaBoost&#x770B;&#x4F5C;&#x662F;&#x7528;forward stagewise&#x65B9;&#x6CD5;&#x6765;&#x62DF;&#x5408;&#x4EE5;&#x6307;&#x6570;&#x635F;&#x5931;&#x4E3A;&#x635F;&#x5931;&#x51FD;&#x6570;&#x7684;Additive Logistic Regression Model&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#xFF0C;&#x6211;&#x4EEC;&#x7528;KL&#x6563;&#x5EA6;&#x4F5C;&#x4E3A;&#x635F;&#x5931;&#x51FD;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x7684;&#x7B97;&#x6CD5;&#x3002;</p>
+</blockquote>
+<p><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#sklearn.ensemble.GradientBoostingClassifier" target="_blank" rel="noopener">sklearn</a><br></p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_hastie_10_2</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingClassifier</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X, y = make_hastie_10_2(random_state=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X_train, X_test = X[:<span class="number">2000</span>], X[<span class="number">2000</span>:]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_train, y_test = y[:<span class="number">2000</span>], y[<span class="number">2000</span>:]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>clf = GradientBoostingClassifier(n_estimators=<span class="number">100</span>, learning_rate=<span class="number">1.0</span>,</span><br><span class="line"><span class="meta">... </span>    max_depth=<span class="number">1</span>, random_state=<span class="number">0</span>).fit(X_train, y_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>clf.score(X_test, y_test)                 </span><br><span class="line"><span class="number">0.913</span>...</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h4 id="3-4-3-XGBoost"><a href="#3-4-3-XGBoost" class="headerlink" title="3.4.3 XGBoost"></a>3.4.3 XGBoost</h4><p>&#x200B;    <strong>XGBoost (extreme Gradient Boosting)</strong>&#x662F;&#x4E00;&#x79CD;&#x9AD8;&#x7EA7;&#x7684;gradient boosting&#x7B97;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x3002;&#x5B83;&#x7684;&#x901F;&#x5EA6;&#x51E0;&#x4E4E;&#x53EF;&#x4EE5;&#x8FBE;&#x5230;&#x5176;&#x4ED6;GBM&#x7B97;&#x6CD5;&#x7684;<strong>10&#x500D;</strong>&#x3002; &#x53E6;&#x5916;XGBoost&#x8FD8;&#x5305;&#x542B;&#x4E86;&#x6B63;&#x5219;&#x5316;&#x7528;&#x4E8E;&#x51CF;&#x5C11;&#x8FC7;&#x62DF;&#x5408;&#xFF0C;&#x6240;&#x4EE5;XGBoost&#x4E5F;&#x88AB;&#x79F0;&#x4E3A;&#x201C;regularized boosting&#x201D;&#x3002;</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># xgboost &#x9700;&#x8981;&#x5355;&#x72EC;&#x4E0B;&#x8F7D;&#x5305;</span></span><br><span class="line"><span class="keyword">import</span> xgboost <span class="keyword">as</span> xgb</span><br><span class="line">model=xgb.XGBClassifier(random_state=<span class="number">1</span>,learning_rate=<span class="number">0.01</span>)</span><br><span class="line">model.fit(x_train, y_train)</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="4-&#x603B;&#x7ED3;"><a href="#4-&#x603B;&#x7ED3;" class="headerlink" title="4. &#x603B;&#x7ED3;"></a>4. &#x603B;&#x7ED3;</h2><p>&#x200B;    &#x6700;&#x540E;&#x8FDB;&#x884C;&#x7B80;&#x5355;&#x7684;&#x603B;&#x7ED3;&#x3002;</p>
+<p>&#x200B;    &#x2605; Stacking&#xFF1A;&#x5C06;&#x5404;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x7B97;&#x6CD5;&#x8FDB;&#x884C;&#x6574;&#x5408;&#xFF0C;&#x53D6;&#x957F;&#x8865;&#x77ED;&#xFF0C;&#x80FD;&#x591F;&#x51CF;&#x5C11;&#x504F;&#x5DEE;&#x4E0E;&#x65B9;&#x5DEE;&#x3002;</p>
+<p>&#x200B;    &#x2605; Bagging&#xFF1A;&#x5229;&#x7528;&#x968F;&#x673A;&#x91C7;&#x6837;(Bootstrap)&#xFF0C;&#x51CF;&#x5C11;&#x7B97;&#x6CD5;&#x7684;&#x65B9;&#x5DEE;&#x3002;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#x4E3A;&#x9AD8;&#x65B9;&#x5DEE;&#x4F4E;&#x504F;&#x5DEE;&#x7684;&#x7B97;&#x6CD5;&#xFF0C;&#x5982;&#x672A;&#x51CF;&#x679D;&#x51B3;&#x7B56;&#x6811;&#x3001;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x7B49;&#x3002;</p>
+<p>&#x200B;    &#x2605; Boosting&#xFF1A;&#x8FDB;&#x884C;&#x6709;&#x76EE;&#x7684;&#x7684;&#x5B66;&#x4E60;&#xFF0C;&#x51CF;&#x5C11;&#x7B97;&#x6CD5;&#x7684;&#x504F;&#x5DEE;&#x3002;&#x6BCF;&#x4E00;&#x5C42;&#x7684;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#x5341;&#x5206;&#x5F31;&#xFF08;&#x4E00;&#x822C;&#x4E3A;&#x51B3;&#x7B56;&#x6811;&#x6869;&#xFF09;&#xFF0C;&#x6BCF;&#x4E2A;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#x5404;&#x81EA;&#x5B66;&#x4E60;&#x4E00;&#x90E8;&#x5206;&#x6570;&#x636E;&#x7684;&#x7279;&#x5F81;&#xFF0C;&#x518D;&#x5230;&#x6700;&#x540E;&#x8FDB;&#x884C;&#x6574;&#x5408;&#x3002;&#x6574;&#x4F53;&#x770B;&#x8D77;&#x6765;&#x6BD4;&#x8F83;&#x50CF;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x3002;</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    
+    
+
+	<div>
+	  
+	    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+	  
+	</div>
+	
+	<div>
+      
+        
+
+      
+	</div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+           <div style="color: rgba(0, 0, 0, 0.75); font-size:13px; letter-spacing:3px">(&gt;看完记得五星好评哦亲&lt;)</div>
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/SVM.html" rel="next" title="SVM">
+                <i class="fa fa-chevron-left"></i> SVM
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDEwNy8xNjYzNA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="CLD" />
+            
+              <p class="site-author-name" itemprop="name">CLD</p>
+              <p class="site-description motion-element" itemprop="description">CLD 笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/cenleiding" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="531987793@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是集成学习"><span class="nav-number">1.</span> <span class="nav-text">1. 什么是集成学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-结合策略"><span class="nav-number">2.</span> <span class="nav-text">2. 结合策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-平均法"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 平均法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-投票法"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 投票法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-学习法"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 学习法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-高级集成技术"><span class="nav-number">3.</span> <span class="nav-text">3. 高级集成技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-★Stacking"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 ★Stacking</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Blending"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 Blending</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-★Bagging"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 ★Bagging</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-1-meta-estimator"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.3.1 meta-estimator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-2-Random-Forest"><span class="nav-number">3.3.2.</span> <span class="nav-text">3.3.2 Random Forest</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-★Boosting"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 ★Boosting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-1-AdaBoost"><span class="nav-number">3.4.1.</span> <span class="nav-text">3.4.1 AdaBoost</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-2-Gradient-Boosting"><span class="nav-number">3.4.2.</span> <span class="nav-text">3.4.2 Gradient Boosting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-3-XGBoost"><span class="nav-number">3.4.3.</span> <span class="nav-text">3.4.3 XGBoost</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-总结"><span class="nav-number">4.</span> <span class="nav-text">4. 总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CLD</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">59.8k</span>
+  
+</div>
+
+
+
+
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+-->
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user-md">本站访客数:</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">本站浏览数:</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("wNxnGc218QU5SkfoXr5iCRRl-gzGzoHsz", "82dqHyIEv6Qv855hM04f0McP");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 14199,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

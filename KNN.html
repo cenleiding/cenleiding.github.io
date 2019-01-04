@@ -100,7 +100,7 @@
 <meta property="og:image" content="https://cenleiding.github.io/KNN/KNN_1.png">
 <meta property="og:image" content="http://latex.codecogs.com/gif.latex?d(x,y)=\sum\limits_{i=1}^{n}|x_{i}-y_{i}|">
 <meta property="og:image" content="http://latex.codecogs.com/gif.latex?d(x,y)=\sqrt{\sum\limits_{i=1}^{n}(x_{i}-y_{i})^2}">
-<meta property="og:updated_time" content="2018-10-09T11:48:22.431Z">
+<meta property="og:updated_time" content="2018-12-21T07:11:20.530Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KNN(K-Nearest Neighbor)&amp;K-近邻学习">
 <meta name="twitter:description" content="KNN算法学习笔记">
@@ -418,7 +418,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  420
+                  1.3k
                 </span>
               
 
@@ -434,7 +434,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  7
                 </span>
               
             </div>
@@ -472,7 +472,35 @@
 <p><em>&#x6B27;&#x6C0F;&#x8DDD;&#x79BB;</em>&#xFF1A;<img src="http://latex.codecogs.com/gif.latex?d(x,y)=\sqrt{\sum\limits_{i=1}^{n}(x_{i}-y_{i})^2}">&#x7528;&#x4E8E;&#x6570;&#x503C;&#x578B;&#x6570;&#x636E;</p>
 <p>&#x6D77;&#x660E;&#x8DDD;&#x79BB;&#xFF1A;Hamming distance             &#x7528;&#x4E8E;&#x5B57;&#x7B26;&#x4E32;&#x578B;&#x6570;&#x636E;</p>
 <p><strong>&#x53C2;&#x6570;&#x9009;&#x62E9; </strong>&#xFF1A;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5728;&#x5206;&#x7C7B;&#x65F6;&#x8F83;&#x5927;&#x7684;K&#x503C;&#x80FD;&#x591F;&#x51CF;&#x5C0F;&#x566A;&#x58F0;&#x7684;&#x5F71;&#x54CD;&#xFF0C;&#x4F46;&#x4F1A;&#x4F7F;&#x7C7B;&#x522B;&#x4E4B;&#x95F4;&#x7684;&#x754C;&#x9650;&#x53D8;&#x5F97;&#x6A21;&#x7CCA;&#x3002;&#x4E00;&#x4E2A;&#x8F83;&#x597D;&#x7684;K&#x503C;&#x80FD;&#x901A;&#x8FC7;&#x5404;&#x79CD;&#x542F;&#x53D1;&#x5F0F;&#x6280;&#x672F;&#x6765;&#x83B7;&#x53D6;&#x3002;</p>
-<p><a href="https://github.com/cenleiding/learning-Machine-Learning/tree/master/KNN" target="_blank" rel="noopener"><strong>&#x4EE3;&#x7801;&#x5B9E;&#x73B0; </strong></a></p>
+<h2 id="scikit-learn-Nearest-Neighbors-&#x4F7F;&#x7528;"><a href="#scikit-learn-Nearest-Neighbors-&#x4F7F;&#x7528;" class="headerlink" title="scikit-learn Nearest Neighbors &#x4F7F;&#x7528;"></a>scikit-learn Nearest Neighbors &#x4F7F;&#x7528;</h2><p>&#x200B;    <a href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.neighbors" target="_blank" rel="noopener"><code>sklearn.neighbors</code></a> &#x7C7B;&#x5BF9;&#x8FD1;&#x90BB;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x4E86;&#x5B9E;&#x73B0;&#xFF0C;&#x8FD9;&#x91CC;&#x7B80;&#x5355;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;&#x51E0;&#x79CD;&#x5E38;&#x7528;&#x7684;&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x200B;    sklearn&#x5B9E;&#x73B0;&#x4E86;<strong>&#x6709;&#x76D1;&#x7763;&#x548C;&#x65E0;&#x76D1;&#x7763;</strong>&#x7684;neighbors-based&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x3002;&#x65E0;&#x76D1;&#x7763;&#x7684;&#x8FD1;&#x90BB;&#x662F;&#x8BB8;&#x591A;&#x5176;&#x4ED6;&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x7684;&#x57FA;&#x7840;,&#x5C24;&#x5176;&#x662F;&#x6D41;&#x5F62;&#x5B66;&#x4E60;&#x548C;&#x8C31;&#x805A;&#x7C7B;&#x3002;&#x800C;&#x6709;&#x76D1;&#x7763;&#x7684;&#x65B9;&#x6CD5;&#x5219;&#x7528;&#x4E8E;&#x76F4;&#x63A5;&#x5206;&#x7C7B;&#x548C;&#x56DE;&#x5F52;&#x3002;</p>
+<p>&#x200B;    &#x5BF9;&#x4E8E;&#x8FD1;&#x90BB;&#x65B9;&#x6CD5;&#xFF0C;&#x5927;&#x7684;&#x6765;&#x8BF4;sklearn&#x6709;&#x4E24;&#x79CD;&#x5B9E;&#x73B0;&#xFF1A;<br>&#x200B;        &#x25CF; <strong>k-nearest neighbor learning</strong><br>&#x200B;        &#x25CF; <strong>radius-based neighbor learning</strong><br>&#x200B;    &#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;k-nearest&#x57FA;&#x4E8E;&#x5468;&#x56F4;&#x6700;&#x8FD1;&#x7684;k&#x4E2A;&#x6837;&#x672C;&#x3002;radius-based&#x5219;&#x9700;&#x8981;&#x4EBA;&#x4E3A;&#x8BBE;&#x5B9A;&#x4E00;&#x4E2A;&#x534A;&#x5F84;&#xFF0C;&#x7136;&#x540E;&#x57FA;&#x4E8E;&#x8FD9;&#x4E2A;&#x8303;&#x56F4;&#x5185;&#x7684;&#x6837;&#x672C;&#x3002;</p>
+<blockquote>
+<p>algorithm</p>
+</blockquote>
+<p>&#x200B;    sklearn&#x7528;&#x4E86;&#x591A;&#x79CD;&#x7B97;&#x6CD5;&#x6765;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x90BB;&#x8FD1;&#x3002;(N&#x6837;&#x672C;&#x6570;&#xFF0C;D&#x7EF4;&#x5EA6;&#x6570;)<br>&#x200B;    <strong>&#x2018;auto&#x2019; ,  &#x2018;ball_tree&#x2019; ,  &#x2018;kd_tree&#x2019; ,  &#x2018;brute&#x2019;</strong></p>
+<p>&#x200B;    <strong>brute Force</strong> &#xFF1A;&#x66B4;&#x529B;&#x7B97;&#x6CD5;&#xFF0C;&#x628A;&#x6240;&#x6709;&#x7684;&#x70B9;&#x90FD;&#x7B97;&#x4E00;&#x904D;&#x3002;&#x590D;&#x6742;&#x5EA6;&#x4E3A;O[DN^2]&#xFF0C;&#x5F88;&#x660E;&#x663E;&#x5F53;&#x6570;&#x636E;&#x91CF;&#x8F83;&#x5927;&#x65F6;&#x4F1A;&#x5F88;&#x6162;&#x3002;</p>
+<p>&#x200B;    <strong>K-D Tree</strong> &#xFF1A; &#x8BA4;&#x4E3A;&#x5982;&#x679C;A&#x8FDC;&#x79BB;B&#xFF0C;B&#x9760;&#x8FD1;C&#xFF0C;&#x90A3;&#x4E48;A&#x5C31;&#x8FDC;&#x79BB;C&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x8BA1;&#x7B97;&#x3002;&#x590D;&#x6742;&#x5EA6;O[DNlog(N)],&#x4F46;&#x662F;&#x5F53;&#x6837;&#x672C;&#x6570;&#x975E;&#x5E38;&#x5927;&#x65F6;&#x9000;&#x5316;&#x4E3A;O[DN^2]&#xFF0C;&#x5E76;&#x7531;&#x4E8E;&#x7ED3;&#x6784;&#x95EE;&#x9898;&#x751A;&#x81F3;&#x6BD4;brute&#x8FD8;&#x6162;&#xFF01;</p>
+<p>&#x200B;    <strong>ball_tree</strong> &#xFF1A;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;k-d&#x6811;&#x5F53;&#x6837;&#x672C;&#x6570;&#x5F88;&#x5927;&#x65F6;&#x901F;&#x5EA6;&#x53D8;&#x6162;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x91C7;&#x7528;&#x7403;&#x578B;&#x6811;&#x6765;&#x5B58;&#x50A8;&#x6570;&#x636E;&#xFF0C;&#x4F7F;&#x5F97;&#x590D;&#x6742;&#x5EA6;&#x7EF4;&#x6301;&#x5728;O[DNlog(N)]&#x3002;</p>
+<p>&#x200B;    &#x53E6;&#x5916;&#x56E0;&#x4E3A;&#x5B58;&#x50A8;&#x7ED3;&#x6784;&#x95EE;&#x9898;&#xFF0C;&#x6811;&#x5F62;&#x7ED3;&#x6784;&#x4F1A;&#x968F;&#x7740;K&#x503C;&#x7684;&#x53D8;&#x5927;&#x901F;&#x5EA6;&#x53D8;&#x6162;&#xFF0C;&#x800C;brute&#x7B97;&#x6CD5;&#x6CA1;&#x6709;&#x5F71;&#x54CD;&#x3002;</p>
+<p>&#x200B;    &#x6240;&#x4EE5;&#x4E00;&#x822C;&#x5F53;$k\le N/2$&#x65F6;,&#x53EF;&#x4EE5;&#x4F18;&#x5148;&#x4F7F;&#x7528;ball_tree&#x3002;<br>&#x200B;    &#x5F53;$k\ge N/2$ &#x65F6;&#xFF0C;&#x5219;&#x4F18;&#x5148;&#x9009;&#x7528;brute&#x3002;<br>&#x200B;    &#x5F53;&#x7136;&#xFF0C;&#x81EA;&#x5DF1;&#x4E0D;&#x786E;&#x5B9A;&#x7528;&#x4EC0;&#x4E48;&#x65F6;&#x53EF;&#x4EE5;&#x7528;&#x2018;auto&#x2019;&#x8BA9;&#x7CFB;&#x7EDF;&#x5E2E;&#x4F60;&#x9009;~    </p>
+<blockquote>
+<p>weights</p>
+</blockquote>
+<p>&#x200B;    &#x8868;&#x793A;&#x5404;&#x4E2A;&#x6837;&#x672C;&#x7684;&#x6743;&#x91CD;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;<strong>uniform</strong>,&#x5373;&#x6240;&#x6709;&#x6837;&#x672C;&#x91CD;&#x8981;&#x6027;&#x4E00;&#x81F4;&#x3002;</p>
+<p>&#x200B;    &#x53E6;&#x5916;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<strong>distance</strong>&#xFF0C;&#x5373;&#x8DDD;&#x79BB;&#x8D8A;&#x8FD1;&#x6743;&#x91CD;&#x8D8A;&#x5927;&#x3002;</p>
+<blockquote>
+<p>metric</p>
+</blockquote>
+<p>&#x200B;    &#x7531;metric&#x548C;p&#x51B3;&#x5B9A;&#x3002;<br>&#x200B;    &#x5F53;metric=&#x2018;minkowski&#x2019;&#x9ED8;&#x8BA4;&#xFF0C;p=2&#x9ED8;&#x8BA4;&#x3002;&#x4F7F;&#x7528; euclidean_distance<br>&#x200B;    &#x5F53;metric=&#x2018;minkowski&#x2019;&#x9ED8;&#x8BA4;&#xFF0C;p=1&#x3002;&#x4F7F;&#x7528; manhattan_distance</p>
+<blockquote>
+<p>&#x975E;&#x76D1;&#x7763;</p>
+</blockquote>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## &#x76EE;&#x7684;&#x5728;&#x4E8E;&#x6311;&#x9009;&#x76F8;&#x8FD1;&#x7684;&#x70B9;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> NearestNeighbors</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X = np.array([[<span class="number">-1</span>, <span class="number">-1</span>], [<span class="number">-2</span>, <span class="number">-1</span>], [<span class="number">-3</span>, <span class="number">-2</span>], [<span class="number">1</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">1</span>], [<span class="number">3</span>, <span class="number">2</span>]])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>nbrs = NearestNeighbors(n_neighbors=<span class="number">2</span>, algorithm=<span class="string">&apos;ball_tree&apos;</span>).fit(X)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>distances, indices = nbrs.kneighbors(X)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>indices    <span class="comment">#&#x663E;&#x793A;&#x6BCF;&#x4E2A;&#x6837;&#x672C;&#x6700;&#x8FD1;&#x7684;&#x70B9;&#x7D22;&#x5F15;&#xFF0C;&#x56E0;&#x4E3A;&#x8BAD;&#x7EC3;&#x96C6;&#x548C;&#x6D4B;&#x8BD5;&#x96C6;&#x4E00;&#x81F4;&#xFF0C;&#x6240;&#x4EE5;&#x7B2C;&#x4E00;&#x4E2A;&#x503C;&#x4E3A;&#x81EA;&#x5DF1;&#x7684;&#x5750;&#x6807;             </span></span><br><span class="line">array([[<span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">       [<span class="number">1</span>, <span class="number">0</span>],</span><br><span class="line">       [<span class="number">2</span>, <span class="number">1</span>],</span><br><span class="line">       [<span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">       [<span class="number">4</span>, <span class="number">3</span>],</span><br><span class="line">       [<span class="number">5</span>, <span class="number">4</span>]]...)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>distances  <span class="comment"># &#x663E;&#x793A;&#x6BCF;&#x4E2A;&#x6837;&#x672C;&#x4E0E;&#x6700;&#x8FD1;&#x70B9;&#x7684;&#x8DDD;&#x79BB;&#xFF0C;&#x56E0;&#x4E3A;&#x8BAD;&#x7EC3;&#x96C6;&#x548C;&#x6D4B;&#x8BD5;&#x96C6;&#x4E00;&#x81F4;&#xFF0C;&#x6240;&#x4EE5;&#x7B2C;&#x4E00;&#x4E2A;&#x503C;&#x4E3A;0</span></span><br><span class="line">array([[<span class="number">0.</span>        , <span class="number">1.</span>        ],</span><br><span class="line">       [<span class="number">0.</span>        , <span class="number">1.</span>        ],</span><br><span class="line">       [<span class="number">0.</span>        , <span class="number">1.41421356</span>],</span><br><span class="line">       [<span class="number">0.</span>        , <span class="number">1.</span>        ],</span><br><span class="line">       [<span class="number">0.</span>        , <span class="number">1.</span>        ],</span><br><span class="line">       [<span class="number">0.</span>        , <span class="number">1.41421356</span>]])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>nbrs.kneighbors_graph(X).toarray() <span class="comment"># &#x8FD8;&#x80FD;&#x663E;&#x793A;&#x5173;&#x7CFB;&#x77E9;&#x9635;</span></span><br><span class="line">array([[<span class="number">1.</span>, <span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>],</span><br><span class="line">       [<span class="number">1.</span>, <span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>],</span><br><span class="line">       [<span class="number">0.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>],</span><br><span class="line">       [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">0.</span>],</span><br><span class="line">       [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">0.</span>],</span><br><span class="line">       [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">1.</span>]])</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>&#x76D1;&#x7763;</p>
+</blockquote>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>X = [[<span class="number">0</span>], [<span class="number">1</span>], [<span class="number">2</span>], [<span class="number">3</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>neigh = KNeighborsClassifier(n_neighbors=<span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>neigh.fit(X, y) </span><br><span class="line">KNeighborsClassifier(...)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(neigh.predict([[<span class="number">1.1</span>]]))      <span class="comment"># &#x9884;&#x6D4B;</span></span><br><span class="line">[<span class="number">0</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(neigh.predict_proba([[<span class="number">0.9</span>]])) <span class="comment"># &#x5404;&#x4E2A;&#x53D6;&#x503C;&#x6982;&#x7387;</span></span><br><span class="line">[[<span class="number">0.66666667</span> <span class="number">0.33333333</span>]]</span><br></pre></td></tr></tbody></table></figure>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -617,8 +645,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -637,7 +674,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -704,6 +741,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#scikit-learn-Nearest-Neighbors-使用"><span class="nav-number">1.</span> <span class="nav-text">scikit-learn Nearest Neighbors 使用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -718,7 +771,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
-<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="heart">
     <i class="fa fa-user"></i>
   </span>
@@ -732,7 +785,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">54.2k</span>
+    <span title="Site words total count">59.8k</span>
   
 </div>
 
