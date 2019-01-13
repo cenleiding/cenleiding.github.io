@@ -653,13 +653,77 @@ array([1, 1, 1, 0, 0, 0])
 
 ### 2.6 Spectral Clustering
 
-​	
+​	因为谱聚类属于用起来很简单，但证明起来有点麻烦的算法，涉及的东西有点多，所以这里不讲具体的证明，只讲一些简单的概念和使用。具体的证明可以看[刘建平的博客](https://www.cnblogs.com/pinard/p/6221564.html)或者[谱聚类的论文](https://www.cs.cmu.edu/~aarti/Class/10701/readings/Luxburg06_TR.pdf) 。实际上整体看下来并不难，只是会感觉真的精彩。
 
+​	**谱聚类（spectral clustering）**是广泛使用的聚类算法，相比于K-means，其**速度更快，效果更好！**
 
+​	谱聚类，名字很高大上，但其实思想并不难。其**重点在于对数据无向图的切割**，这点和DBSCAN有点像。我们可以将数据用无向图的形式表现出来，顶点表示样本点，边表示数据之间的权重。当我们要将数据分成K份时，实际上就是将该图切割为K个不相连的字图，我们的策略就是尽可能的使**被切断的边的权重最小**。 而图往往用矩阵来表示，然后经过一系列十分神奇的转换后，这个问题可以用很简单的矩阵运算求得近似最优解！
 
+![](Clustering/11.jpg)
 
+接下来，简单讲一下一些基本概念：
 
+> 怎么得到权重？
 
+​	权重的获得分为两部分：**哪些点之间的权重需要表示？权重怎么用具体数值表示？**
+
+​	边的选取：
+​		● ε-临近法：对距离为ε内的点进行权重计算。
+​		● K-临近法：对距离最近的K个点进行权重计算。
+​		● 全连接：对所有的点进行权重计算。
+​	其中，无疑全连接的效果是最好的，用的也最普遍。
+
+​	权重表示：
+​		● 多项式核函数
+​		● 高斯核函数
+​		● Sigmoid核函数
+​	就是将距离进行变换来表示权重，其中**高斯核RBF最常使用**。
+
+> 怎么用矩阵表示图
+
+​	**权重矩阵、邻接矩阵W：** 矩阵中的每个值$\omega_{i,j}=\omega_{j,i}$表示点i和j的权重。 
+​	**度矩阵D：**对角矩阵，只有主对角线有值。值为该点到其他所有点的权重的和。
+​	**拉普拉斯矩阵L：** L=D-W。其特性有助于推导证明。
+
+> 如何切割无向图
+
+​	切割的关键点在于**使得被切割的权重最小**。
+​		● 直接将被切割的权重相加。但是容易切割出孤立点。
+​		● RatioCut：在权重相加的基础上除以该子集的点个数，即考虑最大化每个字图的点数。
+​		● Ncut：在权重相加的基础上除以该子集的权重和。
+​	RatioCut和Ncut实际上都考虑了对字图“大小”的度量，防止孤立点的出现。其中**Ncut更常用一些**。
+
+> 如何获得最优切割方案	
+
+​	已经有了最小化的目标：RatioCut或Ncut。但很不幸这是个NP难问题，无法直接求解。于是在这里谱聚类用了一个十分巧妙的转换，利用拉普拉斯矩阵的特性将这个问题变为**求解k个最小特征值的问题！**
+
+> 流程
+
+1. 根据数据构造一个 Graph ，Graph 的每一个节点对应一个数据点，将相似的点连接起来，并且边的权重用于表示数据之间的相似度。把这个 Graph 用邻接矩阵的形式表示出来，记为 W。
+2. 把W的每一列元素加起来得到 ![N](http://blog.pluskid.org/latexrender/pictures/8d9c307cb7f3c4a32822a51922d1ceaa.png) 个数，把它们放在对角线上（其他地方都是零），组成一个N*N的矩阵，记为 D。并令 L=D-W 。
+3. 求出L最小的K个特征值以及对应的特征向量 。
+4. 把这k个特征（列）向量排列在一起组成一个N*K的矩阵，将其中每一行看作K维空间中的一个向量，并使用 K-means算法进行聚类。聚类的结果中每一行所属的类别就是原来数据点的分类结果。
+
+> 整体
+
+​	想要更好的理解整个算法必须跟着公式一步步证明下来。但如果换个角度，结合降维算法可以将其看成**对数据进行Laplacian Eigenmap降维之后再做一个传统聚类，而这个传统聚类一般选择K-means！** 我们知道，传统的聚类算法对于高维数据的处理结果往往不好，而谱聚类简单来说就是先进行了降维再处理，于是性能得到了情理之中的提升！
+
+```python
+>>> from sklearn.cluster import SpectralClustering
+>>> import numpy as np
+>>> X = np.array([[1, 1], [2, 1], [1, 0],
+...               [4, 7], [3, 5], [3, 6]])
+>>> clustering = SpectralClustering(n_clusters=2,
+...         assign_labels="discretize",
+...         random_state=0).fit(X)
+>>> clustering.labels_
+array([1, 1, 1, 0, 0, 0])
+>>> clustering 
+SpectralClustering(affinity='rbf', assign_labels='discretize', coef0=1,
+          degree=3, eigen_solver=None, eigen_tol=0.0, gamma=1.0,
+          kernel_params=None, n_clusters=2, n_init=10, n_jobs=None,
+          n_neighbors=10, random_state=0)
+```
 
 
 
@@ -701,6 +765,10 @@ array([1, 1, 1, 0, 0, 0])
 ● https://www.slideshare.net/MahbuburShimul/dbscan-algorithom
 
 ● http://blog.pluskid.org/?page_id=78
+
+● https://www.cnblogs.com/pinard/p/6221564.html
+
+● https://www.cs.cmu.edu/~aarti/Class/10701/readings/Luxburg06_TR.pdf
 
 ● Li, James (2012). “Visualizing High Dimensional Data”
 
