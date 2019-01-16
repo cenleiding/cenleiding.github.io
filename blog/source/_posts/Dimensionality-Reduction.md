@@ -164,7 +164,9 @@ array([1, 1, 1, 1, 1, 6, 4, 3, 2, 5])
 
 ​	特征提取可以看作变量选择方法的一般化：变量选择假设在原始数据中，变量数目浩繁，但只有少数几个真正起作用；而特征提取则认为在所有变量可能的函数(比如这些变量各种可能的线性组合)中，只有少数几个真正起作用。
 
-### 2.1 ★主成分分析PCA
+​	这部分内容，每个算法都涉及到很麻烦的数学推导、证明，要完全啃下来需要花费很多的时间，所以我只是预习性的对这些算法有个大概整体上的了解，不做深入。到时候真要用了再说~~。
+
+### 2.1 ★主成分分析,PCA
 
 ​	**Principal Component Analysis,PCA,主成分分析**。 说到降维毫无疑问，最常用也是最出名就是这货。
 
@@ -252,15 +254,241 @@ svd = TruncatedSVD(n_components=3).fit_transform(iris.data)
 
 
 
+### 2.2 因子分析,FA
+
+​	**Factor Analysis**，也是一种比较常用的降维方法。因子分析是指研究从变量群中提取共性因子的统计技术，最早由英国心理学家C.E.斯皮尔曼提出。他发现学生的各科成绩之间存在着一定的相关性，一科成绩好的学生，往往其他各科成绩也比较好，从而推想是否存在某些潜在的共性因子，或称某些一般智力条件影响着学生的学习成绩。因子分析可在许多变量中找出隐藏的具有代表性的因子，将相同本质的变量归入一个因子，可减少变量的数目，还可检验变量间关系的假设。
+
+​	因子分析与主成分分析十分的像，不论是推导过程还是结果表示，当然他们还是有本质差别的。我们知道在PCA中，得到的主成分实际上就是变量的线性组合；而在FA中，**得到的因子则可以通过高斯分布、线性变换、误差扰动生成原始数据！**简单来说，比如现在有收入、教育两个变量，用PCA降到一维则会用{0.5\*收入+0.5\*教育}这样的形式来表示整体；而FA则可能得到“智商”这么一个因子，收入=0/5\*智商+0.1、教育=0.5\*智商+0.2。
+
+​	● PCA是提取观测变量的线性组合。
+​	● FA是用潜在的理论上的因子构成一个模型去预测观测变量。
+​	● FA基于一种概率模型，使用EM算法来估计参数。
+​	● FA的优势在于其**解释性更好**，比如抽象出“智商”这个因子就能拥有很好的解释。
+​	● **如果你只是想单纯的降维，那么还是使用PCA。如果你是想构造一个因子模型去解释数据，那么使用FA。**
+
+```python
+>>> from sklearn.datasets import load_digits
+>>> from sklearn.decomposition import FactorAnalysis
+>>> X, _ = load_digits(return_X_y=True)
+>>> transformer = FactorAnalysis(n_components=7, random_state=0)
+>>> X_transformed = transformer.fit_transform(X)
+>>> X_transformed.shape
+(1797, 7)
+```
 
 
 
+### 2.3 独立成分分析,ICA
+
+​	一般的降维方法，如**PCA、LDA、FA都是以观测数据点呈高斯分布模型为基本假设前提的，在已经先验经验知道观测数据集为非高斯分布模型的前提下，PCA和LDA的降维效果并不好**；而**ICA适用于非高斯分析数据集** ，是主成分分析（PCA）和因子分析（Factor Analysis）的一种有效扩展。
+
+​	独立成分分析（Independent component analysis，简称ICA）是一种**利用统计原理进行计算**的方法，它是一个线性变换，这个变换把数据或信号分离成**统计独立的非高斯的信号源的线性组合**。
+
+​	独立成分分析的最重要的假设就是信号源统计独立，并且这个假设在大多数盲信号分离（blind signal separation）的情况中符合实际情况；但即使当该假设不满足时，仍然可以用独立成分分析来把观察信号统计独立化，从而进一步分析数据的特性。
+
+> 经典问题
+
+​	**鸡尾酒会问题（cocktail party problem）**，这个问题假设在鸡尾酒会中有n个人，我们利用房间里面的n个麦克风或录音机对同时说话的这些人进行录音，由此得到一个混合信号源或声音源，现在要做的就是从这个信号源中分离出不同人的说话声音。
+
+> 使用前提：
+
+​	● 数据信号源是独立的且数据非高斯分布（或者信号源中最多只有一个成分是高斯分布）
+​	● 观测信号源的数目不能少于源信号数目。
+
+> PCA VS ICA
+
+```python
+class sklearn.decomposition.FastICA(n_components=None, 
+                                    algorithm='parallel', 
+                                    whiten=True, 
+                                    fun='logcosh', 
+                                    fun_args=None, 
+                                    max_iter=200, 
+                                    tol=0.0001, 
+                                    w_init=None, 
+                                    random_state=None)
+```
+
+![](Dimensionality-Reduction/4.png)
+
+可以看出，对于这类非高斯分布的数据，使用ICA的效果远远好于PCA。（但是现实中数据一般都是高斯分布的~）
 
 
 
+### 2.4 流形学习
+
+​	**manifold learning,流形学习**需要复杂的微分几何，拓扑等数学理论作为基础，而且在实际应用中很少被使用，所以我只是进行了**最最最基础的了解~** 
+
+​	流形学习的主要思想是**将高维的数据映射到低维，使该低维的数据能够反映原高维数据的某些本质结构特征**。流形学习的前提是有一种假设，即**某些高维数据，实际是一种低维的流形结构嵌入在高维空间中**。
+
+> 为什么要研究流形？
+
+![](Dimensionality-Reduction/5.png)![](Dimensionality-Reduction/6.png)
+
+​	在前面我们已经了解了PCA,FA,ICA算法，但是这些算法有一个问题：**最终结果是线性变换。** 这意味着会损失一些非线性的信息。比如上图数据用PCA降维效果就很差。而流形学习则认为数据可以用**流形结构来表示**，就像上图的大大卷一样，然后将这个流形结果展开来就能起到降维的效果。于是流形学习的**目标就是：保留数据之间的拓扑结构。**
+
+#### 2.4.1 ISOMAP
+
+​	**Isometric Mapping,等距映射**,最早的流形学习算法。使用了微分几何中测地线的思想，它希望数据在向低维空间映射之后能够保持流形上的测地线距离。**直观来看，就是将数据投影到低维空间之后，保持数据点之间的相对远近关系。** ISOMAP可以看做是**MDS或kernel PCA的延伸。**
+
+​	![](Dimensionality-Reduction/7.png)
+
+​	如上图所示，**测地线距离**指的是在流形上两点之间的距离，其可以用两点之间最短路径来近似。算法的目标：映射坐标下的欧氏距离（蓝线）与原来的测地线距离（红线）尽量相等！
+
+#### 2.4.2 LLE
+
+​	**Locally linear embedding，局部线性嵌入**。 核心思想是**每个样本点都可以由与它相邻的多个点的线性组合（体现了局部线性）来近似重构**，这相当于用分段的线性面片近似代替复杂的几何形状，样本投影到低维空间之后要保持这种线性重构关系，即有相同的重构系数。
+
+​                                                	![](Dimensionality-Reduction/8.png)
+
+#### 2.4.3 LE & LPP 
+
+​	**Laplacian eigenmaps（LP，拉普拉斯特征映射）和  Locality preserving projections（LPP,局部保持投）**都是**基于图论**的方法。它从样本点构造带权重的图，然后计算图的拉普拉斯矩，对该矩阵进行特征值分解得到投影变换矩阵。他们的目的在于：**希望保持流形的近邻关系，将原始空间中相近的点映射成目标空间中相近的点。** LP和LPP只是限制函数不同而已。
 
 
 
+#### 2.4.4 ★ t-SNE
+
+​	**T 分布随机近邻嵌入（T-Distribution Stochastic Neighbour Embedding）**可以说是目前效果**最好的高维数据可视化方法了**。t-SNE 主要的优势就是**保持局部结构的能力**。也就是说高维数据空间中距离相近的点投影到低维中仍然相近。
+
+> 怎么表示数据点之间的关系
+
+​	t-SNE将数据点之间的**欧氏距离转换为表示相似度的概率。** 认为原高维空间中数据呈高斯分布，嵌入空间中的数据呈t-分布。我们的目标是**变换前后两个相似度接近。**
+
+> 怎么将距离转换为概率来表示相似度？
+
+​	算法假设点$x_i$和其周围的点呈高斯分布，则$x_j$是$x_i$周围点的概率是$p(j|i)$。若数据点相距较近，则$p(j|i)$较大，相反若数据点相距非常远，$p(j|i)$则可以接近无穷小。
+
+​									 $p(j|i)= {exp({-\Vert x_i-x_j\Vert^2 \over 2\sigma_i^2}) \over \sum_{k\neq i}exp({-\Vert x_i-x_k\Vert^2 \over 2\sigma_i^2})}$
+
+​	上面这个公式的方差σ选取是个问题，由于数据点的稠密程度不同，因此这个方差选用单个固定值是不合理的，例如在密度高的区域适合选用较小的方差值。算法引入了一个固定值，**困惑度（perplexity）**,困惑度大致等价于在匹配每个点的原始和嵌入分布时考虑的最近邻数，较低的困惑度意味着我们在匹配原分布并拟合每一个数据点到目标分布时只考虑最近的几个点，而较高的困惑度意味着拥有较大的全局结构，论文建议值位5-50。
+
+​	同理t-分布的相似度概率为：
+
+​									$q(j|i)=\frac{ (1 + \left \| y_i-y_j \right \|^2)^{-1}}{\sum_{k \neq i} (1 + \left \| y_i-y_k \right \|^2)^{-1}}$
+
+> 怎么度量两个相似度接近？
+
+​	用**KL散度（Kullback-Leibler divergence）来衡量。**
+
+​									$C = \sum_iKL(P_i\Vert Q_i)=\sum_i \sum_j p(j|i)log{p(j|i)\over q(j|i)}$
+
+于是可以将KL散度作为损失函数，通过最小化(求导)损失函数就能得到每个点对应的嵌入坐标。
+
+**注意，上面的公式只是意思一下，完整的证明可以参考[一灯@qiancy](http://qiancy.com/2016/11/12/sne-tsne/)的文章，里面讲解的十分的详细。**
+
+
+
+> 如何更好的使用T-SNE
+
+​	关于使用，理解T-SNE，[distill的文章](https://distill.pub/2016/misread-tsne/#perplexity=100&epsilon=20&demo=10&demoParams=200)讲解的非常牛逼，可以好好看一下。
+
+​		★ **perplexity，困惑度**用来平衡对数据局部和全局的关注度，某种意义上可以理解为具体考虑几个临近点。这个值对结果影响有着很复杂的影响。一般建议取5-50,而且要小于数据点数。
+
+​		★ **分析时最好多画图，因为不同的困惑值，会有不同的表现形状！**
+
+​		★ **在使用T-SNE前，将数据归一化。**因为需要计算距离。
+
+​		★ **可以在使用T-SNE之前，先使用PCA。** 因为PCA强在保留全局信息而T-SEN强在保留局部信息，所以可以两者结合提高效果。参数：init='pca'。
+
+​		★ **在sklearn中默认使用Barnes-Hut t-SNE实现**，其对速度进行了优化，不过仅在目标维度为3或更小时才起作用，以2D可视化为主。
+
+​		● **iterations,迭代次数 **对结果也有神奇的影响，如果次数不足数据还未收敛，数据可能会出现“被压扁”的形状。所以迭代次数尽量大，保证收敛
+
+​		● **结果簇的大小并不能代表什么！**因为算法会扩张稠密的数据、收缩稀疏的数据。所以最后结果展示的簇大小并没有什么用！
+
+​		● **结果簇之间的距离并不能代表什么！** 
+
+​		● **随机噪声看起来并不总是随机的！** 也就是说有可能你觉得是一个类，而他可能只是随机噪声！
+
+​		● **有时候能够看出结果呈现一些有趣的形状，虽然没什么用~**
+
+```python
+from time import time
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib.ticker import NullFormatter
+from sklearn import manifold, datasets
+
+# # Next line to silence pyflakes. This import is needed.
+# Axes3D
+n_points = 1000
+# X是一个(1000, 3)的2维数据，color是一个(1000,)的1维数据
+X, color = datasets.samples_generator.make_s_curve(n_points, random_state=0)
+n_neighbors = 10
+n_components = 2
+
+fig = plt.figure(figsize=(8, 8))
+# 创建了一个figure，标题为"Manifold Learning with 1000 points, 10 neighbors"
+plt.suptitle("Manifold Learning with %i points, %i neighbors"
+             % (1000, n_neighbors), fontsize=14)
+
+
+'''绘制S曲线的3D图像'''
+ax = fig.add_subplot(211, projection='3d')
+ax.scatter(X[:, 0], X[:, 1], X[:, 2], c=color, cmap=plt.cm.Spectral)
+ax.view_init(4, -72)  # 初始化视角
+
+'''t-SNE'''
+t0 = time()
+tsne = manifold.TSNE(n_components=n_components, init='pca', random_state=0)
+Y = tsne.fit_transform(X)  # 转换后的输出
+t1 = time()
+print("t-SNE: %.2g sec" % (t1 - t0))  # 算法用时
+ax = fig.add_subplot(2, 1, 2)
+plt.scatter(Y[:, 0], Y[:, 1], c=color, cmap=plt.cm.Spectral)
+plt.title("t-SNE (%.2g sec)" % (t1 - t0))
+ax.xaxis.set_major_formatter(NullFormatter())  # 设置标签显示格式为空
+ax.yaxis.set_major_formatter(NullFormatter())
+# plt.axis('tight')
+
+plt.show()
+```
+
+![](Dimensionality-Reduction/10.png)
+
+> t-SNE的缺点
+
+​	● 计算复杂度很高，在数百万个样本数据集中可能需要几个小时，而PCA可以在几秒钟或几分钟内完成。
+
+​	● 算法是随机的，具有不同种子的多次实验可以产生不同的结果。
+
+​	● 全局结构未明确保留。这个问题可以通过PCA初始化点（使用 init ='pca'）来缓解。
+
+
+
+#### 2.4.4 总结
+
+> [sklearn](https://scikit-learn.org/stable/modules/manifold.html#manifold) 算法速度比较
+
+![](Dimensionality-Reduction/9.png)
+
+
+
+> ISOMAP VS LLE
+
+​	● Isomap 和 LLE 从不同的出发点来实现同一个目标，它们都能从某种程度上发现并在映射的过程中保持流形
+的几何性质。
+
+​	● Isomap 希望保持任意两点之间的测地线距离；LLE 希望保持局部线性关系。
+
+​	● 从保持几何的角度来看，Isomap保持了更多的信息量。
+
+​	● 然而 Isomap 的全局方法有一个很大的问题就是要考虑任意两点之间的关系，这个数量将随着数据点数量的增多而爆炸性增长，从而使得计算难以负荷。
+
+
+
+> 流形学习的挑战：
+
+​	● 现有算法对于数据的要求比较高，**对噪音的情况处理能力不够**。
+
+​	● 需要在流形上发展相应的统计概念以及学习理论。
+
+​	● 流形学习算法往往是要求一个整体的矩阵分解，**很难处理大规模数据**。可以看sklearn中各个算法的复杂度都很高。
+
+
+
+### 
 
 
 
@@ -272,3 +500,14 @@ svd = TruncatedSVD(n_components=3).fit_transform(iris.data)
 
 ● https://www.analyticsvidhya.com/blog/2018/08/dimensionality-reduction-techniques-python/
 
+● https://stats.stackexchange.com/questions/1576/what-are-the-differences-between-factor-analysis-and-principal-component-analysi
+
+● 数据常青藤：https://www.dataivy.cn/blog/%E7%8B%AC%E7%AB%8B%E6%88%90%E5%88%86%E5%88%86%E6%9E%90independent-component-analysis_ica/
+
+● https://zhuanlan.zhihu.com/p/40214106
+
+● http://www.cad.zju.edu.cn/reports/%C1%F7%D0%CE%D1%A7%CF%B0.pdf
+
+● https://www.jiqizhixin.com/articles/2017-11-13-7
+
+● http://qiancy.com/2016/11/12/sne-tsne/
