@@ -232,6 +232,25 @@ array([1, 1, 1, 1, 1, 6, 4, 3, 2, 5])
 
 
 
+★ 拓展，KPCA
+
+​	PCA虽然效果往往不错，但是他有一个很大的缺陷：**是线性降维，对非线性数据往往就效果很差了。**为了克服这个问题提出了一种叫**核主成分分析(Kernel Principal Component Analysis, KPCA)**的算法，用以解决非线性问题。其使用了kernel tricks，基本思想是：将数据隐式映射到高维线性可分空间，利用核函数进行处理，无需知道映射函数的具体形式。
+
+```python
+##
+# kernel : "linear" | "poly" | "rbf" | "sigmoid" | "cosine" | "precomputed"
+# 默认"linear"。一般"rbf"最常用。
+>>> from sklearn.datasets import load_digits
+>>> from sklearn.decomposition import KernelPCA
+>>> X, _ = load_digits(return_X_y=True)
+>>> transformer = KernelPCA(n_components=7, kernel='linear')
+>>> X_transformed = transformer.fit_transform(X)
+>>> X_transformed.shape
+(1797, 7)
+```
+
+
+
 ★  杂记
 
 ​	● 我们常常会看到PCA使用了**Singular Value Decomposition（SVD，奇异值分解）**， 这个SVD是什么？在上面我们求矩阵特征向量用的是特征分解，需要求$XX^T$ ,但是在这一步中，一些非常小的数容易在平方中丢失！而SVD也是一种矩阵分解方法且也能得到特征向量，但不用求$XX^T$，所以**SVD更稳定，对于稀疏矩阵效果更好！**
@@ -252,7 +271,7 @@ pca = PCA(n_components=0.1).fit_transform(iris.data) # 150*3
 svd = TruncatedSVD(n_components=3).fit_transform(iris.data)
 ```
 
-
+​	
 
 ### 2.2 因子分析,FA
 
@@ -315,7 +334,40 @@ class sklearn.decomposition.FastICA(n_components=None,
 
 
 
-### 2.4 流形学习
+### 2.4 多维缩放 DMS
+
+​	**Multi-dimensional Scaling(DMS,多维缩放)**，是一种非常经典的线性降维方法。
+
+​	DMS起源于心理学,它被用来了解受访者的意见对象之间的相似性或相异。MDS还用于营销、管理、金融、社会学、信息科学、政治科学、物理、生物学、生态学等等。
+
+​	DMS的目标很简单：**寻找一个低维空间，使得点之间的距离与其在原高维空间中的距离相似。**
+
+​	**Metric MDS**：度量型，使得在不同空间中，点之间的距离保持相似。比如欧式距离。
+
+​	**non-metric MDS**： 非度量型，使得在不同空间中，点之间的距离关系顺序保持不变，也就是说原来靠的近的仍然靠的近，原来距离远的任然远，不再追求距离的度量也要保持不变。
+
+​	毫无疑问，metric MDS的效果会好一些，但是会以速度作为代价。
+
+```python
+## 参数
+# metric : boolean default: True。 当为True时，使用metric MDS。否则使用nonmetric MDS
+# n_init : int default: 4 。因为不同的初始化结果不同，所以多次运行取最优值。
+>>> from sklearn.datasets import load_digits
+>>> from sklearn.manifold import MDS
+>>> X, _ = load_digits(return_X_y=True)
+>>> X.shape
+(1797, 64)
+>>> embedding = MDS(n_components=2)
+>>> X_transformed = embedding.fit_transform(X[:100])
+>>> X_transformed.shape
+(100, 2)
+```
+
+
+
+
+
+### 2.5 流形学习
 
 ​	**manifold learning,流形学习**需要复杂的微分几何，拓扑等数学理论作为基础，而且在实际应用中很少被使用，所以我只是进行了**最最最基础的了解~** 
 
@@ -327,7 +379,7 @@ class sklearn.decomposition.FastICA(n_components=None,
 
 ​	在前面我们已经了解了PCA,FA,ICA算法，但是这些算法有一个问题：**最终结果是线性变换。** 这意味着会损失一些非线性的信息。比如上图数据用PCA降维效果就很差。而流形学习则认为数据可以用**流形结构来表示**，就像上图的大大卷一样，然后将这个流形结果展开来就能起到降维的效果。于是流形学习的**目标就是：保留数据之间的拓扑结构。**
 
-#### 2.4.1 ISOMAP
+#### 2.5.1 ISOMAP
 
 ​	**Isometric Mapping,等距映射**,最早的流形学习算法。使用了微分几何中测地线的思想，它希望数据在向低维空间映射之后能够保持流形上的测地线距离。**直观来看，就是将数据投影到低维空间之后，保持数据点之间的相对远近关系。** ISOMAP可以看做是**MDS或kernel PCA的延伸。**
 
@@ -335,21 +387,21 @@ class sklearn.decomposition.FastICA(n_components=None,
 
 ​	如上图所示，**测地线距离**指的是在流形上两点之间的距离，其可以用两点之间最短路径来近似。算法的目标：映射坐标下的欧氏距离（蓝线）与原来的测地线距离（红线）尽量相等！
 
-#### 2.4.2 LLE
+#### 2.5.2 LLE
 
 ​	**Locally linear embedding，局部线性嵌入**。 核心思想是**每个样本点都可以由与它相邻的多个点的线性组合（体现了局部线性）来近似重构**，这相当于用分段的线性面片近似代替复杂的几何形状，样本投影到低维空间之后要保持这种线性重构关系，即有相同的重构系数。
 
 ​                                                	![](Dimensionality-Reduction/8.png)
 
-#### 2.4.3 LE & LPP 
+#### 2.5.3 LE & LPP 
 
-​	**Laplacian eigenmaps（LP，拉普拉斯特征映射）和  Locality preserving projections（LPP,局部保持投）**都是**基于图论**的方法。它从样本点构造带权重的图，然后计算图的拉普拉斯矩，对该矩阵进行特征值分解得到投影变换矩阵。他们的目的在于：**希望保持流形的近邻关系，将原始空间中相近的点映射成目标空间中相近的点。** LP和LPP只是限制函数不同而已。
+​	**Laplacian eigenmaps（LP，拉普拉斯特征映射）和  Locality preserving projections（LPP,局部保持投影）**都是**基于图论**的方法。它从样本点构造带权重的图，然后计算图的拉普拉斯矩，对该矩阵进行特征值分解得到投影变换矩阵。他们的目的在于：**希望保持流形的近邻关系，将原始空间中相近的点映射成目标空间中相近的点。** LP和LPP只是限制函数不同而已。
 
 
 
-#### 2.4.4 ★ t-SNE
+#### 2.5.4 ★ t-SNE
 
-​	**T 分布随机近邻嵌入（T-Distribution Stochastic Neighbour Embedding）**可以说是目前效果**最好的高维数据可视化方法了**。t-SNE 主要的优势就是**保持局部结构的能力**。也就是说高维数据空间中距离相近的点投影到低维中仍然相近。
+​	**T 分布随机近邻嵌入（T-Distribution Stochastic Neighbour Embedding）**可以说是目前效果**最好的高维数据可视化方法之一**。t-SNE 主要的优势就是**保持局部结构的能力**。也就是说高维数据空间中距离相近的点投影到低维中仍然相近。
 
 > 怎么表示数据点之间的关系
 
@@ -457,7 +509,51 @@ plt.show()
 
 
 
-#### 2.4.4 总结
+#### 2.5.5 ★ UMAP
+
+​	**Uniform Manifold Approximation and Projection (UMAP)**， 是一种十分强大的降维算法。其使用了黎曼流形。
+
+​	为了体现他的强大经常拿他与t-SNE比较：
+
+​		● 数据可视化能力与t-SNE相近，甚至可以说更优！
+
+​		● 运算速度远远大于t-SNE（例子：784*70000的数据，UMAP需要2.5分钟，而t-SNE则需要45分钟）。
+
+​		● UMAP不但能做可视化，还能做一般的数据降维工作，作为数据预处理。
+
+​		● UMAP能够保留更多的数据全局结构信息。
+
+​		● UMAP支持多种距离函数，比如余弦距离等。
+
+​		● UMAP能够已有的embedding添加新的点。
+
+​		● UMAP还支持监督和半监督降维。这意味着可以提供标签，使其更好的学习。
+
+​		● 在流形学习领域，UMAP拥有十分坚固的理论基础。
+
+可以看到功能十分的强大！
+
+[github](https://github.com/lmcinnes/umap) 和 [官网文档](https://umap-learn.readthedocs.io/en/latest/)
+
+```python
+import umap
+from sklearn.datasets import load_digits
+
+digits = load_digits()
+## 主要参数
+# n_components:降维维度。和t-SNE不同，不只能取2,3，还能取更大的维度。default:2
+# n_neighbors:考虑临近点的数量，一般取5-50，默认10-15.
+# min_dist:控制点的压缩程度。大则会使得分布更均匀，小则会考虑更多局部结构。一般取0.001-0.5,默认0.1
+# metric:选择距离度量函数。default:'euclidean'
+embedding = umap.UMAP(n_components=3， 
+                      n_neighbors=5,
+                      min_dist=0.3,
+                      metric='correlation').fit_transform(digits.data)
+```
+
+
+
+#### 2.5.6 杂项
 
 > [sklearn](https://scikit-learn.org/stable/modules/manifold.html#manifold) 算法速度比较
 
@@ -488,11 +584,48 @@ plt.show()
 
 
 
-### 
+## 3.总结 
 
+![](Dimensionality-Reduction/11.png)
 
+​	这篇文章对于降维只是进行了基础的学习，对于算法的理论实现没有深入。原本是想好好看一下证明的，然后发现算法实在太多了，而且涉及的数学证明都不简单，于是只好转念一想：”我又不研究降维算法，我只是需要这个工具而已，会用就行，管他乱七八糟的实现干什么？“于是就心安理得的只了解了一下各个算法的特点~~
 
+​	各算法主要特点：
 
+​		★ **丢失值比例，低方差过滤，高相关过滤**：对数据进行统计，抛弃一些明显的垃圾属性。
+
+​		★ **随机森林**：利用随机森林算法的特点获得属相的排名。
+
+​		● 向前/后属性消去：通过遍历的方式，对属性进行逐个判断。**速度太慢**。
+
+​		★ **PCA**：线性降维，**速度快，数据预处理**。
+
+​		● **DMS**：线性降维，虽然效果也不错但感觉并不怎么用。
+
+​		● **FA**： 线性降维，与PCA相似，生成因子模型，**利于解释数据**。
+
+​		● **ICA**：线性降维，**适用于非高斯分布**，但实际中大部分数据是高斯分布的。。
+
+​		★**KPCA**：非线性降维，对PCA添加了一个核，**常用高斯核rbf**。
+
+​		★ **t-SNE**：非线性降维，**用于数据可视化，速度慢。**
+
+​		★ **UMAP**：非线性降维，**数据可视化 ，数据预处理，速度快。**
+
+​		● **ISOMAP**：非线性降维，**速度慢。**
+
+​		● **LLE**：非线性降维。
+
+​		● **LE,LPP**：非线性降维，基于图论。
+
+​	关于使用的一些个人看法（有问题请指正）：
+
+  		1. 在数据使用之前可以使用“变量选择”，将明显无用的数据去除。
+		2. 拿到数据时可以先用**t-SNE或UMAP**进行可视化，看看是否能分类，如果能那恭喜你这数据大概率好用。当然如果可视化的图不好看也不要放弃，可能只是无法在这么低的维度看出而已。
+		3. 不要随便对数据进行特征提取做预处理，因为特征提取会丢失一些信息，而且特征提取可以看成一个学习器，会对后续的学习器产生影响。一般当不进行特征提取最终结果不好时再使用特征提取，或者分两组进行训练，一组进行特征提取，一组不进行，最后看看效果怎么样。
+		4. 特征提取的算法往往会有多个参数，所以调参是个重要工作，特别是维度的选择。但是也不要执着于获得最优的特征提取结果，毕竟这只是个预处理。所以我们可以获得几个特征提取后的数据集(50维？100维？……)，然后分别进行学习，取效果最好的那个。
+		5. 因为特征提取的效果并不是十分十分的重要，所以在效果相差不大的情况下反而先考虑速度问题，毕竟调参很花时间。所以我觉的这是为什么PCA这么流行的关键。
+		6. 所以感觉一般用用**t-SNE,UMAP,PCA,KPCA**就差不多了，毕竟流形学习速度是真的慢~
 
 
 
@@ -511,3 +644,5 @@ plt.show()
 ● https://www.jiqizhixin.com/articles/2017-11-13-7
 
 ● http://qiancy.com/2016/11/12/sne-tsne/
+
+● https://link.springer.com/referenceworkentry/10.1007%2F978-3-642-04898-2_386
