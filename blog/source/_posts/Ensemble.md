@@ -446,9 +446,13 @@ Self_Employed_Yes 0.0134763695267
 
 
 
-#### 3.4.3 XGBoost
+#### 3.4.3 ★ XGBoost
 
 ​	**XGBoost (extreme Gradient Boosting)**是一种高级的gradient boosting算法的实现。它的速度几乎可以达到其他GBM算法的**10倍**。 另外XGBoost还包含了正则化用于减少过拟合，所以XGBoost也被称为“regularized boosting”。
+
+​	XGBoost曾经横扫过机器学习竞赛，是一种非常非常厉害的算法。
+
+​	使用具体调参详见：[AARSHAY JAIN的博客](https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/)
 
 ```python 
 # xgboost 需要单独下载包
