@@ -1,7 +1,7 @@
 ---
 title: 决策树 DecisionTree
 date: 2018-10-07 15:07:16
-tags: 机器学习
+tags: 机器学习 决策树 DecisionTree
 categories: 机器学习
 keywords: DecisionTree,机器学习,决策树
 description: DecisionTree算法学习笔记
@@ -60,11 +60,11 @@ Gini(D)越小，则数据纯度越高，混乱度越小。
 
 **信息熵指数**
 
-$Ent\\_index=\sum\limits_{v=1}^{V}\frac{\vert D^v\vert}{ {\vert D\vert} }Ent(D^v)$
+$Ent\_index=\sum\limits_{v=1}^{V}\frac{\vert D^v\vert}{ {\vert D\vert} }Ent(D^v)$
 
 **基尼指数(Gini index)**
 
-$Gini\\_index(D,a)=\sum\limits_{v=1}^V\frac{\vert D^v\vert}{ {\vert D\vert} }Gini(D^v)$
+$Gini\_index(D,a)=\sum\limits_{v=1}^V\frac{\vert D^v\vert}{ {\vert D\vert} }Gini(D^v)$
 
 
 
@@ -80,7 +80,7 @@ $Gini\\_index(D,a)=\sum\limits_{v=1}^V\frac{\vert D^v\vert}{ {\vert D\vert} }Gin
 
 > > 于是Quinlan大佬在**C4.5决策树**中提出了用**信息增益率**来作为准则划分属性。
 
-**信息增益率：** $Gain\\_ratio(D,a)=\frac{Gain(D,a)}{IV(a)}$        $IV(a)=-\sum\limits_{v=1}^{V}\frac{\vert D^v\vert}{\vert D\vert}\log_{2}\frac{\vert D^v\vert}{\vert D\vert}$
+**信息增益率：** $Gain\_ratio(D,a)=\frac{Gain(D,a)}{IV(a)}$        $IV(a)=-\sum\limits_{v=1}^{V}\frac{\vert D^v\vert}{\vert D\vert}\log_{2}\frac{\vert D^v\vert}{\vert D\vert}$
 
 IV(a)被称为属性a的“固有值(intrinsic value)”,实际上就是a属性的信息熵.....
 
@@ -174,7 +174,7 @@ $p'_k=\frac{\sum_{x\in D'_k} W_X}{\sum_{x\in D'} W_X}$              无缺失样
 
 $r'_v=\frac{\sum_{x\in D'_v} W_X}{\sum_{x\in D'} W_X}$              无缺失样本中，属性取值为V时所占的权重比
 
-实际上就是先将有缺失样本无视，计算无缺失样本的Gain,最后在乘以无缺失样本所占的权重比，作为整体Gain。
+**实际上就是先将有缺失样本无视，计算无缺失样本的Gain,最后再乘以无缺失样本所占的权重比，作为整体Gain。**
 
 
 

@@ -8,7 +8,7 @@ description: 使用docker发布TensorFlow的模型，并解决windows端口映�
 image: 
 ---
 
-只是为了简单发布 TensorFlow/serving 服务……
+只是为了简单发布 TensorFlow/serving 服务…… 
 
 docker下载地址https://store.docker.com/editions/community/docker-ce-desktop-windows
 

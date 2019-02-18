@@ -1,7 +1,7 @@
 ---
 title: word2vec词向量
 date: 2018-10-09 21:43:32
-tags: 机器学习
+tags: 机器学习_词向量
 categories: 机器学习
 keywords: word2vec,词向量,word embedding,词嵌入,skip-gram,词向量空间
 description: word2vec词嵌入
@@ -74,7 +74,7 @@ image: word2vec/word2vec_3.png
 
 > 一些心得
 
-**nec 函数：** 
+**nce 函数：** 
 
 ```python
 def nce_loss(weights, biases, inputs, labels, num_sampled, num_classes,

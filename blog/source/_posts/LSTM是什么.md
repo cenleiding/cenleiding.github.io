@@ -1,7 +1,7 @@
 ---
 title: LSTM是什么
 date: 2018-10-29 20:49:13
-tags: 机器学习，神经网络，RNN
+tags: 机器学习，LSTM
 categories: 机器学习
 keywords: LSTM,Long Short Term Memory,rnn,机器学习
 description: 简单介绍LSTM是什么

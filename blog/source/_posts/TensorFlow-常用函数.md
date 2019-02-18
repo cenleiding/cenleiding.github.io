@@ -1,7 +1,7 @@
 ---
 title: TensorFlow 常用函数整理
 date: 2018-10-10 21:15:00
-tags: TensorFlow,机器学习.API
+tags: TensorFlow.API
 categories: 机器学习
 keywords: TensorFlow,常用函数
 description: 对TensorFlow中常用函数的整理
@@ -241,7 +241,7 @@ idx ==> [0, 0, 1, 2, 2, 2, 3, 4, 4]
 | **tf.nn.tanh(x,name=None )**             | 双曲正切激活函数                                 |
 | tf.math.softplus(features,name=None)     | log(exp(features) + 1)                   |
 | tf.nn.softsign(features,name=None)       | features / (abs(features) + 1)           |
-| tf.nn.dropout(x,keep_prob,noise_shape=None,seed=None,     name=None ) | 独立的，元素放大(1-keep_prob)或者变为0。用于防止过拟合       |
+| **tf.nn.dropout(x,keep_prob,noise_shape=None,seed=None,     name=None )** | 独立的，元素放大(1-keep_prob)或者变为0。用于防止过拟合       |
 | tf.nn.bias_add(value,bias,data_format=None,name=None ) | Adds bias  to value                      |
 
 ###卷积函数 Convolution
