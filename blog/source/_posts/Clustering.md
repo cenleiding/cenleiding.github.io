@@ -1,7 +1,7 @@
 ---
 title: Clustering
 date: 2019-01-09 18:30:27
-tags: 
+tags: 机器学习-聚类
 categories: 机器学习
 keywords: clustering 聚类
 description: 对聚类算法进行简单的学习

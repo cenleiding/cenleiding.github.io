@@ -1,7 +1,7 @@
 ---
 title: Dimensionality Reduction
 date: 2019-01-15 13:23:53
-tags: 机器学习
+tags: 机器学习-降维
 categories: 机器学习
 keywords: 降维 机器学习
 description: 对降维的简单了解学习

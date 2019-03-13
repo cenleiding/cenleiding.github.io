@@ -1,11 +1,11 @@
 ---
 title: 神经网络ANN
 date: 2018-10-19 20:31:59
-tags: 机器学习，神经网络
+tags: 机器学习-神经网络
 categories: 机器学习
 keywords: 神经网络,ANN,NN,机器学习
 description: 什么是神经网络？对于神经网络的简单理解。
-image: 神经网络ANN/ANN_1.jpg
+image: /神经网络ANN/ANN_1.jpg
 ---
 
 ![img](神经网络ANN/ANN_1.jpg)

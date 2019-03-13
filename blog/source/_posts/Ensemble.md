@@ -5,7 +5,7 @@ tags: 机器学习
 categories: 机器学习
 keywords: ensemble 集成
 description: 对集成学习的基础学习
-image: Ensemble/lalala.png
+image: /Ensemble/lalala.png
 ---
 
 > 本文主要参考自[AISHWARYA SINGH的博客](https://www.analyticsvidhya.com/blog/author/aishwaryasingh/) 和西瓜书。
@@ -127,7 +127,7 @@ model.score(x_test,y_test)
 > 3. **进行交叉验证是为了减少过拟合风险。** 若直接用初始学习器的训练集来产生次级训练集，过拟合风险会比较大。
 > 4. Stacking可以**同时减小方差和偏差。**
 > 5. 在Stacking中，初级学习器**一般为异质学习器。**
-> 6. 次级学习器一般
+> 6. 次级学习器一般为逻辑回归。
 
 
 
