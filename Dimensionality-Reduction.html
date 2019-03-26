@@ -108,7 +108,7 @@
 <meta property="og:image" content="https://cenleiding.github.io/Dimensionality-Reduction/10.png">
 <meta property="og:image" content="https://cenleiding.github.io/Dimensionality-Reduction/9.png">
 <meta property="og:image" content="https://cenleiding.github.io/Dimensionality-Reduction/11.png">
-<meta property="og:updated_time" content="2019-02-19T14:18:24.462Z">
+<meta property="og:updated_time" content="2019-03-15T08:57:11.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dimensionality Reduction">
 <meta name="twitter:description" content="对降维的简单了解学习">
@@ -442,7 +442,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  58
+                  57
                 </span>
               
             </div>
@@ -486,10 +486,7 @@
 <p>&#x200B;    <strong>&#x6240;&#x4EE5;&#x5728;&#x6570;&#x636E;&#x9884;&#x5904;&#x7406;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5C06;&#x65B9;&#x5DEE;&#x5F88;&#x5C0F;&#x7684;&#x5C5E;&#x6027;&#x4E4B;&#x95F4;&#x629B;&#x5F03;&#x3002;</strong></p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> VarianceThreshold</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X = [[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>], [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sel = VarianceThreshold(threshold=(<span class="number">.8</span> * (<span class="number">1</span> - <span class="number">.8</span>)))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sel.fit_transform(X)</span><br><span class="line">array([[<span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">       [<span class="number">1</span>, <span class="number">0</span>],</span><br><span class="line">       [<span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">       [<span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">       [<span class="number">1</span>, <span class="number">0</span>],</span><br><span class="line">       [<span class="number">1</span>, <span class="number">1</span>]])</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="1-3-&#x9AD8;&#x76F8;&#x5173;&#x8FC7;&#x6EE4;"><a href="#1-3-&#x9AD8;&#x76F8;&#x5173;&#x8FC7;&#x6EE4;" class="headerlink" title="1.3 &#x9AD8;&#x76F8;&#x5173;&#x8FC7;&#x6EE4;"></a>1.3 &#x9AD8;&#x76F8;&#x5173;&#x8FC7;&#x6EE4;</h3><p>&#x200B;    &#x4E24;&#x4E2A;&#x53D8;&#x91CF;&#x4E4B;&#x95F4;&#x7684;&#x9AD8;&#x5EA6;&#x76F8;&#x5173;&#x610F;&#x5473;&#x7740;&#x5B83;&#x4EEC;&#x5177;&#x6709;&#x76F8;&#x4F3C;&#x7684;&#x8D8B;&#x52BF;&#x5E76;&#x4E14;&#x53EF;&#x80FD;&#x643A;&#x5E26;&#x76F8;&#x4F3C;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x76F8;&#x4F3C;&#x7684;&#x53D8;&#x91CF;&#x5BF9;&#x4E8E;&#x63D0;&#x9AD8;&#x6A21;&#x578B;&#x7684;&#x51C6;&#x786E;&#x7387;&#x4E00;&#x822C;&#x6CA1;&#x6709;&#x5E2E;&#x52A9;&#xFF0C;&#x53EA;&#x4F1A;&#x964D;&#x4F4E;&#x6A21;&#x578B;&#x7684;&#x5B66;&#x4E60;&#x901F;&#x5EA6;&#x3002; &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BA1;&#x7B97;&#x51FA;&#x53D8;&#x91CF;&#x4E4B;&#x95F4;&#x7684;&#x76F8;&#x5173;&#x6027;&#xFF0C;&#x5982;&#x679C;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x8D85;&#x8FC7;&#x67D0;&#x4E2A;&#x9608;&#x503C;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5220;&#x9664;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x3002;</p>
-<p>&#x200B;    &#x53EF;&#x4EE5;&#x501F;&#x52A9;pandas&#x4E2D;&#x7684;.corr&#x83B7;&#x5F97;&#x5C5E;&#x6027;&#x4E4B;&#x95F4;&#x7684;&#x76F8;&#x4F3C;&#x5EA6;&#x503C;&#x3002;<br>MySQL Notifier</p>
-<p>[Main Instruction]<br>MySQL Notifier &#x5DF2;&#x505C;&#x6B62;&#x5DE5;&#x4F5C;</p>
-<p>[Content]<br>Windows &#x6B63;&#x5728;&#x67E5;&#x627E;&#x8BE5;&#x95EE;&#x9898;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x2026;</p>
-<p>[&#x53D6;&#x6D88;]</p>
+<p>&#x200B;    &#x53EF;&#x4EE5;&#x501F;&#x52A9;pandas&#x4E2D;&#x7684;.corr&#x83B7;&#x5F97;&#x5C5E;&#x6027;&#x4E4B;&#x95F4;&#x7684;&#x76F8;&#x4F3C;&#x5EA6;&#x503C;&#x3002;</p>
 <p><img src="/Dimensionality-Reduction/2.png" alt=""></p>
 <p>&#x200B;    &#x4E00;&#x822C;&#x5F53;&#x76F8;&#x4F3C;&#x5EA6;&#x503C;&#x5927;&#x4E8E;0.5~0.6&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x629B;&#x5F03;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x3002;</p>
 <h3 id="1-4-&#x968F;&#x673A;&#x68EE;&#x6797;"><a href="#1-4-&#x968F;&#x673A;&#x68EE;&#x6797;" class="headerlink" title="1.4 &#x968F;&#x673A;&#x68EE;&#x6797;"></a>1.4 &#x968F;&#x673A;&#x68EE;&#x6797;</h3><p>&#x200B;    &#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x5DF2;&#x7ECF;&#x6BD4;&#x8F83;&#x8BE6;&#x7EC6;&#x7684;&#x5B66;&#x4E60;&#x8FC7;Random Forest&#x4E86;&#x3002;&#x77E5;&#x9053;&#x4ED6;&#x662F;&#x4E00;&#x79CD;&#x96C6;&#x6210;&#x7B97;&#x6CD5;&#xFF0C;&#x5176;&#x6BCF;&#x6B21;&#x968F;&#x673A;&#x9009;&#x53D6;&#x4E00;&#x4E9B;&#x6837;&#x672C;&#x548C;&#x5C5E;&#x6027;&#x6765;&#x8BAD;&#x7EC3;&#x51FA;&#x4E00;&#x4E2A;&#x51B3;&#x7B56;&#x6811;&#xFF0C;&#x518D;&#x6839;&#x636E;&#x5176;&#x51C6;&#x786E;&#x7387;&#x4E3A;&#x6BCF;&#x4E2A;&#x51B3;&#x7B56;&#x6811;&#x5206;&#x914D;&#x6743;&#x91CD;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x53EF;&#x4EE5;&#x770B;&#x505A;&#x4E00;&#x79CD;&#x5F88;&#x5DE7;&#x5999;&#x7684;&#x51B3;&#x7B56;&#x6811;&#x964D;&#x4F4E;&#x8FC7;&#x62DF;&#x5408;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x56E0;&#x4E3A;&#x5176;&#x968F;&#x673A;&#x9009;&#x62E9;&#x4E86;&#x5C5E;&#x6027;&#x5E76;&#x4E3A;&#x4E4B;&#x5206;&#x914D;&#x4E86;&#x6743;&#x91CD;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5B83;&#x83B7;&#x5F97;&#x5C5E;&#x6027;&#x5404;&#x81EA;&#x7684;&#x6743;&#x91CD;&#x5206;&#x914D;&#x60C5;&#x51B5;&#xFF01;</p>
@@ -871,7 +868,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -882,7 +879,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -893,7 +890,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -983,7 +980,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">81k</span>
+    <span title="Site words total count">106.8k</span>
   
 </div>
 
