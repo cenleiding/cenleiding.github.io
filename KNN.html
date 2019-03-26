@@ -76,7 +76,7 @@
 
 
 
-  <meta name="keywords" content="KNN,机器学习,K-近邻学习" />
+  <meta name="keywords" content="KNN;机器学习;K-近邻学习" />
 
 
 
@@ -90,7 +90,7 @@
 
 
 <meta name="description" content="KNN算法学习笔记">
-<meta name="keywords" content="KNN,机器学习,K-近邻学习">
+<meta name="keywords" content="KNN;机器学习;K-近邻学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="KNN(K-Nearest Neighbor)&amp;K-近邻学习">
 <meta property="og:url" content="https://cenleiding.github.io/KNN.html">
@@ -98,9 +98,7 @@
 <meta property="og:description" content="KNN算法学习笔记">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://cenleiding.github.io/KNN/KNN_1.png">
-<meta property="og:image" content="http://latex.codecogs.com/gif.latex?d(x,y)=\sum\limits_{i=1}^{n}|x_{i}-y_{i}|">
-<meta property="og:image" content="http://latex.codecogs.com/gif.latex?d(x,y)=\sqrt{\sum\limits_{i=1}^{n}(x_{i}-y_{i})^2}">
-<meta property="og:updated_time" content="2018-12-21T07:11:20.530Z">
+<meta property="og:updated_time" content="2019-03-26T13:01:43.046Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KNN(K-Nearest Neighbor)&amp;K-近邻学习">
 <meta name="twitter:description" content="KNN算法学习笔记">
@@ -434,7 +432,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7
+                  8
                 </span>
               
             </div>
@@ -464,24 +462,25 @@
 </blockquote>
 <p><strong>&#x76D1;&#x7763;&#x5B66;&#x4E60;</strong>&#xFF1A;&#x9700;&#x8981;&#x5DF2;&#x7ECF;&#x6807;&#x6CE8;&#x597D;&#x7684;&#x8BAD;&#x7EC3;&#x96C6;&#x3002;</p>
 <p><strong>&#x61D2;&#x60F0;&#x5B66;&#x4E60;</strong>&#xFF1A;&#x6CA1;&#x6709;&#x663E;&#x793A;&#x7684;&#x8BAD;&#x7EC3;&#x8FC7;&#x7A0B;&#xFF0C;&#x8BAD;&#x7EC3;&#x65F6;&#x95F4;&#x5F00;&#x9500;&#x4E3A;0&#xFF0C;&#x5F85;&#x6536;&#x5230;&#x6D4B;&#x8BD5;&#x6837;&#x672C;&#x4E4B;&#x540E;&#x518D;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;</p>
-<p><strong>&#x590D;&#x6742;&#x5EA6;</strong>&#xFF1A;&#x7531;&#x4E8E;&#x662F;&#x61D2;&#x60F0;&#x5B66;&#x4E60;&#xFF0C;&#x56E0;&#x6B64;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x6D4B;&#x8BD5;&#x503C;&#x90FD;&#x9700;&#x8981;&#x904D;&#x5386;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#xFF0C;&#x9700;&#x8981;&#x4FDD;&#x5B58;&#x6240;&#x6709;&#x7684;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x3002;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x548C;&#x7A7A;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x90FD;&#x5F88;&#x9AD8;&#x3002; </p>
+<p><strong>&#x590D;&#x6742;&#x5EA6;</strong>&#xFF1A;&#x7531;&#x4E8E;&#x662F;&#x61D2;&#x60F0;&#x5B66;&#x4E60;&#xFF0C;&#x56E0;&#x6B64;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x6D4B;&#x8BD5;&#x503C;&#x90FD;&#x9700;&#x8981;&#x904D;&#x5386;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#xFF0C;&#x9700;&#x8981;&#x4FDD;&#x5B58;&#x6240;&#x6709;&#x7684;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x3002;<strong>&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x548C;&#x7A7A;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x90FD;&#x5F88;&#x9AD8;&#x3002;</strong> </p>
 <p><strong>&#x9519;&#x8BEF;&#x7387;</strong>&#xFF1A;&#x5F53;&#x6570;&#x636E;&#x8DB3;&#x591F;&#x5927;&#xFF0C;&#x7B97;&#x6CD5;&#x4FDD;&#x8BC1;&#x9519;&#x8BEF;&#x7387;&#x4E0D;&#x4F1A;&#x8D85;&#x8FC7;&#x8D1D;&#x53F6;&#x65AF;&#x7B97;&#x6CD5;&#x9519;&#x8BEF;&#x7387;&#x7684;&#x4E24;&#x500D;</p>
 <p><strong>&#x673A;&#x5236;</strong>&#xFF1A;&#x7ED9;&#x5B9A;&#x6D4B;&#x8BD5;&#x6837;&#x672C;&#xFF0C;&#x57FA;&#x4E8E;&#x67D0;&#x79CD;&#x8DDD;&#x79BB;&#x5EA6;&#x91CF;    &#x627E;&#x51FA;&#x8BAD;&#x7EC3;&#x96C6;&#x4E2D;&#x4E0E;&#x5176;&#x6700;&#x9760;&#x8FD1;&#x7684;K&#x4E2A;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#xFF0C;&#x7136;&#x540E;&#x57FA;&#x4E8E;&#x8FD9;K&#x4E2A;&#x201C;&#x90BB;&#x5C45;&#x201D;&#x7684;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x9884;&#x6D4B;&#xFF08;&#x5BF9;&#x4E8E;<em>&#x5206;&#x7C7B;&#x4EFB;&#x52A1;</em>&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x6295;&#x7968;&#x6CD5;&#xFF0C;&#x5BF9;&#x4E8E;<em>&#x56DE;&#x5F52;&#x4EFB;&#x52A1;</em>&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x5E73;&#x5747;&#x6CD5;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x8DDD;&#x79BB;&#x8FDC;&#x8FD1;&#x8FDB;&#x884C;&#x52A0;&#x6743;&#xFF09;&#x3002;<img src="/KNN/KNN_1.png" alt="image"></p>
 <p><strong>&#x8DDD;&#x79BB;&#x5EA6;&#x91CF;</strong>&#xFF1A;</p>
-<p>&#x66FC;&#x54C8;&#x987F;&#x8DDD;&#x79BB;&#xFF1A;<img src="http://latex.codecogs.com/gif.latex?d(x,y)=\sum\limits_{i=1}^{n}|x_{i}-y_{i}|"></p>
-<p><em>&#x6B27;&#x6C0F;&#x8DDD;&#x79BB;</em>&#xFF1A;<img src="http://latex.codecogs.com/gif.latex?d(x,y)=\sqrt{\sum\limits_{i=1}^{n}(x_{i}-y_{i})^2}">&#x7528;&#x4E8E;&#x6570;&#x503C;&#x578B;&#x6570;&#x636E;</p>
+<p>&#x66FC;&#x54C8;&#x987F;&#x8DDD;&#x79BB;&#xFF1A;$d(x,y)=\sum\limits_{i=1}^{n}|x_{i}-y_{i}|$</p>
+<p><em>&#x6B27;&#x6C0F;&#x8DDD;&#x79BB;</em>&#xFF1A;$d(x,y)=\sqrt{\sum\limits_{i=1}^{n}(x_{i}-y_{i})^2}$   &#x7528;&#x4E8E;&#x6570;&#x503C;&#x578B;&#x6570;&#x636E;</p>
 <p>&#x6D77;&#x660E;&#x8DDD;&#x79BB;&#xFF1A;Hamming distance             &#x7528;&#x4E8E;&#x5B57;&#x7B26;&#x4E32;&#x578B;&#x6570;&#x636E;</p>
 <p><strong>&#x53C2;&#x6570;&#x9009;&#x62E9; </strong>&#xFF1A;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5728;&#x5206;&#x7C7B;&#x65F6;&#x8F83;&#x5927;&#x7684;K&#x503C;&#x80FD;&#x591F;&#x51CF;&#x5C0F;&#x566A;&#x58F0;&#x7684;&#x5F71;&#x54CD;&#xFF0C;&#x4F46;&#x4F1A;&#x4F7F;&#x7C7B;&#x522B;&#x4E4B;&#x95F4;&#x7684;&#x754C;&#x9650;&#x53D8;&#x5F97;&#x6A21;&#x7CCA;&#x3002;&#x4E00;&#x4E2A;&#x8F83;&#x597D;&#x7684;K&#x503C;&#x80FD;&#x901A;&#x8FC7;&#x5404;&#x79CD;&#x542F;&#x53D1;&#x5F0F;&#x6280;&#x672F;&#x6765;&#x83B7;&#x53D6;&#x3002;</p>
-<h2 id="scikit-learn-Nearest-Neighbors-&#x4F7F;&#x7528;"><a href="#scikit-learn-Nearest-Neighbors-&#x4F7F;&#x7528;" class="headerlink" title="scikit-learn Nearest Neighbors &#x4F7F;&#x7528;"></a>scikit-learn Nearest Neighbors &#x4F7F;&#x7528;</h2><p>&#x200B;    <a href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.neighbors" target="_blank" rel="noopener"><code>sklearn.neighbors</code></a> &#x7C7B;&#x5BF9;&#x8FD1;&#x90BB;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x4E86;&#x5B9E;&#x73B0;&#xFF0C;&#x8FD9;&#x91CC;&#x7B80;&#x5355;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;&#x51E0;&#x79CD;&#x5E38;&#x7528;&#x7684;&#x51FD;&#x6570;&#x3002;</p>
+<h2 id="scikit-learn-Nearest-Neighbors-&#x4F7F;&#x7528;"><a href="#scikit-learn-Nearest-Neighbors-&#x4F7F;&#x7528;" class="headerlink" title="scikit-learn Nearest Neighbors &#x4F7F;&#x7528;"></a>scikit-learn Nearest Neighbors &#x4F7F;&#x7528;</h2><p>&#x200B;    <a href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.neighbors" target="_blank" rel="noopener">sklearn.neighbors</a> &#x5BF9;&#x8FD1;&#x90BB;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x4E86;&#x5B9E;&#x73B0;&#xFF0C;&#x8FD9;&#x91CC;&#x7B80;&#x5355;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;&#x51E0;&#x79CD;&#x5E38;&#x7528;&#x7684;&#x51FD;&#x6570;&#x3002;</p>
 <p>&#x200B;    sklearn&#x5B9E;&#x73B0;&#x4E86;<strong>&#x6709;&#x76D1;&#x7763;&#x548C;&#x65E0;&#x76D1;&#x7763;</strong>&#x7684;neighbors-based&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x3002;&#x65E0;&#x76D1;&#x7763;&#x7684;&#x8FD1;&#x90BB;&#x662F;&#x8BB8;&#x591A;&#x5176;&#x4ED6;&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x7684;&#x57FA;&#x7840;,&#x5C24;&#x5176;&#x662F;&#x6D41;&#x5F62;&#x5B66;&#x4E60;&#x548C;&#x8C31;&#x805A;&#x7C7B;&#x3002;&#x800C;&#x6709;&#x76D1;&#x7763;&#x7684;&#x65B9;&#x6CD5;&#x5219;&#x7528;&#x4E8E;&#x76F4;&#x63A5;&#x5206;&#x7C7B;&#x548C;&#x56DE;&#x5F52;&#x3002;</p>
 <p>&#x200B;    &#x5BF9;&#x4E8E;&#x8FD1;&#x90BB;&#x65B9;&#x6CD5;&#xFF0C;&#x5927;&#x7684;&#x6765;&#x8BF4;sklearn&#x6709;&#x4E24;&#x79CD;&#x5B9E;&#x73B0;&#xFF1A;<br>&#x200B;        &#x25CF; <strong>k-nearest neighbor learning</strong><br>&#x200B;        &#x25CF; <strong>radius-based neighbor learning</strong><br>&#x200B;    &#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;k-nearest&#x57FA;&#x4E8E;&#x5468;&#x56F4;&#x6700;&#x8FD1;&#x7684;k&#x4E2A;&#x6837;&#x672C;&#x3002;radius-based&#x5219;&#x9700;&#x8981;&#x4EBA;&#x4E3A;&#x8BBE;&#x5B9A;&#x4E00;&#x4E2A;&#x534A;&#x5F84;&#xFF0C;&#x7136;&#x540E;&#x57FA;&#x4E8E;&#x8FD9;&#x4E2A;&#x8303;&#x56F4;&#x5185;&#x7684;&#x6837;&#x672C;&#x3002;</p>
 <blockquote>
 <p>algorithm</p>
 </blockquote>
-<p>&#x200B;    sklearn&#x7528;&#x4E86;&#x591A;&#x79CD;&#x7B97;&#x6CD5;&#x6765;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x90BB;&#x8FD1;&#x3002;(N&#x6837;&#x672C;&#x6570;&#xFF0C;D&#x7EF4;&#x5EA6;&#x6570;)<br>&#x200B;    <strong>&#x2018;auto&#x2019; ,  &#x2018;ball_tree&#x2019; ,  &#x2018;kd_tree&#x2019; ,  &#x2018;brute&#x2019;</strong></p>
-<p>&#x200B;    <strong>brute Force</strong> &#xFF1A;&#x66B4;&#x529B;&#x7B97;&#x6CD5;&#xFF0C;&#x628A;&#x6240;&#x6709;&#x7684;&#x70B9;&#x90FD;&#x7B97;&#x4E00;&#x904D;&#x3002;&#x590D;&#x6742;&#x5EA6;&#x4E3A;O[DN^2]&#xFF0C;&#x5F88;&#x660E;&#x663E;&#x5F53;&#x6570;&#x636E;&#x91CF;&#x8F83;&#x5927;&#x65F6;&#x4F1A;&#x5F88;&#x6162;&#x3002;</p>
-<p>&#x200B;    <strong>K-D Tree</strong> &#xFF1A; &#x8BA4;&#x4E3A;&#x5982;&#x679C;A&#x8FDC;&#x79BB;B&#xFF0C;B&#x9760;&#x8FD1;C&#xFF0C;&#x90A3;&#x4E48;A&#x5C31;&#x8FDC;&#x79BB;C&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x8BA1;&#x7B97;&#x3002;&#x590D;&#x6742;&#x5EA6;O[DNlog(N)],&#x4F46;&#x662F;&#x5F53;&#x6837;&#x672C;&#x6570;&#x975E;&#x5E38;&#x5927;&#x65F6;&#x9000;&#x5316;&#x4E3A;O[DN^2]&#xFF0C;&#x5E76;&#x7531;&#x4E8E;&#x7ED3;&#x6784;&#x95EE;&#x9898;&#x751A;&#x81F3;&#x6BD4;brute&#x8FD8;&#x6162;&#xFF01;</p>
-<p>&#x200B;    <strong>ball_tree</strong> &#xFF1A;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;k-d&#x6811;&#x5F53;&#x6837;&#x672C;&#x6570;&#x5F88;&#x5927;&#x65F6;&#x901F;&#x5EA6;&#x53D8;&#x6162;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x91C7;&#x7528;&#x7403;&#x578B;&#x6811;&#x6765;&#x5B58;&#x50A8;&#x6570;&#x636E;&#xFF0C;&#x4F7F;&#x5F97;&#x590D;&#x6742;&#x5EA6;&#x7EF4;&#x6301;&#x5728;O[DNlog(N)]&#x3002;</p>
+<p>&#x200B;    sklearn&#x7528;&#x4E86;&#x591A;&#x79CD;&#x7B97;&#x6CD5;&#x6765;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x90BB;&#x8FD1;&#x3002;(N&#x6837;&#x672C;&#x6570;&#xFF0C;D&#x7EF4;&#x5EA6;&#x6570;)</p>
+<p>&#x200B;    <strong>&#x2018;auto&#x2019; ,  &#x2018;ball_tree&#x2019; ,  &#x2018;kd_tree&#x2019; ,  &#x2018;brute&#x2019;</strong></p>
+<p>&#x200B;    <strong>brute Force</strong> &#xFF1A;&#x66B4;&#x529B;&#x7B97;&#x6CD5;&#xFF0C;&#x628A;&#x6240;&#x6709;&#x7684;&#x70B9;&#x90FD;&#x7B97;&#x4E00;&#x904D;&#x3002;&#x590D;&#x6742;&#x5EA6;&#x4E3A;$O[DN^2]$&#xFF0C;&#x5F88;&#x660E;&#x663E;&#x5F53;&#x6570;&#x636E;&#x91CF;&#x8F83;&#x5927;&#x65F6;&#x4F1A;&#x5F88;&#x6162;&#x3002;</p>
+<p>&#x200B;    <strong>K-D Tree</strong> &#xFF1A; &#x8BA4;&#x4E3A;&#x5982;&#x679C;A&#x8FDC;&#x79BB;B&#xFF0C;B&#x9760;&#x8FD1;C&#xFF0C;&#x90A3;&#x4E48;A&#x5C31;&#x8FDC;&#x79BB;C&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x8BA1;&#x7B97;&#x3002;&#x590D;&#x6742;&#x5EA6;$O[DNlog(N)]$,&#x4F46;&#x662F;&#x5F53;&#x6837;&#x672C;&#x6570;&#x975E;&#x5E38;&#x5927;&#x65F6;&#x9000;&#x5316;&#x4E3A;$O[DN^2]$&#xFF0C;&#x5E76;&#x7531;&#x4E8E;&#x7ED3;&#x6784;&#x95EE;&#x9898;&#x751A;&#x81F3;&#x6BD4;brute&#x8FD8;&#x6162;&#xFF01;</p>
+<p>&#x200B;    <strong>ball_tree</strong> &#xFF1A;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;k-d&#x6811;&#x5F53;&#x6837;&#x672C;&#x6570;&#x5F88;&#x5927;&#x65F6;&#x901F;&#x5EA6;&#x53D8;&#x6162;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x91C7;&#x7528;&#x7403;&#x578B;&#x6811;&#x6765;&#x5B58;&#x50A8;&#x6570;&#x636E;&#xFF0C;&#x4F7F;&#x5F97;&#x590D;&#x6742;&#x5EA6;&#x7EF4;&#x6301;&#x5728;$O[DNlog(N)]$&#x3002;</p>
 <p>&#x200B;    &#x53E6;&#x5916;&#x56E0;&#x4E3A;&#x5B58;&#x50A8;&#x7ED3;&#x6784;&#x95EE;&#x9898;&#xFF0C;&#x6811;&#x5F62;&#x7ED3;&#x6784;&#x4F1A;&#x968F;&#x7740;K&#x503C;&#x7684;&#x53D8;&#x5927;&#x901F;&#x5EA6;&#x53D8;&#x6162;&#xFF0C;&#x800C;brute&#x7B97;&#x6CD5;&#x6CA1;&#x6709;&#x5F71;&#x54CD;&#x3002;</p>
 <p>&#x200B;    &#x6240;&#x4EE5;&#x4E00;&#x822C;&#x5F53;$k\le N/2$&#x65F6;,&#x53EF;&#x4EE5;&#x4F18;&#x5148;&#x4F7F;&#x7528;ball_tree&#x3002;<br>&#x200B;    &#x5F53;$k\ge N/2$ &#x65F6;&#xFF0C;&#x5219;&#x4F18;&#x5148;&#x9009;&#x7528;brute&#x3002;<br>&#x200B;    &#x5F53;&#x7136;&#xFF0C;&#x81EA;&#x5DF1;&#x4E0D;&#x786E;&#x5B9A;&#x7528;&#x4EC0;&#x4E48;&#x65F6;&#x53EF;&#x4EE5;&#x7528;&#x2018;auto&#x2019;&#x8BA9;&#x7CFB;&#x7EDF;&#x5E2E;&#x4F60;&#x9009;~    </p>
 <blockquote>
@@ -554,7 +553,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+            <a href="/tags/机器学习-KNN/" rel="tag"><i class="fa fa-tag"></i> 机器学习;KNN</a>
           
         </div>
       
@@ -696,7 +695,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
