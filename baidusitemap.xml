@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://cenleiding.github.io/DecisionTree.html</loc>
+    <lastmod>2019-03-26T13:41:45.855Z</lastmod>
+  </url>  <url>
     <loc>https://cenleiding.github.io/KNN.html</loc>
-    <lastmod>2019-03-26T13:09:16.042Z</lastmod>
+    <lastmod>2019-03-26T13:12:37.274Z</lastmod>
   </url>  <url>
     <loc>https://cenleiding.github.io/%E5%8C%BB%E7%96%97%E9%9A%90%E7%A7%81%E4%BF%9D%E6%8A%A4-%E6%94%BB%E5%87%BB.html</loc>
     <lastmod>2019-03-26T12:26:33.910Z</lastmod>
@@ -63,9 +66,6 @@
   </url>  <url>
     <loc>https://cenleiding.github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A6%82%E5%BF%B5%E9%9A%8F%E7%AC%94.html</loc>
     <lastmod>2019-02-18T12:02:25.587Z</lastmod>
-  </url>  <url>
-    <loc>https://cenleiding.github.io/DecisionTree.html</loc>
-    <lastmod>2019-02-18T11:54:37.592Z</lastmod>
   </url>  <url>
     <loc>https://cenleiding.github.io/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B.html</loc>
     <lastmod>2018-12-21T04:00:10.492Z</lastmod>
