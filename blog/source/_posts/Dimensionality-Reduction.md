@@ -70,15 +70,6 @@ array([[0, 1],
 ​	两个变量之间的高度相关意味着它们具有相似的趋势并且可能携带相似的信息。相似的变量对于提高模型的准确率一般没有帮助，只会降低模型的学习速度。 我们可以计算出变量之间的相关性，如果相关系数超过某个阈值，我们可以删除其中一个变量。
 
 ​	可以借助pandas中的.corr获得属性之间的相似度值。
-MySQL Notifier
-
-[Main Instruction]
-MySQL Notifier 已停止工作
-
-[Content]
-Windows 正在查找该问题的解决方案...
-
-[取消]
 
 ![](Dimensionality-Reduction/2.png)
 
