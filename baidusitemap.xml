@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://cenleiding.github.io/word2vec.html</loc>
+    <lastmod>2019-03-27T08:09:05.164Z</lastmod>
+  </url>  <url>
+    <loc>https://cenleiding.github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%AF%84%E4%BC%B0%E4%B8%8E%E9%80%89%E6%8B%A9.html</loc>
+    <lastmod>2019-03-27T03:23:42.704Z</lastmod>
+  </url>  <url>
     <loc>https://cenleiding.github.io/DecisionTree.html</loc>
-    <lastmod>2019-03-27T01:26:33.597Z</lastmod>
+    <lastmod>2019-03-27T02:37:21.348Z</lastmod>
+  </url>  <url>
+    <loc>https://cenleiding.github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A6%82%E5%BF%B5%E9%9A%8F%E7%AC%94.html</loc>
+    <lastmod>2019-03-27T02:30:32.714Z</lastmod>
   </url>  <url>
     <loc>https://cenleiding.github.io/KNN.html</loc>
     <lastmod>2019-03-26T13:12:37.274Z</lastmod>
@@ -55,17 +64,8 @@
     <loc>https://cenleiding.github.io/TensorFlow-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0.html</loc>
     <lastmod>2019-02-18T14:18:11.193Z</lastmod>
   </url>  <url>
-    <loc>https://cenleiding.github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%AF%84%E4%BC%B0%E4%B8%8E%E9%80%89%E6%8B%A9.html</loc>
-    <lastmod>2019-02-18T13:54:39.572Z</lastmod>
-  </url>  <url>
     <loc>https://cenleiding.github.io/LSTM%E6%98%AF%E4%BB%80%E4%B9%88.html</loc>
     <lastmod>2019-02-18T12:53:57.195Z</lastmod>
-  </url>  <url>
-    <loc>https://cenleiding.github.io/word2vec.html</loc>
-    <lastmod>2019-02-18T12:18:43.582Z</lastmod>
-  </url>  <url>
-    <loc>https://cenleiding.github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A6%82%E5%BF%B5%E9%9A%8F%E7%AC%94.html</loc>
-    <lastmod>2019-02-18T12:02:25.587Z</lastmod>
   </url>  <url>
     <loc>https://cenleiding.github.io/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B.html</loc>
     <lastmod>2018-12-21T04:00:10.492Z</lastmod>
