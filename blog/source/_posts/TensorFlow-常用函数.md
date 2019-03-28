@@ -3,9 +3,9 @@ title: TensorFlow 常用函数整理
 date: 2018-10-10 21:15:00
 tags: TensorFlow.API
 categories: 机器学习
-keywords: TensorFlow,常用函数
+keywords: [TensorFlow,常用函数]
 description: 对TensorFlow中常用函数的整理
-image:
+image: /TensorFlow-常用函数/0.jpg
 ---
 
 刚开始学习TensorFlow，虽然有[官方API](https://www.tensorflow.org/versions/r1.12/api_docs/python/tf)，但是分类实在对新手不友好。。。
