@@ -1,9 +1,9 @@
 ---
 title: docker发布TensorFlow
 date: 2018-11-20 21:10:04
-tags: docker TensorFlow serving
+tags: [docker,TensorFlow serving]
 categories: 随笔
-keywords: docker 端口问题 TensorFlow serving 
+keywords: [docker,端口问题,TensorFlow serving] 
 description: 使用docker发布TensorFlow的模型，并解决windows端口映射问题
 image: 
 ---
