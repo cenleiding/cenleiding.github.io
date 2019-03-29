@@ -76,7 +76,7 @@
 
 
 
-  <meta name="keywords" content="线性模型 linear model" />
+  <meta name="keywords" content="线性模型,linear model,机器学习" />
 
 
 
@@ -90,7 +90,7 @@
 
 
 <meta name="description" content="线性模型学习">
-<meta name="keywords" content="线性模型 linear model">
+<meta name="keywords" content="线性模型,linear model,机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性模型">
 <meta property="og:url" content="https://cenleiding.github.io/线性模型.html">
@@ -100,7 +100,7 @@
 <meta property="og:image" content="https://cenleiding.github.io/线性模型/1.jpg">
 <meta property="og:image" content="https://cenleiding.github.io/线性模型/2.png">
 <meta property="og:image" content="https://cenleiding.github.io/线性模型/3.jpg">
-<meta property="og:updated_time" content="2018-12-21T04:00:10.492Z">
+<meta property="og:updated_time" content="2019-03-29T01:19:29.350Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性模型">
 <meta name="twitter:description" content="线性模型学习">
@@ -464,55 +464,54 @@
 <li>&#x56DE;&#x5F52;&#x4E0E;&#x5206;&#x7C7B;&#x5728;&#x672C;&#x8D28;&#x4E0A;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x90FD;&#x662F;&#x5728;&#x62DF;&#x5408;&#x6570;&#x636E;&#x96C6;&#x7684;&#x51FD;&#x6570;&#x57FA;&#x7840;&#x4E0A;&#x5BF9;&#x65B0;&#x6837;&#x672C;&#x8FDB;&#x884C;&#x9884;&#x6D4B;&#x3002;</li>
 <li>&#x56DE;&#x5F52;&#x4E0E;&#x5206;&#x7C7B;&#x7684;&#x6700;&#x5927;&#x4E0D;&#x540C;&#x4EC5;&#x5728;&#x4E8E;&#x9884;&#x6D4B;&#x503C;&#x8303;&#x56F4;&#x4E0D;&#x540C;&#xFF0C;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x9884;&#x6D4B;&#x79BB;&#x6563;&#x503C;&#xFF0C;&#x56DE;&#x5F52;&#x9884;&#x6D4B;&#x8FDE;&#x7EED;&#x503C;&#x3002;</li>
 </ol>
-<h2 id="&#x7EBF;&#x6027;&#x56DE;&#x5F52;"><a href="#&#x7EBF;&#x6027;&#x56DE;&#x5F52;" class="headerlink" title="&#x7EBF;&#x6027;&#x56DE;&#x5F52;"></a>&#x7EBF;&#x6027;&#x56DE;&#x5F52;</h2><p>&#x200B;    &#x7EBF;&#x6027;&#x56DE;&#x5F52;(linear regression)&#x8BD5;&#x56FE;&#x5B66;&#x5F97;&#x4E00;&#x4E2A;&#x7EBF;&#x6027;&#x6A21;&#x578B;&#x4EE5;&#x5C3D;&#x53EF;&#x80FD;&#x51C6;&#x786E;&#x5730;&#x9884;&#x6D4B;&#x5B9E;&#x503C;&#x8F93;&#x51FA;&#x6807;&#x8BB0;&#x3002;</p>
-<p>&#x200B;    $f(x) = w_1x_1+w_2x_2+&#x2026;+w_dx_d+b=w^Tx+b$ </p>
+<h2 id="&#x7EBF;&#x6027;&#x56DE;&#x5F52;"><a href="#&#x7EBF;&#x6027;&#x56DE;&#x5F52;" class="headerlink" title="&#x7EBF;&#x6027;&#x56DE;&#x5F52;"></a>&#x7EBF;&#x6027;&#x56DE;&#x5F52;</h2><p>&#x3000;&#x3000;&#x7EBF;&#x6027;&#x56DE;&#x5F52;(linear regression)&#x8BD5;&#x56FE;&#x5B66;&#x5F97;&#x4E00;&#x4E2A;&#x7EBF;&#x6027;&#x6A21;&#x578B;&#x4EE5;&#x5C3D;&#x53EF;&#x80FD;&#x51C6;&#x786E;&#x5730;&#x9884;&#x6D4B;&#x5B9E;&#x503C;&#x8F93;&#x51FA;&#x6807;&#x8BB0;&#x3002;</p>
+<p>&#x3000;&#x3000;&#x3000;&#x3000;$f(x) = w_1x_1+w_2x_2+&#x2026;+w_dx_d+b=w^Tx+b$ </p>
 <blockquote>
 <p>&#x5982;&#x4F55;&#x786E;&#x5B9A;w&#x548C;b    </p>
 </blockquote>
-<p>&#x200B;    &#x5728;&#x56DE;&#x5F52;&#x4EFB;&#x52A1;&#x4E2D;&#x5E38;&#x7528;<strong>&#x5747;&#x65B9;&#x8BEF;&#x5DEE;</strong>&#x6765;&#x4F5C;&#x4E3A;&#x8861;&#x91CF;&#x9884;&#x6D4B;&#x503C;&#x4E0E;&#x771F;&#x5B9E;&#x503C;&#x4E4B;&#x95F4;&#x5DEE;&#x8DDD;&#x7684;<strong>&#x4EE3;&#x4EF7;&#x51FD;&#x6570;</strong>&#x3002;<br>&#x200B;    $L(f)=\sum_{i=1}^D(wx_i+b-y_i)^2$</p>
+<p>&#x3000;&#x3000;&#x5728;&#x56DE;&#x5F52;&#x4EFB;&#x52A1;&#x4E2D;&#x5E38;&#x7528;<strong>&#x5747;&#x65B9;&#x8BEF;&#x5DEE;</strong>&#x6765;&#x4F5C;&#x4E3A;&#x8861;&#x91CF;&#x9884;&#x6D4B;&#x503C;&#x4E0E;&#x771F;&#x5B9E;&#x503C;&#x4E4B;&#x95F4;&#x5DEE;&#x8DDD;&#x7684;<strong>&#x4EE3;&#x4EF7;&#x51FD;&#x6570;</strong>&#x3002;<br>&#x3000;&#x3000;&#x3000;&#x3000;$L(f)=\sum_{i=1}^D(wx_i+b-y_i)^2$</p>
 <p>&#x200B;    &#x5747;&#x65B9;&#x8BEF;&#x5DEE;&#x53C8;&#x88AB;&#x79F0;&#x4E3A;<strong>&#x6B27;&#x6C0F;&#x8DDD;&#x79BB;</strong>&#x3002; &#x57FA;&#x4E8E;&#x5747;&#x65B9;&#x8BEF;&#x5DEE;&#x6700;&#x4E0B;&#x5316;&#x6765;&#x8FDB;&#x884C;&#x6A21;&#x578B;&#x6C42;&#x89E3;&#x7684;&#x65B9;&#x6CD5;&#x79F0;&#x4E3A;<strong>&#x6700;&#x5C0F;&#x4E8C;&#x4E58;&#x6CD5;</strong>&#x3002;</p>
-<p>&#x200B;    &#x4E8E;&#x662F;&#x53C2;&#x6570;&#x4E3A;&#xFF1A;<br>&#x200B;    $(w<em>,b</em>)=argmin_{w,b}(\sum_{i=1}^D(wx_i+b-y_i)^2)$</p>
+<p>&#x200B;    &#x4E8E;&#x662F;&#x53C2;&#x6570;&#x4E3A;&#xFF1A;<br>&#x3000;&#x3000;&#x3000;&#x3000;$(w<em>,b</em>)=argmin_{w,b}(\sum_{i=1}^D(wx_i+b-y_i)^2)$</p>
 <blockquote>
 <p>&#x5982;&#x4F55;&#x6C42;&#x89E3;w&#x548C;b</p>
 </blockquote>
-<p>&#x200B;    &#x6C42;&#x89E3;&#x5747;&#x65B9;&#x8BEF;&#x5DEE;&#x6700;&#x5C0F;&#x5316;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x79F0;&#x4E3A;<strong>&#x53C2;&#x6570;&#x4F30;&#x8BA1;</strong>&#x3002;<br>&#x200B;    &#x56E0;&#x4E3A;L(f)&#x51FD;&#x6570;&#x4E3A;&#x51F8;&#x51FD;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x6C42;&#x6700;&#x5C0F;&#x503C;&#x7684;&#x5C31;&#x662F;&#x6C42;&#x5BFC;&#x6570;&#x4E3A;0&#x65F6;&#x7684;&#x503C;&#x3002;<br>&#x200B;    &#x4E3A;&#x4E86;&#x8868;&#x793A;&#x65B9;&#x4FBF;&#x8FD9;&#x91CC;&#x628A;w&#x548C;b&#x7EDF;&#x4E00;&#x8868;&#x793A;&#x4E3A;$\widehat{w}={w;b}$</p>
-<p>&#x200B;    &#x25CF; &#x5F53;$X^TX$&#x4E3A;&#x6EE1;&#x79E9;&#x77E9;&#x9635;&#x6216;&#x6B63;&#x5B9A;&#x77E9;&#x9635;&#x65F6;&#xFF1A;<br>&#x200B;        $\widehat{w}^*=(X^TX)_{-1}X^Ty$</p>
-<p>&#x200B;    &#x25CF; &#x5F53;&#x4E0D;&#x4E3A;&#x6EE1;&#x79E9;&#x77E9;&#x9635;&#x65F6;&#xFF08;&#x6837;&#x672C;&#x6570;&#x5C0F;&#x4E8E;&#x5C5E;&#x6027;&#x6570;&#xFF09;&#x5219;&#x9700;&#x8981;&#x52A0;&#x5165;&#x6B63;&#x5219;&#x5316;&#x9879;&#xFF0C;&#x8FD9;&#x91CC;&#x4EE5;L2&#x4E3A;&#x4F8B;:<br>&#x200B;        $\widehat{w}^*=argmin_{w}[(y-X\widehat{w})^T(y-X\widehat{w})+\lambda||\widehat{w}^2_2||]$</p>
+<p>&#x3000;&#x3000;&#x6C42;&#x89E3;&#x5747;&#x65B9;&#x8BEF;&#x5DEE;&#x6700;&#x5C0F;&#x5316;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x79F0;&#x4E3A;<strong>&#x53C2;&#x6570;&#x4F30;&#x8BA1;</strong>&#x3002;<br>&#x3000;&#x3000;&#x56E0;&#x4E3A;L(f)&#x51FD;&#x6570;&#x4E3A;&#x51F8;&#x51FD;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x6C42;&#x6700;&#x5C0F;&#x503C;&#x7684;&#x5C31;&#x662F;&#x6C42;&#x5BFC;&#x6570;&#x4E3A;0&#x65F6;&#x7684;&#x503C;&#x3002;<br>&#x3000;&#x3000;&#x4E3A;&#x4E86;&#x8868;&#x793A;&#x65B9;&#x4FBF;&#x8FD9;&#x91CC;&#x628A;w&#x548C;b&#x7EDF;&#x4E00;&#x8868;&#x793A;&#x4E3A;$\widehat{w}={w;b}$</p>
+<p>&#x3000;&#x3000;&#x25CF; &#x5F53;$X^TX$&#x4E3A;&#x6EE1;&#x79E9;&#x77E9;&#x9635;&#x6216;&#x6B63;&#x5B9A;&#x77E9;&#x9635;&#x65F6;&#xFF1A;<br>&#x3000;&#x3000;&#x3000;&#x3000;$\widehat{w}^*=(X^TX)_{-1}X^Ty$</p>
+<p>&#x3000;&#x3000;&#x25CF; &#x5F53;&#x4E0D;&#x4E3A;&#x6EE1;&#x79E9;&#x77E9;&#x9635;&#x65F6;&#xFF08;&#x6837;&#x672C;&#x6570;&#x5C0F;&#x4E8E;&#x5C5E;&#x6027;&#x6570;&#xFF09;&#x5219;&#x9700;&#x8981;&#x52A0;&#x5165;&#x6B63;&#x5219;&#x5316;&#x9879;&#xFF0C;&#x8FD9;&#x91CC;&#x4EE5;L2&#x4E3A;&#x4F8B;:</p>
+<p>&#x3000;&#x3000;&#x3000;&#x3000;$\widehat{w}^*=argmin_{w}[(y-X\widehat{w})^T(y-X\widehat{w})+\lambda||\widehat{w}^2_2||]$</p>
 <blockquote>
 <p>&#x5B9E;&#x9645;&#x6A21;&#x578B;&#x83B7;&#x5F97;w&#x548C;b</p>
 </blockquote>
-<p>&#x200B;    &#x867D;&#x7136;&#x5728;&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x83B7;&#x5F97;&#x4E86;w&#x548C;b&#x7684;&#x7CBE;&#x786E;&#x89E3;&#x6790;&#x89E3;&#xFF0C;&#x4F46;&#x5728;&#x5B9E;&#x9645;&#x8BAD;&#x7EC3;&#x4E2D;&#x6211;&#x4EEC;&#x8FD8;&#x662F;&#x8001;&#x8001;&#x5B9E;&#x5B9E;&#x7684;&#x4F7F;&#x7528;<strong>&#x68AF;&#x5EA6;&#x4E0B;&#x964D;</strong>&#x7B49;&#x7B97;&#x6CD5;&#x6765;&#x903C;&#x8FD1;w&#x548C;b&#x3002;&#x56E0;&#x4E3A;&#xFF1A;</p>
-<p>&#x200B;    &#x25CF; &#x867D;&#x7136;&#x83B7;&#x5F97;&#x4E86;&#x89E3;&#x6790;&#x89E3;&#xFF0C;&#x4F46;&#x662F;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x77E9;&#x9635;&#x6C42;&#x9006;&#x8FD0;&#x7B97;&#xFF0C;&#x6C42;&#x9006;&#x8FD0;&#x7B97;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x662F;&#x5341;&#x5206;&#x5927;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x8FD8;&#x4E0D;&#x5982;SGD&#x6765;&#x7684;&#x5FEB;&#x3002;</p>
-<p>&#x200B;    &#x25CF; &#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x7B97;&#x6CD5;&#x662F;&#x7EBF;&#x4E0A;&#x7B97;&#x6CD5;&#xFF0C;&#x5F53;&#x6709;&#x65B0;&#x7684;&#x6570;&#x636E;&#x65F6;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x8BAD;&#x7EC3;&#xFF0C;&#x800C;&#x89E3;&#x6790;&#x89E3;&#x5219;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x8BA1;&#x7B97;&#x3002;</p>
-<h2 id="&#x5E7F;&#x4E49;&#x7EBF;&#x6027;&#x6A21;&#x578B;"><a href="#&#x5E7F;&#x4E49;&#x7EBF;&#x6027;&#x6A21;&#x578B;" class="headerlink" title="&#x5E7F;&#x4E49;&#x7EBF;&#x6027;&#x6A21;&#x578B;"></a>&#x5E7F;&#x4E49;&#x7EBF;&#x6027;&#x6A21;&#x578B;</h2><p>&#x200B;    &#x53EA;&#x80FD;&#x62DF;&#x5408;&#x7EBF;&#x6027;&#x6570;&#x636E;&#x5F88;&#x663E;&#x7136;&#x662F;&#x4E0D;&#x591F;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x6709;&#x4E86;&#x5E7F;&#x4E49;&#x7EBF;&#x6027;&#x6A21;&#x578B;&#xFF0C;&#x5176;&#x5B9E;&#x9645;&#x4E0A;&#x5DF2;&#x7ECF;&#x662F;<strong>&#x975E;&#x7EBF;&#x6027;&#x6A21;&#x578B;</strong>&#x4E86;&#x3002;<br>&#x200B;    &#x5E7F;&#x4E49;&#x7EBF;&#x6027;&#x6A21;&#x578B;&#x6DFB;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;<strong>&#x5355;&#x8C03;&#x53EF;&#x5FAE;&#x51FD;&#x6570;h(.)</strong>&#xFF0C;&#x6765;&#x62DF;&#x5408;&#x975E;&#x7EBF;&#x6027;&#x6570;&#x636E;&#x3002;</p>
-<h3 id="&#x903B;&#x8F91;&#x56DE;&#x5F52;"><a href="#&#x903B;&#x8F91;&#x56DE;&#x5F52;" class="headerlink" title="&#x903B;&#x8F91;&#x56DE;&#x5F52;"></a>&#x903B;&#x8F91;&#x56DE;&#x5F52;</h3><p>&#x200B;    &#x53C8;&#x53EB;<strong>&#x5BF9;&#x6570;&#x51E0;&#x7387;&#x56DE;&#x5F52;&#x3001;&#x5BF9;&#x7387;&#x56DE;&#x5F52;</strong>&#x3002;</p>
-<p>&#x200B;    &#x5176;&#x5728;&#x7EBF;&#x6027;&#x56DE;&#x5F52;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;<strong>logistic function&#xFF0C;&#x53C8;&#x88AB;&#x79F0;&#x4E3A;Sigmoid&#x51FD;&#x6570;&#x3001;&#x5BF9;&#x6570;&#x51E0;&#x7387;&#x51FD;&#x6570;&#x3001;&#x5BF9;&#x7387;&#x51FD;&#x6570;</strong>&#x3002;<br>&#x200B;        logistic function:   <img src="/&#x7EBF;&#x6027;&#x6A21;&#x578B;/1.jpg" alt=""></p>
-<p>&#x200B;    &#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x903B;&#x8F91;&#x56DE;&#x5F52;&#x867D;&#x7136;&#x53EB;&#x201C;&#x56DE;&#x5F52;&#x201D;&#xFF0C;&#x4F46;&#x5374;&#x662F;&#x4E00;&#x79CD;<strong>&#x5206;&#x7C7B;&#x65B9;&#x6CD5;</strong>&#x3002;</p>
+<p>&#x3000;&#x3000;&#x867D;&#x7136;&#x5728;&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x83B7;&#x5F97;&#x4E86;w&#x548C;b&#x7684;&#x7CBE;&#x786E;&#x89E3;&#x6790;&#x89E3;&#xFF0C;&#x4F46;&#x5728;&#x5B9E;&#x9645;&#x8BAD;&#x7EC3;&#x4E2D;&#x6211;&#x4EEC;&#x8FD8;&#x662F;&#x8001;&#x8001;&#x5B9E;&#x5B9E;&#x7684;&#x4F7F;&#x7528;<strong>&#x68AF;&#x5EA6;&#x4E0B;&#x964D;</strong>&#x7B49;&#x7B97;&#x6CD5;&#x6765;&#x903C;&#x8FD1;w&#x548C;b&#x3002;&#x56E0;&#x4E3A;&#xFF1A;</p>
+<p>&#x3000;&#x3000;&#x25CF; &#x867D;&#x7136;&#x83B7;&#x5F97;&#x4E86;&#x89E3;&#x6790;&#x89E3;&#xFF0C;&#x4F46;&#x662F;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x77E9;&#x9635;&#x6C42;&#x9006;&#x8FD0;&#x7B97;&#xFF0C;&#x6C42;&#x9006;&#x8FD0;&#x7B97;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x662F;&#x5341;&#x5206;&#x5927;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x8FD8;&#x4E0D;&#x5982;SGD&#x6765;&#x7684;&#x5FEB;&#x3002;</p>
+<p>&#x3000;&#x3000;&#x25CF; &#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x7B97;&#x6CD5;&#x662F;&#x7EBF;&#x4E0A;&#x7B97;&#x6CD5;&#xFF0C;&#x5F53;&#x6709;&#x65B0;&#x7684;&#x6570;&#x636E;&#x65F6;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x8BAD;&#x7EC3;&#xFF0C;&#x800C;&#x89E3;&#x6790;&#x89E3;&#x5219;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x8BA1;&#x7B97;&#x3002;</p>
+<h2 id="&#x5E7F;&#x4E49;&#x7EBF;&#x6027;&#x6A21;&#x578B;"><a href="#&#x5E7F;&#x4E49;&#x7EBF;&#x6027;&#x6A21;&#x578B;" class="headerlink" title="&#x5E7F;&#x4E49;&#x7EBF;&#x6027;&#x6A21;&#x578B;"></a>&#x5E7F;&#x4E49;&#x7EBF;&#x6027;&#x6A21;&#x578B;</h2><p>&#x3000;&#x3000;&#x53EA;&#x80FD;&#x62DF;&#x5408;&#x7EBF;&#x6027;&#x6570;&#x636E;&#x5F88;&#x663E;&#x7136;&#x662F;&#x4E0D;&#x591F;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x6709;&#x4E86;&#x5E7F;&#x4E49;&#x7EBF;&#x6027;&#x6A21;&#x578B;&#xFF0C;&#x5176;&#x5B9E;&#x9645;&#x4E0A;&#x5DF2;&#x7ECF;&#x662F;<strong>&#x975E;&#x7EBF;&#x6027;&#x6A21;&#x578B;</strong>&#x4E86;&#x3002;<br>&#x200B;    &#x5E7F;&#x4E49;&#x7EBF;&#x6027;&#x6A21;&#x578B;&#x6DFB;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;<strong>&#x5355;&#x8C03;&#x53EF;&#x5FAE;&#x51FD;&#x6570;h(.)</strong>&#xFF0C;&#x6765;&#x62DF;&#x5408;&#x975E;&#x7EBF;&#x6027;&#x6570;&#x636E;&#x3002;</p>
+<h3 id="&#x903B;&#x8F91;&#x56DE;&#x5F52;"><a href="#&#x903B;&#x8F91;&#x56DE;&#x5F52;" class="headerlink" title="&#x903B;&#x8F91;&#x56DE;&#x5F52;"></a>&#x903B;&#x8F91;&#x56DE;&#x5F52;</h3><p>&#x3000;&#x3000;&#x53C8;&#x53EB;<strong>&#x5BF9;&#x6570;&#x51E0;&#x7387;&#x56DE;&#x5F52;&#x3001;&#x5BF9;&#x7387;&#x56DE;&#x5F52;</strong>&#x3002;</p>
+<p>&#x3000;&#x3000;&#x5176;&#x5728;&#x7EBF;&#x6027;&#x56DE;&#x5F52;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;<strong>logistic function&#xFF0C;&#x53C8;&#x88AB;&#x79F0;&#x4E3A;Sigmoid&#x51FD;&#x6570;&#x3001;&#x5BF9;&#x6570;&#x51E0;&#x7387;&#x51FD;&#x6570;&#x3001;&#x5BF9;&#x7387;&#x51FD;&#x6570;</strong>&#x3002;<br>&#x200B;        logistic function:   <img src="/&#x7EBF;&#x6027;&#x6A21;&#x578B;/1.jpg" alt=""></p>
+<p>&#x3000;&#x3000;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x903B;&#x8F91;&#x56DE;&#x5F52;&#x867D;&#x7136;&#x53EB;&#x201C;&#x56DE;&#x5F52;&#x201D;&#xFF0C;&#x4F46;&#x5374;&#x662F;&#x4E00;&#x79CD;<strong>&#x5206;&#x7C7B;&#x65B9;&#x6CD5;</strong>&#x3002;</p>
 <blockquote>
 <p>&#x5982;&#x4F55;&#x8FDB;&#x884C;w&#x548C;b&#x53C2;&#x6570;&#x4F30;&#x8BA1;</p>
 </blockquote>
-<p>&#x200B;    &#x5BF9;&#x4E8E;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#xFF0C;&#x5E38;&#x7528;<strong>&#x6781;&#x5927;&#x4F3C;&#x7136;&#x6CD5;(maximum likelihood method)</strong>&#x6765;&#x4F30;&#x8BA1;&#x53C2;&#x6570;&#x3002;<br>&#x200B;    &#x6781;&#x5927;&#x4F3C;&#x7136;&#x6CD5;&#x662F;&#x6982;&#x7387;&#x8BBA;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x601D;&#x60F3;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF1A;&#x9009;&#x53D6;&#x4E00;&#x7EC4;&#x53C2;&#x6570;&#x4F7F;&#x5F97;&#x7531;&#x6837;&#x672C;&#x9884;&#x6D4B;&#x771F;&#x5B9E;&#x6807;&#x8BB0;&#x7684;&#x6982;&#x7387;&#x6700;&#x5927;&#x3002;&#x7531;&#x4E8E;&#x4E00;&#x822C;&#x6709;&#x591A;&#x7EC4;&#x6837;&#x672C;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x6982;&#x7387;&#x8FDE;&#x4E58;&#xFF0C;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x4E0B;&#x6EA2;&#x548C;&#x540E;&#x7EED;&#x5904;&#x7406;&#x65B9;&#x4FBF;&#xFF0C;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;<strong>&#x5BF9;&#x6570;&#x4F3C;&#x7136;(log likelihood)</strong>&#xFF0C;&#x5C06;&#x4E58;&#x6CD5;&#x88C5;&#x6362;&#x4E3A;&#x52A0;&#x6CD5;&#x3002;</p>
+<p>&#x3000;&#x3000;&#x5BF9;&#x4E8E;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#xFF0C;&#x5E38;&#x7528;<strong>&#x6781;&#x5927;&#x4F3C;&#x7136;&#x6CD5;(maximum likelihood method)</strong>&#x6765;&#x4F30;&#x8BA1;&#x53C2;&#x6570;&#x3002;<br>&#x200B;    &#x6781;&#x5927;&#x4F3C;&#x7136;&#x6CD5;&#x662F;&#x6982;&#x7387;&#x8BBA;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x601D;&#x60F3;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF1A;&#x9009;&#x53D6;&#x4E00;&#x7EC4;&#x53C2;&#x6570;&#x4F7F;&#x5F97;&#x7531;&#x6837;&#x672C;&#x9884;&#x6D4B;&#x771F;&#x5B9E;&#x6807;&#x8BB0;&#x7684;&#x6982;&#x7387;&#x6700;&#x5927;&#x3002;&#x7531;&#x4E8E;&#x4E00;&#x822C;&#x6709;&#x591A;&#x7EC4;&#x6837;&#x672C;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x6982;&#x7387;&#x8FDE;&#x4E58;&#xFF0C;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x4E0B;&#x6EA2;&#x548C;&#x540E;&#x7EED;&#x5904;&#x7406;&#x65B9;&#x4FBF;&#xFF0C;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;<strong>&#x5BF9;&#x6570;&#x4F3C;&#x7136;(log likelihood)</strong>&#xFF0C;&#x5C06;&#x4E58;&#x6CD5;&#x88C5;&#x6362;&#x4E3A;&#x52A0;&#x6CD5;&#x3002;</p>
 <blockquote>
 <p>&#x4F18;&#x5316;&#x65B9;&#x7A0B;</p>
 </blockquote>
-<pre><code>$cost function L2&#x6B63;&#x5219;&#x9879;: min\ \{\frac{1}{2}||\omega||^2+C\sum_{i=1}^nlog(exp(-y_i(X_i^T\omega+c))+1)\}$
-
-$cost function L1&#x6B63;&#x5219;&#x9879;: min\ \{||\omega||+C\sum_{i=1}^nlog(exp(-y_i(X_i^T\omega+c))+1)\}$
-</code></pre><p>&#x200B;    &#x6CE8;&#x610F;&#xFF1A;&#x8FD9;&#x91CC;&#x5047;&#x8BBE;y&#x503C;&#x4E3A;-1&#x6216;+1</p>
+<p>&#x3000;&#x3000;$cost function&#xFF1A;\sum_{i=1}^m(-y_ilog(h(x))-(1-y_i)log(1-h(x)))$     </p>
+<p>&#x3000;&#x3000;&#x6CE8;&#x610F;&#xFF1A;&#x8FD9;&#x91CC;&#x5047;&#x8BBE;y&#x503C;&#x4E3A;-1&#x6216;+1,h(x)&#x4E3A;&#x8F93;&#x51FA;&#x503C;</p>
 <blockquote>
 <p>&#x5B9E;&#x9645;&#x6A21;&#x578B;&#x83B7;&#x5F97;w&#x548C;b</p>
 </blockquote>
-<p>&#x200B;    &#x56E0;&#x4E3A;&#x4F3C;&#x7136;&#x51FD;&#x6570;&#x4E3A;&#x9AD8;&#x9636;&#x53EF;&#x5BFC;&#x8FDE;&#x7EED;&#x51F8;&#x51FD;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x7528;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x6CD5;&#x6216;&#x8005;&#x62DF;&#x725B;&#x987F;&#x6CD5;&#x6C42;&#x89E3;&#x3002;</p>
-<h3 id="&#x7EBF;&#x6027;&#x5224;&#x522B;&#x5206;&#x6790;"><a href="#&#x7EBF;&#x6027;&#x5224;&#x522B;&#x5206;&#x6790;" class="headerlink" title="&#x7EBF;&#x6027;&#x5224;&#x522B;&#x5206;&#x6790;"></a>&#x7EBF;&#x6027;&#x5224;&#x522B;&#x5206;&#x6790;</h3><p>&#x200B;    &#x7EBF;&#x6027;&#x5224;&#x522B;&#x5206;&#x6790;(Linear Discriminant Analysis ,LDA)&#xFF1A;&#x7ED9;&#x5B9A;&#x8BAD;&#x7EC3;&#x6837;&#x4F8B;&#x96C6;&#xFF0C;&#x8BBE;&#x6CD5;&#x5C06;&#x6837;&#x4F8B;&#x6295;&#x5F71;&#x5230;&#x4E00;&#x6761;&#x76F4;&#x7EBF;&#x4E0A;&#xFF0C;&#x4F7F;&#x5F97;&#x540C;&#x7C7B;&#x6837;&#x4F8B;&#x7684;&#x6295;&#x5F71;&#x70B9;&#x5C3D;&#x53EF;&#x80FD;&#x63A5;&#x8FD1;&#xFF0C;&#x5F02;&#x7C7B;&#x6837;&#x4F8B;&#x7684;&#x6295;&#x5F71;&#x70B9;&#x5C3D;&#x53EF;&#x80FD;&#x8FDC;&#x79BB;&#x3002;</p>
+<p>&#x3000;&#x3000;&#x56E0;&#x4E3A;&#x4F3C;&#x7136;&#x51FD;&#x6570;&#x4E3A;&#x9AD8;&#x9636;&#x53EF;&#x5BFC;&#x8FDE;&#x7EED;&#x51F8;&#x51FD;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x7528;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x6CD5;&#x6216;&#x8005;&#x62DF;&#x725B;&#x987F;&#x6CD5;&#x6C42;&#x89E3;&#x3002;</p>
+<h3 id="&#x7EBF;&#x6027;&#x5224;&#x522B;&#x5206;&#x6790;"><a href="#&#x7EBF;&#x6027;&#x5224;&#x522B;&#x5206;&#x6790;" class="headerlink" title="&#x7EBF;&#x6027;&#x5224;&#x522B;&#x5206;&#x6790;"></a>&#x7EBF;&#x6027;&#x5224;&#x522B;&#x5206;&#x6790;</h3><p>&#x3000;&#x3000;&#x7EBF;&#x6027;&#x5224;&#x522B;&#x5206;&#x6790;(Linear Discriminant Analysis ,LDA)&#xFF1A;&#x7ED9;&#x5B9A;&#x8BAD;&#x7EC3;&#x6837;&#x4F8B;&#x96C6;&#xFF0C;&#x8BBE;&#x6CD5;&#x5C06;&#x6837;&#x4F8B;&#x6295;&#x5F71;&#x5230;&#x4E00;&#x6761;&#x76F4;&#x7EBF;&#x4E0A;&#xFF0C;&#x4F7F;&#x5F97;&#x540C;&#x7C7B;&#x6837;&#x4F8B;&#x7684;&#x6295;&#x5F71;&#x70B9;&#x5C3D;&#x53EF;&#x80FD;&#x63A5;&#x8FD1;&#xFF0C;&#x5F02;&#x7C7B;&#x6837;&#x4F8B;&#x7684;&#x6295;&#x5F71;&#x70B9;&#x5C3D;&#x53EF;&#x80FD;&#x8FDC;&#x79BB;&#x3002;</p>
 <p><img src="/&#x7EBF;&#x6027;&#x6A21;&#x578B;/2.png" alt=""></p>
-<p>&#x200B;    LDA&#x7B97;&#x6CD5;&#x65E2;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x964D;&#x7EF4;&#xFF0C;&#x53C8;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5206;&#x7C7B;&#xFF0C;&#x4F46;&#x662F;&#x76EE;&#x524D;&#x6765;&#x8BF4;&#xFF0C;&#x4E3B;&#x8981;&#x8FD8;&#x662F;&#x7528;&#x4E8E;&#x964D;&#x7EF4;&#x3002;</p>
-<h2 id="&#x591A;&#x5206;&#x7C7B;&#x5B66;&#x4E60;"><a href="#&#x591A;&#x5206;&#x7C7B;&#x5B66;&#x4E60;" class="headerlink" title="&#x591A;&#x5206;&#x7C7B;&#x5B66;&#x4E60;"></a>&#x591A;&#x5206;&#x7C7B;&#x5B66;&#x4E60;</h2><p>&#x200B;    &#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x60C5;&#x51B5;&#x90FD;&#x662F;2&#x5206;&#x7C7B;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x5B9E;&#x9645;&#x4E2D;&#x5E38;&#x9047;&#x5230;&#x591A;&#x5206;&#x7C7B;&#x7684;&#x5B66;&#x4E60;&#x4EFB;&#x52A1;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x57FA;&#x4E8E;&#x4E00;&#x4E9B;&#x57FA;&#x672C;&#x7B56;&#x7565;&#x5229;&#x7528;&#x4E8C;&#x5206;&#x7C7B;&#x5B66;&#x4E60;&#x5668;&#x6765;&#x89E3;&#x51B3;&#x591A;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x3002;</p>
-<p>&#x200B;    &#x25CF; &#x4E00;&#x5BF9;&#x4E00;(One vs One , OvO)<br>&#x200B;        &#x5C06;N&#x4E2A;&#x7C7B;&#x522B;&#x4E24;&#x4E24;&#x914D;&#x5BF9;&#xFF0C;&#x4ECE;&#x800C;&#x4EA7;&#x751F;N(N-1)/2&#x4E2A;&#x4E8C;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#xFF0C;&#x6700;&#x540E;&#x5C06;&#x9884;&#x6D4B;&#x5F97;&#x6700;&#x591A;&#x7684;&#x7C7B;&#x522B;&#x4F5C;&#x4E3A;&#x6700;&#x7EC8;&#x5206;&#x7C7B;&#x7ED3;&#x679C;&#x3002;</p>
-<p>&#x200B;    &#x25CF; &#x4E00;&#x5BF9;&#x5176;&#x4F59;(One vs Rest , OvR)<br>&#x200B;        &#x5C06;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x6837;&#x4F8B;&#x4F5C;&#x4E3A;&#x6B63;&#x4F8B;&#x3001;&#x6240;&#x6709;&#x5176;&#x4ED6;&#x7C7B;&#x7684;&#x6837;&#x4F8B;&#x4F5C;&#x4E3A;&#x53CD;&#x4F8B;&#x6765;&#x8BAD;&#x7EC3;N&#x4E2A;&#x5206;&#x7C7B;&#x5668;&#x3002;</p>
-<p>&#x200B;    &#x25CF; &#x591A;&#x5BF9;&#x591A;(Many vs Many , MvM)<br>&#x200B;        &#x5C06;&#x82E5;&#x5E72;&#x4E2A;&#x7C7B;&#x4F5C;&#x4E3A;&#x6B63;&#x7C7B;&#xFF0C;&#x82E5;&#x5E72;&#x4E2A;&#x5176;&#x4ED6;&#x7C7B;&#x4F5C;&#x4E3A;&#x53CD;&#x7C7B;&#x3002;</p>
+<p>&#x3000;&#x3000;LDA&#x7B97;&#x6CD5;&#x65E2;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x964D;&#x7EF4;&#xFF0C;&#x53C8;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5206;&#x7C7B;&#xFF0C;&#x4F46;&#x662F;&#x76EE;&#x524D;&#x6765;&#x8BF4;&#xFF0C;&#x4E3B;&#x8981;&#x8FD8;&#x662F;&#x7528;&#x4E8E;&#x964D;&#x7EF4;&#x3002;</p>
+<h2 id="&#x591A;&#x5206;&#x7C7B;&#x5B66;&#x4E60;"><a href="#&#x591A;&#x5206;&#x7C7B;&#x5B66;&#x4E60;" class="headerlink" title="&#x591A;&#x5206;&#x7C7B;&#x5B66;&#x4E60;"></a>&#x591A;&#x5206;&#x7C7B;&#x5B66;&#x4E60;</h2><p>&#x3000;&#x3000;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x60C5;&#x51B5;&#x90FD;&#x662F;2&#x5206;&#x7C7B;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x5B9E;&#x9645;&#x4E2D;&#x5E38;&#x9047;&#x5230;&#x591A;&#x5206;&#x7C7B;&#x7684;&#x5B66;&#x4E60;&#x4EFB;&#x52A1;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x57FA;&#x4E8E;&#x4E00;&#x4E9B;&#x57FA;&#x672C;&#x7B56;&#x7565;&#x5229;&#x7528;&#x4E8C;&#x5206;&#x7C7B;&#x5B66;&#x4E60;&#x5668;&#x6765;&#x89E3;&#x51B3;&#x591A;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x3000;&#x3000;&#x25CF; &#x4E00;&#x5BF9;&#x4E00;(One vs One , OvO)</p>
+<p>&#x3000;&#x3000;&#x3000; &#x5C06;N&#x4E2A;&#x7C7B;&#x522B;&#x4E24;&#x4E24;&#x914D;&#x5BF9;&#xFF0C;&#x4ECE;&#x800C;&#x4EA7;&#x751F;N(N-1)/2&#x4E2A;&#x4E8C;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#xFF0C;&#x6700;&#x540E;&#x5C06;&#x9884;&#x6D4B;&#x5F97;&#x6700;&#x591A;&#x7684;&#x7C7B;&#x522B;&#x4F5C;&#x4E3A;&#x6700;&#x7EC8;&#x5206;&#x7C7B;&#x7ED3;&#x679C;&#x3002;</p>
+<p>&#x3000;&#x3000;&#x25CF; &#x4E00;&#x5BF9;&#x5176;&#x4F59;(One vs Rest , OvR)<br>&#x3000;&#x3000;&#x3000; &#x5C06;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x6837;&#x4F8B;&#x4F5C;&#x4E3A;&#x6B63;&#x4F8B;&#x3001;&#x6240;&#x6709;&#x5176;&#x4ED6;&#x7C7B;&#x7684;&#x6837;&#x4F8B;&#x4F5C;&#x4E3A;&#x53CD;&#x4F8B;&#x6765;&#x8BAD;&#x7EC3;N&#x4E2A;&#x5206;&#x7C7B;&#x5668;&#x3002;</p>
+<p>&#x3000;&#x3000;&#x25CF; &#x591A;&#x5BF9;&#x591A;(Many vs Many , MvM)<br>&#x3000;&#x3000;&#x3000; &#x5C06;&#x82E5;&#x5E72;&#x4E2A;&#x7C7B;&#x4F5C;&#x4E3A;&#x6B63;&#x7C7B;&#xFF0C;&#x82E5;&#x5E72;&#x4E2A;&#x5176;&#x4ED6;&#x7C7B;&#x4F5C;&#x4E3A;&#x53CD;&#x7C7B;&#x3002;</p>
 <p><img src="/&#x7EBF;&#x6027;&#x6A21;&#x578B;/3.jpg" alt=""></p>
-<h2 id="&#x7EBF;&#x6027;&#x6A21;&#x578B;-amp-&#x795E;&#x7ECF;&#x7F51;&#x7EDC;"><a href="#&#x7EBF;&#x6027;&#x6A21;&#x578B;-amp-&#x795E;&#x7ECF;&#x7F51;&#x7EDC;" class="headerlink" title="&#x7EBF;&#x6027;&#x6A21;&#x578B; &amp; &#x795E;&#x7ECF;&#x7F51;&#x7EDC;"></a>&#x7EBF;&#x6027;&#x6A21;&#x578B; &amp; &#x795E;&#x7ECF;&#x7F51;&#x7EDC;</h2><p>&#x200B;    &#x7531;&#x4E8E;&#x6211;&#x5148;&#x770B;&#x7684;&#x662F;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#xFF0C;&#x6240;&#x4EE5;&#x770B;&#x5230;&#x7EBF;&#x6027;&#x6A21;&#x578B;&#x65F6;&#x7B2C;&#x4E00;&#x4E2A;&#x53CD;&#x5E94;&#x5C31;&#x662F;&#xFF1A;&#x8FD9;&#x4E2B;&#x7684;&#x4E0D;&#x5C31;&#x662F;&#x5355;&#x5C42;&#x7684;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x5417;&#xFF1F;<br>&#x200B;    &#x597D;&#x5427;&#xFF0C;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x5C31;&#x662F;&#x4ECE;&#x7EBF;&#x6027;&#x6A21;&#x578B;&#x8FDB;&#x5316;&#x8FC7;&#x6765;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x4EBA;&#x4EEC;&#x4E0D;&#x518D;&#x6EE1;&#x8DB3;&#x4E8E;&#x62DF;&#x5408;&#x7B80;&#x5355;&#x7684;&#x7EBF;&#x6027;&#x5E73;&#x9762;&#xFF0C;&#x800C;&#x4E14;&#x6709;&#x4E86;&#x8BA1;&#x7B97;&#x673A;&#x7B97;&#x529B;&#x7684;&#x652F;&#x6301;&#xFF0C;&#x4E8E;&#x662F;&#x4EA7;&#x751F;&#x4E86;&#x80FD;&#x62DF;&#x5408;&#x66F4;&#x590D;&#x6742;&#x6570;&#x636E;&#x7684;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x3002;</p>
-<p>&#x200B;    </p>
+<h2 id="&#x7EBF;&#x6027;&#x6A21;&#x578B;-amp-&#x795E;&#x7ECF;&#x7F51;&#x7EDC;"><a href="#&#x7EBF;&#x6027;&#x6A21;&#x578B;-amp-&#x795E;&#x7ECF;&#x7F51;&#x7EDC;" class="headerlink" title="&#x7EBF;&#x6027;&#x6A21;&#x578B; &amp; &#x795E;&#x7ECF;&#x7F51;&#x7EDC;"></a>&#x7EBF;&#x6027;&#x6A21;&#x578B; &amp; &#x795E;&#x7ECF;&#x7F51;&#x7EDC;</h2><p>&#x3000;&#x3000;&#x7531;&#x4E8E;&#x6211;&#x5148;&#x770B;&#x7684;&#x662F;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#xFF0C;&#x6240;&#x4EE5;&#x770B;&#x5230;&#x7EBF;&#x6027;&#x6A21;&#x578B;&#x65F6;&#x7B2C;&#x4E00;&#x4E2A;&#x53CD;&#x5E94;&#x5C31;&#x662F;&#xFF1A;&#x8FD9;&#x4E2B;&#x7684;&#x4E0D;&#x5C31;&#x662F;&#x5355;&#x5C42;&#x7684;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x5417;&#xFF1F;<br>&#x200B;    &#x597D;&#x5427;&#xFF0C;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x5C31;&#x662F;&#x4ECE;&#x7EBF;&#x6027;&#x6A21;&#x578B;&#x8FDB;&#x5316;&#x8FC7;&#x6765;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x4EBA;&#x4EEC;&#x4E0D;&#x518D;&#x6EE1;&#x8DB3;&#x4E8E;&#x62DF;&#x5408;&#x7B80;&#x5355;&#x7684;&#x7EBF;&#x6027;&#x5E73;&#x9762;&#xFF0C;&#x800C;&#x4E14;&#x6709;&#x4E86;&#x8BA1;&#x7B97;&#x673A;&#x7B97;&#x529B;&#x7684;&#x652F;&#x6301;&#xFF0C;&#x4E8E;&#x662F;&#x4EA7;&#x751F;&#x4E86;&#x80FD;&#x62DF;&#x5408;&#x66F4;&#x590D;&#x6742;&#x6570;&#x636E;&#x7684;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x3002;</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -567,6 +566,8 @@ $cost function L1&#x6B63;&#x5219;&#x9879;: min\ \{||\omega||+C\sum_{i=1}^nlog(ex
         <div class="post-tags">
           
             <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+          
+            <a href="/tags/线性模型/" rel="tag"><i class="fa fa-tag"></i> 线性模型</a>
           
         </div>
       
@@ -712,7 +713,7 @@ $cost function L1&#x6B63;&#x5219;&#x9879;: min\ \{||\omega||+C\sum_{i=1}^nlog(ex
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -802,7 +803,7 @@ $cost function L1&#x6B63;&#x5219;&#x9879;: min\ \{||\omega||+C\sum_{i=1}^nlog(ex
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">108.1k</span>
+    <span title="Site words total count">109.1k</span>
   
 </div>
 
