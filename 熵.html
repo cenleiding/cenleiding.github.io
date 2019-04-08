@@ -76,7 +76,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="熵,信息熵,互信息,条件熵,KL-散度,交叉熵,相对熵" />
 
 
 
@@ -89,17 +89,18 @@
 
 
 
-<meta name="description" content="CLD 笔记">
-<meta name="keywords" content="cenleiding,岑磊顶,笔记,博客,github,gitpage,blog,CLD,CLD的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CLD的博客">
-<meta property="og:url" content="https://cenleiding.github.io/categories/数据结构/index.html">
+<meta name="description" content="对熵的一些基本理解，免得学习时一脸懵逼。">
+<meta name="keywords" content="熵,信息熵,互信息,条件熵,KL-散度,交叉熵,相对熵">
+<meta property="og:type" content="article">
+<meta property="og:title" content="熵">
+<meta property="og:url" content="https://cenleiding.github.io/熵.html">
 <meta property="og:site_name" content="CLD的博客">
-<meta property="og:description" content="CLD 笔记">
+<meta property="og:description" content="对熵的一些基本理解，免得学习时一脸懵逼。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-08T02:43:10.504Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CLD的博客">
-<meta name="twitter:description" content="CLD 笔记">
+<meta name="twitter:title" content="熵">
+<meta name="twitter:description" content="对熵的一些基本理解，免得学习时一脸懵逼。">
 
 
 
@@ -129,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="https://cenleiding.github.io/categories/数据结构/"/>
+  <link rel="canonical" href="https://cenleiding.github.io/熵.html"/>
 
 
 
 
 
-  <title>分类: 数据结构 | CLD的博客</title>
+  <title>熵 | CLD的博客</title>
   
 
 
@@ -154,7 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://github.com/cenleiding/cenleiding.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -304,55 +305,292 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>数据结构<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://cenleiding.github.io/熵.html">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CLD">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CLD的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/十大排序-转.html" itemprop="url">
-              
-                <span itemprop="name">十大排序(转)</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">熵</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-13T14:35:16+08:00"
-              content="2019-03-13" >
-          03-13
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-04T19:48:37+08:00">
+                2019-04-04
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习，随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习，随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/熵.html" class="leancloud_visitors" data-flag-title="熵">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  对熵的一些基本理解，免得学习时一脸懵逼。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    </div>
+      
 
+      
+        <h2 id="&#x4FE1;&#x606F;&#x71B5;-Entropy"><a href="#&#x4FE1;&#x606F;&#x71B5;-Entropy" class="headerlink" title="&#x4FE1;&#x606F;&#x71B5;(Entropy)"></a>&#x4FE1;&#x606F;&#x71B5;(Entropy)</h2><p>$$Entropy=\sum_{i=1}^nP_ilog\frac{1}{P_i}$$</p>
+<p>&#x3000;&#x3000;&#x7406;&#x89E3;&#xFF1A;&#x8FD9;&#x4E2A;&#x516C;&#x5F0F;&#x770B;&#x7740;&#x7384;&#x4E4E;&#xFF0C;&#x4F46;&#x5B9E;&#x9645;&#x4E0A;&#x975E;&#x5E38;&#x7B26;&#x5408;&#x4EBA;&#x5BF9;&#x4FE1;&#x606F;&#x7684;&#x8BA4;&#x77E5;&#x3002;</p>
+<p>&#x3000;&#x3000;&#x25CF; &#x6211;&#x4EEC;&#x5E38;&#x5E38;&#x7528;&#x4FE1;&#x606F;&#x91CF;&#x6765;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x5305;&#x542B;&#x7684;&#x4FE1;&#x606F;&#x591A;&#x5C11;&#xFF0C;&#x800C;&#x4E14;&#x975E;&#x5E38;&#x76F4;&#x89C2;&#x7684;&#x662F;&#xFF1A;&#x4E00;&#x4E2A;&#x53D1;&#x751F;&#x53EF;&#x80FD;&#x6027;&#x8D8A;&#x5C0F;&#x7684;&#x4E8B;&#x4EF6;&#x88AB;&#x6211;&#x4EEC;&#x83B7;&#x53D6;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x5230;&#x4FE1;&#x606F;&#x91CF;&#x8D8A;&#x5927;&#xFF01;&#x6240;&#x4EE5;<strong>&#x4FE1;&#x606F;&#x91CF;&#x7684;&#x5EA6;&#x91CF;&#x9700;&#x8981;&#x548C;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x7684;&#x6982;&#x7387;&#x6210;&#x53CD;&#x6BD4;</strong>&#x3002;</p>
+<p>&#x3000;&#x3000;&#x25CF; &#x5728;&#x6211;&#x4EEC;&#x7684;&#x8BA4;&#x77E5;&#x4E2D;&#xFF0C;<strong>&#x4FE1;&#x606F;&#x91CF;&#x662F;&#x80FD;&#x591F;&#x76F8;&#x52A0;&#x7684;&#xFF01;</strong>&#x4E24;&#x4E2A;&#x4E0D;&#x76F8;&#x5E72;&#x4E8B;&#x4EF6;&#x7684;&#x603B;&#x4FE1;&#x606F;&#x91CF;&#x5E94;&#x8BE5;&#x662F;&#x4ED6;&#x4EEC;&#x5404;&#x81EA;&#x4FE1;&#x606F;&#x91CF;&#x7684;&#x6C42;&#x548C;&#x3002;</p>
+<p>&#x3000;&#x3000;&#x6709;&#x4E86;&#x4EE5;&#x4E0A;&#x4E24;&#x70B9;&#x8981;&#x6C42;&#xFF0C;&#x518D;&#x7ED3;&#x5408;&#x72EC;&#x7ACB;&#x4E8B;&#x4EF6;&#x8054;&#x5408;&#x6982;&#x7387;$P(x,y)=p(x)<em>p(y)$&#xFF0C; &#x54CE;&#xFF0C;&#x6211;&#x4EEC;&#x7528;$log(\frac{1}{p})$&#x6765;&#x8868;&#x793A;&#x4FE1;&#x606F;&#x5EA6;&#x91CF;&#x5C82;&#x4E0D;&#x7F8E;&#x54C9;&#xFF1F;&#x6CA1;&#x9519;&#xFF01;&#x8FD9;&#x5C31;&#x662F;<strong>&#x81EA;&#x4FE1;&#x606F; (self-information)</strong>&#x3002;&#x800C;<em>*&#x6574;&#x4E2A;Entropy&#x5219;&#x53EF;&#x4EE5;&#x770B;&#x6210;&#x81EA;&#x4FE1;&#x606F;&#x7684;&#x52A0;&#x6743;&#x5E73;&#x5747;&#xFF0C;&#x662F;&#x5BF9;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x53D1;&#x751F;&#x7684;&#x4E8B;&#x4EF6;&#x4EA7;&#x751F;&#x7684;&#x4FE1;&#x606F;&#x91CF;&#x7684;&#x671F;&#x671B;</em></em>&#x3002; </p>
+<p>&#x3000;&#x3000;&#x5230;&#x8FD9;&#x91CC;&#x4F60;&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x7591;&#x60D1;&#xFF0C;&#x5C31;&#x8FD9;&#x73A9;&#x610F;&#x771F;&#x7684;&#x6709;&#x7528;&#xFF1F;&#x7136;&#x800C;&#x4E8B;&#x5B9E;&#x8BC1;&#x660E;&#xFF0C;&#x8FD9;&#x4E1C;&#x897F;&#x662F;&#x771F;&#x7684;&#x725B;&#x903C;&#x3002;&#x3002;&#x3002;</p>
+<p>&#x3000;&#x3000;&#x4FE1;&#x606F;&#x71B5;&#x662F;&#x5728;&#x4FE1;&#x606F;&#x8BBA;&#x4E2D;&#x63D0;&#x51FA;&#x7684;&#xFF0C;&#x662F;&#x4FE1;&#x606F;&#x91CF;&#x7684;&#x5EA6;&#x91CF;&#x5355;&#x4F4D;&#x3002;&#x800C;&#x4E00;&#x6761;&#x4FE1;&#x606F;&#x7684;&#x4FE1;&#x606F;&#x91CF;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x7406;&#x60F3;&#x5316;&#x7684;&#x65E0;&#x635F;&#x538B;&#x7F29;&#xFF0C;&#x5C06;&#x5197;&#x4F59;&#x7684;&#x4FE1;&#x606F;&#x5168;&#x90E8;&#x53BB;&#x9664;&#xFF0C;&#x8FD9;&#x6837;&#x4E00;&#x6765;&#x538B;&#x7F29;&#x540E;&#x7684;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;(bit)&#x5C31;&#x80FD;&#x7528;&#x6765;&#x8868;&#x793A;&#x8FD9;&#x6761;&#x4FE1;&#x606F;&#x7684;&#x4FE1;&#x606F;&#x91CF;&#x4E86;&#x3002;&#x800C;&#x5BF9;&#x4FE1;&#x606F;&#x7684;&#x538B;&#x7F29;&#x9700;&#x8981;&#x5BF9;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x7F16;&#x7801;&#x3002;&#x795E;&#x5947;&#x7684;&#x662F;&#x2014;&#x2014;<strong>&#x5F53;&#x4FE1;&#x606F;&#x71B5;&#x53D6;2&#x4E3A;&#x5E95;&#xFF0C;&#x5355;&#x4F4D;&#x4E3A;bit&#x65F6;&#xFF0C;&#x5C31;&#x662F;&#x8FD9;&#x6761;&#x4FE1;&#x606F;&#x7406;&#x60F3;&#x4E2D;&#x7684;&#x6700;&#x5C0F;&#x5E73;&#x5747;&#x7F16;&#x7801;&#x4F4D;&#x6570;&#xFF01;&#xFF01;&#xFF01;</strong> &#x4E5F;&#x5C31;&#x662F;&#x65E0;&#x635F;&#x538B;&#x7F29;&#x7406;&#x60F3;&#x4E2D;&#x6240;&#x80FD;&#x8FBE;&#x5230;&#x7684;&#x6781;&#x81F4;&#x3002;&#x4EE5;&#x6700;&#x5E38;&#x89C1;&#x7684;Huffman&#x7F16;&#x7801;&#x4E3A;&#x4F8B;&#xFF0C;&#x4E8B;&#x4EF6;{1/4,1/4,1/4,1/4}&#x53EF;&#x4EE5;&#x7F16;&#x7801;&#x4E3A;{0,10,110,111},$Entropy=2bit$&#x800C;$&#x5B9E;&#x9645;&#x5E73;&#x5747;&#x7F16;&#x7801;=9/4bit$ ,&#x6CA1;&#x6709;&#x8FBE;&#x5230;&#x7406;&#x60F3;&#x5E73;&#x5747;&#x7F16;&#x7801;&#x3002;&#x800C;&#x5982;&#x679C;&#x4E8B;&#x4EF6;{1/2,1/4,1/8,1/8}&#xFF0C;$Entropy=1.75bit$&#x800C;$&#x5B9E;&#x9645;&#x5E73;&#x5747;&#x7F16;&#x7801;=1.75bit$&#xFF0C;&#x6B63;&#x597D;&#x8FBE;&#x5230;&#x7406;&#x60F3;&#x5E73;&#x5747;&#x7F16;&#x7801;&#x3002;</p>
+<p>&#x3000;&#x3000;&#x5B9E;&#x9645;&#x4E0A;&#x53EF;&#x4EE5;&#x8BC1;&#x660E;&#xFF1A;</p>
+<p>&#x3000;&#x3000;&#x3000;&#x3000;&#x25CF; <strong>&#x975E;&#x5747;&#x5300;&#x5206;&#x5E03;&#x6BD4;&#x5747;&#x5300;&#x5206;&#x5E03;&#x7684;&#x71B5;&#x8981;&#x5C0F;&#x3002;</strong></p>
+<p>&#x3000;&#x3000;&#x3000;&#x3000;&#x25CF; <strong>&#x4FE1;&#x606F;&#x71B5;&#x5C31;&#x662F;&#x4FE1;&#x606F;&#x6700;&#x77ED;&#x5E73;&#x5747;&#x7F16;&#x7801;&#x957F;&#x5EA6;&#x3002;</strong></p>
+<p>&#x3000;&#x3000;&#x3000;&#x3000;&#x25CF; <strong>&#x60C5;&#x51B5;&#x79CD;&#x7C7B;&#x8D8A;&#x591A;&#xFF0C;&#x71B5;&#x7684;&#x4E0A;&#x9650;&#x8D8A;&#x5927;&#x3002;$0\le H(x) \le log(n)$ </strong></p>
+<p>&#x3000;&#x3000;</p>
+<h2 id="&#x4EA4;&#x53C9;&#x71B5;-Cross-entropy"><a href="#&#x4EA4;&#x53C9;&#x71B5;-Cross-entropy" class="headerlink" title="&#x4EA4;&#x53C9;&#x71B5;(Cross entropy)"></a>&#x4EA4;&#x53C9;&#x71B5;(Cross entropy)</h2><p>$$Cross entropy=H(p,q)=\sum_xp(x)log\frac{1}{q(x)}$$</p>
+<p>&#x3000;&#x3000;&#x6837;&#x672C;&#x96C6;&#x7684;&#x4E24;&#x4E2A;&#x6982;&#x7387;&#x5206;&#x5E03; p(x) &#x548C; q(x)&#xFF0C;&#x5176;&#x4E2D; p(x) &#x4E3A;&#x771F;&#x5B9E;&#x5206;&#x5E03;&#xFF0C;q(x)&#x4E3A;&#x975E;&#x771F;&#x5B9E;&#x5206;&#x5E03;&#x3002;&#x800C;<strong>&#x4EA4;&#x53C9;&#x71B5;&#x5219;&#x662F;&#x7528;q&#x5206;&#x5E03;&#x7684;&#x7F16;&#x7801;&#x89C4;&#x5219;&#x53BB;&#x7F16;&#x7801;p&#x5206;&#x5E03;&#x6240;&#x5F97;&#x5230;&#x7684;&#x5E73;&#x5747;&#x7F16;&#x7801;&#x957F;&#x5EA6;&#x3002;</strong>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x4FE1;&#x606F;&#x71B5;&#x662F;&#x7F16;&#x7801;&#x6700;&#x4F18;&#x89E3;&#xFF0C;&#x6240;&#x4EE5;&#x4EA4;&#x53C9;&#x71B5;&#x4E00;&#x5B9A;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;p&#x5206;&#x5E03;&#x7684;&#x4FE1;&#x606F;&#x71B5;&#x3002;&#x800C;&#x4E14;<strong>p&#x548C;q&#x5206;&#x5E03;&#x8D8A;&#x76F8;&#x4F3C;&#xFF0C;&#x4EA4;&#x53C9;&#x71B5;&#x8D8A;&#x5C0F;&#xFF0C;&#x76F4;&#x5230;&#x7B49;&#x4E8E;&#x771F;&#x5B9E;&#x5206;&#x5E03;&#x7684;&#x4FE1;&#x606F;&#x71B5;&#x3002;</strong></p>
+<h2 id="&#x76F8;&#x5BF9;&#x71B5;-Relative-entropy-&#xFF0C;KL&#x6563;&#x5EA6;-Kullback&#x2013;Leibler-divergence"><a href="#&#x76F8;&#x5BF9;&#x71B5;-Relative-entropy-&#xFF0C;KL&#x6563;&#x5EA6;-Kullback&#x2013;Leibler-divergence" class="headerlink" title="&#x76F8;&#x5BF9;&#x71B5;(Relative entropy)&#xFF0C;KL&#x6563;&#x5EA6;(Kullback&#x2013;Leibler divergence)"></a>&#x76F8;&#x5BF9;&#x71B5;(Relative entropy)&#xFF0C;KL&#x6563;&#x5EA6;(Kullback&#x2013;Leibler divergence)</h2><p>$$D_{KL}(p,q)=\sum_{x}p(x)log\frac{p(x)}{q(x)}&#xFF1D;\sum_xp(x)log\frac{1}{q(x)}-\sum_xp(x)log(\frac{1}{p(x)})=&#x4EA4;&#x53C9;&#x71B5;-&#x4FE1;&#x606F;&#x71B5;$$</p>
+<p>&#x3000;&#x3000;KL&#x6563;&#x5EA6;&#x5C31;&#x662F;&#x4EA4;&#x53C9;&#x71B5;&#x51CF;&#x4FE1;&#x606F;&#x71B5;&#x7684;&#x503C;&#x3002;KL&#x6563;&#x5EA6;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5EA6;&#x91CF;p&#x548C;q&#x5206;&#x5E03;&#x7684;&#x4E0D;&#x76F8;&#x4F3C;&#x7A0B;&#x5EA6;&#xFF0C;&#x8D8A;&#x4E0D;&#x76F8;&#x4F3C;KL&#x6563;&#x5EA6;&#x503C;&#x8D8A;&#x5927;&#xFF0C;&#x5B8C;&#x5168;&#x4E00;&#x81F4;&#x5219;&#x503C;&#x4E3A;0&#x3002;</p>
+<p><strong>&#x2605; &#x5C0F;&#x7ED3;&#xFF1A;</strong>&#x5728;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x4E2D;&#xFF0C;&#x4E00;&#x822C;&#x7528;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x7684;&#x6807;&#x6CE8;&#x8FD1;&#x4F3C;&#x6570;&#x636E;&#x7684;&#x771F;&#x5B9E;&#x5206;&#x5E03;p&#x3002;&#x9884;&#x6D4B;&#x503C;&#x5219;&#x4E3A;&#x975E;&#x771F;&#x5B9E;&#x5206;&#x5E03;q&#x3002;<strong>&#x635F;&#x5931;&#x51FD;&#x6570;&#xFF1A;&#x6700;&#x5C0F;&#x5316;&#x4EA4;&#x53C9;&#x71B5; = &#x6700;&#x5C0F;&#x5316;KL&#x6563;&#x5EA6; = &#x6700;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1;&#xFF01;</strong> </p>
+<h2 id="&#x6761;&#x4EF6;&#x71B5;-Conditional-Entropy-&#x4E92;&#x4FE1;&#x606F;-Mutual-information"><a href="#&#x6761;&#x4EF6;&#x71B5;-Conditional-Entropy-&#x4E92;&#x4FE1;&#x606F;-Mutual-information" class="headerlink" title="&#x6761;&#x4EF6;&#x71B5;(Conditional Entropy),&#x4E92;&#x4FE1;&#x606F;(Mutual information)"></a>&#x6761;&#x4EF6;&#x71B5;(Conditional Entropy),&#x4E92;&#x4FE1;&#x606F;(Mutual information)</h2><p>$$&#x6761;&#x4EF6;&#x71B5;=H(X|Y)=\sum_{X,Y}p(x,y)log\frac{1}{p(x|y)}$$</p>
+<p>$$&#x4E92;&#x4FE1;&#x606F;=I(X;Y)=\sum_{X,Y}p(x,y)log\frac{p(x,y)}{p(x)p(y)}$$</p>
+<p>$$&#x4FE1;&#x606F;&#x71B5;=&#x6761;&#x4EF6;&#x71B5;+&#x4E92;&#x4FE1;&#x606F;$$</p>
+<p>&#x3000;&#x3000;<strong>&#x6761;&#x4EF6;&#x71B5;&#xFF1A;</strong>&#x5728;Y&#x4E8B;&#x4EF6;&#x6761;&#x4EF6;&#x4E0B;&#xFF0C;X&#x4E8B;&#x4EF6;&#x7684;&#x4FE1;&#x606F;&#x71B5;&#x3002;</p>
+<p>&#x3000;&#x3000;<strong>&#x4E92;&#x4FE1;&#x606F;&#xFF1A;</strong>&#x4E8B;&#x4EF6;X&#x548C;Y&#x7684;&#x76F8;&#x5173;&#x6027;&#x3002;</p>
+<p>&#x3000;&#x3000;&#x6240;&#x4EE5;&#xFF0C;&#x5F53;&#x4E24;&#x4E2A;&#x4E8B;&#x4EF6;&#x5B8C;&#x5168;&#x72EC;&#x7ACB;&#xFF0C;&#x5373;&#x5B8C;&#x5168;&#x4E0D;&#x76F8;&#x5173;&#xFF0C;&#x5219;&#x4E92;&#x4FE1;&#x606F;&#x4E3A;0&#xFF0C;&#x6761;&#x4EF6;&#x71B5;&#x4E3A;H(X)&#x3002;<br>&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x5F53;&#x4E24;&#x4E2A;&#x4E8B;&#x4EF6;&#x5B8C;&#x5168;&#x76F8;&#x5173;&#xFF0C; p(x,y)=p(x),&#x5219;&#x4E92;&#x4FE1;&#x606F;&#x4E3A;H(X),&#x6761;&#x4EF6;&#x71B5;&#x4E3A;0&#x3002;</p>
+<p><strong>&#x6CE8;&#x610F;&#xFF1A;&#x6761;&#x4EF6;&#x71B5;&#x548C;&#x4E92;&#x4FE1;&#x606F;&#x4E2D;X,Y&#x662F;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x4E8B;&#x4EF6;&#xFF0C;&#x800C;&#x4EA4;&#x53C9;&#x71B5;&#x548C;KL&#x6563;&#x5EA6;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x7684;&#x4E0D;&#x540C;&#x5206;&#x5E03;&#x3002;</strong></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    
+    
+
+	<div>
+	  
+	    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+	  
+	</div>
+	
+	<div>
+      
+        
+
+      
+	</div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+          
+            <a href="/tags/熵/" rel="tag"><i class="fa fa-tag"></i> 熵</a>
+          
+            <a href="/tags/信息论/" rel="tag"><i class="fa fa-tag"></i> 信息论</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+           <div style="color: rgba(0, 0, 0, 0.75); font-size:13px; letter-spacing:3px">(&gt;看完记得五星好评哦亲&lt;)</div>
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Speech-and-Language-processing-大纲.html" rel="next" title="Speech and Language processing 大纲">
+                <i class="fa fa-chevron-left"></i> Speech and Language processing 大纲
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -360,6 +598,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDEwNy8xNjYzNA=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -380,8 +627,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -466,6 +722,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#信息熵-Entropy"><span class="nav-text">信息熵(Entropy)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交叉熵-Cross-entropy"><span class="nav-text">交叉熵(Cross entropy)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相对熵-Relative-entropy-，KL散度-Kullback–Leibler-divergence"><span class="nav-text">相对熵(Relative entropy)，KL散度(Kullback–Leibler divergence)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件熵-Conditional-Entropy-互信息-Mutual-information"><span class="nav-text">条件熵(Conditional Entropy),互信息(Mutual information)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -636,6 +908,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -664,6 +940,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
@@ -1115,6 +1402,23 @@
 
   
   
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 14199,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
 
   
   
