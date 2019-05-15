@@ -5,18 +5,18 @@ tags: [机器学习,seq2seq,attention,Transformer]
 categories: [机器学习,seq2seq,attention,transformer]
 keywords: [机器学习,seq2seq,attention,transformer]
 description: seq2seq,attention,transformer
-image: /seq2seq-Attention-Transformer /0.png
+image: /seq2seq-Attention-Transformer/0.png
 ---
 
 这篇文章只是对seq2seq和attention机制和Transformer最最最简单的了解，感谢[EulerAndGauss](https://www.zhihu.com/people/EulerAndGauss)、[Yuanche.Sh](https://www.zhihu.com/people/cheshengyuan) 、[刘岩](https://www.zhihu.com/people/yan-liu-43)和[Jay Alammar](https://jalammar.github.io/)的博客文章的讲解。
 
 ## 1. seq2seq
 
-![](/seq2seq-Attention-Transformer/1.png)
+![](seq2seq-Attention-Transformer/1.png)
 
 　　**seq2seq**是一种**Encoder-Decoder**结构的网络。简单的来说就是在Encoder端输入一个序列，编码成一个向量C，然后在Decoder端根据这个向量输出一个目标序列，最常见的就是机器翻译和问答系统了。
 
-![](/seq2seq-Attention-Transformer/2.png)
+![](seq2seq-Attention-Transformer/2.png)
 
 　　在自然语言处理领域，seq2seq最常用RNN实现，比如LSTM，GRU。实际上基础的seq2seq十分简单，其就是在常规的RNN链上增加了一些标志位，比如用\<EOS>表示输入结束，然后靠着网络的记忆能力“惯性”的输出目标序列。但是很明显直接这样做的效果一定不会好，主要有两点原因：
 
@@ -32,11 +32,11 @@ image: /seq2seq-Attention-Transformer /0.png
 
 　　首先需要记住的一点是：**attention实际上就是一个权重分布的计算机制。** 简单却十分的有效。
 
- ![](/seq2seq-Attention-Transformer/3.png)
+ ![](seq2seq-Attention-Transformer/3.png)
 
-![](/seq2seq-Attention-Transformer/5.png)
+![](seq2seq-Attention-Transformer/5.png)
 
-![](/seq2seq-Attention-Transformer/4.png)
+![](seq2seq-Attention-Transformer/4.png)
 
 
 
@@ -48,19 +48,19 @@ image: /seq2seq-Attention-Transformer /0.png
 
 ### 2.1 attention实现-dot
 
-![](/seq2seq-Attention-Transformer/6.png)
+![](seq2seq-Attention-Transformer/6.png)
 
 　　该方法，用于Encoder和Decoder的hidden states 的向量维度一致的情况。直接做点乘和softmax，就可以得到每个输入节点的权重概率分布，继而得到带着注意力的编码C。
 
 ### 2,2 attention实现-general
 
-![](/seq2seq-Attention-Transformer/7.png)
+![](seq2seq-Attention-Transformer/7.png)
 
 　　该方法，用于Encoder和Decoder的hidden states的向量维度不一致的情况，实际上就是多设置一个转换矩阵，和dot方法没有太大区别。
 
 ### 2.3 attention实现-Q,V,K
 
-![](/seq2seq-Attention-Transformer/8.png)
+![](seq2seq-Attention-Transformer/8.png)
 
 ​	该方法，主要用于**self-attention**的计算。
 
@@ -80,9 +80,9 @@ image: /seq2seq-Attention-Transformer /0.png
 
 　　Transformer中抛弃了传统的CNN和RNN，整个网络结构完全是由Attention机制组成。更准确地讲，**Transformer由且仅由self-Attenion和Feed Forward Neural Network组成**。一个基于Transformer的可训练的神经网络可以通过堆叠Transformer的形式进行搭建。
 
-![](/seq2seq-Attention-Transformer/12.png)![](/seq2seq-Attention-Transformer/9.png)
+![](seq2seq-Attention-Transformer/12.png)![](seq2seq-Attention-Transformer/9.png)
 
-![](/seq2seq-Attention-Transformer/10.png)![](/seq2seq-Attention-Transformer/11.png)
+![](seq2seq-Attention-Transformer/10.png)![](seq2seq-Attention-Transformer/11.png)
 
 
 
