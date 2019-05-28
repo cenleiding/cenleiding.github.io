@@ -3,12 +3,12 @@ title: word2vec词向量
 date: 2018-10-09 21:43:32
 tags: [机器学习,词向量]
 categories: 机器学习
-keywords: [word2vec,词向量,word embedding,词嵌入,skip-gram,CBOW,基于计数,基于预测]
+keywords: [word2vec,词向量,word embedding,词嵌入,skip-gram,CBOW,基于计数,基于预测,hierarchical softmax,negative sampling]
 description: word2vec词嵌入,简单介绍基于计数和基于预测的方法。
 image: /word2vec/word2vec_3.png
 ---
 
-word2vec整体思路还是比较简单的，但十分的有趣，直观，有用。
+word2vec整体思路还是比较直观的，十分的有趣，有用。
 
 详细的可以看 TensorFlow 官网给出的教程，可以自己具体实现一下[教程](http://www.tensorfly.cn/tfdoc/tutorials/word2vec.html)
 
@@ -64,15 +64,63 @@ word2vec整体思路还是比较简单的，但十分的有趣，直观，有用
 
 
 
+## 五.两个trick
+
+　　在模型的最后，我们使用softmax来获得对各个词的预测概率，进而使用交叉熵作为损失函数。但是需要注意的是，**由于V往往比较大所以求softmax是很耗时的！**为此Word2Vec使用了Hierarchical Softmax和Negative Sampling两种求解策略。普遍认为Hierarchical Softmax对低频词效果较好；Negative Sampling对高频词效果较好，向量维度较低时效果更好。
+
+> 层次softmax
+
+![word2vec](word2vec/5.png)
+
+　　Hierarchical Softmax，通过使用哈夫曼树，十分骚气的将softmax的复杂度降低到了$log_2(V)$ 。在这棵哈夫曼树中，叶节点为需要求概率的词，非叶节点则会赋予一个向量（由网络给出）。那么求一个叶子节点的概率，可以表现为从root节点出发随机走，到达目标词的概率。
+
+　　现定义向左和向右走的概率分别为：
+
+$$p(n,left) = \sigma(\theta^T\cdot h)$$
+
+$$p(n,right) =1- \sigma(\theta^T\cdot h)=\sigma(-\theta^T\cdot h)$$  
+
+　　其中，h为隐藏层的输出值，由输入词计算得到。
+
+　　以W2为例：
+
+$$p(w_2) = p(n(w_2,1),left) \cdot p(n(w_2,2),left) \cdot p(n(w_2,3),right) \\ = \sigma({\theta_{n(w_2,1)}}^T \cdot h) \cdot \sigma({\theta_{n(w_2,2)}}^T \cdot h) \cdot \sigma({-\theta_{n(w_2,3)}}^T \cdot h)$$  
+
+　　Hierarchical Softmax的优点有两个：1.将整体计算复杂度降低到了$log2(V)$  2.高频词靠近根节点，能够进一步的减少计算量。
+
+
+
 > 负采样
 
-　　在模型的最后，我们使用softmax来获得对各个词的预测概率，进而使用交叉熵作为损失函数。但是需要注意的是，**由于V往往比较大所以求softmax是很耗时的！** 而且我们也没有必要知道对于每个词的预测概率，所以**负采样**将问题简化为：**只要目标单词的预测概率较高，同时噪声单词的概率很低，那么就认为这个预测是好的。**而噪声词一般选取那些高频词。
+　　 softmax求取了所有的词的概率，而我们实际上没有必要知道每个词的预测概率，所以**负采样**将问题简化为：**只要目标单词的预测概率较高，同时噪声单词的概率很低，那么就认为这个预测是好的。**而噪声词一般选取那些高频词。
 
 ![img](word2vec/word2vec_2.png)
 
 
 
-## 五.实际使用
+## 六.预处理
+
+参考[一灯](http://qiancy.com/2016/08/17/word2vec-hierarchical-softmax/)
+
+> 词典的构造
+
+　　首要任务是构造一个词典。一般使用max_vocab_size来规定词典的最大规模。用min_count来规定一个词最低的出现次数。当达到最大规模时，舍弃低频的词。
+
+> subSampling
+
+　　SubSampling有时候被称作DownSampling，也曾有人译作**亚采样**，实际是对高频词进行随机采样，关于随机采样的选择问题，考虑**高频词往往提供相对较少的信息，因此可以将高于特定词频的词语丢弃掉，以提高训练速度。**Mikolov在论文指出这种亚采样**能够带来2到10倍的性能提升，并能够提升低频词的表示精度。** 
+
+采样参数sample表示采样百分比，默认是1e-3，Google推荐的是1e-3至1e-5。
+
+$$P(w_i) = 1 – \sqrt{t \over f(w_i)}$$
+
+　　其中f(wi)是词wi的词频，t是阈值。而这个是Mikolov论文里的说法，实际Word2Vec的代码，以及后续gensim的实现，都采用了如下公式来表示词wi被丢弃的概率：
+
+$$P(w_i)=1-(\sqrt{sample*N_W \over v_{w_i}} + {sample*N_W \over v_{w_i}})$$
+
+​	其中：NW是参与训练的单词总数，包含重复单词，实质即词频累加；vwi是词wi的词频。
+
+## 七.实际使用
 
 > **负采样nce 函数：** 
 
