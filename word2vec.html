@@ -76,7 +76,7 @@
 
 
 
-  <meta name="keywords" content="word2vec,词向量,word embedding,词嵌入,skip-gram,CBOW,基于计数,基于预测" />
+  <meta name="keywords" content="word2vec,词向量,word embedding,词嵌入,skip-gram,CBOW,基于计数,基于预测,hierarchical softmax,negative sampling" />
 
 
 
@@ -90,7 +90,7 @@
 
 
 <meta name="description" content="word2vec词嵌入,简单介绍基于计数和基于预测的方法。">
-<meta name="keywords" content="word2vec,词向量,word embedding,词嵌入,skip-gram,CBOW,基于计数,基于预测">
+<meta name="keywords" content="word2vec,词向量,word embedding,词嵌入,skip-gram,CBOW,基于计数,基于预测,hierarchical softmax,negative sampling">
 <meta property="og:type" content="article">
 <meta property="og:title" content="word2vec词向量">
 <meta property="og:url" content="https://cenleiding.github.io/word2vec.html">
@@ -99,9 +99,10 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://cenleiding.github.io/word2vec/word2vec_1.png">
 <meta property="og:image" content="https://cenleiding.github.io/word2vec/word2vec_4.png">
+<meta property="og:image" content="https://cenleiding.github.io/word2vec/5.png">
 <meta property="og:image" content="https://cenleiding.github.io/word2vec/word2vec_2.png">
 <meta property="og:image" content="https://cenleiding.github.io/word2vec/word2vec_3.png">
-<meta property="og:updated_time" content="2019-03-28T01:15:28.677Z">
+<meta property="og:updated_time" content="2019-05-28T08:27:02.809Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="word2vec词向量">
 <meta name="twitter:description" content="word2vec词嵌入,简单介绍基于计数和基于预测的方法。">
@@ -419,7 +420,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.8k
+                  2.5k
                 </span>
               
 
@@ -435,7 +436,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  11
+                  15
                 </span>
               
             </div>
@@ -460,7 +461,7 @@
       
 
       
-        <p>word2vec&#x6574;&#x4F53;&#x601D;&#x8DEF;&#x8FD8;&#x662F;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x7684;&#xFF0C;&#x4F46;&#x5341;&#x5206;&#x7684;&#x6709;&#x8DA3;&#xFF0C;&#x76F4;&#x89C2;&#xFF0C;&#x6709;&#x7528;&#x3002;</p>
+        <p>word2vec&#x6574;&#x4F53;&#x601D;&#x8DEF;&#x8FD8;&#x662F;&#x6BD4;&#x8F83;&#x76F4;&#x89C2;&#x7684;&#xFF0C;&#x5341;&#x5206;&#x7684;&#x6709;&#x8DA3;&#xFF0C;&#x6709;&#x7528;&#x3002;</p>
 <p>&#x8BE6;&#x7EC6;&#x7684;&#x53EF;&#x4EE5;&#x770B; TensorFlow &#x5B98;&#x7F51;&#x7ED9;&#x51FA;&#x7684;&#x6559;&#x7A0B;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x4E00;&#x4E0B;<a href="http://www.tensorfly.cn/tfdoc/tutorials/word2vec.html" target="_blank" rel="noopener">&#x6559;&#x7A0B;</a></p>
 <p>&#x8FD9;&#x91CC;&#x53EA;&#x8FDB;&#x884C;&#x7B80;&#x5355;&#x7684;&#x4ECB;&#x7ECD;&#xFF0C;&#x5BF9;&#x4E00;&#x4E9B;&#x91CD;&#x8981;&#x6982;&#x5FF5;&#x8FDB;&#x884C;&#x68B3;&#x7406;&#xFF1A;</p>
 <p><img src="/word2vec/word2vec_1.png" alt="word2vec"></p>
@@ -481,12 +482,39 @@
 </blockquote>
 <p>&#x200B;    <img src="/word2vec/word2vec_4.png" alt="word2vec"></p>
 <p>&#x3000;&#x3000;&#x6574;&#x4E2A;&#x6A21;&#x578B;&#x5341;&#x5206;&#x7B80;&#x5355;&#xFF0C;&#x80FD;&#x591F;&#x5B66;&#x5F97;&#x4E24;&#x4E2A;&#x6620;&#x5C04;&#x77E9;&#x9635;<strong>target embedding</strong>&#x548C;<strong>context embedding</strong>&#x3002;&#x8FD9;&#x4E24;&#x4E2A;&#x77E9;&#x9635;&#x90FD;&#x662F;&#x8BCD;&#x4E0E;&#x5411;&#x91CF;&#x7684;&#x6620;&#x5C04;&#x3002;&#x8BCD;&#x5411;&#x91CF;&#x7684;&#x7EF4;&#x5EA6;n&#x80FD;&#x591F;&#x81EA;&#x7531;&#x8BBE;&#x5B9A;&#x3002;&#x6700;&#x540E;&#x6211;&#x4EEC;&#x5C06;<strong>target embedding</strong>&#x77E9;&#x9635;&#x4F5C;&#x4E3A;&#x6211;&#x4EEC;&#x5F97;&#x5230;&#x7684;&#x8BCD;&#x5411;&#x91CF;&#x77E9;&#x9635;(&#x6CA1;&#x53BB;&#x7814;&#x7A76;&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x7528;context embedding~)&#x3002;</p>
+<h2 id="&#x4E94;-&#x4E24;&#x4E2A;trick"><a href="#&#x4E94;-&#x4E24;&#x4E2A;trick" class="headerlink" title="&#x4E94;.&#x4E24;&#x4E2A;trick"></a>&#x4E94;.&#x4E24;&#x4E2A;trick</h2><p>&#x3000;&#x3000;&#x5728;&#x6A21;&#x578B;&#x7684;&#x6700;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;softmax&#x6765;&#x83B7;&#x5F97;&#x5BF9;&#x5404;&#x4E2A;&#x8BCD;&#x7684;&#x9884;&#x6D4B;&#x6982;&#x7387;&#xFF0C;&#x8FDB;&#x800C;&#x4F7F;&#x7528;&#x4EA4;&#x53C9;&#x71B5;&#x4F5C;&#x4E3A;&#x635F;&#x5931;&#x51FD;&#x6570;&#x3002;&#x4F46;&#x662F;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;<strong>&#x7531;&#x4E8E;V&#x5F80;&#x5F80;&#x6BD4;&#x8F83;&#x5927;&#x6240;&#x4EE5;&#x6C42;softmax&#x662F;&#x5F88;&#x8017;&#x65F6;&#x7684;&#xFF01;</strong>&#x4E3A;&#x6B64;Word2Vec&#x4F7F;&#x7528;&#x4E86;Hierarchical Softmax&#x548C;Negative Sampling&#x4E24;&#x79CD;&#x6C42;&#x89E3;&#x7B56;&#x7565;&#x3002;&#x666E;&#x904D;&#x8BA4;&#x4E3A;Hierarchical Softmax&#x5BF9;&#x4F4E;&#x9891;&#x8BCD;&#x6548;&#x679C;&#x8F83;&#x597D;&#xFF1B;Negative Sampling&#x5BF9;&#x9AD8;&#x9891;&#x8BCD;&#x6548;&#x679C;&#x8F83;&#x597D;&#xFF0C;&#x5411;&#x91CF;&#x7EF4;&#x5EA6;&#x8F83;&#x4F4E;&#x65F6;&#x6548;&#x679C;&#x66F4;&#x597D;&#x3002;</p>
+<blockquote>
+<p>&#x5C42;&#x6B21;softmax</p>
+</blockquote>
+<p><img src="/word2vec/5.png" alt="word2vec"></p>
+<p>&#x3000;&#x3000;Hierarchical Softmax&#xFF0C;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x54C8;&#x592B;&#x66FC;&#x6811;&#xFF0C;&#x5341;&#x5206;&#x9A9A;&#x6C14;&#x7684;&#x5C06;softmax&#x7684;&#x590D;&#x6742;&#x5EA6;&#x964D;&#x4F4E;&#x5230;&#x4E86;$log_2(V)$ &#x3002;&#x5728;&#x8FD9;&#x68F5;&#x54C8;&#x592B;&#x66FC;&#x6811;&#x4E2D;&#xFF0C;&#x53F6;&#x8282;&#x70B9;&#x4E3A;&#x9700;&#x8981;&#x6C42;&#x6982;&#x7387;&#x7684;&#x8BCD;&#xFF0C;&#x975E;&#x53F6;&#x8282;&#x70B9;&#x5219;&#x4F1A;&#x8D4B;&#x4E88;&#x4E00;&#x4E2A;&#x5411;&#x91CF;&#xFF08;&#x7531;&#x7F51;&#x7EDC;&#x7ED9;&#x51FA;&#xFF09;&#x3002;&#x90A3;&#x4E48;&#x6C42;&#x4E00;&#x4E2A;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x7684;&#x6982;&#x7387;&#xFF0C;&#x53EF;&#x4EE5;&#x8868;&#x73B0;&#x4E3A;&#x4ECE;root&#x8282;&#x70B9;&#x51FA;&#x53D1;&#x968F;&#x673A;&#x8D70;&#xFF0C;&#x5230;&#x8FBE;&#x76EE;&#x6807;&#x8BCD;&#x7684;&#x6982;&#x7387;&#x3002;</p>
+<p>&#x3000;&#x3000;&#x73B0;&#x5B9A;&#x4E49;&#x5411;&#x5DE6;&#x548C;&#x5411;&#x53F3;&#x8D70;&#x7684;&#x6982;&#x7387;&#x5206;&#x522B;&#x4E3A;&#xFF1A;</p>
+<p>$$p(n,left) = \sigma(\theta^T\cdot h)$$</p>
+<p>$$p(n,right) =1- \sigma(\theta^T\cdot h)=\sigma(-\theta^T\cdot h)$$  </p>
+<p>&#x3000;&#x3000;&#x5176;&#x4E2D;&#xFF0C;h&#x4E3A;&#x9690;&#x85CF;&#x5C42;&#x7684;&#x8F93;&#x51FA;&#x503C;&#xFF0C;&#x7531;&#x8F93;&#x5165;&#x8BCD;&#x8BA1;&#x7B97;&#x5F97;&#x5230;&#x3002;</p>
+<p>&#x3000;&#x3000;&#x4EE5;W2&#x4E3A;&#x4F8B;&#xFF1A;</p>
+<p>$$p(w_2) = p(n(w_2,1),left) \cdot p(n(w_2,2),left) \cdot p(n(w_2,3),right) \ = \sigma({\theta_{n(w_2,1)}}^T \cdot h) \cdot \sigma({\theta_{n(w_2,2)}}^T \cdot h) \cdot \sigma({-\theta_{n(w_2,3)}}^T \cdot h)$$  </p>
+<p>&#x3000;&#x3000;Hierarchical Softmax&#x7684;&#x4F18;&#x70B9;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;1.&#x5C06;&#x6574;&#x4F53;&#x8BA1;&#x7B97;&#x590D;&#x6742;&#x5EA6;&#x964D;&#x4F4E;&#x5230;&#x4E86;$log2(V)$  2.&#x9AD8;&#x9891;&#x8BCD;&#x9760;&#x8FD1;&#x6839;&#x8282;&#x70B9;&#xFF0C;&#x80FD;&#x591F;&#x8FDB;&#x4E00;&#x6B65;&#x7684;&#x51CF;&#x5C11;&#x8BA1;&#x7B97;&#x91CF;&#x3002;</p>
 <blockquote>
 <p>&#x8D1F;&#x91C7;&#x6837;</p>
 </blockquote>
-<p>&#x3000;&#x3000;&#x5728;&#x6A21;&#x578B;&#x7684;&#x6700;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;softmax&#x6765;&#x83B7;&#x5F97;&#x5BF9;&#x5404;&#x4E2A;&#x8BCD;&#x7684;&#x9884;&#x6D4B;&#x6982;&#x7387;&#xFF0C;&#x8FDB;&#x800C;&#x4F7F;&#x7528;&#x4EA4;&#x53C9;&#x71B5;&#x4F5C;&#x4E3A;&#x635F;&#x5931;&#x51FD;&#x6570;&#x3002;&#x4F46;&#x662F;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;<strong>&#x7531;&#x4E8E;V&#x5F80;&#x5F80;&#x6BD4;&#x8F83;&#x5927;&#x6240;&#x4EE5;&#x6C42;softmax&#x662F;&#x5F88;&#x8017;&#x65F6;&#x7684;&#xFF01;</strong> &#x800C;&#x4E14;&#x6211;&#x4EEC;&#x4E5F;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x77E5;&#x9053;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x8BCD;&#x7684;&#x9884;&#x6D4B;&#x6982;&#x7387;&#xFF0C;&#x6240;&#x4EE5;<strong>&#x8D1F;&#x91C7;&#x6837;</strong>&#x5C06;&#x95EE;&#x9898;&#x7B80;&#x5316;&#x4E3A;&#xFF1A;<strong>&#x53EA;&#x8981;&#x76EE;&#x6807;&#x5355;&#x8BCD;&#x7684;&#x9884;&#x6D4B;&#x6982;&#x7387;&#x8F83;&#x9AD8;&#xFF0C;&#x540C;&#x65F6;&#x566A;&#x58F0;&#x5355;&#x8BCD;&#x7684;&#x6982;&#x7387;&#x5F88;&#x4F4E;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x8BA4;&#x4E3A;&#x8FD9;&#x4E2A;&#x9884;&#x6D4B;&#x662F;&#x597D;&#x7684;&#x3002;</strong>&#x800C;&#x566A;&#x58F0;&#x8BCD;&#x4E00;&#x822C;&#x9009;&#x53D6;&#x90A3;&#x4E9B;&#x9AD8;&#x9891;&#x8BCD;&#x3002;</p>
+<p>&#x3000;&#x3000; softmax&#x6C42;&#x53D6;&#x4E86;&#x6240;&#x6709;&#x7684;&#x8BCD;&#x7684;&#x6982;&#x7387;&#xFF0C;&#x800C;&#x6211;&#x4EEC;&#x5B9E;&#x9645;&#x4E0A;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x77E5;&#x9053;&#x6BCF;&#x4E2A;&#x8BCD;&#x7684;&#x9884;&#x6D4B;&#x6982;&#x7387;&#xFF0C;&#x6240;&#x4EE5;<strong>&#x8D1F;&#x91C7;&#x6837;</strong>&#x5C06;&#x95EE;&#x9898;&#x7B80;&#x5316;&#x4E3A;&#xFF1A;<strong>&#x53EA;&#x8981;&#x76EE;&#x6807;&#x5355;&#x8BCD;&#x7684;&#x9884;&#x6D4B;&#x6982;&#x7387;&#x8F83;&#x9AD8;&#xFF0C;&#x540C;&#x65F6;&#x566A;&#x58F0;&#x5355;&#x8BCD;&#x7684;&#x6982;&#x7387;&#x5F88;&#x4F4E;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x8BA4;&#x4E3A;&#x8FD9;&#x4E2A;&#x9884;&#x6D4B;&#x662F;&#x597D;&#x7684;&#x3002;</strong>&#x800C;&#x566A;&#x58F0;&#x8BCD;&#x4E00;&#x822C;&#x9009;&#x53D6;&#x90A3;&#x4E9B;&#x9AD8;&#x9891;&#x8BCD;&#x3002;</p>
 <p><img src="/word2vec/word2vec_2.png" alt="img"></p>
-<h2 id="&#x4E94;-&#x5B9E;&#x9645;&#x4F7F;&#x7528;"><a href="#&#x4E94;-&#x5B9E;&#x9645;&#x4F7F;&#x7528;" class="headerlink" title="&#x4E94;.&#x5B9E;&#x9645;&#x4F7F;&#x7528;"></a>&#x4E94;.&#x5B9E;&#x9645;&#x4F7F;&#x7528;</h2><blockquote>
+<h2 id="&#x516D;-&#x9884;&#x5904;&#x7406;"><a href="#&#x516D;-&#x9884;&#x5904;&#x7406;" class="headerlink" title="&#x516D;.&#x9884;&#x5904;&#x7406;"></a>&#x516D;.&#x9884;&#x5904;&#x7406;</h2><p>&#x53C2;&#x8003;<a href="http://qiancy.com/2016/08/17/word2vec-hierarchical-softmax/" target="_blank" rel="noopener">&#x4E00;&#x706F;</a></p>
+<blockquote>
+<p>&#x8BCD;&#x5178;&#x7684;&#x6784;&#x9020;</p>
+</blockquote>
+<p>&#x3000;&#x3000;&#x9996;&#x8981;&#x4EFB;&#x52A1;&#x662F;&#x6784;&#x9020;&#x4E00;&#x4E2A;&#x8BCD;&#x5178;&#x3002;&#x4E00;&#x822C;&#x4F7F;&#x7528;max_vocab_size&#x6765;&#x89C4;&#x5B9A;&#x8BCD;&#x5178;&#x7684;&#x6700;&#x5927;&#x89C4;&#x6A21;&#x3002;&#x7528;min_count&#x6765;&#x89C4;&#x5B9A;&#x4E00;&#x4E2A;&#x8BCD;&#x6700;&#x4F4E;&#x7684;&#x51FA;&#x73B0;&#x6B21;&#x6570;&#x3002;&#x5F53;&#x8FBE;&#x5230;&#x6700;&#x5927;&#x89C4;&#x6A21;&#x65F6;&#xFF0C;&#x820D;&#x5F03;&#x4F4E;&#x9891;&#x7684;&#x8BCD;&#x3002;</p>
+<blockquote>
+<p>subSampling</p>
+</blockquote>
+<p>&#x3000;&#x3000;SubSampling&#x6709;&#x65F6;&#x5019;&#x88AB;&#x79F0;&#x4F5C;DownSampling&#xFF0C;&#x4E5F;&#x66FE;&#x6709;&#x4EBA;&#x8BD1;&#x4F5C;<strong>&#x4E9A;&#x91C7;&#x6837;</strong>&#xFF0C;&#x5B9E;&#x9645;&#x662F;&#x5BF9;&#x9AD8;&#x9891;&#x8BCD;&#x8FDB;&#x884C;&#x968F;&#x673A;&#x91C7;&#x6837;&#xFF0C;&#x5173;&#x4E8E;&#x968F;&#x673A;&#x91C7;&#x6837;&#x7684;&#x9009;&#x62E9;&#x95EE;&#x9898;&#xFF0C;&#x8003;&#x8651;<strong>&#x9AD8;&#x9891;&#x8BCD;&#x5F80;&#x5F80;&#x63D0;&#x4F9B;&#x76F8;&#x5BF9;&#x8F83;&#x5C11;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x5C06;&#x9AD8;&#x4E8E;&#x7279;&#x5B9A;&#x8BCD;&#x9891;&#x7684;&#x8BCD;&#x8BED;&#x4E22;&#x5F03;&#x6389;&#xFF0C;&#x4EE5;&#x63D0;&#x9AD8;&#x8BAD;&#x7EC3;&#x901F;&#x5EA6;&#x3002;</strong>Mikolov&#x5728;&#x8BBA;&#x6587;&#x6307;&#x51FA;&#x8FD9;&#x79CD;&#x4E9A;&#x91C7;&#x6837;<strong>&#x80FD;&#x591F;&#x5E26;&#x6765;2&#x5230;10&#x500D;&#x7684;&#x6027;&#x80FD;&#x63D0;&#x5347;&#xFF0C;&#x5E76;&#x80FD;&#x591F;&#x63D0;&#x5347;&#x4F4E;&#x9891;&#x8BCD;&#x7684;&#x8868;&#x793A;&#x7CBE;&#x5EA6;&#x3002;</strong> </p>
+<p>&#x91C7;&#x6837;&#x53C2;&#x6570;sample&#x8868;&#x793A;&#x91C7;&#x6837;&#x767E;&#x5206;&#x6BD4;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;1e-3&#xFF0C;Google&#x63A8;&#x8350;&#x7684;&#x662F;1e-3&#x81F3;1e-5&#x3002;</p>
+<p>$$P(w_i) = 1 &#x2013; \sqrt{t \over f(w_i)}$$</p>
+<p>&#x3000;&#x3000;&#x5176;&#x4E2D;f(wi)&#x662F;&#x8BCD;wi&#x7684;&#x8BCD;&#x9891;&#xFF0C;t&#x662F;&#x9608;&#x503C;&#x3002;&#x800C;&#x8FD9;&#x4E2A;&#x662F;Mikolov&#x8BBA;&#x6587;&#x91CC;&#x7684;&#x8BF4;&#x6CD5;&#xFF0C;&#x5B9E;&#x9645;Word2Vec&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4EE5;&#x53CA;&#x540E;&#x7EED;gensim&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x90FD;&#x91C7;&#x7528;&#x4E86;&#x5982;&#x4E0B;&#x516C;&#x5F0F;&#x6765;&#x8868;&#x793A;&#x8BCD;wi&#x88AB;&#x4E22;&#x5F03;&#x7684;&#x6982;&#x7387;&#xFF1A;</p>
+<p>$$P(w_i)=1-(\sqrt{sample<em>N_W \over v_{w_i}} + {sample</em>N_W \over v_{w_i}})$$</p>
+<p>&#x200B;    &#x5176;&#x4E2D;&#xFF1A;NW&#x662F;&#x53C2;&#x4E0E;&#x8BAD;&#x7EC3;&#x7684;&#x5355;&#x8BCD;&#x603B;&#x6570;&#xFF0C;&#x5305;&#x542B;&#x91CD;&#x590D;&#x5355;&#x8BCD;&#xFF0C;&#x5B9E;&#x8D28;&#x5373;&#x8BCD;&#x9891;&#x7D2F;&#x52A0;&#xFF1B;vwi&#x662F;&#x8BCD;wi&#x7684;&#x8BCD;&#x9891;&#x3002;</p>
+<h2 id="&#x4E03;-&#x5B9E;&#x9645;&#x4F7F;&#x7528;"><a href="#&#x4E03;-&#x5B9E;&#x9645;&#x4F7F;&#x7528;" class="headerlink" title="&#x4E03;.&#x5B9E;&#x9645;&#x4F7F;&#x7528;"></a>&#x4E03;.&#x5B9E;&#x9645;&#x4F7F;&#x7528;</h2><blockquote>
 <p><strong>&#x8D1F;&#x91C7;&#x6837;nce &#x51FD;&#x6570;&#xFF1A;</strong> </p>
 </blockquote>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">nce_loss</span><span class="params">(weights, biases, inputs, labels, num_sampled, num_classes,</span></span></span><br><span class="line"><span class="function"><span class="params">             num_true=<span class="number">1</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">             sampled_values=None,</span></span></span><br><span class="line"><span class="function"><span class="params">             remove_accidental_hits=False,</span></span></span><br><span class="line"><span class="function"><span class="params">             partition_strategy=<span class="string">&quot;mod&quot;</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">             name=<span class="string">&quot;nce_loss&quot;</span>)</span></span></span><br></pre></td></tr></tbody></table></figure>
@@ -758,7 +786,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-为什么需要word-embeddings？"><span class="nav-text">一.为什么需要word embeddings？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-分布式假设"><span class="nav-text">二.分布式假设</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-基于计数"><span class="nav-text">三.基于计数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-基于预测"><span class="nav-text">四.基于预测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-实际使用"><span class="nav-text">五.实际使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-为什么需要word-embeddings？"><span class="nav-text">一.为什么需要word embeddings？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-分布式假设"><span class="nav-text">二.分布式假设</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-基于计数"><span class="nav-text">三.基于计数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-基于预测"><span class="nav-text">四.基于预测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-两个trick"><span class="nav-text">五.两个trick</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六-预处理"><span class="nav-text">六.预处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七-实际使用"><span class="nav-text">七.实际使用</span></a></li></ol></div>
             
 
           </div>
@@ -794,7 +822,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">116.4k</span>
+    <span title="Site words total count">117.1k</span>
   
 </div>
 
