@@ -5,7 +5,7 @@ tags: [笔记,计算机基础,java-摘要]
 categories: [计算机基础,java-摘要]
 keywords: [计算机基础,java-摘要]
 description: 纯粹想到什么写什么，做个知识的总结
-image: 0.png
+image: /0.png
 ---
 
 
