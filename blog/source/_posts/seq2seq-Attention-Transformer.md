@@ -26,7 +26,12 @@ image: /seq2seq-Attention-Transformer/0.png
 
 　　而attention机制恰恰能够有效的弥补这两个缺陷！
 
+- attention vs LSTM
+  - LSTM只能记住20个词内的信息。而attention没有距离限制。
+  - 即使在较短的句子翻译中，attention仍然优于LSTM，因为其每个词的翻译更有针对性。
+  - 对于很短的句子（4,5个词）的翻译，效果都不好。因为太短实际上算不上完整的句子。
 
+![](seq2seq-Attention-Transformer/13.png)
 
 ## 2. seq2seq+attention
 

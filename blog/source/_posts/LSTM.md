@@ -140,7 +140,7 @@ image: /LSTM/LSTM_01.png
 
 ### 3.GRU（Gated Recurrent Unit）
 
-[Cho, et al. (2014)](http://arxiv.org/pdf/1406.1078v3.pdf). 非常常用模型，几乎可以替代LSTM。他把forget，input gate合并成了“updata gate”，并做了其他的修改，由于参数变少使得该模型可以比LSTM训练的更快，并且结果没有什么差别！！
+[Cho, et al. (2014)](http://arxiv.org/pdf/1406.1078v3.pdf). 非常常用的模型，几乎可以替代LSTM。他把forget，input gate合并成了“updata gate”，通过“reset gate”生成$\widetilde{h}$ ，抛弃了memory cell，由于参数变少（LSTM需要训练8个参数矩阵，而GRU只需要训练3个）使得该模型可以比LSTM训练的更快，而且由于公式简单使得GRU修改起来也方便，最重要的是训练结果没有什么差别！！
 
 ![img](LSTM/LSTM_11.png)
 
@@ -154,6 +154,8 @@ image: /LSTM/LSTM_01.png
 
 
 
-## LSTM为什么能够解决梯度消失？
+## LSTM、GRU为什么能够解决梯度消失？
 
 ​	**注意！！梯度消失在DNN和RNN中意义不一样 **。DNN中梯度消失指的是误差无法传递回浅层，导致浅层的参数无法更新；而RNN中的梯度消失是指较早时间步所贡献的更新值，无法被较后面的时间步获取，导致后面时间步进行误差更新的时候，采用的只是附近时间步的数据。
+
+​	LSTM和GRU能够解决梯度消失的主要原因在于**更新状态矩阵的方式**：$C_t = f_t*C_{t-1}+i_t*\tilde{C}_t$ 和 $h_t = (1-z_t)*h_{t-1}+z_t*\tilde{h}_t$  它们采用了线性运算，仔细一看这不就是**短连接、残差结构**吗？这使得求导值不会太小，有效减小了梯度消失问题。
