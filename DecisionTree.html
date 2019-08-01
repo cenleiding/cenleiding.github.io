@@ -98,7 +98,9 @@
 <meta property="og:description" content="DecisionTree算法学习笔记">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://cenleiding.github.io/DecisionTree/DT_1.jpg">
-<meta property="og:updated_time" content="2019-03-27T02:37:21.348Z">
+<meta property="og:image" content="https://cenleiding.github.io/DecisionTree/1.png">
+<meta property="og:image" content="https://cenleiding.github.io/DecisionTree/2.png">
+<meta property="og:updated_time" content="2019-07-30T08:27:16.217Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树 DecisionTree">
 <meta name="twitter:description" content="DecisionTree算法学习笔记">
@@ -416,7 +418,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.7k
+                  3.3k
                 </span>
               
 
@@ -432,7 +434,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  17
+                  20
                 </span>
               
             </div>
@@ -540,6 +542,38 @@
 <blockquote>
 <h3 id="&#x600E;&#x4E48;&#x5B9E;&#x73B0;&#x591A;&#x53D8;&#x91CF;&#xFF1F;"><a href="#&#x600E;&#x4E48;&#x5B9E;&#x73B0;&#x591A;&#x53D8;&#x91CF;&#xFF1F;" class="headerlink" title="&#x600E;&#x4E48;&#x5B9E;&#x73B0;&#x591A;&#x53D8;&#x91CF;&#xFF1F;"></a>&#x600E;&#x4E48;&#x5B9E;&#x73B0;&#x591A;&#x53D8;&#x91CF;&#xFF1F;</h3></blockquote>
 <p>&#x3000;&#x3000;&#x8FD9;&#x5C31;&#x6BD4;&#x8F83;&#x9EBB;&#x70E6;&#x4E86;&#xFF0C;&#x9700;&#x8981;&#x5728;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x90FD;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x7EBF;&#x6027;\&#x975E;&#x7EBF;&#x6027;&#x5206;&#x7C7B;&#x5668;&#x3002;&#x8BF4;&#x767D;&#x4E86;&#x5C31;&#x662F;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x90FD;&#x8981;&#x8FDB;&#x884C;&#x4E00;&#x6B21;&#x72EC;&#x7ACB;&#x7684;&#x5206;&#x7C7B;&#x3002;&#x6BD4;&#x5982;&#x5728;&#x8282;&#x70B9;&#x4E0A;&#x5D4C;&#x5165;&#x4E00;&#x4E2A;&#x7EBF;&#x6027;&#x5206;&#x7C7B;&#x5668;&#xFF0C;&#x5D4C;&#x5165;&#x4E00;&#x4E2A;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#xFF0C;&#x6216;&#x8005;&#x5D4C;&#x5165;&#x4E00;&#x4E2A;&#x611F;&#x77E5;&#x673A;&#x4EC0;&#x4E48;&#x7684;&#x3002;</p>
+<h2 id="6-CART"><a href="#6-CART" class="headerlink" title="6. CART"></a>6. CART</h2><p>classification and regression tree&#xFF0C;&#x5373;<strong>&#x5206;&#x7C7B;&#x4E0E;&#x56DE;&#x5F52;&#x6811;</strong>&#x3002;&#x800C;ID3&#x548C;C4.5&#x53EA;&#x80FD;&#x505A;&#x5206;&#x7C7B;&#x3002;</p>
+<p>CART&#x6700;&#x5927;&#x7684;&#x4E0D;&#x540C;&#x70B9;&#x6B63;&#x5728;&#x4E8E;&#xFF0C;&#x5176;&#x662F;<strong>&#x4E8C;&#x53C9;&#x6811;</strong>&#xFF0C;&#x5DE6;&#x53F3;&#x679D;&#x53D6;&#x503C;&#x4E3A;&#x201C;&#x662F;&#x201D;&#x548C;&#x201C;&#x5426;&#x201D;&#x3002;&#x53E6;&#x5916;&#x5176;&#x5212;&#x5206;&#x7B56;&#x7565;&#x4E5F;&#x4E0D;&#x540C;&#x3002;</p>
+<blockquote>
+<h3 id="&#x5206;&#x7C7B;&#x6811;&#x751F;&#x6210;"><a href="#&#x5206;&#x7C7B;&#x6811;&#x751F;&#x6210;" class="headerlink" title="&#x5206;&#x7C7B;&#x6811;&#x751F;&#x6210;"></a>&#x5206;&#x7C7B;&#x6811;&#x751F;&#x6210;</h3></blockquote>
+<ul>
+<li><p>&#x5212;&#x5206;&#x51C6;&#x5219;</p>
+<p>&#x5BF9;&#x4E8E;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#xFF0C;&#x91C7;&#x7528;<strong>&#x57FA;&#x5C3C;&#x6307;&#x6570;</strong>&#xFF08;Gini index&#xFF09;&#x6765;&#x5224;&#x65AD;&#x5206;&#x754C;&#x70B9;&#x3002;Gini(D)&#x53CD;&#x6620;&#x4E86;&#x4ECE;&#x6570;&#x636E;&#x96C6;D&#x4E2D;&#x968F;&#x673A;&#x62BD;&#x53D6;&#x4E24;&#x4E2A;&#x6837;&#x672C;&#xFF0C;&#x5176;&#x7C7B;&#x522B;&#x6807;&#x8BB0;&#x4E0D;&#x4E00;&#x81F4;&#x7684;&#x6982;&#x7387;&#x3002;Gini(D)&#x8D8A;&#x5C0F;&#xFF0C;&#x5219;&#x6570;&#x636E;&#x7EAF;&#x5EA6;&#x8D8A;&#x9AD8;&#xFF0C;&#x6DF7;&#x4E71;&#x5EA6;&#x8D8A;&#x5C0F;&#x3002;</p>
+<p>${\rm Gini(D)}= \sum_{k=1}^Kp_k(1-p_k) = 1 -\sum_{k=1}^Kp_k^2$</p>
+<p><img src="/DecisionTree/1.png" alt=""></p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x57FA;&#x5C3C;&#x6307;&#x6570;&#x548C;&#x4FE1;&#x606F;&#x71B5;&#x662F;&#x5F88;&#x76F8;&#x8FD1;&#x7684;&#xFF0C;&#x4F46;<strong>gini&#x6307;&#x6570;&#x7684;&#x8BA1;&#x7B97;&#x7B80;&#x5355;&#x5F88;&#x591A;&#xFF0C;&#x4F7F;&#x5F97;&#x7B97;&#x6CD5;&#x66F4;&#x9AD8;&#x6548;&#x3002;</strong></p>
+</li>
+<li><p>&#x5177;&#x4F53;&#x5212;&#x5206;</p>
+<p>CART&#x7684;&#x5212;&#x5206;&#x4E0D;&#x662F;&#x6309;&#x7167;&#x7279;&#x5F81;&#x8FDB;&#x884C;&#x5212;&#x5206;&#xFF0C;&#x800C;&#x662F;<strong>&#x6309;&#x7167;&#x7279;&#x5F81;&#x7684;&#x53D6;&#x503C;&#x8FDB;&#x884C;&#x5212;&#x5206;</strong>&#x3002;&#x6837;&#x672C;&#x88AB;&#x5206;&#x4E3A;&#x201C;&#x662F;&#x201D;&#x548C;&#x201C;&#x5426;&#x201D;&#x4E24;&#x4E2A;&#x5B50;&#x6811;&#x3002;&#x901A;&#x8FC7;&#x57FA;&#x5C3C;&#x6307;&#x6570;&#x9009;&#x53D6;&#x6700;&#x4F18;&#x5212;&#x5206;&#x70B9;&#x3002;</p>
+<p>&#x8FD9;&#x6837;&#x505A;&#x7684;&#x597D;&#x5904;&#x5728;&#x4E8E;&#x6BCF;&#x6B21;&#x90FD;&#x662F;&#x4E8C;&#x5206;&#x7C7B;&#xFF0C;<strong>&#x907F;&#x514D;&#x50CF;ID3&#x503E;&#x5411;&#x4E8E;&#x53D6;&#x503C;&#x8F83;&#x591A;&#x7684;&#x53D8;&#x91CF;&#xFF0C;C4.5&#x503E;&#x5411;&#x4E8E;&#x53D6;&#x503C;&#x8F83;&#x5C11;&#x7684;&#x53D8;&#x91CF;&#x3002;</strong></p>
+</li>
+</ul>
+<blockquote>
+<h3 id="&#x56DE;&#x5F52;&#x6811;&#x751F;&#x6210;"><a href="#&#x56DE;&#x5F52;&#x6811;&#x751F;&#x6210;" class="headerlink" title="&#x56DE;&#x5F52;&#x6811;&#x751F;&#x6210;"></a>&#x56DE;&#x5F52;&#x6811;&#x751F;&#x6210;</h3></blockquote>
+<ul>
+<li><p>&#x5212;&#x5206;&#x51C6;&#x5219;</p>
+<p>&#x56DE;&#x5F52;&#x6811;&#x91C7;&#x7528;<strong>&#x5E73;&#x65B9;&#x8BEF;&#x5DEE;&#x6700;&#x5C0F;&#x5316;</strong>&#x4E3A;&#x51C6;&#x5219;&#x3002;</p>
+<p>$\min_{j, s} \left[ \min_{c_1} \sum_{x_i \in R_1(j, s)} (y_i -c_1)^2 + \min_{c_2} \sum_{x_i \in R_2(j, s)} (y_i -c_2)^2 \right ] $</p>
+<p>c1,c2&#x4E3A;&#x5BF9;&#x5E94;&#x7684;R1,R2&#x90E8;&#x5206;&#x7684;&#x5747;&#x503C;&#xFF1A;$\hat c_m = {1\over N_m}\sum_{x_i\in R_m(j,s)}y_i , \quad x\in R_m , m=1,2$</p>
+<p>&#x7B80;&#x5355;&#x6765;&#x8BF4;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x4E2D;&#x7684;&#x6837;&#x672C;&#x8981;&#x548C;&#x6837;&#x672C;&#x5747;&#x503C;&#x5C3D;&#x91CF;&#x63A5;&#x8FD1;&#x3002;</p>
+</li>
+<li><p>&#x5177;&#x4F53;&#x5212;&#x5206;</p>
+<p>&#x540C;&#x6837;&#x662F;&#x6309;&#x7167;&#x7279;&#x5F81;&#x53D6;&#x503C;&#x8FDB;&#x884C;&#x5212;&#x5206;&#xFF1A;$R_1(j,s) = {x|x^{(j)} \le s} \  R_2(j,s) = {x|x^{(j)} \gt s}$</p>
+<p>&#x5B9E;&#x9645;&#x4E2D;&#x4E00;&#x822C;&#x4E0D;&#x76F4;&#x63A5;&#x7528;&#x7279;&#x5F81;&#x53D6;&#x503C;s&#x6765;&#x4F5C;&#x4E3A;&#x5207;&#x5206;&#x70B9;&#xFF0C;&#x800C;&#x5148;&#x628A;&#x7279;&#x5F81;&#x7684;&#x53D6;&#x503C;&#x6392;&#x5E8F;{v1,v2,&#x22EF;,vn}&#xFF0C;&#x7136;&#x540E;&#x53EF;&#x80FD;&#x7684;&#x9608;&#x503C;&#x6709;&#xFF1A;${\frac{v_1 + v_2}{2},\frac{v_2 + v_3}{2},\cdots,\frac{v_{n-1} + v_n}{2} }$&#x3002;&#x548C;C4.5&#x4E2D;&#x5904;&#x7406;&#x8FDE;&#x7EED;&#x53D8;&#x91CF;&#x7684;&#x65B9;&#x6CD5;&#x4E00;&#x6837;&#x3002;</p>
+<p><img src="/DecisionTree/2.png" alt="&#x897F;&#x74DC;&#x51B3;&#x7B56;&#x6811;"></p>
+<p>&#x6700;&#x540E;&#x53F6;&#x8282;&#x70B9;&#x7684;value&#x5373;&#x4E3A;&#x9884;&#x6D4B;&#x503C;&#xFF0C;&#x4E5F;&#x79F0;&#x4E3A;&#x8BE5;&#x53F6;&#x8282;&#x70B9;&#x7684;&#x5F97;&#x5206;&#x3002;</p>
+</li>
+</ul>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -721,7 +755,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -732,7 +766,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -743,7 +777,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -797,7 +831,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是决策树？"><span class="nav-text">1.什么是决策树？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-属性划分"><span class="nav-text">2.属性划分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么判断一个数据集的纯度，混乱度？"><span class="nav-text">怎么判断一个数据集的纯度，混乱度？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#每次决策都会将数据集进行分割。怎么表示多个数据集的混乱度？"><span class="nav-text">每次决策都会将数据集进行分割。怎么表示多个数据集的混乱度？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表示数据混乱度的方法有了，那算法应该具体怎么应用呢？"><span class="nav-text">表示数据混乱度的方法有了，那算法应该具体怎么应用呢？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-减枝-pruning"><span class="nav-text">3.减枝 pruning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#那么怎么判断一个分支需不需要？"><span class="nav-text">那么怎么判断一个分支需不需要？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么时候减枝比较好？"><span class="nav-text">什么时候减枝比较好？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-连续值与缺失值"><span class="nav-text">4.连续值与缺失值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连续值怎么处理？"><span class="nav-text">连续值怎么处理？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺失的值怎么处理"><span class="nav-text">缺失的值怎么处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#那么在属性缺失的情况下怎么进行划分属性的选择？"><span class="nav-text">那么在属性缺失的情况下怎么进行划分属性的选择？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#那么有了划分属性，怎么对缺失样例进行划分呢？"><span class="nav-text">那么有了划分属性，怎么对缺失样例进行划分呢？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-多变量决策树"><span class="nav-text">5.多变量决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是多变量？"><span class="nav-text">什么是多变量？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么实现多变量？"><span class="nav-text">怎么实现多变量？</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是决策树？"><span class="nav-text">1.什么是决策树？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-属性划分"><span class="nav-text">2.属性划分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么判断一个数据集的纯度，混乱度？"><span class="nav-text">怎么判断一个数据集的纯度，混乱度？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#每次决策都会将数据集进行分割。怎么表示多个数据集的混乱度？"><span class="nav-text">每次决策都会将数据集进行分割。怎么表示多个数据集的混乱度？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表示数据混乱度的方法有了，那算法应该具体怎么应用呢？"><span class="nav-text">表示数据混乱度的方法有了，那算法应该具体怎么应用呢？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-减枝-pruning"><span class="nav-text">3.减枝 pruning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#那么怎么判断一个分支需不需要？"><span class="nav-text">那么怎么判断一个分支需不需要？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么时候减枝比较好？"><span class="nav-text">什么时候减枝比较好？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-连续值与缺失值"><span class="nav-text">4.连续值与缺失值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连续值怎么处理？"><span class="nav-text">连续值怎么处理？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺失的值怎么处理"><span class="nav-text">缺失的值怎么处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#那么在属性缺失的情况下怎么进行划分属性的选择？"><span class="nav-text">那么在属性缺失的情况下怎么进行划分属性的选择？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#那么有了划分属性，怎么对缺失样例进行划分呢？"><span class="nav-text">那么有了划分属性，怎么对缺失样例进行划分呢？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-多变量决策树"><span class="nav-text">5.多变量决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是多变量？"><span class="nav-text">什么是多变量？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么实现多变量？"><span class="nav-text">怎么实现多变量？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-CART"><span class="nav-text">6. CART</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分类树生成"><span class="nav-text">分类树生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回归树生成"><span class="nav-text">回归树生成</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -833,7 +867,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">118.8k</span>
+    <span title="Site words total count">153.9k</span>
   
 </div>
 

@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="CLD的博客">
 <meta property="og:description" content="对熵的一些基本理解，免得学习时一脸懵逼。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-08T02:57:13.807Z">
+<meta property="og:updated_time" content="2019-07-31T03:04:16.601Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="熵">
 <meta name="twitter:description" content="对熵的一些基本理解，免得学习时一脸懵逼。">
@@ -461,14 +461,14 @@
 <p>&#x3000;&#x3000;&#x25CF; &#x5728;&#x6211;&#x4EEC;&#x7684;&#x8BA4;&#x77E5;&#x4E2D;&#xFF0C;<strong>&#x4FE1;&#x606F;&#x91CF;&#x662F;&#x80FD;&#x591F;&#x76F8;&#x52A0;&#x7684;&#xFF01;</strong>&#x4E24;&#x4E2A;&#x4E0D;&#x76F8;&#x5E72;&#x4E8B;&#x4EF6;&#x7684;&#x603B;&#x4FE1;&#x606F;&#x91CF;&#x5E94;&#x8BE5;&#x662F;&#x4ED6;&#x4EEC;&#x5404;&#x81EA;&#x4FE1;&#x606F;&#x91CF;&#x7684;&#x6C42;&#x548C;&#x3002;</p>
 <p>&#x3000;&#x3000;&#x6709;&#x4E86;&#x4EE5;&#x4E0A;&#x4E24;&#x70B9;&#x8981;&#x6C42;&#xFF0C;&#x518D;&#x7ED3;&#x5408;&#x72EC;&#x7ACB;&#x4E8B;&#x4EF6;&#x8054;&#x5408;&#x6982;&#x7387; $P(x,y)=p(x)<em>p(y)$ &#x3002;&#x54CE;&#xFF0C;&#x6211;&#x4EEC;&#x7528; $log(\frac{1}{p})$ &#x6765;&#x8868;&#x793A;&#x4FE1;&#x606F;&#x5EA6;&#x91CF;&#x5C82;&#x4E0D;&#x7F8E;&#x54C9;&#xFF1F;&#x6CA1;&#x9519;&#xFF01;&#x8FD9;&#x5C31;&#x662F;<strong>&#x81EA;&#x4FE1;&#x606F; (self-information)</strong>&#x3002;&#x800C;<em>*&#x6574;&#x4E2A;Entropy&#x5219;&#x53EF;&#x4EE5;&#x770B;&#x6210;&#x81EA;&#x4FE1;&#x606F;&#x7684;&#x52A0;&#x6743;&#x5E73;&#x5747;&#xFF0C;&#x662F;&#x5BF9;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x53D1;&#x751F;&#x7684;&#x4E8B;&#x4EF6;&#x4EA7;&#x751F;&#x7684;&#x4FE1;&#x606F;&#x91CF;&#x7684;&#x671F;&#x671B;</em></em>&#x3002; </p>
 <p>&#x3000;&#x3000;&#x5230;&#x8FD9;&#x91CC;&#x4F60;&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x7591;&#x60D1;&#xFF0C;&#x5C31;&#x8FD9;&#x73A9;&#x610F;&#x771F;&#x7684;&#x6709;&#x7528;&#xFF1F;&#x7136;&#x800C;&#x4E8B;&#x5B9E;&#x8BC1;&#x660E;&#xFF0C;&#x8FD9;&#x4E1C;&#x897F;&#x662F;&#x771F;&#x7684;&#x725B;&#x903C;&#x3002;&#x3002;&#x3002;</p>
-<p>&#x3000;&#x3000;&#x4FE1;&#x606F;&#x71B5;&#x662F;&#x5728;&#x4FE1;&#x606F;&#x8BBA;&#x4E2D;&#x63D0;&#x51FA;&#x7684;&#xFF0C;&#x662F;&#x4FE1;&#x606F;&#x91CF;&#x7684;&#x5EA6;&#x91CF;&#x5355;&#x4F4D;&#x3002;&#x800C;&#x4E00;&#x6761;&#x4FE1;&#x606F;&#x7684;&#x4FE1;&#x606F;&#x91CF;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x7406;&#x60F3;&#x5316;&#x7684;&#x65E0;&#x635F;&#x538B;&#x7F29;&#xFF0C;&#x5C06;&#x5197;&#x4F59;&#x7684;&#x4FE1;&#x606F;&#x5168;&#x90E8;&#x53BB;&#x9664;&#xFF0C;&#x8FD9;&#x6837;&#x4E00;&#x6765;&#x538B;&#x7F29;&#x540E;&#x7684;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;(bit)&#x5C31;&#x80FD;&#x7528;&#x6765;&#x8868;&#x793A;&#x8FD9;&#x6761;&#x4FE1;&#x606F;&#x7684;&#x4FE1;&#x606F;&#x91CF;&#x4E86;&#x3002;&#x800C;&#x5BF9;&#x4FE1;&#x606F;&#x7684;&#x538B;&#x7F29;&#x9700;&#x8981;&#x5BF9;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x7F16;&#x7801;&#x3002;&#x795E;&#x5947;&#x7684;&#x662F;&#x2014;&#x2014;<strong>&#x5F53;&#x4FE1;&#x606F;&#x71B5;&#x53D6;2&#x4E3A;&#x5E95;&#xFF0C;&#x5355;&#x4F4D;&#x4E3A;bit&#x65F6;&#xFF0C;&#x5C31;&#x662F;&#x8FD9;&#x6761;&#x4FE1;&#x606F;&#x7406;&#x60F3;&#x4E2D;&#x7684;&#x6700;&#x5C0F;&#x5E73;&#x5747;&#x7F16;&#x7801;&#x4F4D;&#x6570;&#xFF01;&#xFF01;&#xFF01;</strong> &#x4E5F;&#x5C31;&#x662F;&#x65E0;&#x635F;&#x538B;&#x7F29;&#x7406;&#x60F3;&#x4E2D;&#x6240;&#x80FD;&#x8FBE;&#x5230;&#x7684;&#x6781;&#x81F4;&#x3002;&#x4EE5;&#x6700;&#x5E38;&#x89C1;&#x7684;Huffman&#x7F16;&#x7801;&#x4E3A;&#x4F8B;&#xFF0C;&#x4E8B;&#x4EF6;{1/4,1/4,1/4,1/4}&#x53EF;&#x4EE5;&#x7F16;&#x7801;&#x4E3A;{0,10,110,111},$Entropy=2bit&#x200B;$&#x800C;$&#x5B9E;&#x9645;&#x5E73;&#x5747;&#x7F16;&#x7801;=9/4bit&#x200B;$ ,&#x6CA1;&#x6709;&#x8FBE;&#x5230;&#x7406;&#x60F3;&#x5E73;&#x5747;&#x7F16;&#x7801;&#x3002;&#x800C;&#x5982;&#x679C;&#x4E8B;&#x4EF6;{1/2,1/4,1/8,1/8}&#xFF0C;$Entropy=1.75bit&#x200B;$&#x800C;$&#x5B9E;&#x9645;&#x5E73;&#x5747;&#x7F16;&#x7801;=1.75bit&#x200B;$&#xFF0C;&#x6B63;&#x597D;&#x8FBE;&#x5230;&#x7406;&#x60F3;&#x5E73;&#x5747;&#x7F16;&#x7801;&#x3002;</p>
+<p>&#x3000;&#x3000;&#x4FE1;&#x606F;&#x71B5;&#x662F;&#x5728;&#x4FE1;&#x606F;&#x8BBA;&#x4E2D;&#x63D0;&#x51FA;&#x7684;&#xFF0C;&#x662F;&#x4FE1;&#x606F;&#x91CF;&#x7684;&#x5EA6;&#x91CF;&#x5355;&#x4F4D;&#x3002;&#x800C;&#x4E00;&#x6761;&#x4FE1;&#x606F;&#x7684;&#x4FE1;&#x606F;&#x91CF;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x7406;&#x60F3;&#x5316;&#x7684;&#x65E0;&#x635F;&#x538B;&#x7F29;&#xFF0C;&#x5C06;&#x5197;&#x4F59;&#x7684;&#x4FE1;&#x606F;&#x5168;&#x90E8;&#x53BB;&#x9664;&#xFF0C;&#x8FD9;&#x6837;&#x4E00;&#x6765;&#x538B;&#x7F29;&#x540E;&#x7684;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;(bit)&#x5C31;&#x80FD;&#x7528;&#x6765;&#x8868;&#x793A;&#x8FD9;&#x6761;&#x4FE1;&#x606F;&#x7684;&#x4FE1;&#x606F;&#x91CF;&#x4E86;&#x3002;&#x800C;&#x5BF9;&#x4FE1;&#x606F;&#x7684;&#x538B;&#x7F29;&#x9700;&#x8981;&#x5BF9;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x7F16;&#x7801;&#x3002;&#x795E;&#x5947;&#x7684;&#x662F;&#x2014;&#x2014;<strong>&#x5F53;&#x4FE1;&#x606F;&#x71B5;&#x53D6;2&#x4E3A;&#x5E95;&#xFF0C;&#x5355;&#x4F4D;&#x4E3A;bit&#x65F6;&#xFF0C;&#x5C31;&#x662F;&#x8FD9;&#x6761;&#x4FE1;&#x606F;&#x7406;&#x60F3;&#x4E2D;&#x7684;&#x6700;&#x5C0F;&#x5E73;&#x5747;&#x7F16;&#x7801;&#x4F4D;&#x6570;&#xFF01;&#xFF01;&#xFF01;</strong> &#x4E5F;&#x5C31;&#x662F;&#x65E0;&#x635F;&#x538B;&#x7F29;&#x7406;&#x60F3;&#x4E2D;&#x6240;&#x80FD;&#x8FBE;&#x5230;&#x7684;&#x6781;&#x81F4;&#x3002;&#x4EE5;&#x6700;&#x5E38;&#x89C1;&#x7684;Huffman&#x7F16;&#x7801;&#x4E3A;&#x4F8B;&#xFF0C;&#x4E8B;&#x4EF6;{1/4,1/4,1/4,1/4}&#x53EF;&#x4EE5;&#x7F16;&#x7801;&#x4E3A;{0,10,110,111},$Entropy=2bit$&#x800C;$&#x5B9E;&#x9645;&#x5E73;&#x5747;&#x7F16;&#x7801;=9/4bit$ ,&#x6CA1;&#x6709;&#x8FBE;&#x5230;&#x7406;&#x60F3;&#x5E73;&#x5747;&#x7F16;&#x7801;&#x3002;&#x800C;&#x5982;&#x679C;&#x4E8B;&#x4EF6;{1/2,1/4,1/8,1/8}&#xFF0C;$Entropy=1.75bit$&#x800C;$&#x5B9E;&#x9645;&#x5E73;&#x5747;&#x7F16;&#x7801;=1.75bit$&#xFF0C;&#x6B63;&#x597D;&#x8FBE;&#x5230;&#x7406;&#x60F3;&#x5E73;&#x5747;&#x7F16;&#x7801;&#x3002;</p>
 <p>&#x3000;&#x3000;&#x5B9E;&#x9645;&#x4E0A;&#x53EF;&#x4EE5;&#x8BC1;&#x660E;&#xFF1A;</p>
 <p>&#x3000;&#x3000;&#x3000;&#x3000;&#x25CF; <strong>&#x975E;&#x5747;&#x5300;&#x5206;&#x5E03;&#x6BD4;&#x5747;&#x5300;&#x5206;&#x5E03;&#x7684;&#x71B5;&#x8981;&#x5C0F;&#x3002;</strong></p>
 <p>&#x3000;&#x3000;&#x3000;&#x3000;&#x25CF; <strong>&#x4FE1;&#x606F;&#x71B5;&#x5C31;&#x662F;&#x4FE1;&#x606F;&#x6700;&#x77ED;&#x5E73;&#x5747;&#x7F16;&#x7801;&#x957F;&#x5EA6;&#x3002;</strong></p>
 <p>&#x3000;&#x3000;&#x3000;&#x3000;&#x25CF; <strong>&#x60C5;&#x51B5;&#x79CD;&#x7C7B;&#x8D8A;&#x591A;&#xFF0C;&#x71B5;&#x7684;&#x4E0A;&#x9650;&#x8D8A;&#x5927;&#x3002;$0\le H(x) \le log(n)$ </strong></p>
 <p>&#x3000;&#x3000;</p>
 <h2 id="&#x4EA4;&#x53C9;&#x71B5;-Cross-entropy"><a href="#&#x4EA4;&#x53C9;&#x71B5;-Cross-entropy" class="headerlink" title="&#x4EA4;&#x53C9;&#x71B5;(Cross entropy)"></a>&#x4EA4;&#x53C9;&#x71B5;(Cross entropy)</h2><p>$$Cross entropy=H(p,q)=\sum_xp(x)log\frac{1}{q(x)}$$</p>
-<p>&#x3000;&#x3000;&#x6837;&#x672C;&#x96C6;&#x7684;&#x4E24;&#x4E2A;&#x6982;&#x7387;&#x5206;&#x5E03; p(x) &#x548C; q(x)&#xFF0C;&#x5176;&#x4E2D; p(x) &#x4E3A;&#x771F;&#x5B9E;&#x5206;&#x5E03;&#xFF0C;q(x)&#x4E3A;&#x975E;&#x771F;&#x5B9E;&#x5206;&#x5E03;&#x3002;&#x800C;<strong>&#x4EA4;&#x53C9;&#x71B5;&#x5219;&#x662F;&#x7528;q&#x5206;&#x5E03;&#x7684;&#x7F16;&#x7801;&#x89C4;&#x5219;&#x53BB;&#x7F16;&#x7801;p&#x5206;&#x5E03;&#x6240;&#x5F97;&#x5230;&#x7684;&#x5E73;&#x5747;&#x7F16;&#x7801;&#x957F;&#x5EA6;&#x3002;</strong>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x4FE1;&#x606F;&#x71B5;&#x662F;&#x7F16;&#x7801;&#x6700;&#x4F18;&#x89E3;&#xFF0C;&#x6240;&#x4EE5;&#x4EA4;&#x53C9;&#x71B5;&#x4E00;&#x5B9A;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;p&#x5206;&#x5E03;&#x7684;&#x4FE1;&#x606F;&#x71B5;&#x3002;&#x800C;&#x4E14;<strong>p&#x548C;q&#x5206;&#x5E03;&#x8D8A;&#x76F8;&#x4F3C;&#xFF0C;&#x4EA4;&#x53C9;&#x71B5;&#x8D8A;&#x5C0F;&#xFF0C;&#x76F4;&#x5230;&#x7B49;&#x4E8E;&#x771F;&#x5B9E;&#x5206;&#x5E03;&#x7684;&#x4FE1;&#x606F;&#x71B5;&#x3002;</strong></p>
+<p>&#x3000;&#x3000;&#x6837;&#x672C;&#x96C6;&#x7684;&#x4E24;&#x4E2A;&#x6982;&#x7387;&#x5206;&#x5E03; p(x) &#x548C; q(x)&#xFF0C;&#x5176;&#x4E2D; p(x) &#x4E3A;&#x771F;&#x5B9E;&#x5206;&#x5E03;&#xFF0C;q(x)&#x4E3A;&#x975E;&#x771F;&#x5B9E;&#x5206;&#x5E03;&#x3002;&#x800C;<strong>&#x4EA4;&#x53C9;&#x71B5;&#x5219;&#x662F;&#x7528;q&#x5206;&#x5E03;&#x7684;&#x7F16;&#x7801;&#x89C4;&#x5219;&#x53BB;&#x7F16;&#x7801;p&#x5206;&#x5E03;&#x6240;&#x5F97;&#x5230;&#x7684;&#x5E73;&#x5747;&#x7F16;&#x7801;&#x957F;&#x5EA6;&#x3002;</strong>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x4FE1;&#x606F;&#x71B5;&#x662F;&#x7F16;&#x7801;&#x6700;&#x4F18;&#x89E3;&#xFF0C;&#x6240;&#x4EE5;&#x4EA4;&#x53C9;&#x71B5;&#x4E00;&#x5B9A;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;p&#x5206;&#x5E03;&#x7684;&#x4FE1;&#x606F;&#x71B5;&#x3002;&#x800C;&#x4E14;**p&#x548C;q&#x5206;&#x5E03;&#x8D8A;&#x76F8;&#x4F3C;&#xFF0C;&#x4EA4;&#x53C9;&#x71B5;&#x8D8A;&#x5C0F;&#xFF0C;&#x76F4;&#x5230;&#x7B49;&#x4E8E;&#x771F;&#x5B9E;&#x5206;&#x5E03;&#x7684;&#x4FE1;&#x606F;&#x71B5;&#x3002;</p>
 <h2 id="&#x76F8;&#x5BF9;&#x71B5;-Relative-entropy-&#xFF0C;KL&#x6563;&#x5EA6;-Kullback&#x2013;Leibler-divergence"><a href="#&#x76F8;&#x5BF9;&#x71B5;-Relative-entropy-&#xFF0C;KL&#x6563;&#x5EA6;-Kullback&#x2013;Leibler-divergence" class="headerlink" title="&#x76F8;&#x5BF9;&#x71B5;(Relative entropy)&#xFF0C;KL&#x6563;&#x5EA6;(Kullback&#x2013;Leibler divergence)"></a>&#x76F8;&#x5BF9;&#x71B5;(Relative entropy)&#xFF0C;KL&#x6563;&#x5EA6;(Kullback&#x2013;Leibler divergence)</h2><p>$$D_{KL}(p,q)=\sum_{x}p(x)log\frac{p(x)}{q(x)}&#xFF1D;\sum_xp(x)log\frac{1}{q(x)}-\sum_xp(x)log(\frac{1}{p(x)})=&#x4EA4;&#x53C9;&#x71B5;-&#x4FE1;&#x606F;&#x71B5;$$</p>
 <p>&#x3000;&#x3000;KL&#x6563;&#x5EA6;&#x5C31;&#x662F;&#x4EA4;&#x53C9;&#x71B5;&#x51CF;&#x4FE1;&#x606F;&#x71B5;&#x7684;&#x503C;&#x3002;KL&#x6563;&#x5EA6;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5EA6;&#x91CF;p&#x548C;q&#x5206;&#x5E03;&#x7684;&#x4E0D;&#x76F8;&#x4F3C;&#x7A0B;&#x5EA6;&#xFF0C;&#x8D8A;&#x4E0D;&#x76F8;&#x4F3C;KL&#x6563;&#x5EA6;&#x503C;&#x8D8A;&#x5927;&#xFF0C;&#x5B8C;&#x5168;&#x4E00;&#x81F4;&#x5219;&#x503C;&#x4E3A;0&#x3002;</p>
 <p><strong>&#x2605; &#x5C0F;&#x7ED3;&#xFF1A;</strong>&#x5728;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x4E2D;&#xFF0C;&#x4E00;&#x822C;&#x7528;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x7684;&#x6807;&#x6CE8;&#x8FD1;&#x4F3C;&#x6570;&#x636E;&#x7684;&#x771F;&#x5B9E;&#x5206;&#x5E03;p&#x3002;&#x9884;&#x6D4B;&#x503C;&#x5219;&#x4E3A;&#x975E;&#x771F;&#x5B9E;&#x5206;&#x5E03;q&#x3002;<strong>&#x635F;&#x5931;&#x51FD;&#x6570;&#xFF1A;&#x6700;&#x5C0F;&#x5316;&#x4EA4;&#x53C9;&#x71B5; = &#x6700;&#x5C0F;&#x5316;KL&#x6563;&#x5EA6; = &#x6700;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1;&#xFF01;</strong> </p>
@@ -660,7 +660,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -671,7 +671,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -682,7 +682,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -772,7 +772,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">118.8k</span>
+    <span title="Site words total count">153.9k</span>
   
 </div>
 
