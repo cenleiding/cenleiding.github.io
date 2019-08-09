@@ -107,6 +107,9 @@
 <meta property="og:image" content="https://cenleiding.github.io/概率图模型/PGM_13.jpg">
 <meta property="og:image" content="https://cenleiding.github.io/概率图模型/PGM_14.jpg">
 <meta property="og:image" content="https://cenleiding.github.io/概率图模型/PGM_15.gif">
+<meta property="og:image" content="https://cenleiding.github.io/概率图模型/17.png">
+<meta property="og:image" content="https://cenleiding.github.io/概率图模型/18.jpg">
+<meta property="og:image" content="https://cenleiding.github.io/概率图模型/19.jpg">
 <meta property="og:image" content="https://cenleiding.github.io/概率图模型/PGM_16.png">
 <meta property="og:image" content="https://cenleiding.github.io/概率图模型/PGM_17.jpg">
 <meta property="og:image" content="https://cenleiding.github.io/概率图模型/PGM_15.gif">
@@ -115,7 +118,7 @@
 <meta property="og:image" content="https://cenleiding.github.io/概率图模型/PGM_7.png">
 <meta property="og:image" content="https://cenleiding.github.io/概率图模型/PGM_8.png">
 <meta property="og:image" content="https://cenleiding.github.io/概率图模型/PGM_9.jpg">
-<meta property="og:updated_time" content="2019-03-28T10:00:01.445Z">
+<meta property="og:updated_time" content="2019-08-09T06:57:06.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="概率图模型">
 <meta name="twitter:description" content="比较初浅的了解一下概率图模型">
@@ -397,6 +400,28 @@
 
                 
                 
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/传统/" itemprop="url" rel="index">
+                    <span itemprop="name">传统</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/传统/概率图模型/" itemprop="url" rel="index">
+                    <span itemprop="name">概率图模型</span>
+                  </a>
+                </span>
+
+                
+                
               
             </span>
           
@@ -433,7 +458,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  14.9k
+                  15.4k
                 </span>
               
 
@@ -449,7 +474,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  93
+                  96
                 </span>
               
             </div>
@@ -487,6 +512,11 @@
 <p><strong>&#x5B66;&#x4E60;&#x95EE;&#x9898;</strong>&#xFF1A;&#x56FE;&#x6A21;&#x578B;&#x7684;&#x5B66;&#x4E60;&#x5305;&#x62EC;&#x56FE;&#x7ED3;&#x6784;&#x7684;&#x5B66;&#x4E60;&#x548C;&#x53C2;&#x6570;&#x7684;&#x5B66;&#x4E60;&#x3002;</p>
 <p><strong>&#x63A8;&#x65AD;&#x95EE;&#x9898;</strong>&#xFF1A;&#x5728;&#x5DF2;&#x77E5;&#x90E8;&#x5206;&#x53D8;&#x91CF;&#x65F6;&#xFF0C;&#x8BA1;&#x7B97;&#x5176;&#x4ED6;&#x53D8;&#x91CF;&#x7684;&#x540E;&#x9A8C;&#x6982;&#x7387;&#x5206;&#x5E03;&#x3002;</p>
 <p><img src="/&#x6982;&#x7387;&#x56FE;&#x6A21;&#x578B;/PGM_2.png" alt="img"></p>
+<blockquote>
+<p>&#x751F;&#x6210;&#x5F0F;&amp;&#x5224;&#x522B;&#x5F0F;</p>
+</blockquote>
+<p>&#x751F;&#x6210;&#x5F0F;&#xFF1A;$p(x,y)$ ,&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;&#x3001;&#x8D1D;&#x53F6;&#x65AF;&#x7F51;&#x7EDC;&#x3001;pLSA&#x3001;LDA&#x3001;&#x9690;&#x9A6C;&#x5C14;&#x53EF;&#x592B;&#x6A21;&#x578B;&#x3002;</p>
+<p>&#x5224;&#x522B;&#x5F0F;&#xFF1A;$p(y|x)$,&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;&#x3001;CRF&#x3002;</p>
 <blockquote>
 <p>PGM&#x7684;&#x4E00;&#x4E9B;&#x89C1;&#x89E3;</p>
 </blockquote>
@@ -631,7 +661,7 @@
 <ol>
 <li><p>&#x521D;&#x59CB;&#x5316;&#x5C40;&#x90E8;&#x72B6;&#x6001;&#xFF1A;</p>
 <p>   $&#x3B4;_1(i) = \pi_ib_i(o_1),i=1,2&#x2026;N$</p>
-<p>&#x3000; $\psi_1(i)=0,i=1,2&#x2026;N$</p>
+<p>   &#x3000; $\psi_1(i)=0,i=1,2&#x2026;N$</p>
 </li>
 <li><p>&#x8FDB;&#x884C;&#x52A8;&#x6001;&#x89C4;&#x5212;&#x9012;&#x63A8;&#x65F6;&#x523B;t=2,3,&#x2026;T&#x65F6;&#x523B;&#x7684;&#x5C40;&#x90E8;&#x72B6;&#x6001;&#xFF1A;</p>
 <p> $\delta_t(i)=max_{1&#x2264;j&#x2264;N}[\delta_{t&#x2212;1}(j)a_{ji}]b_i(O_t),i=1,2&#x2026;N$</p>
@@ -639,7 +669,7 @@
 </li>
 <li><p>&#x8BA1;&#x7B97;&#x65F6;&#x523B;T&#x6700;&#x5927;&#x7684;&#x3B4;T(i),&#x5373;&#x4E3A;&#x6700;&#x53EF;&#x80FD;&#x9690;&#x85CF;&#x72B6;&#x6001;&#x5E8F;&#x5217;&#x51FA;&#x73B0;&#x7684;&#x6982;&#x7387;&#x3002;&#x65F6;&#x523B;T&#x6700;&#x5927;&#x7684;&#x3A8;t(i),&#x5373;&#x4E3A;&#x65F6;&#x523B;T&#x6700;&#x53EF;&#x80FD;&#x7684;&#x9690;&#x85CF;&#x72B6;&#x6001;&#x3002;</p>
 <p>  $P&#x2217;=max_{1&#x2264;j&#x2264;N}&#x3B4;_T(i)$</p>
-<p>&#x3000; $i_T^*=argmax_{1&#x2264;j&#x2264;N}[\delta_T(i)]$</p>
+<p>   &#x3000; $i_T^*=argmax_{1&#x2264;j&#x2264;N}[\delta_T(i)]$</p>
 </li>
 <li><p>&#x5229;&#x7528;&#x5C40;&#x90E8;&#x72B6;&#x6001;&#x3A8;(i)&#x5F00;&#x59CB;&#x56DE;&#x6EAF;&#x3002;&#x5BF9;&#x4E8E;t=T&#x2212;1,T&#x2212;2,&#x2026;,1t=T&#x2212;1,T&#x2212;2,&#x2026;,1&#xFF1A;</p>
 <p>  $i_t^&#x2217;=\psi_{t+1}(i_{t+1}^&#x2217;)$</p>
@@ -647,6 +677,29 @@
 </ol>
 <p>&#x7EC8;&#x5F97;&#x5230;<strong>&#x6700;&#x6709;&#x53EF;&#x80FD;&#x7684;&#x9690;&#x85CF;&#x72B6;&#x6001;&#x5E8F;&#x5217;</strong> $I^&#x2217;={i^&#x2217;_1,i^&#x2217;_2,&#x2026;i^&#x2217;_T}$</p>
 <p><strong>&#x7406;&#x89E3;&#xFF1A;</strong> &#x540C;&#x4F5C;&#x4E3A;&#x52A8;&#x6001;&#x89C4;&#x5212;&#xFF0C;&#x7EF4;&#x7279;&#x6BD4;&#x7B97;&#x6CD5;&#x548C;&#x524D;&#x5411;&#x540E;&#x5411;&#x7B97;&#x6CD5;&#xFF0C;&#x601D;&#x8DEF;&#x4E00;&#x81F4;&#x3002;&#x533A;&#x522B;&#x5728;&#x4E8E;<strong>&#x524D;&#x5411;&#x540E;&#x5411;&#x7B97;&#x6CD5;&#x6BCF;&#x4E2A;&#x65F6;&#x95F4;&#x6BCF;&#x4E2A;&#x72B6;&#x6001;&#x4FDD;&#x5B58;&#x7684;&#x662F;&#x6982;&#x7387;&#x7684;&#x603B;&#x548C;&#xFF0C;&#x800C;&#x7EF4;&#x7279;&#x6BD4;&#x7B97;&#x6CD5;&#x5219;&#x4FDD;&#x5B58;&#x7684;&#x662F;&#x6700;&#x5927;&#x7684;&#x6982;&#x7387;&#x503C;&#x548C;&#x8DEF;&#x5F84;&#x3002;</strong> &#x56E0;&#x4E3A;&#x524D;&#x5411;&#x540E;&#x5411;&#x7B97;&#x6CD5;&#x9700;&#x8981;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x51FA;&#x73B0;&#x7684;&#x671F;&#x671B;&#xFF0C;&#x800C;&#x7EF4;&#x7279;&#x6BD4;&#x5219;&#x662F;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x51FA;&#x73B0;&#x7684;&#x6700;&#x5927;&#x6982;&#x7387;&#xFF01;</p>
+<h4 id="&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;"><a href="#&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;" class="headerlink" title="&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;"></a>&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;</h4><p>MEMM(Maximum Entropy Markov Model)&#x3002;</p>
+<p>HMM&#x4E2D;&#x5B58;&#x5728;&#x4E24;&#x4E2A;&#x7F3A;&#x70B9;&#xFF1A;</p>
+<ul>
+<li>&#x6BCF;&#x4E2A;&#x89C2;&#x6D4B;&#x503C;&#x53EA;&#x4F9D;&#x8D56;&#x4E8E;&#x5BF9;&#x5E94;&#x7684;&#x9690;&#x85CF;&#x503C;&#xFF0C;&#x8FD9;&#x4E2A;&#x5047;&#x8BBE;&#x8FC7;&#x4E8E;&#x4E25;&#x683C;&#xFF0C;&#x5E8F;&#x5217;&#x6807;&#x6CE8;&#x95EE;&#x9898;&#x4E0D;&#x4EC5;&#x548C;&#x5355;&#x4E2A;&#x8BCD;&#x76F8;&#x5173;&#xFF0C;&#x800C;&#x4E14;&#x548C;&#x89C2;&#x5BDF;&#x5E8F;&#x5217;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x5355;&#x8BCD;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#xFF0C;&#x7B49;&#x7B49;&#x76F8;&#x5173;&#x3002;</li>
+<li>&#x5B66;&#x5F97;&#x7684;&#x662F;&#x8054;&#x5408;&#x5206;&#x5E03;$P(x,y)$&#xFF0C;&#x800C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7684;&#x662F;&#x6761;&#x4EF6;$P(y|x)$&#x3002;</li>
+</ul>
+<p>&#x6240;&#x4EE5;MEMM&#x5C31;&#x6B64;&#x8FDB;&#x884C;&#x4E86;&#x6539;&#x8FDB;&#xFF1A;&#x6BCF;&#x4E2A;&#x9690;&#x85CF;&#x503C;&#x4F9D;&#x8D56;&#x4E8E;&#x524D;&#x4E00;&#x4E2A;&#x9884;&#x6D4B;&#x503C;&#x548C;&#x6240;&#x6709;&#x89C2;&#x6D4B;&#x503C;&#x3002;</p>
+<p><img src="/&#x6982;&#x7387;&#x56FE;&#x6A21;&#x578B;/17.png" alt="img"></p>
+<p>MEMM&#x7684;&#x5047;&#x8BBE;&#x8981;&#x6C42;&#x8F83;&#x5BBD;&#xFF0C;&#x56E0;&#x6B64;&#x83B7;&#x5F97;&#x4E86;&#x66F4;&#x5F3A;&#x7684;&#x8868;&#x8FBE;&#x80FD;&#x529B;&#xFF0C;&#x8BAD;&#x7EC3;&#x7ED3;&#x679C;&#x4F18;&#x4E8E;HMM&#xFF0C;&#xFF08;&#x867D;&#x7136;&#x9EBB;&#x70E6;&#x4E86;&#x5F88;&#x591A;&#xFF09;&#x3002;</p>
+<p>&#x4F46;MEMM&#x4F5C;&#x4E3A;&#x8D1D;&#x53F6;&#x65AF;&#x7F51;&#x7EDC;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x5DE8;&#x5927;&#x7F3A;&#x9677;&#xFF1A;<strong>&#x6807;&#x6CE8;&#x504F;&#x7F6E;</strong>&#x3002;</p>
+<ul>
+<li><p><strong>&#x6807;&#x6CE8;&#x504F;&#x7F6E;</strong></p>
+<p>&#x4F5C;&#x4E3A;&#x8D1D;&#x53F6;&#x65AF;&#x7F51;&#x7EDC;&#xFF0C;MEMM&#x9700;&#x8981;&#x83B7;&#x5F97;&#x5404;&#x4E2A;&#x9690;&#x85CF;&#x8282;&#x70B9;&#x7684;&#x6982;&#x7387;&#x503C;&#xFF0C;&#x800C;&#x8FD9;&#x4E2A;&#x6982;&#x7387;&#x503C;&#x662F;&#x901A;&#x8FC7;<strong>&#x5C40;&#x90E8;&#x5F52;&#x4E00;&#x5316;</strong>&#x5F97;&#x5230;&#x7684;&#x3002;</p>
+<p>&#x5C40;&#x90E8;&#x5F52;&#x4E00;&#x5316;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;&#x5982;&#x679C;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#x5176;&#x53EF;&#x8FBE;&#x8282;&#x70B9;&#x6BD4;&#x8F83;&#x591A;&#xFF08;&#x6BD4;&#x5982;2&#x8282;&#x70B9;&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x5176;&#x52BF;&#x5FC5;&#x4F1A;&#x5BFC;&#x81F4;&#x6982;&#x7387;&#x7684;&#x5206;&#x6563;&#xFF0C;&#x76F8;&#x6BD4;&#x4E8E;&#x53EF;&#x8FBE;&#x8282;&#x70B9;&#x5C11;&#x7684;&#x8282;&#x70B9;&#xFF08;&#x6BD4;&#x5982;1&#x8282;&#x70B9;&#xFF09;&#x5C31;&#x6BD4;&#x8F83;&#x5403;&#x4E8F;&#x3002;&#x800C;&#x8282;&#x70B9;&#x4E4B;&#x95F4;&#x662F;&#x5426;&#x53EF;&#x8FBE;&#xFF0C;&#x5219;&#x53D6;&#x51B3;&#x4E8E;&#x6A21;&#x578B;&#x4EBA;&#x5DE5;&#x8BBE;&#x7F6E;&#x7684;&#x7279;&#x5F81;&#x3002;</p>
+</li>
+</ul>
+<p><img src="/&#x6982;&#x7387;&#x56FE;&#x6A21;&#x578B;/18.jpg" alt="img"></p>
+<p><img src="/&#x6982;&#x7387;&#x56FE;&#x6A21;&#x578B;/19.jpg" alt="img"></p>
+<ul>
+<li><p><strong>&#x603B;&#x7ED3;</strong></p>
+<p>MEMM&#x5C31;&#x50CF;&#x4E00;&#x4E2A;HMM&#x548C;CRF&#x7684;&#x8FC7;&#x5EA6;&#x6A21;&#x578B;&#xFF0C;&#x653E;&#x5BBD;&#x4E86;&#x5047;&#x8BBE;&#x5374;&#x4ECD;&#x88AB;&#x5C40;&#x90E8;&#x6982;&#x7387;&#x6240;&#x675F;&#x7F1A;&#xFF0C;&#x6240;&#x4EE5;&#x5176;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x5F88;&#x5C34;&#x5C2C;&#x3002;&#x7B80;&#x4FBF;&#x4E0D;&#x5982;HMM&#xFF0C;&#x56E0;&#x4E3A;&#x5176;&#x8981;&#x4EBA;&#x5DE5;&#x8BBE;&#x7F6E;&#x7279;&#x5F81;&#xFF0C;&#x800C;&#x540C;&#x6837;&#x4EBA;&#x5DE5;&#x8BBE;&#x7F6E;&#x7279;&#x5F81;&#x5176;&#x6548;&#x679C;&#x53C8;&#x6CA1;&#x6709;CRF&#x597D;&#xFF08;CRF&#x4F7F;&#x7528;&#x5168;&#x5C40;&#x5F52;&#x4E00;&#x5316;&#xFF0C;&#x4E0D;&#x5B58;&#x5728;&#x6807;&#x6CE8;&#x504F;&#x7F6E;&#xFF09;&#x3002;&#x3002;&#x3002;</p>
+</li>
+</ul>
 <h3 id="&#x65E0;&#x5411;&#x56FE;&#x6A21;&#x578B;-amp-&#x9A6C;&#x5C14;&#x53EF;&#x592B;&#x7F51;"><a href="#&#x65E0;&#x5411;&#x56FE;&#x6A21;&#x578B;-amp-&#x9A6C;&#x5C14;&#x53EF;&#x592B;&#x7F51;" class="headerlink" title="&#x65E0;&#x5411;&#x56FE;&#x6A21;&#x578B;&amp;&#x9A6C;&#x5C14;&#x53EF;&#x592B;&#x7F51;"></a>&#x65E0;&#x5411;&#x56FE;&#x6A21;&#x578B;&amp;&#x9A6C;&#x5C14;&#x53EF;&#x592B;&#x7F51;</h3><p><img src="/&#x6982;&#x7387;&#x56FE;&#x6A21;&#x578B;/PGM_16.png" alt="img"></p>
 <p>&#x3000;&#x3000;&#x9A6C;&#x5C14;&#x53EF;&#x592B;&#x7F51;&#x7EDC;<strong>&#x65E0;&#x5411;</strong>&#x4E14;<strong>&#x53EF;&#x4EE5;&#x6709;&#x73AF;</strong> &#x3002;</p>
 <p>&#x3000;&#x3000;&#x9A6C;&#x5C14;&#x53EF;&#x592B;&#x7F51;&#x7EDC;&#x4F7F;&#x7528;<strong>&#x52BF;&#x51FD;&#x6570;(potential function)</strong>&#x6216;<strong>&#x56E0;&#x5B50;&#xFF08;factor&#xFF09;</strong>&#x6765;&#x8868;&#x793A;&#x8282;&#x70B9;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x548C;&#x8D1D;&#x53F6;&#x65AF;&#x7F51;&#x7684;&#x6982;&#x7387;&#x4E0D;&#x540C;&#xFF0C;<strong>&#x52BF;&#x51FD;&#x6570;&#x4E0D;&#x9700;&#x8981;&#x603B;&#x548C;&#x4E3A;1</strong>&#xFF0C;&#x52BF;&#x51FD;&#x6570;&#x53EA;&#x662F;&#x544A;&#x8BC9;&#x6211;&#x4EEC;&#x503C;&#x66F4;&#x9AD8;&#x7684;&#x914D;&#x7F6E;&#x6709;&#x66F4;&#x9AD8;&#x7684;&#x53EF;&#x80FD;&#x6027;&#x3002;</p>
@@ -725,8 +778,8 @@
 <p>&#x3000;&#x3000;&#x3000;&#x3000; $\begin{align<em>}E_{P(y|x)}[f_k]&amp;=E_{P(y|x)}[f_k(y,x)]\&amp;=\sum_{i=1}^{n}\sum_{y_{i&#x2212;1}yi}P(y_{i&#x2212;1},y_i|x)f_k(y_{i&#x2212;1},y_i,x,i)\&amp;=\sum_{i=1}^n\sum_{y_{i&#x2212;1}y_i}f_k(y_{i&#x2212;1},y_i,x,i)\frac{\alpha^T_{i&#x2212;1}(y_{i&#x2212;1}|x)M_i(y_{i&#x2212;1},y_i|x)\beta_i(y_i|x)}{\alpha^T_n(x)\bullet\overrightarrow{1}} \end{align</em>}$</p>
 <p>&#x3000;&#x3000;&#x25CF; &#x8054;&#x5408;&#x5206;&#x5E03;P(x,y)&#x7684;&#x671F;&#x671B;&#xFF1A;</p>
 <p>&#x3000;&#x3000;&#x3000;&#x3000; $\begin{align<em>} E_{P(x,y)}[f_k]&amp;=\sum_{x,y}P(x,y)\sum_{i=1}^nf_k(y_{i&#x2212;1},y_i,x,i) \&amp;=\sum_x\overline{P}(x)\sum_yP(y|x)\sum_{i=1}^nf_k(y_{i&#x2212;1},y_i,x,i)\&amp;=\sum_x\overline{P}(x)\sum_{i=1}^n\sum_{y_{i&#x2212;1}y_i}f_k(y_{i&#x2212;1},y_i,x,i)\frac{\alpha^T_{i&#x2212;1}(y_{i&#x2212;1}|x)M_i(y_{i&#x2212;1},y_i|x)\beta_i(y_i|x)}{\alpha^T_n(x)\bullet\overrightarrow{1}}  \end{align</em>}$</p>
-<h5 id="&#x53C2;&#x6570;&#x5B66;&#x4E60;"><a href="#&#x53C2;&#x6570;&#x5B66;&#x4E60;" class="headerlink" title="&#x53C2;&#x6570;&#x5B66;&#x4E60;"></a>&#x53C2;&#x6570;&#x5B66;&#x4E60;</h5><p>&#x3000;&#x3000;&#x9700;&#x8981;&#x5B66;&#x4E60;&#x7684;&#x662F;&#x6A21;&#x578B;&#x53C2;&#x6570;$\omega_k$<br>&#x3000;&#x3000;&#x4F7F;&#x7528;&#x6700;&#x5927;&#x4F3C;&#x7136;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x6C42;$P_w(y|x)$<br>&#x3000;&#x3000;&#x3000;&#x3000; $P_\omega(y|x)=P(y|x)=\frac{1}{Z_w(x)}exp\sum_{k=1}^K\omega_kf_k(x,y)=\frac{exp\sum_{k=1}^K\omega_kf_k(x,y)}{\sum_y exp\sum_{k=1}^K\omega_kf_k(x,y)}$</p>
-<p>&#x200B;    &#x5206;&#x6BCD;&#x9700;&#x8981;&#x7528;&#x5DE7;&#x5999;&#x7684;&#x65B9;&#x6CD5;&#x6C42;&#x5F97;&#xFF0C;&#x8FD9;&#x91CC;&#x6682;&#x65F6;&#x7565;&#x8FC7;&#x3002;&#x3000;&#x3000;<br>&#x3000;&#x3000;&#x5BF9;&#x53C2;&#x6570;$\omega_k$&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<strong>&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x6CD5;&#xFF0C;&#x725B;&#x987F;&#x6CD5;&#xFF0C;&#x62DF;&#x725B;&#x987F;&#x6CD5;,&#x8FED;&#x4EE3;&#x5C3A;&#x5EA6;&#x6CD5;(IIS)</strong>&#xFF0C;&#x6765;&#x6C42;&#x89E3;&#xFF01;</p>
+<h5 id="&#x53C2;&#x6570;&#x5B66;&#x4E60;"><a href="#&#x53C2;&#x6570;&#x5B66;&#x4E60;" class="headerlink" title="&#x53C2;&#x6570;&#x5B66;&#x4E60;"></a>&#x53C2;&#x6570;&#x5B66;&#x4E60;</h5><p>&#x3000;&#x3000;<strong>CRF&#x662F;&#x76D1;&#x7763;&#x5B66;&#x4E60;&#xFF0C;</strong>&#x9700;&#x8981;&#x5B66;&#x4E60;&#x7684;&#x662F;&#x6A21;&#x578B;&#x53C2;&#x6570;$\omega_k$<br>&#x3000;&#x3000;&#x4F7F;&#x7528;&#x6700;&#x5927;&#x4F3C;&#x7136;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x6C42;$P_w(y|x)$<br>&#x3000;&#x3000;&#x3000;&#x3000; $P_\omega(y|x)=P(y|x)=\frac{1}{Z_w(x)}exp\sum_{k=1}^K\omega_kf_k(x,y)=\frac{exp\sum_{k=1}^K\omega_kf_k(x,y)}{\sum_y exp\sum_{k=1}^K\omega_kf_k(x,y)}$</p>
+<p>&#x3000;&#x3000;&#x5206;&#x6BCD;&#x9700;&#x8981;&#x7528;&#x5DE7;&#x5999;&#x7684;&#x65B9;&#x6CD5;&#x6C42;&#x5F97;&#xFF0C;&#x8FD9;&#x91CC;&#x6682;&#x65F6;&#x7565;&#x8FC7;&#x3002;&#x3000;&#x3000;<br>&#x3000;&#x3000;&#x5BF9;&#x53C2;&#x6570;$\omega_k$&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<strong>&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x6CD5;&#xFF0C;&#x725B;&#x987F;&#x6CD5;&#xFF0C;&#x62DF;&#x725B;&#x987F;&#x6CD5;,&#x8FED;&#x4EE3;&#x5C3A;&#x5EA6;&#x6CD5;(IIS)</strong>&#xFF0C;&#x6765;&#x6C42;&#x89E3;&#xFF01;</p>
 <h5 id="&#x7EF4;&#x7279;&#x6BD4;&#x7B97;&#x6CD5;-1"><a href="#&#x7EF4;&#x7279;&#x6BD4;&#x7B97;&#x6CD5;-1" class="headerlink" title="&#x7EF4;&#x7279;&#x6BD4;&#x7B97;&#x6CD5;"></a>&#x7EF4;&#x7279;&#x6BD4;&#x7B97;&#x6CD5;</h5><p>&#x3000;&#x3000;&#x4E0E;HMM&#x4E00;&#x6837;&#xFF0C;&#x90FD;&#x662F;<strong>&#x6C42;&#x5E8F;&#x5217;&#x6700;&#x77ED;&#x8DEF;&#x5F84;</strong> ,&#x90FD;&#x662F;<strong>&#x89E3;&#x7801;&#x95EE;&#x9898;</strong>,&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x7528;<strong>&#x7EF4;&#x7279;&#x6BD4;&#x7B97;&#x6CD5;Viterbi algorithm</strong>&#xFF0C;&#x6765;&#x8FDB;&#x884C;&#x89E3;&#x7801;&#xFF01;</p>
 <p><img src="/&#x6982;&#x7387;&#x56FE;&#x6A21;&#x578B;/PGM_15.gif" alt="img"></p>
 <p><strong>&#x6D41;&#x7A0B;&#xFF1A;</strong></p>
@@ -746,7 +799,6 @@
 <li><p>&#x56DE;&#x6EAF;&#xFF1A;</p>
 <p>$y^\ast_i=\psi_{i+1}(y^\ast_{i+1}),i=n&#x2212;1,n&#x2212;2,&#x2026;1$</p>
 <p>&#x6700;&#x4F18;&#x6807;&#x8BB0;&#x5E8F;&#x5217;$y^&#x2217;=(y^&#x2217;_1,y^&#x2217;_2,&#x2026;y^&#x2217;_n)$</p>
-<p>&#x200B;</p>
 </li>
 </ol>
 <h5 id="&#x7EBF;&#x6027;CRF&#x4E0E;HMM-&#x7684;&#x533A;&#x522B;"><a href="#&#x7EBF;&#x6027;CRF&#x4E0E;HMM-&#x7684;&#x533A;&#x522B;" class="headerlink" title="&#x7EBF;&#x6027;CRF&#x4E0E;HMM &#x7684;&#x533A;&#x522B;"></a>&#x7EBF;&#x6027;CRF&#x4E0E;HMM &#x7684;&#x533A;&#x522B;</h5><p>&#x3000;&#x3000;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x660E;&#x663E;&#x7684;&#x611F;&#x53D7;&#x5230;&#xFF0C;&#x7EBF;&#x6027;CRF&#x4E0E;HMM&#x5341;&#x5206;&#x50CF;&#xFF0C;&#x4ECE;&#x6A21;&#x578B;&#x7684;&#x7ED3;&#x6784;&#x5230;&#x540E;&#x671F;&#x7684;&#x63A8;&#x5BFC;&#x90FD;&#x5341;&#x5206;&#x7684;&#x76F8;&#x8FD1;&#x3002;</p>
@@ -1026,7 +1078,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1037,7 +1089,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1102,7 +1154,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是概率图模型？"><span class="nav-text">什么是概率图模型？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型表示"><span class="nav-text">模型表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#有向图模型-amp-贝叶斯网"><span class="nav-text">有向图模型&amp;贝叶斯网</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#朴素贝叶斯分类器"><span class="nav-text">朴素贝叶斯分类器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#半朴素贝叶斯分类器"><span class="nav-text">半朴素贝叶斯分类器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐马尔可夫模型"><span class="nav-text">隐马尔可夫模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基础概念"><span class="nav-text">基础概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#前向后向算法"><span class="nav-text">前向后向算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#鲍姆-韦尔奇算法"><span class="nav-text">鲍姆-韦尔奇算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#维特比算法"><span class="nav-text">维特比算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无向图模型-amp-马尔可夫网"><span class="nav-text">无向图模型&amp;马尔可夫网</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#马尔可夫随机场"><span class="nav-text">马尔可夫随机场</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件随机场"><span class="nav-text">条件随机场</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#前向后向算法-1"><span class="nav-text">前向后向算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参数学习"><span class="nav-text">参数学习</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#维特比算法-1"><span class="nav-text">维特比算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线性CRF与HMM-的区别"><span class="nav-text">线性CRF与HMM 的区别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TensorFlow-crf-源码简析"><span class="nav-text">TensorFlow.crf 源码简析</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型学习"><span class="nav-text">模型学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数学习-1"><span class="nav-text">参数学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#极大似然与最大后验"><span class="nav-text">极大似然与最大后验</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#起源"><span class="nav-text">起源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用途"><span class="nav-text">用途</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#极大似然估计MLE"><span class="nav-text">极大似然估计MLE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#最大后验概率估计（MAP）"><span class="nav-text">最大后验概率估计（MAP）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#两者的关系"><span class="nav-text">两者的关系</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EM算法"><span class="nav-text">EM算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型推断"><span class="nav-text">模型推断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#精确推断"><span class="nav-text">精确推断</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量消去"><span class="nav-text">变量消去</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信念传播"><span class="nav-text">信念传播</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#近似推断"><span class="nav-text">近似推断</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基于采样的近似推理"><span class="nav-text">基于采样的近似推理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变分法近似推理"><span class="nav-text">变分法近似推理</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是概率图模型？"><span class="nav-text">什么是概率图模型？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型表示"><span class="nav-text">模型表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#有向图模型-amp-贝叶斯网"><span class="nav-text">有向图模型&amp;贝叶斯网</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#朴素贝叶斯分类器"><span class="nav-text">朴素贝叶斯分类器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#半朴素贝叶斯分类器"><span class="nav-text">半朴素贝叶斯分类器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐马尔可夫模型"><span class="nav-text">隐马尔可夫模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基础概念"><span class="nav-text">基础概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#前向后向算法"><span class="nav-text">前向后向算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#鲍姆-韦尔奇算法"><span class="nav-text">鲍姆-韦尔奇算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#维特比算法"><span class="nav-text">维特比算法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最大熵模型"><span class="nav-text">最大熵模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无向图模型-amp-马尔可夫网"><span class="nav-text">无向图模型&amp;马尔可夫网</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#马尔可夫随机场"><span class="nav-text">马尔可夫随机场</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件随机场"><span class="nav-text">条件随机场</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#前向后向算法-1"><span class="nav-text">前向后向算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参数学习"><span class="nav-text">参数学习</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#维特比算法-1"><span class="nav-text">维特比算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线性CRF与HMM-的区别"><span class="nav-text">线性CRF与HMM 的区别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TensorFlow-crf-源码简析"><span class="nav-text">TensorFlow.crf 源码简析</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型学习"><span class="nav-text">模型学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数学习-1"><span class="nav-text">参数学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#极大似然与最大后验"><span class="nav-text">极大似然与最大后验</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#起源"><span class="nav-text">起源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用途"><span class="nav-text">用途</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#极大似然估计MLE"><span class="nav-text">极大似然估计MLE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#最大后验概率估计（MAP）"><span class="nav-text">最大后验概率估计（MAP）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#两者的关系"><span class="nav-text">两者的关系</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EM算法"><span class="nav-text">EM算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型推断"><span class="nav-text">模型推断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#精确推断"><span class="nav-text">精确推断</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量消去"><span class="nav-text">变量消去</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信念传播"><span class="nav-text">信念传播</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#近似推断"><span class="nav-text">近似推断</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基于采样的近似推理"><span class="nav-text">基于采样的近似推理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变分法近似推理"><span class="nav-text">变分法近似推理</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1138,7 +1190,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">150.4k</span>
+    <span title="Site words total count">151.9k</span>
   
 </div>
 
