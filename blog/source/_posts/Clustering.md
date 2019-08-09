@@ -2,7 +2,7 @@
 title: Clustering
 date: 2019-01-09 18:30:27
 tags: [机器学习,聚类,clustering]
-categories: 机器学习
+categories: [机器学习,传统,clustering]
 keywords: [clustering,聚类,k-means,mean-shift,dbscan,gmm,hierarchical,spectral clusting]
 description: 对聚类算法进行简单的学习
 image: /Clustering/1.png  

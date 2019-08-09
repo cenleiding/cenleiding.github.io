@@ -2,7 +2,7 @@
 title: Dimensionality Reduction
 date: 2019-01-15 13:23:53
 tags: [机器学习,降维]
-categories: 机器学习
+categories: [机器学习,传统,降维]
 keywords: [降维,变量选择,特征提取,pca,主成分分析,fa,因子分析,ica独立成分分析,DMS,多维缩放,流形学习,isomap,lle,t-sen,umap,机器学习]
 description: 对降维的简单了解学习
 image: /Dimensionality-Reduction/1.jpg
@@ -107,7 +107,7 @@ Self_Employed_Yes 0.0134763695267
 
 　　　● 首先用所有的特征，n个，训练出一个模型，并评估其性能。 
 　　　● 分别移除一个特征后，再训练出n个模型，评估这些模型的性能，将变化最小的也足够小的模型所对应的特征移除。
-　　　● 重复这个过程，知道没有特征能够移除。
+　　　● 重复这个过程，直到没有特征能够移除。
 
 　　很明显，这个方法十分耗时，毕竟要多次训练评估模型，因此**一般使用线性拟合或逻辑回归作为基础模型。** 
 

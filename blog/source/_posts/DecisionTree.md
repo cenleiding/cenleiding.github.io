@@ -2,7 +2,7 @@
 title: 决策树 DecisionTree
 date: 2018-10-07 15:07:16
 tags: [机器学习,决策树,DecisionTree]
-categories: 机器学习
+categories: [机器学习,传统,DecisionTree]
 keywords: [DecisionTree,机器学习,决策树,ID3,C4.5,属性划分,减枝,连续值,缺失值,多变量决策树]
 description: DecisionTree算法学习笔记
 image: /DecisionTree/DT_1.jpg

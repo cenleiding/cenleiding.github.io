@@ -2,7 +2,7 @@
 title: Speech and Language processing 大纲
 date: 2019-04-01 09:08:55
 tags: [机器学习,自然语言处理,读书笔记]
-categories: [机器学习,读书笔记]
+categories: [笔记,Speech and Language processing读书笔记]
 keywords: [NLP,自然语言处理,Speech and Language processing,读书笔记]
 description: Speech and Language processing(第三版) 读书笔记大纲
 image: /Speech-and-Language-processing-大纲/0.jpg

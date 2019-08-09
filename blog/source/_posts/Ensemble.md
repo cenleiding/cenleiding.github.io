@@ -2,7 +2,7 @@
 title: Ensemble
 date: 2019-01-02 14:20:55
 tags: [机器学习,emsemble,集成学习]
-categories: 机器学习
+categories: [机器学习,传统,集成学习]
 keywords: [ensemble,集成,结合策略,stacking,bagging,boosting,blending,meta-estimator,random forest,随机森林,adaboost,gbdt,xgboost,lightgbm，机器学习]
 description: 对集成学习的基础学习
 image: /Ensemble/lalala.png

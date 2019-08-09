@@ -2,7 +2,7 @@
 title: word2vec词向量
 date: 2018-10-09 21:43:32
 tags: [机器学习,词向量]
-categories: 机器学习
+categories: [机器学习,NLP,word2vec]
 keywords: [word2vec,词向量,word embedding,词嵌入,skip-gram,CBOW,基于计数,基于预测,hierarchical softmax,negative sampling]
 description: word2vec词嵌入,简单介绍基于计数和基于预测的方法。
 image: /word2vec/word2vec_3.png

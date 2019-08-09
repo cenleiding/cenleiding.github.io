@@ -1,9 +1,9 @@
 ---
 title: bert的初步了解
 date: 2019-05-28 16:53:44
-tags: [机器学习,bert]
-categories: [机器学习,bert]
-keywords: [机器学习,bert]
+tags: [机器学习,NLP,bert]
+categories: [机器学习,NLP,bert]
+keywords: [机器学习,NLP,bert]
 description: 对于bert的简单初浅的了解
 image: /bert的初步了解/0.png
 ---
@@ -18,7 +18,7 @@ Bert的使用可以分为两部分：**pre-training和fine-tuning**。
 
 ● pre-training为预训练，bert设计了两个基础的任务并利用海量数据进行了训练（BooksCorpus (800M words)和English Wikipedia (2,500M words)）。这就像word2vec一样，为下游的任务提供了支持，当然bert强大很多。
 
-● fine-tuning为微调，在预训练时bert是根据自己的两个基础任务进行训练的与实际情况存在偏差，所以在实际使用时需要使用者定义自己的loss，来微调模型。
+● fine-tuning为微调，在预训练时bert是根据自己的两个基础任务进行训练的与实际情况存在偏差，所以在实际使用时需要使用者定义自己的loss，来微调模型。 
 
 一般使用者不用进行pre-training，根本没那个资源，好在已经有多种语言的预训练模型已经发布,[BERT-Base, Chinese](https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip)。 使用者要干的就是根据自己的任务在 bert上添加网络定义loss，微调出一个合适的模型。
 

@@ -2,7 +2,7 @@
 title: LSTM是什么
 date: 2018-10-29 20:49:13
 tags: [机器学习，LSTM]
-categories: 机器学习
+categories: [机器学习,NLP,LSTM]
 keywords: [LSTM,Long Short Term Memory,rnn,机器学习]
 description: 简单介绍LSTM是什么
 image: /LSTM/LSTM_01.png  
@@ -158,4 +158,5 @@ image: /LSTM/LSTM_01.png
 
 ​	**注意！！梯度消失在DNN和RNN中意义不一样 **。DNN中梯度消失指的是误差无法传递回浅层，导致浅层的参数无法更新；而RNN中的梯度消失是指较早时间步所贡献的更新值，无法被较后面的时间步获取，导致后面时间步进行误差更新的时候，采用的只是附近时间步的数据。
 
-​	LSTM和GRU能够解决梯度消失的主要原因在于**更新状态矩阵的方式**：$C_t = f_t*C_{t-1}+i_t*\tilde{C}_t$ 和 $h_t = (1-z_t)*h_{t-1}+z_t*\tilde{h}_t$  它们采用了线性运算，仔细一看这不就是**短连接、残差结构**吗？这使得求导值不会太小，有效减小了梯度消失问题。
+​	LSTM和GRU能够解决梯度消失的主要原因在于**更新状态矩阵的方式**：$C_t = f_t*C_{t-1}+i_t*\tilde{C}_t$ 和 $h_t = (1-z_t)*h_{t-1}+z_t*\tilde{h}_t$  它们采用了线性运算，仔细一看这不类似**短连接、残差结构**吗？这使得求导值不会太小，有效减小了梯度消失问题。一般20个词左右。
+

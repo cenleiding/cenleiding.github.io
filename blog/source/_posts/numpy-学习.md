@@ -2,7 +2,7 @@
 title: numpy 学习
 date: 2018-11-30 08:57:01
 tags: [机器学习,numpy]
-categories: 机器学习
+categories: [笔记,numpy学习笔记]
 keywords: [numpy,学习]
 description: numpy的文档学习笔记
 image: /numpy-学习/numpy_01.png

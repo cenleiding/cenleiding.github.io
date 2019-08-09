@@ -1,8 +1,8 @@
 ---
 title: 神经网络ANN
 date: 2018-10-19 20:31:59
-tags: [机器学习,神经网络]
-categories: 机器学习
+tags: [机器学习,概念,神经网络]
+categories: [机器学习,基础,神经网络]
 keywords: [神经网络,ANN,NN,机器学习,梯度下降,反向传播,激活函数,权重初始化,梯度消失,梯度爆炸,过拟合,欠拟合]
 description: 什么是神经网络？对于神经网络整体的简单理解。
 image: /神经网络ANN/ANN_1.jpg

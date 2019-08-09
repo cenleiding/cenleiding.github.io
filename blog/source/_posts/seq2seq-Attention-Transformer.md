@@ -2,7 +2,7 @@
 title: seq2seq-Attention-Transformer  
 date: 2019-05-14 23:09:59
 tags: [机器学习,seq2seq,attention,Transformer]
-categories: [机器学习,seq2seq,attention,transformer]
+categories: [机器学习,NLP,seq2seq-attention-transformer]
 keywords: [机器学习,seq2seq,attention,transformer]
 description: seq2seq,attention,transformer
 image: /seq2seq-Attention-Transformer/0.png
@@ -17,6 +17,8 @@ image: /seq2seq-Attention-Transformer/0.png
 　　**seq2seq**是一种**Encoder-Decoder**结构的网络。简单的来说就是在Encoder端输入一个序列，编码成一个向量C，然后在Decoder端根据这个向量输出一个目标序列，最常见的就是机器翻译和问答系统了。
 
 ![](seq2seq-Attention-Transformer/2.png)
+
+![](seq2seq-Attention-Transformer/14.png)
 
 　　在自然语言处理领域，seq2seq最常用RNN实现，比如LSTM，GRU。实际上基础的seq2seq十分简单，其就是在常规的RNN链上增加了一些标志位，比如用\<EOS>表示输入结束，然后靠着网络的记忆能力“惯性”的输出目标序列。但是很明显直接这样做的效果一定不会好，主要有两点原因：
 

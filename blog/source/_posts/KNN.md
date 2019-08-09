@@ -2,7 +2,7 @@
 title: KNN(K-Nearest Neighbor)&K-近邻学习
 date: 2018-10-07 14:20:55
 tags: [机器学习,KNN]
-categories: 机器学习
+categories: [机器学习,传统,KNN]
 keywords: [KNN,机器学习,K-近邻学习]
 description: KNN算法学习笔记
 image: /KNN/KNN_1.png
